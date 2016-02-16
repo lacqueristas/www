@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all --parallel build server",
     "build": "npm-run-all --parallel build:rollup build:gulp",
-    "build:rollup": "nodemon --watch ./client/ --exec \"rollup --sourcemap --config\"",
+    "build:rollup": "nodemon --watch ./client/ --exec \"rollup --config\"",
     "build:gulp": "gulp",
     "server": "npm run server:`echo $NODE_ENV`",
     "server:development": "http-server ./tmp/static",
