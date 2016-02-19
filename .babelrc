@@ -1,7 +1,5 @@
 {
-  "sourceMaps": "both",
   "plugins": [
-    "external-helpers",
     "syntax-flow",
     "transform-async-to-generator",
     "transform-async-to-module-method",
@@ -18,6 +16,7 @@
     "transform-es2015-for-of",
     "transform-es2015-function-name",
     "transform-es2015-literals",
+    "transform-es2015-modules-commonjs",
     "transform-es2015-object-super",
     "transform-es2015-parameters",
     "transform-es2015-shorthand-properties",

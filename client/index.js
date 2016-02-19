@@ -1,19 +1,29 @@
-import Rx from "rx"
-import Cycle from "@cycle/core"
-import CycleDOM from "@cycle/dom"
+import {Observable} from "rx"
+import {run} from "@cycle/core"
+import {makeDOMDriver} from "@cycle/dom"
+import {map} from "ramda"
 
-const {Observable} = Rx
-const {run} = Cycle
-const {button, section, makeDOMDriver} = CycleDOM
+import application from "./application"
+import {count$, activities$} from "./streams"
 
-const main = () => {
+const main = (sources) => {
+  const {DOM} = sources
+  const state$ = Observable.combineLatest(
+    count$(DOM),
+    activities$(),
+    (count, activities) => {
+      return {count, activities}
+    }
+  )
+  const view = map((state) => application(state))
+
   return {
-    DOM: Observable.of(section([button(".decrement", "Down")]))
+    DOM: view(state$)
   }
 }
 
 const drivers = {
-  DOM: makeDOMDriver("main")
+  DOM: makeDOMDriver("body")
 }
 
 run(main, drivers)

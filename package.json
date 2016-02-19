@@ -5,9 +5,9 @@
   "main": "client/index.js",
   "scripts": {
     "start": "npm-run-all --parallel build server",
-    "build": "npm-run-all --parallel build:rollup build:gulp",
-    "build:rollup": "nodemon --watch ./client/ --exec \"rollup --config\"",
-    "build:gulp": "gulp",
+    "build": "npm-run-all --parallel build:client build:static",
+    "build:client": "watchify --transform babelify --transform envify --entry ./client/index.js --outfile ./tmp/client/index.js",
+    "build:static": "gulp",
     "server": "npm run server:`echo $NODE_ENV`",
     "server:development": "http-server ./tmp/static",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,7 +32,6 @@
     "babel-cli": "6.5.1",
     "babel-core": "6.5.2",
     "babel-eslint": "5.0.0-beta6",
-    "babel-plugin-external-helpers": "6.5.0",
     "babel-plugin-syntax-flow": "6.5.0",
     "babel-plugin-transform-async-to-generator": "6.5.0",
     "babel-plugin-transform-async-to-module-method": "6.5.2",
@@ -49,6 +48,7 @@
     "babel-plugin-transform-es2015-for-of": "6.5.2",
     "babel-plugin-transform-es2015-function-name": "6.5.0",
     "babel-plugin-transform-es2015-literals": "6.5.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.5.2",
     "babel-plugin-transform-es2015-object-super": "6.5.0",
     "babel-plugin-transform-es2015-parameters": "6.5.0",
     "babel-plugin-transform-es2015-shorthand-properties": "6.5.0",
@@ -79,8 +79,11 @@
     "babel-plugin-transform-undefined-to-void": "6.5.0",
     "babel-plugin-typecheck": "3.6.1",
     "babel-register": "6.5.2",
+    "babelify": "7.2.0",
+    "browserify": "13.0.0",
     "devtool": "1.8.2",
     "dotenv": "2.0.0",
+    "envify": "3.4.0",
     "eslint": "2.0.0",
     "eslint-plugin-babel": "3.1.0",
     "flow-bin": "0.21.0",
@@ -103,14 +106,12 @@
     "npm-check-updates": "2.5.8",
     "npm-run-all": "1.5.1",
     "ramda": "0.19.1",
-    "rollup": "0.25.4",
-    "rollup-plugin-babel": "2.3.9",
-    "rollup-plugin-commonjs": "2.2.1",
-    "rollup-plugin-node-resolve": "1.4.0"
+    "watchify": "3.7.0"
   },
   "dependencies": {
     "@cycle/core": "6.0.2",
     "@cycle/dom": "9.0.2",
+    "@cycle/http": "8.0.0",
     "rx": "4.0.7"
   }
 }
