@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all --parallel build server",
     "build": "npm-run-all --parallel build:client build:static",
-    "build:client": "watchify --transform babelify --transform envify --entry ./client/index.js --outfile ./tmp/client/index.js",
+    "build:client": "mkdir -p ./tmp/client && watchify --transform babelify --transform envify --entry ./client/index.js --outfile ./tmp/client/index.js",
     "build:static": "gulp",
     "server": "npm run server:`echo $NODE_ENV`",
     "server:development": "http-server ./tmp/static",

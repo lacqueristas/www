@@ -28,7 +28,7 @@ gulp.task("scripts", () => {
     .src(SCRIPTS)
     .pipe(gulpConcat(SCRIPT))
     .pipe(gulp.dest(DESINATION))
-    .pipe(gulpUglify())
+    // .pipe(gulpUglify())
     .pipe(gulpGzip())
     .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))

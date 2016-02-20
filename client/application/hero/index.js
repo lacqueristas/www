@@ -1,7 +1,14 @@
-import {p} from "@cycle/dom"
+import {ol, li} from "@cycle/dom"
+import {range, map} from "ramda"
 
-export default ({count}) => {
-  return p(
-    `This is a cycle.js application. This is count ${String(count)}.`
-  )
+import controls from "../controls"
+
+const MINIMUM = 1
+const MAXIMUM = 20
+
+export default () => {
+  const postIds = range(MINIMUM, MAXIMUM)
+  const posts = map(() => li(".post", [controls(), "Random text here."]))
+
+  return ol(posts(postIds))
 }
