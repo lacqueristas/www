@@ -1,0 +1,16 @@
+import {
+  PROTOCOL,
+  HOST,
+  PORT,
+  VERSION
+} from "../api"
+
+const ACTIVITIES_PATH = `api/${VERSION}/activities`
+const ACTIVITIES_LIST_URL = `${PROTOCOL}://${HOST}:${PORT}/${ACTIVITIES_PATH}`
+const ACTIVITIES_LIST_METHOD = "GET"
+
+export {
+  ACTIVITIES_PATH,
+  ACTIVITIES_LIST_URL,
+  ACTIVITIES_LIST_METHOD
+}

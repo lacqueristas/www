@@ -102,7 +102,6 @@
     "gulp-uglify": "1.5.2",
     "http-server": "0.8.5",
     "immu": "2.0.1",
-    "nodemon": "1.8.1",
     "npm-check-updates": "2.5.8",
     "npm-run-all": "1.5.1",
     "ramda": "0.19.1",

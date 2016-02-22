@@ -1,60 +1,93 @@
-import {Observable} from "rx"
-import {run} from "@cycle/core"
-import {makeDOMDriver} from "@cycle/dom"
 import {
+  Observable
+} from "rx"
+import {
+  pipe,
   map,
-  pipe
+  path,
+  filter,
+  equals,
+  prop,
+  defaultTo
 } from "ramda"
+import {
+  run
+} from "@cycle/core"
+import {
+  makeDOMDriver
+} from "@cycle/dom"
+import {
+  makeHTTPDriver
+} from "@cycle/http"
 
 import application from "./application"
+import {
+  activitiesList
+} from "./sdk"
+import {
+  ACTIVITIES_LIST_URL
+} from "./sdk/activities"
 
-const main = (sources) => {
-  const {DOM} = sources
-
-  const INITIAL_VALUE = 0
-  const STEP = 1
-  const PHASE_ONE_MINIMUM = 15
-  const PHASES = [
-    PHASE_ONE_MINIMUM
-  ]
-
-  // DOM intent
-  const clickEvent$ = (DOM$) => DOM$.events("click")
-
-  // Counter Intents
-  const upButton$ = (DOM$) => DOM$.select(".up")
-
-  // ???
-  const asIncrement$ = map(() => +Number(STEP))
-
-  // ??
-  const increment$ = pipe(upButton$, clickEvent$, asIncrement$)
-
-  // ??
-  const sum$ = (previous, current) => previous + current
-
-  // ??
-  const count$ = (DOM$) => {
-    return Observable.of(INITIAL_VALUE)
-      .merge(increment$(DOM$))
-      .scan(sum$)
-  }
-
-  const state$ = Observable.combineLatest(
-    count$(DOM),
-    (count) => ({count, phases: PHASES})
+const main = ({
+  DOM,
+  HTTP
+}) => {
+  // intent
+  const click$ = (dom$) => dom$.events("click")
+  const fetchLatestActivitiesButton$ = (dom$) => dom$.select("#fetchLatestActivities")
+  const fetchLatestActivitiesButtonClick$ = pipe(
+    fetchLatestActivitiesButton$,
+    click$
   )
-  const view$ = map((state) => application(state))
+  const matchesActivitiesList = pipe(
+    path(["request", "url"]),
+    equals(ACTIVITIES_LIST_URL)
+  )
+  const response$ = (HTTP$$) => HTTP$$.switch()
 
-  const DOM$ = view$(state$)
+  // model
+  const onlyActivitiesList = filter(matchesActivitiesList)
+  const asRequest = map(activitiesList)
+  const asPayload = pipe(
+    prop("text"),
+    JSON.parse,
+    defaultTo({})
+  )
+  const asActivities = pipe(
+    prop("data"),
+    defaultTo([])
+  )
+  const fetchLatestActivities$ = pipe(
+    fetchLatestActivitiesButtonClick$,
+    asRequest
+  )
+  const catchActivitiesList$ = pipe(
+    onlyActivitiesList,
+    response$,
+    map(asPayload),
+    map(asActivities)
+  )
+  const HTTPRemote$ = Observable.merge(
+    fetchLatestActivities$(DOM)
+  )
+  const state$ = Observable.combineLatest(
+    catchActivitiesList$(HTTP),
+    fetchLatestActivitiesButtonClick$(DOM),
+    (activities) => ({activities})
+  ).startWith({})
+
+  // view
+  const DOMView$ = map(application)(state$)
 
   return {
-    DOM: DOM$
+    DOM: DOMView$,
+    HTTP: HTTPRemote$
   }
 }
 
 const drivers = {
-  DOM: makeDOMDriver("body")
+  DOM: makeDOMDriver("body"),
+  HTTP: makeHTTPDriver()
 }
 
 run(main, drivers)

@@ -1,14 +1,20 @@
-import {ol, li} from "@cycle/dom"
-import {range, map} from "ramda"
+import {
+  p,
+  article,
+  button,
+  ul,
+  li
+} from "@cycle/dom"
+import {
+  map
+} from "ramda"
 
-import controls from "../controls"
+export default ({activities}) => {
+  const list = map(li)
 
-const MINIMUM = 1
-const MAXIMUM = 20
-
-export default () => {
-  const postIds = range(MINIMUM, MAXIMUM)
-  const posts = map(() => li(".post", [controls(), "Random text here."]))
-
-  return ol(posts(postIds))
+  return article([
+    p("Hello, world"),
+    button("#fetchLatestActivities", "Fetch Latest Activities"),
+    ul(list(activities))
+  ])
 }
