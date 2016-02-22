@@ -74,7 +74,9 @@ const main = ({
     catchActivitiesList$(HTTP),
     fetchLatestActivitiesButtonClick$(DOM),
     (activities) => ({activities})
-  ).startWith({})
+  ).startWith({
+    activities: []
+  })
 
   // view
   const DOMView$ = map(application)(state$)

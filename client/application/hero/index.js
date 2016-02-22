@@ -6,11 +6,17 @@ import {
   li
 } from "@cycle/dom"
 import {
-  map
+  map,
+  pipe,
+  path
 } from "ramda"
 
 export default ({activities}) => {
-  const list = map(li)
+  const toItem = pipe(
+    path(["attributes", "summary"]),
+    li
+  )
+  const list = map(toItem)
 
   return article([
     p("Hello, world"),
