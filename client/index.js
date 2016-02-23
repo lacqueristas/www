@@ -32,6 +32,8 @@ const main = ({
   DOM,
   HTTP
 }) => {
+  const MINIMUM_POLL = 1000
+
   // intent
   const click$ = (dom$) => dom$.events("click")
   const fetchLatestActivitiesButton$ = (dom$) => dom$.select("#fetchLatestActivities")
@@ -44,10 +46,11 @@ const main = ({
     equals(ACTIVITIES_LIST_URL)
   )
   const response$ = (HTTP$$) => HTTP$$.switch()
+  const poll$ = () => Observable.interval(MINIMUM_POLL)
 
   // model
   const onlyActivitiesList = filter(matchesActivitiesList)
-  const asRequest = map(activitiesList)
+  const asActivitiesListRequest = map(activitiesList)
   const asPayload = pipe(
     prop("text"),
     JSON.parse,
@@ -59,7 +62,11 @@ const main = ({
   )
   const fetchLatestActivities$ = pipe(
     fetchLatestActivitiesButtonClick$,
-    asRequest
+    asActivitiesListRequest
+  )
+  const pollLatestActivities$ = pipe(
+    poll$,
+    asActivitiesListRequest
   )
   const catchActivitiesList$ = pipe(
     onlyActivitiesList,
@@ -68,11 +75,11 @@ const main = ({
     map(asActivities)
   )
   const HTTPRemote$ = Observable.merge(
-    fetchLatestActivities$(DOM)
+    fetchLatestActivities$(DOM),
+    pollLatestActivities$()
   )
   const state$ = Observable.combineLatest(
     catchActivitiesList$(HTTP),
-    fetchLatestActivitiesButtonClick$(DOM),
     (activities) => ({activities})
   ).startWith({
     activities: []

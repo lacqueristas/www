@@ -8,12 +8,35 @@ import {
 import {
   map,
   pipe,
-  path
+  reduce,
+  replace
 } from "ramda"
 
 export default ({activities}) => {
+  const UPPER_KEYS = [
+    "subowner",
+    "owner",
+    "subdomain",
+    "domain",
+    "superdomain"
+  ]
+  const renderTemplate = (collection) => (member) => {
+    const {
+      included
+    } = collection
+    const {
+      attributes: {
+        summary
+      },
+      relationships
+    } = member
+
+    return reduce((accumulated, key) => {
+      return replace(`{{${key}.name}}`, `{{${key}.name}}`, accumulated)
+    }, summary, UPPER_KEYS)
+  }
   const toItem = pipe(
-    path(["attributes", "summary"]),
+    renderTemplate(activities),
     li
   )
   const list = map(toItem)
