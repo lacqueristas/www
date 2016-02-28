@@ -9,7 +9,8 @@ import {
   map,
   pipe,
   reduce,
-  replace
+  replace,
+  prop
 } from "ramda"
 
 export default ({activities}) => {
@@ -22,7 +23,7 @@ export default ({activities}) => {
   ]
   const renderTemplate = (collection) => (member) => {
     const {
-      included
+      include
     } = collection
     const {
       attributes: {
@@ -40,10 +41,11 @@ export default ({activities}) => {
     li
   )
   const list = map(toItem)
+  const data = prop("data", activities)
 
   return article([
     p("Hello, world"),
     button("#fetchLatestActivities", "Fetch Latest Activities"),
-    ul(list(activities))
+    ul(list(data))
   ])
 }
