@@ -1,10 +1,10 @@
 const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
-const gulpGzip = require("gulp-gzip")
-const gulpHTMLMin = require("gulp-htmlmin")
-const gulpSize = require("gulp-size")
-const gulpUglify = require("gulp-uglify")
+// const gulpSize = require("gulp-size")
+// const gulpHTMLMin = require("gulp-htmlmin")
+// const gulpGzip = require("gulp-gzip")
+// const gulpUglify = require("gulp-uglify")
 
 const SCRIPTS = [
   "./tmp/client/index.js",
@@ -29,9 +29,9 @@ gulp.task("scripts", () => {
     .pipe(gulpConcat(SCRIPT))
     .pipe(gulp.dest(DESINATION))
     // .pipe(gulpUglify())
-    .pipe(gulpGzip())
-    .pipe(gulpSize({showFiles: true}))
-    .pipe(gulp.dest(DESINATION))
+    // .pipe(gulpGzip())
+    // .pipe(gulpSize({showFiles: true}))
+    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("styles", () => {
@@ -39,32 +39,32 @@ gulp.task("styles", () => {
     .pipe(gulpConcat(STYLE))
     .pipe(gulpMyth())
     .pipe(gulp.dest(DESINATION))
-    .pipe(gulpGzip())
-    .pipe(gulpSize({showFiles: true}))
-    .pipe(gulp.dest(DESINATION))
+    // .pipe(gulpGzip())
+    // .pipe(gulpSize({showFiles: true}))
+    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("htmls", () => {
   return gulp.src(HTMLS)
     .pipe(gulp.dest(DESINATION))
-    .pipe(gulpHTMLMin({
-      collapseWhitespace: true,
-      conservativeCollapse: true,
-      collapseBooleanAttributes: true,
-      removeComments: true,
-      removeTagWhitespace: true
-    }))
-    .pipe(gulpGzip())
-    .pipe(gulpSize({showFiles: true}))
-    .pipe(gulp.dest(DESINATION))
+    // .pipe(gulpHTMLMin({
+    //   collapseWhitespace: true,
+    //   conservativeCollapse: true,
+    //   collapseBooleanAttributes: true,
+    //   removeComments: true,
+    //   removeTagWhitespace: true
+    // }))
+    // .pipe(gulpGzip())
+    // .pipe(gulpSize({showFiles: true}))
+    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("maps", () => {
   return gulp.src(MAPS)
     .pipe(gulp.dest(DESINATION))
-    .pipe(gulpGzip())
-    .pipe(gulpSize({showFiles: true}))
-    .pipe(gulp.dest(DESINATION))
+    // .pipe(gulpGzip())
+    // .pipe(gulpSize({showFiles: true}))
+    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("watch", () => {
