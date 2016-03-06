@@ -34,7 +34,6 @@
     "transform-flow-strip-types",
     "transform-function-bind",
     "transform-member-expression-literals",
-    "transform-merge-sibling-variables",
     "transform-minify-booleans",
     "transform-object-assign",
     "transform-object-rest-spread",

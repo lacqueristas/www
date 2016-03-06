@@ -70,7 +70,6 @@
     "babel-plugin-transform-flow-strip-types": "6.5.0",
     "babel-plugin-transform-function-bind": "6.5.2",
     "babel-plugin-transform-member-expression-literals": "6.5.0",
-    "babel-plugin-transform-merge-sibling-variables": "6.5.0",
     "babel-plugin-transform-minify-booleans": "6.5.0",
     "babel-plugin-transform-object-assign": "6.5.0",
     "babel-plugin-transform-object-rest-spread": "6.5.0",
