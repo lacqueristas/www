@@ -16,9 +16,6 @@ const STYLES = [
 const HTMLS = [
   "./static/index.html"
 ]
-const MAPS = [
-  "./tmp/client/index.js.map"
-]
 const SCRIPT = "index.js"
 const STYLE = "index.css"
 const DESINATION = "./tmp/static/"
@@ -59,19 +56,10 @@ gulp.task("htmls", () => {
     // .pipe(gulp.dest(DESINATION))
 })
 
-gulp.task("maps", () => {
-  return gulp.src(MAPS)
-    .pipe(gulp.dest(DESINATION))
-    // .pipe(gulpGzip())
-    // .pipe(gulpSize({showFiles: true}))
-    // .pipe(gulp.dest(DESINATION))
-})
-
 gulp.task("watch", () => {
   gulp.watch(SCRIPTS, ["scripts"])
   gulp.watch(STYLES, ["styles"])
   gulp.watch(HTMLS, ["htmls"])
-  gulp.watch(MAPS, ["maps"])
 })
 
-gulp.task("default", ["scripts", "styles", "htmls", "maps", "watch"])
+gulp.task("default", ["scripts", "styles", "htmls", "watch"])
