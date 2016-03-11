@@ -17,8 +17,8 @@
     "url": "git+https://github.com/lacqueristas/www.git"
   },
   "keywords": [
+    "lacqueristas",
     "nailpolish",
-    "node",
     "frontend"
   ],
   "author": "Kurtis Rainbolt-Greene (@krainboltgreene) <me@kurtisrainboltgreene.name>",
