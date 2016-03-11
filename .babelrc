@@ -44,6 +44,7 @@
     "transform-runtime",
     "transform-simplify-comparison-operators",
     "transform-undefined-to-void",
-    "typecheck"
+    "typecheck",
+    "babel-root-import"
   ]
 }
