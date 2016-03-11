@@ -1,13 +1,5 @@
-import {
-  main
-} from "@cycle/dom"
+import presenter from "./presenter"
 
-import pageHeading from "./pageHeading"
-import hero from "./hero"
-
-export default (state) => {
-  return main([
-    pageHeading("Activities"),
-    hero(state)
-  ])
+export {
+  presenter
 }

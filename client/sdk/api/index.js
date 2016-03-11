@@ -1,19 +1,13 @@
 const PROTOCOL = "http"
 const HOST = "localhost"
-const PORT = "9000"
-const VERSION = "v2"
-const MEDIATYPE = "application/vnd.api+json"
-const ENTITY = "Admin"
-const USERNAME = "1"
-const PASSWORD = "password"
+const PORT = "8080"
+const VERSION = "v1"
+const MEDIATYPE = "application/lacqueristas.api+json; api-verison=1"
 
 export {
   PROTOCOL,
   HOST,
   PORT,
   VERSION,
-  MEDIATYPE,
-  ENTITY,
-  USERNAME,
-  PASSWORD
+  MEDIATYPE
 }

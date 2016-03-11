@@ -3,9 +3,9 @@ import {
   HOST,
   PORT,
   VERSION
-} from "../api"
+} from "~/client/sdk/api"
 
-const ACTIVITIES_PATH = `api/${VERSION}/activities`
+const ACTIVITIES_PATH = `${VERSION}/activities`
 const ACTIVITIES_LIST_URL = `${PROTOCOL}://${HOST}:${PORT}/${ACTIVITIES_PATH}`
 const ACTIVITIES_LIST_METHOD = "GET"
 

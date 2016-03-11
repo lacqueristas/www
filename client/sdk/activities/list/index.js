@@ -1,12 +1,5 @@
-import {
-  join
-} from "ramda"
-import {
-  MEDIATYPE,
-  ENTITY,
-  USERNAME,
-  PASSWORD
-} from "../../api"
+import {join} from "ramda"
+import {MEDIATYPE} from "~/client/sdk/api"
 import {
   ACTIVITIES_LIST_URL,
   ACTIVITIES_LIST_METHOD
@@ -14,7 +7,7 @@ import {
 
 const includeJoin = join(".")
 
-export default (options) => {
+export default (options = {}) => {
   const {
     include,
     page
@@ -47,10 +40,7 @@ export default (options) => {
     },
     headers: {
       "Accept": MEDIATYPE,
-      "Content-Type": MEDIATYPE,
-      "X-Entity": ENTITY
-    },
-    user: USERNAME,
-    password: PASSWORD
+      "Content-Type": MEDIATYPE
+    }
   }
 }
