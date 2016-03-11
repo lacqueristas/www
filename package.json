@@ -4,13 +4,13 @@
   "description": "The frontend browser client for the lacqueristas API",
   "main": "client/index.js",
   "scripts": {
-    "start": "npm-run-all --parallel build server",
+    "start": "npm-run-all --parallel build server test",
     "build": "npm-run-all --parallel build:client build:static",
     "build:client": "mkdir -p ./tmp/client && watchify --transform babelify --transform envify --entry ./client/index.js --outfile ./tmp/client/index.js",
     "build:static": "gulp",
     "server": "npm run server:`echo $NODE_ENV`",
     "server:development": "http-server ./tmp/static",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start"
   },
   "repository": {
     "type": "git",
@@ -88,8 +88,9 @@
     "devtool": "1.8.2",
     "dotenv": "2.0.0",
     "envify": "3.4.0",
-    "eslint": "2.3.0",
+    "eslint": "2.2.0",
     "eslint-plugin-babel": "3.1.0",
+    "eslint-plugin-jasmine": "1.6.0",
     "flow-bin": "0.22.1",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.0",
@@ -106,8 +107,16 @@
     "gulp-uglify": "1.5.3",
     "http-server": "0.9.0",
     "immu": "2.0.1",
+    "istanbul": "0.4.2",
+    "jasmine": "2.4.1",
+    "karma": "0.13.21",
+    "karma-browserify": "5.0.2",
+    "karma-coverage": "0.5.4",
+    "karma-jasmine": "0.3.7",
+    "karma-phantomjs-launcher": "1.0.0",
     "npm-check-updates": "2.5.8",
     "npm-run-all": "1.5.1",
+    "phantomjs-prebuilt": "2.1.4",
     "ramda": "0.19.1",
     "watchify": "3.7.0"
   },
