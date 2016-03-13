@@ -1,4 +1,4 @@
-import {map} from "ramda"
+import {map, pipe, prop} from "ramda"
 import {Observable} from "rx"
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "@cycle/dom"
@@ -22,11 +22,18 @@ const main = (sources) => {
     pollActivitiesList$(dom)
   )
   // We really only want to do this when a new catchActivitiesList$ event happens
-  const storage$ = catchActivitiesList$(http).withLatestFrom(
-    store$(local),
+  const storage$ = store$(local).withLatestFrom(
+    catchActivitiesList$(http),
     asState
   )
-  const dom$ = map(view, storage$)
+
+  const asViewState = pipe(
+    prop('value'),
+    JSON.parse
+  )
+
+  const state$ = map(asViewState, storage$)
+  const dom$ = map(view, state$)
 
   return {
     dom: dom$,

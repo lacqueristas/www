@@ -14,26 +14,26 @@ const memberExtract = pipe(
 
 const collectionExtract = pipe(
   // {data: [{id, type, attributes}, ...], included: [...]}
-  pluck("data"),
+  pluck("data")
   // group by type?
   // [{id, type, attributes}, ...]
-  map(memberExtract),
+  //map(memberExtract),
   // [{activities: {1: {id, summary}, 2: {id, summary}, ...}}]
-  mergeAll
+  //mergeAll
 )
 const extract = pipe(
   // [{data: [{id, type, attributes}, ...], included: [...]}]
-  map(collectionExtract),
+  map(collectionExtract)
   // [{activity, activity, ...}, {account, account, ...}]
-  mergeAll
+  //mergeAll
 )
 const mergeShallow = mergeWith(merge)
 
-export default (store, ...payloads) => {
+export default (payloads, store) => {
   return {
     key: "store",
     value: JSON.stringify({
-      ...mergeShallow(store, extract(payloads))
+      ...mergeShallow(JSON.parse(store), extract(payloads))
     })
   }
 }
