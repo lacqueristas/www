@@ -9,8 +9,8 @@ import {
 } from "@cycle/dom"
 
 const LENGTH = 3
-const domElement = curryN(LENGTH)
 const noProperties = always({})
+const domElement = curryN(LENGTH)
 const headerText = domElement(h1)
 
 export default compose(
