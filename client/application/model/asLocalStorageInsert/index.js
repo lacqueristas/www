@@ -30,6 +30,8 @@ const extract = pipe(
 const mergeShallow = mergeWith(merge)
 
 export default (payloads, store) => {
+  console.log("asLocalStorageInsert payloads", payloads)
+  console.log("asLocalStorageInsert store", store)
   return {
     key: "store",
     value: JSON.stringify({
