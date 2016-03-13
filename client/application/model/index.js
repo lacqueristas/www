@@ -1,6 +1,6 @@
 import asPayload from "./asPayload"
-import store$ from "./store$"
 import asLocalStorageInsert from "./asLocalStorageInsert"
+import asStore from "./asStore"
 
 export {
   asPayload,
