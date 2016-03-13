@@ -3,36 +3,43 @@ import {Observable} from "rx"
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "@cycle/dom"
 import {makeHTTPDriver} from "@cycle/http"
+import storageDriver from "@cycle/storage"
 
 import {pollActivitiesList$} from "./activities/intent"
 import {catchActivitiesList$} from "./activities/intent"
-import {state$} from "./application/model"
+import {store$} from "./application/model"
+import {asState} from "./application/model"
 import {view} from "./application/presenter"
 
 const main = (sources) => {
   const {
-    DOM,
-    HTTP
+    dom,
+    http,
+    storage: {local}
   } = sources
 
-
-  const DOMView$ = map(view, state$(
-    catchActivitiesList$(HTTP)
-  ))
-
-  const HTTP$ = Observable.merge(
-    pollActivitiesList$(DOM)
+  const http$ = Observable.merge(
+    pollActivitiesList$(dom)
   )
+  // We really only want to do this when a new catchActivitiesList$ event happens
+  const storage$ = Observable.combineLatest(
+    store$(local),
+    catchActivitiesList$(http),
+    asState
+  ).distinctUntilChanged()
+  const dom$ = map(view, storage$)
 
   return {
-    DOM: DOMView$,
-    HTTP: HTTP$
+    dom: dom$,
+    http: http$,
+    storage: storage$
   }
 }
 
 const drivers = {
-  DOM: makeDOMDriver("body"),
-  HTTP: makeHTTPDriver()
+  dom: makeDOMDriver("body"),
+  http: makeHTTPDriver(),
+  storage: storageDriver
 }
 
 run(main, drivers)
