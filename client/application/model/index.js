@@ -1,11 +1,10 @@
 import asPayload from "./asPayload"
 import asState from "./asState"
 import store$ from "./store$"
-import selectResponse$ from "./selectResponse$"
+import asLocalStorageInsert from "./asLocalStorageInsert"
 
 export {
   asPayload,
   asState,
-  store$,
-  selectResponse$
+  asStore
 }
