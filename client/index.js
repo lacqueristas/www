@@ -22,11 +22,10 @@ const main = (sources) => {
     pollActivitiesList$(dom)
   )
   // We really only want to do this when a new catchActivitiesList$ event happens
-  const storage$ = Observable.combineLatest(
+  const storage$ = catchActivitiesList$(http).withLatestFrom(
     store$(local),
-    catchActivitiesList$(http),
     asState
-  ).distinctUntilChanged()
+  )
   const dom$ = map(view, storage$)
 
   return {
