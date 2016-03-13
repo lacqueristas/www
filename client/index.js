@@ -1,4 +1,7 @@
-import {map, pipe, prop} from "ramda"
+import {
+  map,
+  pipe
+} from "ramda"
 import {Observable} from "rx"
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "@cycle/dom"
@@ -7,33 +10,30 @@ import storageDriver from "@cycle/storage"
 
 import {pollActivitiesList$} from "./activities/intent"
 import {catchActivitiesList$} from "./activities/intent"
-import {store$} from "./application/model"
-import {asState} from "./application/model"
+import {read$} from "./application/intent"
+import {asLocalStorageInsert} from "./application/model"
+import {asStore} from "./application/model"
 import {view} from "./application/presenter"
 
 const main = (sources) => {
   const {
-    dom,
     http,
-    storage: {local}
+    storage
   } = sources
 
   const http$ = Observable.merge(
-    pollActivitiesList$(dom)
+    pollActivitiesList$()
   )
-  // We really only want to do this when a new catchActivitiesList$ event happens
-  const storage$ = store$(local).withLatestFrom(
-    catchActivitiesList$(http),
-    asState
+  const signals$ = Observable.merge(
+    catchActivitiesList$(http)
   )
-
-  const asViewState = pipe(
-    prop('value'),
-    JSON.parse
-  )
-
-  const state$ = map(asViewState, storage$)
-  const dom$ = map(view, state$)
+  const storage$ = signals$
+    .withLatestFrom(
+      read$(storage),
+      asLocalStorageInsert
+    )
+    .startWith({key: "store", value: JSON.stringify({})})
+  const dom$ = map(pipe(asStore, view), storage$)
 
   return {
     dom: dom$,
