@@ -3,4 +3,3 @@ export default (database) => database
   .getItem("store")
   .startWith("{}")
   .distinctUntilChanged()
-  .do((x) => console.log("intent/read$", x))
