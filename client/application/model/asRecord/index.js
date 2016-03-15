@@ -3,7 +3,8 @@ import {
   juxt,
   omit,
   props,
-  mergeAll
+  mergeAll,
+  mapObjIndexed
 } from "ramda"
 
 import coerce from "../coerce"
@@ -29,5 +30,7 @@ export default pipe(
   juxt([nonnested, nested]),
   // [{type, id}, {summary, self, actor: Object}]
   mergeAll,
-  coerce(mapping)
+  (x) => {console.log(x); return(x)},
+  mapObjIndexed(coerce(mapping)),
+  (x) => {console.log(x); return(x)}
 )
