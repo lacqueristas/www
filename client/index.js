@@ -23,16 +23,17 @@ const main = (sources) => {
 
   const http$ = Observable.merge(
     pollActivitiesList$()
-  )
+  ).share()
   const signals$ = Observable.merge(
     catchActivitiesList$(http)
-  )
+  ).share()
   const storage$ = signals$
     .withLatestFrom(
       read$(storage),
       asLocalStorageInsert
     )
     .startWith({key: "store", value: JSON.stringify({})})
+    .share()
   const dom$ = map(pipe(asStore, view), storage$)
 
   return {
