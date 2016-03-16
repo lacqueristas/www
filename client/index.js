@@ -1,7 +1,8 @@
 import {
   map,
-  pipe
+  unary
 } from "ramda"
+import {pipe} from "sanctuary"
 import {Observable} from "rx"
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "@cycle/dom"
@@ -28,9 +29,8 @@ const main = (sources) => {
   const signals$ = Observable.merge(
     catchActivitiesList$(http)
   ).share()
-
   const storage$ = state$([signals$, storage])
-  const dom$ = map(pipe(asStore, view), storage$)
+  const dom$ = map(unary(pipe([asStore, view])), storage$)
 
   return {
     dom: dom$,
