@@ -6,9 +6,7 @@ const defaultValue = {
   value: JSON.stringify({})
 }
 
-export default ([signals$, storage]) => {
-  return signals$
-    .withLatestFrom(read$(storage), asLocalStorageInsert)
-    .startWith(defaultValue)
-    .share()
-}
+export default ([signals$, storage]) => signals$
+  .withLatestFrom(read$(storage), asLocalStorageInsert)
+  .startWith(defaultValue)
+  .share()
