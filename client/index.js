@@ -8,16 +8,13 @@ import {makeDOMDriver} from "@cycle/dom"
 import {makeHTTPDriver} from "@cycle/http"
 import storageDriver from "@cycle/storage"
 
-import {read$} from "./application/intent"
+import {state$} from "./application/intent"
 import {
   pollActivitiesList$,
   catchActivitiesList$
 } from "./activities/intent"
 import {view} from "./application/presenter"
-import {
-  asLocalStorageInsert,
-  asStore
-} from "./application/model"
+import {asStore} from "./application/model"
 
 const main = (sources) => {
   const {
@@ -31,13 +28,8 @@ const main = (sources) => {
   const signals$ = Observable.merge(
     catchActivitiesList$(http)
   ).share()
-  const storage$ = signals$
-    .withLatestFrom(
-      read$(storage),
-      asLocalStorageInsert
-    )
-    .startWith({key: "store", value: JSON.stringify({})})
-    .share()
+
+  const storage$ = state$([signals$, storage])
   const dom$ = map(pipe(asStore, view), storage$)
 
   return {
