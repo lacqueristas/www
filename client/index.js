@@ -8,12 +8,16 @@ import {makeDOMDriver} from "@cycle/dom"
 import {makeHTTPDriver} from "@cycle/http"
 import storageDriver from "@cycle/storage"
 
-import {pollActivitiesList$} from "./activities/intent"
-import {catchActivitiesList$} from "./activities/intent"
 import {read$} from "./application/intent"
-import {asLocalStorageInsert} from "./application/model"
-import {asStore} from "./application/model"
+import {
+  pollActivitiesList$,
+  catchActivitiesList$
+} from "./activities/intent"
 import {view} from "./application/presenter"
+import {
+  asLocalStorageInsert,
+  asStore
+} from "./application/model"
 
 const main = (sources) => {
   const {
