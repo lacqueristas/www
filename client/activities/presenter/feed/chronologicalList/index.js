@@ -1,8 +1,8 @@
 import {
   map,
-  pipe,
   prop
 } from "ramda"
+import {pipe} from "sanctuary"
 import {
   ol,
   li,

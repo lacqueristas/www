@@ -1,9 +1,9 @@
 import {
-  pipe,
   prop,
   groupBy,
   map
 } from "ramda"
+import {pipe} from "sanctuary"
 
 import asRecords from "../asRecords"
 

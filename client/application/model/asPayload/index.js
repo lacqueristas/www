@@ -1,8 +1,8 @@
 import {
-  pipe,
   prop,
   defaultTo
 } from "ramda"
+import {pipe} from "sanctuary"
 
 export default pipe(
   prop("text"),

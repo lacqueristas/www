@@ -1,7 +1,5 @@
-import {
-  pipe,
-  map
-} from "ramda"
+import {map} from "ramda"
+import {pipe} from "sanctuary"
 
 import {onlyActivitiesListResponse$$} from "~/client/activities/model"
 import {selectResponse$} from "~/client/application/intent"

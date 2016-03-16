@@ -1,11 +1,11 @@
 import {
-  pipe,
   juxt,
   omit,
   props,
   mergeAll,
   mapObjIndexed
 } from "ramda"
+import {pipe} from "sanctuary"
 
 import coerce from "../coerce"
 

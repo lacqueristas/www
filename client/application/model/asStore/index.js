@@ -1,7 +1,5 @@
-import {
-  pipe,
-  prop
-} from "ramda"
+import {prop} from "ramda"
+import {pipe} from "sanctuary"
 
 export default pipe(
   prop("value"),

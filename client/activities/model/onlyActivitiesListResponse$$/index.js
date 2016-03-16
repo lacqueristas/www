@@ -1,9 +1,9 @@
 import {
   filter,
-  pipe,
   path,
   equals
 } from "ramda"
+import {pipe} from "sanctuary"
 import {ACTIVITIES_LIST_URL} from "~/client/sdk/activities"
 
 const urlPath = ["request", "url"]
