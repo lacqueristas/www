@@ -1,11 +1,14 @@
 import {
-  pipe,
   prop,
-  defaultTo
+  defaultTo,
+  unary
 } from "ramda"
+import {pipe} from "sanctuary"
 
-export default pipe(
-  prop("text"),
-  JSON.parse,
-  defaultTo({})
-)
+export default unary(pipe(
+  [
+    prop("text"),
+    JSON.parse,
+    defaultTo({})
+  ]
+))

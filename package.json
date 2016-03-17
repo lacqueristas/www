@@ -124,6 +124,7 @@
     "@cycle/storage": "2.0.3",
     "jsonapi-serializer": "3.0.0",
     "rx": "4.0.8",
+    "sanctuary": "0.9.1",
     "yayson": "2.0.1"
   }
 }
