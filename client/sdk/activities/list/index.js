@@ -19,13 +19,7 @@ export default (options = {}) => {
 
   const DEFAULT_INCLUDE = [
     "actor",
-    "recipient",
-    "subject",
-    "owner",
-    "subowner",
-    "subdomain",
-    "domain",
-    "superdomain"
+    "recipient"
   ]
   const DEFAULT_PAGE_NUMBER = 0
   const DEFAULT_PAGE_SIZE = 10
