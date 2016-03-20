@@ -1,19 +1,17 @@
 import {
-  compose,
-  curryN,
-  always
+  unless,
+  isEmpty
 } from "ramda"
 import {
-  h1,
-  header
-} from "@cycle/dom"
-
-const LENGTH = 3
-const noProperties = always({})
-const domElement = curryN(LENGTH)
-const headerText = domElement(h1)
-
-export default compose(
   header,
-  headerText(".pageHeader", noProperties)
-)
+  h1,
+  h2
+} from "@cycle/dom"
+export default (text, subtext = "") => {
+  return header(
+    [
+      h1(text),
+      unless(isEmpty, h2)(subtext)
+    ]
+  )
+}

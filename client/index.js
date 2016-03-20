@@ -14,8 +14,8 @@ import {
   pollActivitiesList$,
   catchActivitiesList$
 } from "./activities/intent"
-import {view} from "./application/presenter"
 import {asStore} from "./application/model"
+import {layout} from "./application/presenter"
 
 const main = (sources) => {
   const {
@@ -30,7 +30,7 @@ const main = (sources) => {
     catchActivitiesList$(http)
   ).share()
   const storage$ = state$([signals$, storage])
-  const dom$ = map(unary(pipe([asStore, view])), storage$)
+  const dom$ = map(unary(pipe([asStore, layout])), storage$)
 
   return {
     dom: dom$,
