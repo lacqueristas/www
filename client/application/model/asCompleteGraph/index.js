@@ -31,7 +31,7 @@ export default (state) => {
                     }
                   }
                 },
-                associations[member.type]
+                defaultTo([], associations[member.type])
               )
             )
           }
