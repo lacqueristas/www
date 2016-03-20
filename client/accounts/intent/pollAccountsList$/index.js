@@ -2,11 +2,11 @@ import {unary} from "ramda"
 import {pipe} from "sanctuary"
 
 import {poll$} from "~/client/application/intent"
-import {asActivitiesListRequest} from "~/client/activities/model"
+import {asAccountsListRequest} from "~/client/accounts/model"
 
 export default unary(pipe(
   [
     poll$,
-    asActivitiesListRequest
+    asAccountsListRequest
   ]
 ))

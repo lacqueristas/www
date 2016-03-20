@@ -115,14 +115,15 @@
     "watchify": "3.7.0"
   },
   "dependencies": {
-    "npm-run-all": "1.5.1",
-    "http-server": "0.9.0",
-    "ramda": "0.19.1",
     "@cycle/core": "6.0.3",
     "@cycle/dom": "9.1.0",
     "@cycle/http": "8.2.0",
     "@cycle/storage": "2.0.3",
+    "http-server": "0.9.0",
     "jsonapi-serializer": "3.0.0",
+    "mustache": "^2.2.1",
+    "npm-run-all": "1.5.1",
+    "ramda": "0.19.1",
     "rx": "4.0.8",
     "sanctuary": "0.9.1",
     "yayson": "2.0.1"

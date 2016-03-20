@@ -1,9 +1,9 @@
 import {join} from "ramda"
 import {MEDIATYPE} from "~/client/sdk/api"
 import {
-  ACTIVITIES_LIST_URL,
-  ACTIVITIES_LIST_METHOD
-} from "../../activities"
+  ACCOUNTS_LIST_URL,
+  ACCOUNTS_LIST_METHOD
+} from "../../accounts"
 
 const includeJoin = join(".")
 
@@ -24,8 +24,8 @@ export default (options = {}) => {
   const DEFAULT_PAGE_SIZE = 10
 
   return {
-    url: ACTIVITIES_LIST_URL,
-    method: ACTIVITIES_LIST_METHOD,
+    url: ACCOUNTS_LIST_URL,
+    method: ACCOUNTS_LIST_METHOD,
     query: {
       "include": includeJoin(include || DEFAULT_INCLUDE),
       "page[number]": pageNumber || DEFAULT_PAGE_NUMBER,
