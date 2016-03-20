@@ -1,0 +1,16 @@
+import {
+  PROTOCOL,
+  HOST,
+  PORT,
+  VERSION
+} from "~/client/sdk/api"
+
+const ACCOUNTS_PATH = `${VERSION}/accounts`
+const ACCOUNTS_LIST_URL = `${PROTOCOL}://${HOST}:${PORT}/${ACCOUNTS_PATH}`
+const ACCOUNTS_LIST_METHOD = "GET"
+
+export {
+  ACCOUNTS_PATH,
+  ACCOUNTS_LIST_URL,
+  ACCOUNTS_LIST_METHOD
+}

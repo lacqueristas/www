@@ -14,6 +14,10 @@ import {
   pollActivitiesList$,
   catchActivitiesList$
 } from "./activities/intent"
+import {
+  pollAccountsList$,
+  catchAccountsList$
+} from "./accounts/intent"
 import {asStore} from "./application/model"
 import {layout} from "./application/presenter"
 
@@ -24,10 +28,12 @@ const main = (sources) => {
   } = sources
 
   const http$ = Observable.merge(
-    pollActivitiesList$()
+    pollActivitiesList$(),
+    pollAccountsList$()
   ).share()
   const signals$ = Observable.merge(
-    catchActivitiesList$(http)
+    catchActivitiesList$(http),
+    catchAccountsList$(http)
   ).share()
   const storage$ = state$([signals$, storage])
   const dom$ = map(unary(pipe([asStore, layout])), storage$)
