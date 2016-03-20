@@ -11,11 +11,11 @@ const urlPath = [
   "request",
   "url"
 ]
-const onlyActivitiesList = unary(pipe(
+const onlyActivitiesList = pipe(
   [
     path(urlPath),
     equals(ACTIVITIES_LIST_URL)
   ]
-))
+)
 
-export default filter(onlyActivitiesList)
+export default filter(unary(onlyActivitiesList))

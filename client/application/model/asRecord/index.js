@@ -10,14 +10,14 @@ import {pipe} from "sanctuary"
 
 import coerce from "../coerce"
 
-const nonnested = unary(pipe(
+const nonnested = pipe(
   [
     // {type, id, attributes: Object, relationships: Object, links: Object}
     omit(["attributes", "links", "relationships"])
     // {type, id}
   ]
-))
-const nested = unary(pipe(
+)
+const nested = pipe(
   [
     // {type, id, attributes: Object, relationships: Object, links: Object}
     props(["attributes", "links", "relationships"]),
@@ -25,17 +25,17 @@ const nested = unary(pipe(
     mergeAll
     // {summary, self, actor: Object}
   ]
-))
+)
 const mapping = {
   "created-at": "date"
 }
 
-export default unary(pipe(
+export default pipe(
   [
     // {type, id, attributes: Object, relationships: Object, links: Object}
     juxt([nonnested, nested]),
     // [{type, id}, {summary, self, actor: Object}]
     mergeAll,
-    mapObjIndexed(coerce(mapping))
+    mapObjIndexed(unary(coerce(mapping)))
   ]
-))
+)

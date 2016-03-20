@@ -1,12 +1,10 @@
-import {
-  prop,
-  unary
+import {prop
 } from "ramda"
 import {pipe} from "sanctuary"
 
-export default unary(pipe(
+export default pipe(
   [
     prop("value"),
     JSON.parse
   ]
-))
+)

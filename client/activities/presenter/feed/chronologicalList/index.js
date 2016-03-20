@@ -10,13 +10,13 @@ import {
   p
 } from "@cycle/dom"
 
-const asListItem = unary(pipe(
+const asListItem = pipe(
   [
     prop("summary"),
     p,
     li
   ]
-))
-const asList = map(asListItem)
+)
+const asList = map(unary(asListItem))
 
 export default (activities) => ol(asList(activities))

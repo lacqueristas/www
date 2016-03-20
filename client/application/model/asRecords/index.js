@@ -8,12 +8,12 @@ import {pipe} from "sanctuary"
 
 import asRecord from "../asRecord"
 
-export default unary(pipe(
+export default pipe(
   [
     // [{type, id, attributes: Object, relationships: Object, links: Object}, n]
-    map(asRecord),
+    map(unary(asRecord)),
     // [{type, id, ...attributes, ...relationships, ...links}, n]
     indexBy(prop("id"))
     // {[id]: {type, id, ...attributes, ...relationships, ...links}, n]
   ]
-))
+)

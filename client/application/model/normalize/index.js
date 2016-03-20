@@ -8,14 +8,14 @@ import {pipe} from "sanctuary"
 
 import asRecords from "../asRecords"
 
-export default unary(pipe(
+export default pipe(
   [
     // {links: Object, data: Array[n], included: Array[n]}
     prop("data"),
     // [{Object}, n]
     groupBy(prop("type")),
     // {String: [{Object}, a, b, n], n}
-    map(asRecords)
+    map(unary(asRecords))
     // {[type]: Object, n}
   ]
-))
+)

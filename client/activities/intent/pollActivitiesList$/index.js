@@ -1,12 +1,9 @@
-import {
-  pipe,
-  unary
-} from "ramda"
+import {pipe} from "ramda"
 
 import {poll$} from "~/client/application/intent"
 import {asActivitiesListRequest} from "~/client/activities/model"
 
-export default unary(pipe(
+export default pipe(
   poll$,
   asActivitiesListRequest
-))
+)
