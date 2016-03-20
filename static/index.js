@@ -1,1 +1,2 @@
-console.log("static")
+/* global localStorage */
+localStorage.clear()
