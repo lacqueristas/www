@@ -19,4 +19,12 @@ const asListItem = pipe(
 )
 const asList = map(unary(asListItem))
 
-export default (activities) => ol(asList(activities))
+export default pipe(
+  [
+    // [Object, n]
+    asList,
+    // [li, n]
+    ol
+    // ol([li, n])
+  ]
+)
