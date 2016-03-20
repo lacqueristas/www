@@ -12,9 +12,9 @@ export default pipe(
   [
     // {links: Object, data: Array[n], included: Array[n]}
     prop("data"),
-    // [{Object}, n]
+    // [Object, n]
     groupBy(prop("type")),
-    // {String: [{Object}, a, b, n], n}
+    // {[type]: Array[n], n}
     map(unary(asRecords))
     // {[type]: Object, n}
   ]
