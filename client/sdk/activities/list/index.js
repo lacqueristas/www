@@ -18,8 +18,7 @@ export default (options = {}) => {
   } = page || {}
 
   const DEFAULT_INCLUDE = [
-    "actor",
-    "recipient"
+    "actor"
   ]
   const DEFAULT_PAGE_NUMBER = 0
   const DEFAULT_PAGE_SIZE = 10
