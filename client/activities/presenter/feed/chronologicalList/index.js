@@ -4,6 +4,7 @@ import {
   unary
 } from "ramda"
 import {pipe} from "sanctuary"
+import {render} from "mustache"
 import {
   ol,
   li,
@@ -12,7 +13,7 @@ import {
 
 const asListItem = pipe(
   [
-    prop("summary"),
+    (activity) => render(activity.summary, activity),
     p,
     li
   ]
