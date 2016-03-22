@@ -5,9 +5,9 @@ import {
   VERSION
 } from "~/client/sdk/api"
 
-const ACCOUNTS_PATH = `${VERSION}/accounts`
-const ACCOUNTS_LIST_URL = `${PROTOCOL}://${HOST}:${PORT}/${ACCOUNTS_PATH}`
-const ACCOUNTS_LIST_METHOD = "GET"
+const ACCOUNTS_PATH: string = `${VERSION}/accounts`
+const ACCOUNTS_LIST_URL: string = `${PROTOCOL}://${HOST}:${PORT}/${ACCOUNTS_PATH}`
+const ACCOUNTS_LIST_METHOD: string = "GET"
 
 export {
   ACCOUNTS_PATH,

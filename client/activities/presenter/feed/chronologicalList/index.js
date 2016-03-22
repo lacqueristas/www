@@ -1,6 +1,5 @@
 import {
   map,
-  prop,
   unary
 } from "ramda"
 import {pipe} from "sanctuary"
@@ -11,14 +10,14 @@ import {
   p
 } from "@cycle/dom"
 
-const asListItem = pipe(
+const asListItem: Function = pipe(
   [
-    (activity) => render(activity.summary, activity),
+    (activity: Object): string => render(activity.summary, activity),
     p,
     li
   ]
 )
-const asList = map(unary(asListItem))
+const asList: Function = map(unary(asListItem))
 
 export default pipe(
   [

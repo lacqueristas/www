@@ -5,7 +5,7 @@ import {
   ACTIVITIES_LIST_METHOD
 } from "../../activities"
 
-const includeJoin = join(".")
+const includeJoin: Function = join(".")
 
 export default (options = {}) => {
   const {
@@ -17,11 +17,11 @@ export default (options = {}) => {
     size: pageSize
   } = page || {}
 
-  const DEFAULT_INCLUDE = [
+  const DEFAULT_INCLUDE: Array<string> = [
     "actor"
   ]
-  const DEFAULT_PAGE_NUMBER = 0
-  const DEFAULT_PAGE_SIZE = 10
+  const DEFAULT_PAGE_NUMBER: number = 0
+  const DEFAULT_PAGE_SIZE: number = 10
 
   return {
     url: ACTIVITIES_LIST_URL,

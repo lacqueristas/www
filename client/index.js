@@ -27,16 +27,16 @@ const main = (sources) => {
     storage
   } = sources
 
-  const http$ = Observable.merge(
+  const http$: any = Observable.merge(
     pollActivitiesList$(),
     pollAccountsList$()
   ).share()
-  const signals$ = Observable.merge(
+  const signals$: any = Observable.merge(
     catchActivitiesList$(http),
     catchAccountsList$(http)
   ).share()
-  const storage$ = state$([signals$, storage])
-  const dom$ = map(unary(pipe([asStore, layout])), storage$)
+  const storage$: any = state$([signals$, storage])
+  const dom$: any = map(unary(pipe([asStore, layout])), storage$)
 
   return {
     dom: dom$,
@@ -45,7 +45,7 @@ const main = (sources) => {
   }
 }
 
-const drivers = {
+const drivers: Object = {
   dom: makeDOMDriver("body"),
   http: makeHTTPDriver(),
   storage: storageDriver

@@ -8,11 +8,11 @@ import {pipe} from "sanctuary"
 
 import {ACTIVITIES_LIST_URL} from "~/client/sdk/activities"
 
-const urlPath = [
+const urlPath: Array = [
   "request",
   "url"
 ]
-const matchingActivitiesList = pipe(
+const matchingActivitiesList: Function = pipe(
   [
     path(urlPath),
     equals(ACTIVITIES_LIST_URL)

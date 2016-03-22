@@ -1,8 +1,8 @@
-const activities = [
+const activities: Array<string> = [
   "actor"
 ]
 
-const associations = {
+const associations: Object = {
   activities
 }
 
