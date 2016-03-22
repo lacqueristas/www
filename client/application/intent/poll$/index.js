@@ -1,5 +1,5 @@
 import {Observable} from "rx"
 
-const INTERVAL = 1000
+const INTERVAL: number = 1000
 
-export default () => Observable.interval(INTERVAL)
+export default (): any => Observable.interval(INTERVAL)

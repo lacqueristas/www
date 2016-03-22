@@ -5,9 +5,9 @@ import {
   VERSION
 } from "~/client/sdk/api"
 
-const ACTIVITIES_PATH = `${VERSION}/activities`
-const ACTIVITIES_LIST_URL = `${PROTOCOL}://${HOST}:${PORT}/${ACTIVITIES_PATH}`
-const ACTIVITIES_LIST_METHOD = "GET"
+const ACTIVITIES_PATH: string = `${VERSION}/activities`
+const ACTIVITIES_LIST_URL: string = `${PROTOCOL}://${HOST}:${PORT}/${ACTIVITIES_PATH}`
+const ACTIVITIES_LIST_METHOD: string = "GET"
 
 export {
   ACTIVITIES_PATH,

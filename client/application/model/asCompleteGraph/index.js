@@ -2,27 +2,26 @@ import {
   prop,
   map,
   mergeAll,
-  path,
   defaultTo
 } from "ramda"
 
 import associations from "../associations"
 
-export default (state) => {
+export default (state: Object) => {
   return map(
-    (collection) => {
+    (collection: Object) => {
       return map(
-        (member) => {
+        (member: Object) => {
           return {
             ...member,
             ...mergeAll(
               map(
-                (relation) => {
-                  const related = path([relation, "data"], member)
-                  const id = path([relation, "data", "id"], member)
-                  const type = path([relation, "data", "type"], member)
-                  const associatedCollection = defaultTo({}, prop(type, state))
-                  const association = defaultTo({}, prop(id, associatedCollection))
+                (relation: string) => {
+                  const related: Object = prop(relation, member)
+                  const id: string = prop("id", related)
+                  const type: string = prop("type", related)
+                  const associatedCollection: Object = defaultTo({}, prop(type, state))
+                  const association: Object = defaultTo({}, prop(id, associatedCollection))
 
                   return {
                     [relation]: {

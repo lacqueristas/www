@@ -2,38 +2,51 @@ import {
   juxt,
   omit,
   props,
+  prop,
   mergeAll,
   mapObjIndexed,
-  unary
+  unary,
+  map
 } from "ramda"
 import {pipe} from "sanctuary"
 
 import coerce from "../coerce"
 
-const nonnested = pipe(
+const identifiers: Function = pipe(
   [
     // {type, id, attributes: Object, relationships: Object, links: Object}
     omit(["attributes", "links", "relationships"])
     // {type, id}
   ]
 )
-const nested = pipe(
+const attributes: Function = pipe(
   [
     // {type, id, attributes: Object, relationships: Object, links: Object}
-    props(["attributes", "links", "relationships"]),
-    // [Object, Object, Object]
+    props(["attributes", "links"]),
+    // [Object, n]
     mergeAll
-    // {summary, self, actor: Object}
+    // {summary, self}
   ]
 )
-const mapping = {
-  "created-at": "date"
+const relationships: Function = pipe(
+  [
+    // {type, id, attributes: Object, relationships: Object, links: Object}
+    prop("relationships"),
+    // {[relation]: Object, n}
+    map(prop("data"))
+    // {[relation]: {id, type}, n}
+  ]
+)
+const mapping: Object = {
+  "created-at": "date",
+  "read-at": "date",
+  "updated-at": "date"
 }
 
 export default pipe(
   [
     // {type, id, attributes: Object, relationships: Object, links: Object}
-    juxt([nonnested, nested]),
+    juxt([identifiers, attributes, relationships]),
     // [{type, id}, {summary, self, actor: Object}]
     mergeAll,
     mapObjIndexed(unary(coerce(mapping)))

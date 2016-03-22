@@ -1,12 +1,12 @@
 import read$ from "../read$"
 import {asLocalStorageInsert} from "~/client/application/model"
 
-const defaultValue = {
+const defaultValue: Object = {
   key: "store",
   value: JSON.stringify({})
 }
 
-export default ([signals$, storage]) => signals$
+export default ([signals$, storage]): any => signals$
   .withLatestFrom(read$(storage), asLocalStorageInsert)
   .startWith(defaultValue)
   .share()

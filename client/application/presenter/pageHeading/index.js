@@ -7,7 +7,8 @@ import {
   h1,
   h2
 } from "@cycle/dom"
-export default (text, subtext = "") => {
+
+export default (text: string, subtext = "") => {
   return header(
     [
       h1(text),

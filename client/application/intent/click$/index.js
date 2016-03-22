@@ -1,1 +1,1 @@
-export default (DOM$) => DOM$.events("click")
+export default (DOM$: any): any => DOM$.events("click")

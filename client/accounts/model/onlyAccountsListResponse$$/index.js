@@ -8,11 +8,11 @@ import {pipe} from "sanctuary"
 
 import {ACCOUNTS_LIST_URL} from "~/client/sdk/accounts"
 
-const urlPath = [
+const urlPath: Array = [
   "request",
   "url"
 ]
-const matchingAccountsList = pipe(
+const matchingAccountsList: Function = pipe(
   [
     path(urlPath),
     equals(ACCOUNTS_LIST_URL)
