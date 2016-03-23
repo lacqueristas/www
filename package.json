@@ -4,13 +4,18 @@
   "description": "The frontend browser client for the lacqueristas API",
   "main": "tmp/client/index.js",
   "scripts": {
-    "start": "npm-run-all --parallel build server test",
+    "postinstall": "npm run build",
+    "start": "npm-run-all --parallel build lint test server",
     "build": "npm-run-all --parallel build:client build:static",
-    "build:client": "mkdir -p ./tmp/client && watchify --transform babelify --transform envify --entry ./client/index.js --outfile ./tmp/client/index.js",
+    "build:client": "mkdir -p './tmp/client' && watchify --transform babelify --transform envify --entry './client/index.js' --outfile './tmp/client/index.js'",
     "build:static": "gulp",
+    "lint": "npm-run-all --parallel lint:client lint:spec lint:static",
+    "lint:client": "chokidar './client/' --command 'eslint ./client/'",
+    "lint:spec": "chokidar './spec/' --command 'eslint ./spec/'",
+    "lint:static": "chokidar './static/' --command 'eslint ./static/'",
+    "test": "karma start",
     "server": "npm run server:`echo $NODE_ENV`",
-    "server:development": "http-server ./tmp/static",
-    "test": "karma start"
+    "server:development": "http-server './tmp/static'"
   },
   "repository": {
     "type": "git",
@@ -26,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/lacqueristas/www/issues"
   },
-  "homepage": "https://lacqueristas.github.io/www",
+  "homepage": "https://github.com/lacqueristas/www#readme",
   "engines": {
     "node": "5.5.0",
     "npm": "3.5.3"
@@ -85,7 +90,7 @@
     "babel-root-import": "3.2.2",
     "babelify": "7.2.0",
     "browserify": "13.0.0",
-    "dotenv": "2.0.0",
+    "chokidar-cli": "1.2.0",
     "envify": "3.4.0",
     "eslint": "2.2.0",
     "eslint-plugin-babel": "3.1.0",
@@ -115,6 +120,8 @@
     "watchify": "3.7.0"
   },
   "dependencies": {
+    "dotenv": "2.0.0",
+    "require-environment-variables": "1.1.1",
     "@cycle/core": "6.0.3",
     "@cycle/dom": "9.1.0",
     "@cycle/http": "8.2.0",
@@ -125,7 +132,7 @@
     "npm-run-all": "1.5.1",
     "ramda": "0.19.1",
     "rx": "4.0.8",
-    "sanctuary": "0.9.1",
     "yayson": "2.0.1"
+    "sanctuary": "0.9.1"
   }
 }
