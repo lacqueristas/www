@@ -2,7 +2,7 @@
   "name": "www",
   "version": "1.0.0",
   "description": "The frontend browser client for the lacqueristas API",
-  "main": "client/index.js",
+  "main": "tmp/client/index.js",
   "scripts": {
     "start": "npm-run-all --parallel build server test",
     "build": "npm-run-all --parallel build:client build:static",
