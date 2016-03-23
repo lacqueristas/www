@@ -1,5 +1,4 @@
-import {prop
-} from "ramda"
+import {prop} from "ramda"
 import {pipe} from "sanctuary"
 
 import asCompleteGraph from "../asCompleteGraph"
