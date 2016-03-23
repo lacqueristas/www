@@ -1,14 +1,14 @@
 {
   "parser": "babel-eslint",
   "plugins": [
-    "babel",
-    "jasmine"
+    "babel"
   ],
   "env": {
+    "browser": true,
     "es6": true,
     "node": true,
     "commonjs": true,
-    "jasmine": true
+    "mocha": true
   },
   "rules": {
     "accessor-pairs": 2,
@@ -201,14 +201,6 @@
     "babel/object-curly-spacing": 2,
     "babel/object-shorthand": 2,
     "babel/arrow-parens": 2,
-    "babel/no-await-in-loop": 2,
-
-    "jasmine/no-focused-tests": 2,
-    "jasmine/no-disabled-tests": 2,
-    "jasmine/no-spec-dupes": 2,
-    "jasmine/no-suite-dupes": 2,
-    "jasmine/no-suite-callback-args": 2,
-    "jasmine/missing-expect": 2,
-    "jasmine/valid-expect": 1
+    "babel/no-await-in-loop": 2
   }
 }
