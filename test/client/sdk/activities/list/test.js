@@ -6,4 +6,8 @@ describe("client/sdk/activities/list", () => {
   it("returns an object with headers property", () => {
     expect(list()).to.have.property("headers")
   })
+
+  it("returns an object with url property", () => {
+    expect(list()).to.have.property("url")
+  })
 })
