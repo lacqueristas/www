@@ -56,10 +56,10 @@ gulp.task("htmls", () => {
     // .pipe(gulp.dest(DESINATION))
 })
 
-gulp.task("watch", () => {
+gulp.task("watch", ["scripts", "styles", "htmls"], () => {
   gulp.watch(SCRIPTS, ["scripts"])
   gulp.watch(STYLES, ["styles"])
   gulp.watch(HTMLS, ["htmls"])
 })
 
-gulp.task("default", ["scripts", "styles", "htmls", "watch"])
+gulp.task("build", ["scripts", "styles", "htmls"])
