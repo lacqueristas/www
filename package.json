@@ -5,7 +5,7 @@
   "main": "tmp/client/index.js",
   "scripts": {
     "postinstall": "npm run build",
-    "start": "npm-run-all --parallel build lint test server",
+    "start": "npm-run-all --parallel watch server",
     "build": "npm-run-all build:client build:static",
     "build:client": "mkdir -p './tmp/client' && browserify --transform babelify --transform envify --entry './client/index.js' --outfile './tmp/client/index.js'",
     "build:static": "gulp build",
@@ -14,6 +14,7 @@
     "lint:static": "eslint ./static/",
     "lint:test": "eslint './test/'",
     "test": "mocha --compilers js:babel-register ./test/**/test.js",
+    "watch": "npm-run-all --parallel watch:build watch:lint watch:test",
     "watch:build": "npm-run-all --parallel watch:build:client watch:build:static",
     "watch:build:client": "mkdir -p './tmp/client' && watchify --verbose --transform babelify --transform envify --entry './client/index.js' --outfile './tmp/client/index.js'",
     "watch:build:static": "gulp watch",
