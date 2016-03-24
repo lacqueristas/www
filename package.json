@@ -24,7 +24,8 @@
     "watch:lint:test": "chokidar './test/' --command 'npm run lint:test'",
     "watch:test": "chokidar './test/' './client/' './static/' --command 'npm run test'",
     "server": "npm run server:`echo $NODE_ENV`",
-    "server:development": "http-server './tmp/static'"
+    "server:development": "http-server './tmp/static'",
+    "server:production": "http-server './tmp/static'"
   },
   "repository": {
     "type": "git",
