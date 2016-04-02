@@ -1,9 +1,9 @@
-const activities: Array<string> = [
-  "actor"
-]
+const activities: Array<string> = []
+const accounts: Array<string> = []
 
 const associations: Object = {
-  activities
+  activities,
+  accounts
 }
 
 export default associations
