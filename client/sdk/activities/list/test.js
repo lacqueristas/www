@@ -1,6 +1,6 @@
 import {describe, it} from "mocha"
 import {expect} from "chai"
-import list from "~/client/sdk/activities/list"
+import list from "../list"
 
 describe("client/sdk/activities/list", () => {
   it("returns an object with headers property", () => {
