@@ -1,6 +1,6 @@
 const PROTOCOL: string = "http"
 const HOST: string = "localhost"
-const PORT: string = "8080"
+const PORT: string = "8081"
 const VERSION: string = "v1"
 const MEDIATYPE: string = "application/lacqueristas.api+json; api-verison=1"
 
