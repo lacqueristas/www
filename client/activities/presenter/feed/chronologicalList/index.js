@@ -12,7 +12,7 @@ import {
 
 const asListItem: Function = pipe(
   [
-    ({summary, metdata}): string => render(summary, metdata),
+    ({summary, metadata}): string => render(summary, metadata),
     p,
     li
   ]
