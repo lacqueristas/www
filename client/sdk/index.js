@@ -1,7 +1,7 @@
-import activitiesList from "./activities/list"
-import accountsList from "./accounts/list"
+import v1Activities from "./v1Activities"
+import v1Accounts from "./v1Accounts"
 
 export {
-  activitiesList,
-  accountsList
+  v1Activities,
+  v1Accounts
 }

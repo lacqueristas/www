@@ -3,6 +3,6 @@ import {
   unary
 } from "ramda"
 
-import {activitiesList} from "~/client/sdk"
+import {v1Activities} from "~/client/sdk"
 
-export default map(unary(activitiesList))
+export default map(unary(v1Activities.list))
