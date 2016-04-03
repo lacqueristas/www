@@ -6,7 +6,7 @@ import {
 } from "ramda"
 import {pipe} from "sanctuary"
 
-import {ACTIVITIES_LIST_URL} from "~/client/sdk/activities"
+import {v1Activities} from "~/client/sdk"
 
 const urlPath: Array = [
   "request",
@@ -15,7 +15,7 @@ const urlPath: Array = [
 const matchingActivitiesList: Function = pipe(
   [
     path(urlPath),
-    equals(ACTIVITIES_LIST_URL)
+    equals(v1Activities.list().url)
   ]
 )
 

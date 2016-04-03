@@ -6,7 +6,7 @@ import {
 } from "ramda"
 import {pipe} from "sanctuary"
 
-import {ACCOUNTS_LIST_URL} from "~/client/sdk/accounts"
+import {v1Accounts} from "~/client/sdk"
 
 const urlPath: Array = [
   "request",
@@ -15,7 +15,7 @@ const urlPath: Array = [
 const matchingAccountsList: Function = pipe(
   [
     path(urlPath),
-    equals(ACCOUNTS_LIST_URL)
+    equals(v1Accounts.list().url)
   ]
 )
 
