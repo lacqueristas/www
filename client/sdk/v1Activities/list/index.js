@@ -1,24 +1,12 @@
 import Dotenv from "dotenv"
-import requireEnvironmentVariables from "require-environment-variables"
 import {join} from "ramda"
 
 Dotenv.load({silent: true})
 
-requireEnvironmentVariables([
-  "API_PROTOCOL",
-  "API_HOST",
-  "API_PORT",
-  "API_MEDIATYPE"
-])
-
-const {
-  env: {
-    API_PROTOCOL: PROTOCOL,
-    API_HOST: HOST,
-    API_PORT: PORT,
-    API_MEDIATYPE: MEDIATYPE
-  }
-} = process
+const PROTOCOL = process.env.API_PROTOCOL
+const HOST = process.env.API_HOST
+const PORT = process.env.API_PORT
+const MEDIATYPE = process.env.API_MEDIATYPE
 const ACTIVITIES_PATH: string = "v1/activities"
 const ACTIVITIES_LIST_METHOD: string = "GET"
 const ACTIVITIES_LIST_URL: string = `${PROTOCOL}://${HOST}:${PORT}/${ACTIVITIES_PATH}`
