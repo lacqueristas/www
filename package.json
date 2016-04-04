@@ -23,7 +23,7 @@
     "watch:test": "chokidar './client/' './static/' --initial --command 'npm run test'",
     "server": "npm run server:`echo $NODE_ENV`",
     "server:development": "http-server -c-1 './tmp/static'",
-    "server:production": "http-server -p $PORT './tmp/static'"
+    "server:production": "http-server --ssl -p $PORT './tmp/static'"
   },
   "repository": {
     "type": "git",
