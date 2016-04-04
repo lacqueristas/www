@@ -123,7 +123,6 @@
     "gulp-size": "2.1.0",
     "gulp-uglify": "1.5.3",
     "immu": "2.0.1",
-    "dotenv": "2.0.0",
     "@cycle/core": "6.0.3",
     "@cycle/dom": "9.2.2",
     "@cycle/http": "8.2.2",
