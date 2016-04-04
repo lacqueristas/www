@@ -1,10 +1,9 @@
 const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
-// const gulpSize = require("gulp-size")
-// const gulpHTMLMin = require("gulp-htmlmin")
-// const gulpGzip = require("gulp-gzip")
-// const gulpUglify = require("gulp-uglify")
+const gulpSize = require("gulp-size")
+const gulpGzip = require("gulp-gzip")
+const gulpUglify = require("gulp-uglify")
 
 const SCRIPTS = [
   "./tmp/client/index.js",
@@ -24,36 +23,39 @@ gulp.task("scripts", () => {
   return gulp
     .src(SCRIPTS)
     .pipe(gulpConcat(SCRIPT))
+    .pipe(gulpUglify())
+    .pipe(gulpGzip({
+      append: false,
+      threshold: true,
+      gzipOptions: {
+        level: 9,
+        memLevel: 9
+      }
+    }))
+    .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
-    // .pipe(gulpUglify())
-    // .pipe(gulpGzip())
-    // .pipe(gulpSize({showFiles: true}))
-    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("styles", () => {
   return gulp.src(STYLES)
     .pipe(gulpConcat(STYLE))
     .pipe(gulpMyth())
+    .pipe(gulpGzip({
+      append: false,
+      threshold: true
+    }))
+    .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
-    // .pipe(gulpGzip())
-    // .pipe(gulpSize({showFiles: true}))
-    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("htmls", () => {
   return gulp.src(HTMLS)
+    .pipe(gulpGzip({
+      append: false,
+      threshold: true
+    }))
+    .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
-    // .pipe(gulpHTMLMin({
-    //   collapseWhitespace: true,
-    //   conservativeCollapse: true,
-    //   collapseBooleanAttributes: true,
-    //   removeComments: true,
-    //   removeTagWhitespace: true
-    // }))
-    // .pipe(gulpGzip())
-    // .pipe(gulpSize({showFiles: true}))
-    // .pipe(gulp.dest(DESINATION))
 })
 
 gulp.task("watch", ["scripts", "styles", "htmls"], () => {
