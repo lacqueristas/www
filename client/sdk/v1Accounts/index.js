@@ -1,5 +1,5 @@
 import list from "./list"
 
-export {
+export default {
   list
 }
