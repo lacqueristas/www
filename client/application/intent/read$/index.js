@@ -1,4 +1,4 @@
-export default (database: Object): any => database
+export default (database) => database
   .local
   .getItem("store")
   .distinctUntilChanged()

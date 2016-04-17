@@ -1,13 +1,11 @@
-import {
-  mergeWith,
-  merge
-} from "ramda"
+import {mergeWith} from "ramda"
+import {merge} from "ramda"
 
-import normalize from "../normalize"
+import normalize from "./normalize"
 
-const mergeShallow: Function = mergeWith(merge)
+const mergeShallow = mergeWith(merge)
 
-export default (payloads: Object, store: string|null): Object => {
+export default (payloads, store) => {
   return {
     key: "store",
     value: JSON.stringify(mergeShallow(JSON.parse(store), normalize(payloads)))

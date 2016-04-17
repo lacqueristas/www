@@ -1,22 +1,14 @@
-import {
-  filter,
-  path,
-  equals,
-  unary
-} from "ramda"
-import {pipe} from "sanctuary"
+import {filter} from "ramda"
+import {path} from "ramda"
+import {equals} from "ramda"
+import {pipe} from "ramda"
 
 import {v1Accounts} from "~/client/sdk"
 
-const urlPath: Array = [
-  "request",
-  "url"
-]
-const matchingAccountsList: Function = pipe(
-  [
-    path(urlPath),
-    equals(v1Accounts.list().url)
-  ]
-)
-
-export default filter(unary(matchingAccountsList))
+export default filter(pipe(
+  path([
+    "request",
+    "url"
+  ]),
+  equals(v1Accounts.list().url)
+))

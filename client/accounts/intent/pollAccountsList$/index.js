@@ -1,12 +1,7 @@
-import {unary} from "ramda"
-import {pipe} from "sanctuary"
+import {Observable} from "rx"
 
-import {poll$} from "~/client/application/intent"
 import {asAccountsListRequest} from "~/client/accounts/model"
 
-export default unary(pipe(
-  [
-    poll$,
-    asAccountsListRequest
-  ]
-))
+const INTERVAL = 1000
+
+export default () => asAccountsListRequest(Observable.interval(INTERVAL))

@@ -1,1 +1,1 @@
-export default (HTTP$$: any): any => HTTP$$.switch()
+export default (HTTP$$) => HTTP$$.switch()

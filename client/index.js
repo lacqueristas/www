@@ -1,47 +1,45 @@
-import {
-  map,
-  unary
-} from "ramda"
-import {pipe} from "sanctuary"
+/* global localStorage */
+import {map} from "ramda"
+
 import {Observable} from "rx"
+
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "@cycle/dom"
 import {makeHTTPDriver} from "@cycle/http"
 import storageDriver from "@cycle/storage"
 
 import {state$} from "./application/intent"
-import {
-  pollActivitiesList$,
-  catchActivitiesList$
-} from "./activities/intent"
-import {
-  pollAccountsList$,
-  catchAccountsList$
-} from "./accounts/intent"
+import {pollActivitiesList$} from "./activities/intent"
+import {catchActivitiesList$} from "./activities/intent"
+
+import {pollAccountsList$} from "./accounts/intent"
+import {catchAccountsList$} from "./accounts/intent"
+
 import {asStore} from "./application/model"
 import {layout} from "./application/presenter"
 
-const main = (sources) => {
-  const {
-    http,
-    storage
-  } = sources
+localStorage.clear()
 
-  const http$: any = Observable.merge(
-    pollActivitiesList$(),
-    pollAccountsList$()
-  ).share()
-  const signals$: any = Observable.merge(
+const main = (sources) => {
+  const {http} = sources
+  const {storage} = sources
+
+  const signals$ = Observable.merge(
     catchActivitiesList$(http),
     catchAccountsList$(http)
   ).share()
-  const storage$: any = state$([signals$, storage])
-  const dom$: any = map(unary(pipe([asStore, layout])), storage$)
+
+  const store$ = storage.local.getItem("store").distinct()
+
+  const states$ = map(asStore, store$)
 
   return {
-    dom: dom$,
-    http: http$,
-    storage: storage$
+    dom: map(layout, states$),
+    http: Observable.merge(
+      pollActivitiesList$(),
+      pollAccountsList$()
+    ).share(),
+    storage: state$([signals$, storage])
   }
 }
 
