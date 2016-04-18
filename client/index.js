@@ -39,7 +39,7 @@ const main = (sources) => {
   }
 }
 
-const drivers: Object = {
+const drivers = {
   dom: makeDOMDriver("body"),
   http: makeHTTPDriver(),
   storage: storageDriver
