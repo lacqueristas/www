@@ -5,11 +5,12 @@ import {header} from "@cycle/dom"
 import {h1} from "@cycle/dom"
 import {h2} from "@cycle/dom"
 
-export default (text, subtext = "") => {
+export default (properties) => {
   return header(
+    {style: {...properties.style}},
     [
-      h1(text),
-      unless(isEmpty, h2)(subtext)
+      h1(properties.text),
+      unless(isEmpty, h2)(properties.subtext)
     ]
   )
 }
