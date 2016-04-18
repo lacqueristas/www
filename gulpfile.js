@@ -2,13 +2,22 @@ const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
 const gulpSize = require("gulp-size")
-// const gulpGzip = require("gulp-gzip")
+const gulpGzip = require("gulp-gzip")
+const gulpImage = require("gulp-image")
 
 const STYLES = [
   "./client/index.css"
 ]
 const HTMLS = [
   "./client/index.html"
+]
+const IMAGES = [
+  "./assets/*.png"
+]
+const ASSETS = [
+  "./browserconfig.xml",
+  "./manifest.json",
+  "./favicon.ico"
 ]
 const STYLE = "index.css"
 const DESINATION = "./tmp/"
@@ -29,6 +38,39 @@ gulp.task("styles", () => {
     .pipe(gulp.dest(DESINATION))
 })
 
+gulp.task("images", () => {
+  return gulp.src(IMAGES)
+    .pipe(gulpImage())
+    .pipe(gulpSize({showFiles: true}))
+    .pipe(gulp.dest(DESINATION))
+    .pipe(gulpGzip({
+      append: true,
+      threshold: true,
+      gzipOptions: {
+        level: 9,
+        memLevel: 9
+      }
+    }))
+    .pipe(gulpSize({showFiles: true}))
+    .pipe(gulp.dest(DESINATION))
+})
+
+gulp.task("assets", () => {
+  return gulp.src(ASSETS)
+    .pipe(gulpSize({showFiles: true}))
+    .pipe(gulp.dest(DESINATION))
+    .pipe(gulpGzip({
+      append: true,
+      threshold: true,
+      gzipOptions: {
+        level: 9,
+        memLevel: 9
+      }
+    }))
+    .pipe(gulpSize({showFiles: true}))
+    .pipe(gulp.dest(DESINATION))
+})
+
 gulp.task("htmls", () => {
   return gulp.src(HTMLS)
     // .pipe(gulpGzip({
@@ -43,9 +85,11 @@ gulp.task("htmls", () => {
     .pipe(gulp.dest(DESINATION))
 })
 
-gulp.task("watch", ["styles", "htmls"], () => {
+gulp.task("watch", ["styles", "images", "assets", "htmls"], () => {
   gulp.watch(STYLES, ["styles"])
+  gulp.watch(IMAGES, ["images"])
+  gulp.watch(ASSETS, ["assets"])
   gulp.watch(HTMLS, ["htmls"])
 })
 
-gulp.task("build", ["styles", "htmls"])
+gulp.task("build", ["styles", "images", "assets", "htmls"])
