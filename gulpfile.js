@@ -6,6 +6,7 @@ const gulpGzip = require("gulp-gzip")
 const gulpImage = require("gulp-image")
 
 const STYLES = [
+  "./node_modules/normalize.css/normalize.css",
   "./client/index.css"
 ]
 const HTMLS = [
