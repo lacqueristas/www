@@ -14,7 +14,7 @@ import {catchActivitiesList$} from "./activities/intent"
 import {pollAccountsList$} from "./accounts/intent"
 import {catchAccountsList$} from "./accounts/intent"
 
-import {asStore} from "./application/model"
+import {read$} from "./application/intent"
 import {write$} from "./application/intent"
 import {layout} from "./application/presenter"
 
@@ -29,12 +29,8 @@ const main = (sources) => {
     catchAccountsList$(http)
   ).share()
 
-  const store$ = storage.local.getItem("store").distinct()
-
-  const states$ = map(asStore, store$)
-
   return {
-    dom: map(layout, states$),
+    dom: map(layout, read$(storage)),
     http: Observable.merge(
       pollActivitiesList$(),
       pollAccountsList$()

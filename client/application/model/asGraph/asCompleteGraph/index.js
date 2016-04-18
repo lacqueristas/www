@@ -8,7 +8,7 @@ const associations = {
   accounts: []
 }
 
-export default (state) => {
+export default (resources) => {
   return map(
     (collection) => {
       return map(
@@ -21,7 +21,7 @@ export default (state) => {
                   const related = prop(relation, member)
                   const id = prop("id", related)
                   const type = prop("type", related)
-                  const associatedCollection = defaultTo({}, prop(type, state))
+                  const associatedCollection = defaultTo({}, prop(type, resources))
                   const association = defaultTo({}, prop(id, associatedCollection))
 
                   return {
@@ -39,6 +39,6 @@ export default (state) => {
         collection
       )
     },
-    state
+    resources
   )
 }

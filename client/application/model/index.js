@@ -1,9 +1,9 @@
 import asLocalStorageInsert from "./asLocalStorageInsert"
 import asPayload from "./asPayload"
-import asStore from "./asStore"
+import asGraph from "./asGraph"
 
 export {
   asLocalStorageInsert,
   asPayload,
-  asStore
+  asGraph
 }
