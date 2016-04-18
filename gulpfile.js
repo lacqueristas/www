@@ -27,14 +27,16 @@ gulp.task("styles", () => {
   return gulp.src(STYLES)
     .pipe(gulpConcat(STYLE))
     .pipe(gulpMyth())
-    // .pipe(gulpGzip({
-    //   append: false,
-    //   threshold: true,
-    //   gzipOptions: {
-    //     level: 9,
-    //     memLevel: 9
-    //   }
-    // }))
+    .pipe(gulpSize({showFiles: true}))
+    .pipe(gulp.dest(DESINATION))
+    .pipe(gulpGzip({
+      append: true,
+      threshold: true,
+      gzipOptions: {
+        level: 9,
+        memLevel: 9
+      }
+    }))
     .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
 })
@@ -74,14 +76,16 @@ gulp.task("assets", () => {
 
 gulp.task("htmls", () => {
   return gulp.src(HTMLS)
-    // .pipe(gulpGzip({
-    //   append: false,
-    //   threshold: true,
-    //   gzipOptions: {
-    //     level: 9,
-    //     memLevel: 9
-    //   }
-    // }))
+    .pipe(gulpSize({showFiles: true}))
+    .pipe(gulp.dest(DESINATION))
+    .pipe(gulpGzip({
+      append: true,
+      threshold: true,
+      gzipOptions: {
+        level: 9,
+        memLevel: 9
+      }
+    }))
     .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
 })
