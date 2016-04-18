@@ -1,13 +1,11 @@
 import click$ from "./click$"
-import poll$ from "./poll$"
 import read$ from "./read$"
-import state$ from "./state$"
+import write$ from "./write$"
 import selectResponse$ from "./selectResponse$"
 
 export {
   click$,
-  poll$,
   read$,
-  state$,
+  write$,
   selectResponse$
 }

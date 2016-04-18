@@ -1,8 +1,5 @@
-import {
-  map,
-  unary
-} from "ramda"
+import {map} from "ramda"
 
 import {v1Activities} from "~/client/sdk"
 
-export default map(unary(v1Activities.list))
+export default map(v1Activities.list)

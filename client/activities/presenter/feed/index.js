@@ -1,7 +1,7 @@
 import {values} from "ramda"
-import {
-  section
-} from "@cycle/dom"
+import {map} from "ramda"
+import {section} from "@cycle/dom"
+import {render} from "mustache"
 
 import chronologicalList from "./chronologicalList"
 
@@ -11,13 +11,14 @@ const style = {
   "padding-left": "10px",
   "padding-right": "10px"
 }
+const renderedSummary = ({summary, metadata}) => render(summary, metadata)
 
 export default (activities) => {
   return section(
     ".activitiesFeed",
     {style},
     [
-      chronologicalList(values(activities))
+      chronologicalList(map(renderedSummary, values(activities)))
     ]
   )
 }

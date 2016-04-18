@@ -1,17 +1,12 @@
-import {
-  map,
-  unary
-} from "ramda"
-import {pipe} from "sanctuary"
+import {map} from "ramda"
+import {pipe} from "ramda"
 
 import {onlyActivitiesListResponse$$} from "~/client/activities/model"
 import {selectResponse$} from "~/client/application/intent"
 import {asPayload} from "~/client/application/model"
 
 export default pipe(
-  [
-    onlyActivitiesListResponse$$,
-    selectResponse$,
-    map(unary(asPayload))
-  ]
+  onlyActivitiesListResponse$$,
+  selectResponse$,
+  map(asPayload)
 )

@@ -1,2 +1,0 @@
-/* global localStorage */
-localStorage.clear()

@@ -1,26 +1,16 @@
 import {p} from "@cycle/dom"
-import {
-  ifElse,
-  isNil,
-  prop,
-  pipe,
-  always
-} from "ramda"
+
 import page from "../page"
 import pageHeading from "../pageHeading"
 import {feed} from "~/client/activities/presenter"
 
-const blankFeed: Function = always(p("No activities."))
-const noFeedOrFeed: Function = pipe(
-  prop("activities"),
-  ifElse(isNil, blankFeed, feed)
-)
+const noFeed = p("No activities.")
 
-export default (state: Object) => {
+export default (state) => {
   return page(
     [
       pageHeading("Lacqueristas"),
-      noFeedOrFeed(state)
+      state.activities ? feed(state.activities) : noFeed
     ]
   )
 }

@@ -1,12 +1,9 @@
-import {
-  unless,
-  isEmpty
-} from "ramda"
-import {
-  header,
-  h1,
-  h2
-} from "@cycle/dom"
+import {unless} from "ramda"
+import {isEmpty} from "ramda"
+
+import {header} from "@cycle/dom"
+import {h1} from "@cycle/dom"
+import {h2} from "@cycle/dom"
 
 export default (text: string, subtext = "") => {
   return header(
