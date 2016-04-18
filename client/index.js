@@ -8,7 +8,6 @@ import {makeDOMDriver} from "@cycle/dom"
 import {makeHTTPDriver} from "@cycle/http"
 import storageDriver from "@cycle/storage"
 
-import {state$} from "./application/intent"
 import {pollActivitiesList$} from "./activities/intent"
 import {catchActivitiesList$} from "./activities/intent"
 
@@ -16,6 +15,7 @@ import {pollAccountsList$} from "./accounts/intent"
 import {catchAccountsList$} from "./accounts/intent"
 
 import {asStore} from "./application/model"
+import {write$} from "./application/intent"
 import {layout} from "./application/presenter"
 
 localStorage.clear()
@@ -39,7 +39,7 @@ const main = (sources) => {
       pollActivitiesList$(),
       pollAccountsList$()
     ).share(),
-    storage: state$([signals$, storage])
+    storage: write$([signals$, storage])
   }
 }
 
