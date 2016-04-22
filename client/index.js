@@ -1,8 +1,6 @@
 /* global localStorage */
 import {map} from "ramda"
-
 import {Observable} from "rx"
-
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "cycle-snabbdom"
 import {modules} from "cycle-snabbdom"
@@ -21,29 +19,41 @@ import {layout} from "./application/presenter"
 
 localStorage.clear()
 
-const main = (sources) => {
-  const {http} = sources
-  const {storage} = sources
+const {StyleModule} = modules
+const {PropsModule} = modules
 
-  const signals$ = Observable.merge(
-    catchActivitiesList$(http),
-    catchAccountsList$(http)
-  ).share()
+const main = (sources) => {
+  const {http$$} = sources
+  const {storage$} = sources
 
   return {
-    dom: map(layout, read$(storage)),
-    http: Observable.merge(
+    dom$: map(layout, read$(storage$)),
+    http$$: Observable.merge(
       pollActivitiesList$(),
       pollAccountsList$()
     ).share(),
-    storage: write$([signals$, storage])
+    storage$: write$([
+      Observable.merge(
+        catchActivitiesList$(http$$),
+        catchAccountsList$(http$$)
+      ),
+      storage$
+    ])
   }
 }
 
 const drivers = {
-  dom: makeDOMDriver("body"),
-  http: makeHTTPDriver(),
-  storage: storageDriver
+  dom$: makeDOMDriver(
+    "body",
+    {
+      modules: [
+        StyleModule,
+        PropsModule
+      ]
+    }
+  ),
+  http$$: makeHTTPDriver(),
+  storage$: storageDriver
 }
 
 run(main, drivers)
