@@ -18,8 +18,10 @@ export default () => {
           "flex": 1,
           "flex-grow": 1
         },
-        src: "/keyhole-llama.png",
-        title: "Lacquerista Llama peeping out a hole"
+        props: {
+          src: "/keyhole-llama.png",
+          title: "Lacquerista Llama peeping out a hole"
+        }
       }),
       section({
         style: {
