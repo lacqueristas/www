@@ -1,7 +1,9 @@
 import {Observable} from "rx"
 
-import {asActivitiesListRequest} from "~/client/activities/model"
+import {v1Activities} from "~/client/sdk"
 
 const INTERVAL = 1000
 
-export default () => asActivitiesListRequest(Observable.interval(INTERVAL))
+export default () => {
+  return Observable.interval(INTERVAL).map(v1Activities.list)
+}

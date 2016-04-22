@@ -1,7 +1,9 @@
 import {Observable} from "rx"
 
-import {asAccountsListRequest} from "~/client/accounts/model"
+import {v1Accounts} from "~/client/sdk"
 
 const INTERVAL = 1000
 
-export default () => asAccountsListRequest(Observable.interval(INTERVAL))
+export default () => {
+  return Observable.interval(INTERVAL).map(v1Accounts.list)
+}
