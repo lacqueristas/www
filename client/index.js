@@ -4,7 +4,8 @@ import {map} from "ramda"
 import {Observable} from "rx"
 
 import {run} from "@cycle/core"
-import {makeDOMDriver} from "@cycle/dom"
+import {makeDOMDriver} from "cycle-snabbdom"
+import {modules} from "cycle-snabbdom"
 import {makeHTTPDriver} from "@cycle/http"
 import storageDriver from "@cycle/storage"
 

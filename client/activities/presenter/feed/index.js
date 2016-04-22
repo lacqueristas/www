@@ -1,6 +1,6 @@
 import {values} from "ramda"
 import {map} from "ramda"
-import {section} from "@cycle/dom"
+import {section} from "snabbdom-helpers"
 import {render} from "mustache"
 
 import chronologicalList from "./chronologicalList"

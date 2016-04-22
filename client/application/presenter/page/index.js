@@ -1,4 +1,4 @@
-import {main} from "@cycle/dom"
+import {main} from "snabbdom-helpers"
 
 export default (properties) => {
   return main({

@@ -1,5 +1,5 @@
-import {img} from "@cycle/dom"
-import {section} from "@cycle/dom"
+import {img} from "snabbdom-helpers"
+import {section} from "snabbdom-helpers"
 
 import page from "../page"
 import pageHeading from "../pageHeading"

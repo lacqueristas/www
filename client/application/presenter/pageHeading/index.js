@@ -1,5 +1,5 @@
-import {header} from "@cycle/dom"
-import {h1} from "@cycle/dom"
+import {header} from "snabbdom-helpers"
+import {h1} from "snabbdom-helpers"
 
 export default (properties) => {
   return header({

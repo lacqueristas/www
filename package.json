@@ -52,7 +52,6 @@
   },
   "dependencies": {
     "@cycle/core": "6.0.3",
-    "@cycle/dom": "9.2.2",
     "@cycle/http": "8.2.2",
     "@cycle/storage": "2.0.3",
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
@@ -84,6 +83,7 @@
     "babel-root-import": "3.2.2",
     "babelify": "7.2.0",
     "browserify": "13.0.0",
+    "cycle-snabbdom": "^1.2.1",
     "eslint-plugin-babel": "^3.2.0",
     "gulp": "3.9.1",
     "gulp-cli": "1.2.1",
@@ -98,6 +98,7 @@
     "npm-run-all": "1.7.0",
     "ramda": "0.20.1",
     "rx": "4.1.0",
+    "snabbdom-helpers": "^3.0.0",
     "uglifyify": "^3.0.1"
   }
 }

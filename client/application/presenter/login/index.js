@@ -1,6 +1,6 @@
-import {section} from "@cycle/dom"
-import {input} from "@cycle/dom"
-import {label} from "@cycle/dom"
+import {section} from "snabbdom-helpers"
+import {input} from "snabbdom-helpers"
+import {label} from "snabbdom-helpers"
 
 export default (properties) => {
   return section({
