@@ -33,15 +33,11 @@ export default () => {
         },
         content: [
           pageHeading({
-            style: {
-              flex: 1
-            },
+            style: {flex: 1},
             text: "Welcome to Lacqueristas!"
           }),
           login({
-            style: {
-              flex: 1
-            }
+            style: {flex: 1}
           })
         ]
       })
