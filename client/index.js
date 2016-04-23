@@ -30,7 +30,7 @@ const main = (sources) => {
     http$$: Observable.merge(
       pollActivitiesList$(),
       pollAccountsList$()
-    ).share(),
+    ),
     storage$: write$([
       Observable.merge(
         catchActivitiesList$(http$$),
