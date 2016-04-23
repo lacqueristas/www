@@ -3,7 +3,9 @@ import {map} from "ramda"
 import {Observable} from "rx"
 import {run} from "@cycle/core"
 import {makeDOMDriver} from "cycle-snabbdom"
-import {modules} from "cycle-snabbdom"
+import domProps from "snabbdom/modules/props"
+import domAttributes from "snabbdom/modules/attributes"
+import domStyle from "snabbdom/modules/style"
 import {makeHTTPDriver} from "@cycle/http"
 import storageDriver from "@cycle/storage"
 
@@ -18,9 +20,6 @@ import {write$} from "./application/intent"
 import {layout} from "./application/presenter"
 
 localStorage.clear()
-
-const {StyleModule} = modules
-const {PropsModule} = modules
 
 const main = (sources) => {
   const {http$$} = sources
@@ -47,8 +46,9 @@ const drivers = {
     "body",
     {
       modules: [
-        StyleModule,
-        PropsModule
+        domProps,
+        domAttributes,
+        domStyle
       ]
     }
   ),
