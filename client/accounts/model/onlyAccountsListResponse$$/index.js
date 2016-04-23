@@ -5,6 +5,6 @@ import {v1Accounts} from "~/client/sdk"
 
 export default (HTTP$$) => {
   return HTTP$$.filter(({request: {url, method}}) => {
-    return equals(props(["method", "url"], v1Accounts()), [url, method])
+    return equals(props(["method", "url"], v1Accounts.list()), [method, url])
   })
 }
