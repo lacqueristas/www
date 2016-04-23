@@ -1,13 +1,15 @@
-import {prop} from "ramda"
+import {defaultTo} from "ramda"
 import {map} from "ramda"
 import {mergeAll} from "ramda"
-import {defaultTo} from "ramda"
+import {prop} from "ramda"
 
 const associations = {
   activities: [],
   accounts: []
 }
 
+// con. {...} -> {...}
+// ie. {[type]: { [id]: {...}, n}, n}
 export default (resources) => {
   return map(
     (collection) => {

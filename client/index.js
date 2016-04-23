@@ -13,13 +13,29 @@ import {catchActivitiesList$} from "./activities/intent"
 import {pollAccountsList$} from "./accounts/intent"
 import {catchAccountsList$} from "./accounts/intent"
 
+import {asState} from "./application/model"
+import {initialState} from "./application/model"
 import {layout} from "./application/presenter"
 
 const main = (sources) => {
   const {http$$} = sources
+  // const {dom$} = sources
+
+  // dom$
+  //   .select("body [data-influx]")
+  //   .observable
+  //   .forEach((x) => console.log(x))
+  const state$ = Observable
+    .merge(
+      catchActivitiesList$(http$$),
+      catchAccountsList$(http$$)
+    )
+    .startWith({})
+    .scan(asState, initialState())
+    .do((x) => console.dir(x))
 
   return {
-    dom$: map(layout, read$(storage$)),
+    dom$: map(layout, state$),
     http$$: Observable.merge(
       pollActivitiesList$(),
       pollAccountsList$()
