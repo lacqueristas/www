@@ -3,4 +3,3 @@ import {asLocalStorageInsert} from "~/client/application/model"
 
 export default ([signals$, storage]) => signals$
   .withLatestFrom(read$(storage), asLocalStorageInsert)
-  .share()
