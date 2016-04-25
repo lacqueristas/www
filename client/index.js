@@ -32,7 +32,6 @@ const main = (sources) => {
     )
     .startWith({})
     .scan(asState, initialState())
-    .do((x) => console.dir(x))
 
   return {
     dom$: map(layout, state$),
