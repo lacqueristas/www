@@ -16,9 +16,9 @@ const IMAGES = [
   "./assets/*.png"
 ]
 const ASSETS = [
-  "./browserconfig.xml",
-  "./manifest.json",
-  "./favicon.ico"
+  "./assets/browserconfig.xml",
+  "./assets/manifest.json",
+  "./assets/favicon.ico"
 ]
 const STYLE = "index.css"
 const DESINATION = "./tmp/"
