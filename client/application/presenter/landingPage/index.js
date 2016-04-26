@@ -5,24 +5,31 @@ import page from "../page"
 import pageHeading from "../pageHeading"
 import login from "../login"
 
+const style = {
+  "display": "flex",
+  "justify-content": "center"
+}
+const logo = img({
+  selector: ".llogo",
+  style: {
+    "flex": 1,
+    "flex-grow": 1
+  },
+  props: {
+    src: "/keyhole-llama.png",
+    title: "Lacquerista Llama peeping out a hole"
+  }
+})
+const title = pageHeading({
+  style: {flex: 1},
+  text: "Welcome to Lacqueristas!"
+})
+
 export default () => {
   return page({
-    style: {
-      "display": "flex",
-      "justify-content": "center"
-    },
+    style,
     content: [
-      img({
-        selector: ".llogo",
-        style: {
-          "flex": 1,
-          "flex-grow": 1
-        },
-        props: {
-          src: "/keyhole-llama.png",
-          title: "Lacquerista Llama peeping out a hole"
-        }
-      }),
+      logo,
       section({
         style: {
           "flex": 1,
@@ -32,10 +39,7 @@ export default () => {
           "justify-content": "flex-end"
         },
         content: [
-          pageHeading({
-            style: {flex: 1},
-            text: "Welcome to Lacqueristas!"
-          }),
+          title,
           login({
             style: {flex: 1}
           })
