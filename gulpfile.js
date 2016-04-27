@@ -1,9 +1,13 @@
+const Dotenv = require("dotenv")
 const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
 const gulpSize = require("gulp-size")
 const gulpGzip = require("gulp-gzip")
 const gulpImage = require("gulp-image")
+const gulpMustache = require("gulp-mustache")
+
+Dotenv.load({silent: true})
 
 const STYLES = [
   "./node_modules/normalize.css/normalize.css",
@@ -81,6 +85,7 @@ gulp.task("assets", () => {
 
 gulp.task("htmls", () => {
   return gulp.src(HTMLS)
+    .pipe(gulpMustache(process.env))
     .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
     .pipe(gulpGzip({
