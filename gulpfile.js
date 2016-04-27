@@ -10,7 +10,12 @@ const STYLES = [
   "./client/index.css"
 ]
 const HTMLS = [
-  "./client/index.html"
+  "./client/index.html",
+  "./client/data-policy.html",
+  "./client/our-technology.html",
+  "./client/privacy-policy.html",
+  "./client/terms-of-service.html",
+  "./client/us.html"
 ]
 const IMAGES = [
   "./assets/*.png"
