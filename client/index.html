@@ -159,9 +159,10 @@
     </main>
 
     <script>
-      window.API_PROTOCOL = "{{API_PROTOCOL}}"
-      window.API_HOST = "{{API_HOST}}"
-      window.API_PORT = "{{API_PORT}}"
+      window.env = {}
+      window.env.API_PROTOCOL = "{{API_PROTOCOL}}"
+      window.env.API_HOST = "{{API_HOST}}"
+      window.env.API_PORT = "{{API_PORT}}"
     </script>
     <script async type="text/javascript" src="index.js"></script>
   </body>

@@ -1,9 +1,10 @@
-const PROTOCOL = window.API_PROTOCOL
-const HOST = window.API_HOST
-const PORT = window.API_PORT
-const PATH = "v1/activities"
+const {env} = process.browser ? window : process
+const {API_PROTOCOL} = env
+const {API_HOST} = env
+const {API_PORT} = env
+const RESOURCE = "v1/activities"
 const LIST_METHOD = "GET"
-const LIST_URL = `${PROTOCOL}://${HOST}:${PORT}/${PATH}`
+const LIST_URL = `${API_PROTOCOL}://${API_HOST}:${API_PORT}/${RESOURCE}`
 const MEDIATYPE = "application/lacqueristas.api+json; version=1"
 
 export default () => {
