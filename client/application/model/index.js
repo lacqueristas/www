@@ -1,9 +1,9 @@
-import asLocalStorageInsert from "./asLocalStorageInsert"
-import asPayload from "./asPayload"
-import asGraph from "./asGraph"
+import asNative from "./asNative"
+import asState from "./asState"
+import initialState from "./initialState"
 
 export {
-  asLocalStorageInsert,
-  asPayload,
-  asGraph
+  asNative,
+  asState,
+  initialState
 }

@@ -1,6 +1,6 @@
 import {map} from "ramda"
-import {ol} from "@cycle/dom"
-import {li} from "@cycle/dom"
+import {ol} from "snabbdom-helpers"
+import {li} from "snabbdom-helpers"
 
 const asList = map((item) => li(item))
 
