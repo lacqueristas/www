@@ -8,13 +8,8 @@ import domStyle from "snabbdom/modules/style"
 import {makeHTTPDriver} from "@cycle/http"
 
 import {pollActivitiesList$} from "./activities/intent"
-import {catchActivitiesList$} from "./activities/intent"
-
 import {pollAccountsList$} from "./accounts/intent"
-import {catchAccountsList$} from "./accounts/intent"
-
-import {asState} from "./application/model"
-import {initialState} from "./application/model"
+import {state$} from "./application/intent"
 import {layout} from "./application/presenter"
 
 const main = (sources) => {
@@ -25,16 +20,9 @@ const main = (sources) => {
   //   .select("body [data-influx]")
   //   .observable
   //   .forEach((x) => console.log(x))
-  const state$ = Observable
-    .merge(
-      catchActivitiesList$(http$$),
-      catchAccountsList$(http$$)
-    )
-    .startWith({})
-    .scan(asState, initialState())
 
   return {
-    dom$: map(layout, state$),
+    dom$: map(layout, state$(http$$)),
     http$$: Observable.merge(
       pollActivitiesList$(),
       pollAccountsList$()
