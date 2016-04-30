@@ -1,5 +1,5 @@
-import onlyActivitiesListResponse$$ from "./onlyActivitiesListResponse$$"
+import onlyActivitiesListResponse$ from "./onlyActivitiesListResponse$"
 
 export {
-  onlyActivitiesListResponse$$
+  onlyActivitiesListResponse$
 }
