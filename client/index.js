@@ -14,12 +14,6 @@ import {layout} from "./application/presenter"
 
 const main = (sources) => {
   const {http$$} = sources
-  // const {dom$} = sources
-
-  // dom$
-  //   .select("body [data-influx]")
-  //   .observable
-  //   .forEach((x) => console.log(x))
 
   return {
     dom$: map(layout, state$(http$$)),
