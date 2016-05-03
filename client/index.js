@@ -7,6 +7,9 @@ import domAttributes from "snabbdom/modules/attributes"
 import domStyle from "snabbdom/modules/style"
 import {makeHTTPDriver} from "@cycle/http"
 
+import {rerunner} from "cycle-restart"
+import {restartable} from "cycle-restart"
+
 import {pollActivitiesList$} from "./activities/intent"
 import {pollAccountsList$} from "./accounts/intent"
 import {state$} from "./application/intent"
@@ -14,12 +17,6 @@ import {layout} from "./application/presenter"
 
 const main = (sources) => {
   const {http$$} = sources
-  // const {dom$} = sources
-
-  // dom$
-  //   .select("body [data-influx]")
-  //   .observable
-  //   .forEach((x) => console.log(x))
 
   return {
     dom$: map(layout, state$(http$$)),
@@ -29,9 +26,8 @@ const main = (sources) => {
     )
   }
 }
-
 const drivers = {
-  dom$: makeDOMDriver(
+  dom$: restartable(makeDOMDriver(
     "body",
     {
       modules: [
@@ -40,8 +36,15 @@ const drivers = {
         domStyle
       ]
     }
-  ),
-  http$$: makeHTTPDriver()
+  ), {pauseSinksWhileReplaying: false}),
+  http$$: restartable(makeHTTPDriver())
 }
+const rerun = rerunner(run)
 
-run(main, drivers)
+rerun(main, drivers)
+
+if (module.hot) {
+  module.hot.accept("./client/accounts", () => {
+    rerun(main, drivers)
+  })
+}
