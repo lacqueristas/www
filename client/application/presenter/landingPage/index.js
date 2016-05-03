@@ -16,6 +16,8 @@ const logo = img({
     "flex-grow": 1
   },
   props: {
+    width: "623px",
+    height: "729px",
     src: "/keyhole-llama.png",
     title: "Lacquerista Llama peeping out a hole"
   }
