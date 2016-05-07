@@ -13,5 +13,6 @@ export default ({ephemeral}) => {
       ]
     })
   }
+
   return "Something is wrong."
 }
