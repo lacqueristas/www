@@ -93,7 +93,7 @@
     "gulp-cli": "^1",
     "gulp-concat": "^2",
     "gulp-gzip": "^1",
-    "gulp-image": "^1",
+    "gulp-image": "^2.0.0",
     "gulp-mustache": "^2",
     "gulp-myth": "^1",
     "gulp-size": "^2",
