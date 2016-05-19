@@ -100,7 +100,7 @@
     "http-server": "0.9.0",
     "mustache": "^2",
     "normalize.css": "^4",
-    "npm-run-all": "^1",
+    "npm-run-all": "^2.1.1",
     "ramda": "0.21.0",
     "rx": "^4",
     "snabbdom-helpers": "^3",
