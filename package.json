@@ -50,7 +50,7 @@
     "eslint-plugin-mocha": "^2",
     "eslint-plugin-node": "^1",
     "isparta": "^4",
-    "mocha": "^2.5.0",
+    "mocha": "^2",
     "watchify": "^3"
   },
   "dependencies": {
