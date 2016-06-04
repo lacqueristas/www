@@ -85,7 +85,7 @@
     "babel-root-import": "^3",
     "babelify": "^7",
     "browserify": "^13",
-    "cycle-snabbdom": "^1",
+    "cycle-snabbdom": "^3.0.0",
     "cycle-router": "^3",
     "dotenv": "^2",
     "eslint-plugin-babel": "^3",
