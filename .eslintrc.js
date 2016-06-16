@@ -144,7 +144,7 @@ module.exports = {
     "no-spaced-func": "error",
     "no-sparse-arrays": "error",
     "no-sync": "error",
-    "no-ternary": "error",
+    // "no-ternary": "error",
     "no-this-before-super": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",

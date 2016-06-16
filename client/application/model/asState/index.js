@@ -18,8 +18,13 @@ const dataline = pipe(
 
 // con. [{...}, {links, data, included}] -> {...}
 export default (state, incoming) => {
-  return {
-    ...state,
-    resources: map(asGraph, merge(state.resources, dataline(incoming)))
-  }
+  return merge(
+    state,
+    {
+      resources: map(
+        asGraph,
+        merge(state.resources, dataline(incoming))
+      )
+    }
+  )
 }

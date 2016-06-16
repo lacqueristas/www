@@ -85,8 +85,8 @@
     "babel-root-import": "^3",
     "babelify": "^7",
     "browserify": "^13",
-    "cycle-snabbdom": "^1",
     "cycle-router": "^3",
+    "cycle-snabbdom": "^1",
     "dotenv": "^2",
     "eslint-plugin-babel": "^3",
     "gulp": "^3",
@@ -102,6 +102,8 @@
     "normalize.css": "^4",
     "npm-run-all": "^2.1.1",
     "ramda": "0.21.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
     "rx": "^4",
     "snabbdom-helpers": "^3",
     "uglifyify": "^3"

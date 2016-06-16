@@ -1,9 +1,3 @@
-import asNative from "./asNative"
-import asState from "./asState"
-import initialState from "./initialState"
-
-export {
-  asNative,
-  asState,
-  initialState
-}
+export {default as asNative} from "./asNative"
+export {default as asState} from "./asState"
+export {default as initialState} from "./initialState"

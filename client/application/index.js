@@ -1,6 +1,6 @@
-import intent from "./intent"
-import model from "./model"
-import presenter from "./presenter"
+import * as intent from "./intent"
+import * as model from "./model"
+import * as presenter from "./presenter"
 
 export {
   intent,
