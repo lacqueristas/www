@@ -101,7 +101,7 @@
     "mustache": "^2",
     "normalize.css": "^4",
     "npm-run-all": "^2.1.1",
-    "ramda": "0.21.0",
+    "ramda": "0.22.1",
     "rx": "^4",
     "snabbdom-helpers": "^3",
     "uglifyify": "^3"
