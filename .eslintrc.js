@@ -1,11 +1,17 @@
 module.exports = {
   parser: "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   plugins: [
     "babel",
     "immutable",
     "import",
     "mocha",
-    "node"
+    "node",
+    "react"
   ],
   env: {
     es6: true,
@@ -22,7 +28,7 @@ module.exports = {
     "block-spacing": "error",
     "brace-style": "error",
     "callback-return": "error",
-    "camelcase": "error",
+    "camelcase": "warn",
     "comma-dangle": "error",
     "comma-spacing": "error",
     "comma-style": "error",
@@ -61,14 +67,14 @@ module.exports = {
     "newline-after-var": "error",
     "no-alert": "error",
     "no-array-constructor": "error",
-    "no-bitwise": "error",
+    "no-bitwise": "warn",
     "no-caller": "error",
     "no-case-declarations": "error",
     "no-catch-shadow": "error",
     "no-class-assign": "error",
     "no-cond-assign": "error",
     "no-confusing-arrow": "error",
-    "no-console": "error",
+    "no-console": "warn",
     "no-const-assign": "error",
     "no-constant-condition": "error",
     "no-continue": "error",
@@ -108,7 +114,7 @@ module.exports = {
     "no-lone-blocks": "error",
     "no-lonely-if": "error",
     "no-loop-func": "error",
-    "no-magic-numbers": "error",
+    "no-magic-numbers": "warn",
     "no-mixed-requires": "error",
     "no-mixed-spaces-and-tabs": "error",
     "no-multi-spaces": "error",
@@ -129,7 +135,8 @@ module.exports = {
     "no-param-reassign": "error",
     "no-path-concat": "error",
     "no-plusplus": "error",
-    "no-process-exit": "error",
+    // I don't do this anyhow
+    // "no-process-exit": "error",
     "no-proto": "error",
     "no-redeclare": "error",
     "no-regex-spaces": "error",
@@ -144,7 +151,8 @@ module.exports = {
     "no-spaced-func": "error",
     "no-sparse-arrays": "error",
     "no-sync": "error",
-    "no-ternary": "error",
+    // Not sure this is a good rule
+    // "no-ternary": "error",
     "no-this-before-super": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",
@@ -170,7 +178,8 @@ module.exports = {
     "operator-assignment": "error",
     "operator-linebreak": "error",
     "padded-blocks": ["error", "never"],
-    "prefer-arrow-callback": "error",
+    // This really isn't an appropriate rule
+    // "prefer-arrow-callback": "error",
     "prefer-const": "error",
     "prefer-reflect": "error",
     "prefer-spread": "error",
@@ -225,7 +234,8 @@ module.exports = {
     "no-whitespace-before-property": "error",
     "one-var-declaration-per-line": "error",
     "prefer-rest-params": "error",
-    "require-jsdoc": "error",
+    // What is this even?
+    // "require-jsdoc": "error",
     // Apparently not smart enough?
     // "sort-imports": "error",
     "template-curly-spacing": "error",
@@ -239,9 +249,12 @@ module.exports = {
     "babel/no-await-in-loop": "error",
     "babel/object-curly-spacing": "error",
     "babel/object-shorthand": "error",
+
     "immutable/no-let": "error",
     "immutable/no-mutation": "error",
-    "immutable/no-this": "error",
+    // Doesn't work with react
+    // "immutable/no-this": "error",
+
     // Doesn't actually work yet
     // "import/default": "error",
     "import/export": "error",
@@ -254,15 +267,19 @@ module.exports = {
     "import/no-deprecated": "error",
     // This is a silly rule, it's not duplicated
     // "import/no-duplicates": "error",
-    // Doesn't understand organization libraries
+    // Doesn't understand @organization libraries
     // "import/no-extraneous-dependencies": "error",
+    "import/no-extraneous-dependencies": "error",
     "import/no-named-as-default-member": "error",
     "import/no-named-as-default": "error",
-    "import/no-namespace": "error",
-    "import/no-nodejs-modules": "error",
+    // Doesn't work with relative imports
+    // "import/no-namespace": "error",
+    // Only for frontend
+    // "import/no-nodejs-modules": "error",
     // Only for backend
     // "import/no-unresolved": "error",
     "import/order": "error",
+
     "mocha/handle-done-callback": "error",
     "mocha/no-exclusive-tests": "error",
     "mocha/no-global-tests": "error",
@@ -270,14 +287,61 @@ module.exports = {
     "mocha/no-skipped-tests": "error",
     // Just not very good
     // "mocha/no-synchronous-tests": "error",
+
     // Only for backend
     // "node/no-missing-import": "error",
-    "node/no-missing-require": "error",
+    // "node/no-missing-require": "error",
     // False possitives when running over tests.
     // "node/no-unpublished-import": "error",
     "node/no-unpublished-require": "error",
     // v6 isn't supported yet?
     // "node/no-unsupported-features": ["error", {"version": 6}],
-    "node/shebang": "error"
+    "node/shebang": "error",
+    "react/display-name": "error",
+    "react/forbid-prop-types": "error",
+    "react/no-danger": "error",
+    "react/no-deprecated": "error",
+    "react/no-did-mount-set-state": "error",
+    "react/no-did-update-set-state": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-is-mounted": "error",
+    "react/no-multi-comp": "warn",
+    "react/no-render-return-value": "error",
+    // Only useful for pure read only components
+    // "react/no-set-state": "error",
+    "react/no-string-refs": "error",
+    "react/no-unknown-property": "error",
+    "react/prefer-es6-class": "error",
+    "react/prefer-stateless-function": "warn",
+    "react/prop-types": "error",
+    "react/react-in-jsx-scope": "error",
+    // Freaks out with stateless components
+    // "react/require-optimization": "error",
+    "react/require-render-return": "error",
+    "react/self-closing-comp": "error",
+    "react/sort-comp": "error",
+    // "react/sort-prop-types": "error",
+    "react/jsx-boolean-value": "error",
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+    "react/jsx-curly-spacing": "error",
+    "react/jsx-equals-spacing": "error",
+    // This ends up being silly
+    // "react/jsx-first-prop-new-line": "error",
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-key": "error",
+    // This ends up being silly
+    // "react/jsx-max-props-per-line": "error",
+    "react/jsx-no-bind": "error",
+    "react/jsx-no-duplicate-props": "error",
+    // What the actual fuck
+    // "react/jsx-no-literals": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-no-undef": "error",
+    "react/jsx-pascal-case": "error",
+    // "react/jsx-sort-props": "error",
+    "react/jsx-space-before-closing": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }
