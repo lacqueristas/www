@@ -1,6 +1,6 @@
+const join = require("path").join
 const Dotenv = require("dotenv")
 const requireEnvironmentVariables = require("require-environment-variables")
-const join = require("path").join
 const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
@@ -27,6 +27,7 @@ const FONTS = [
 const ASSETS = [
   "./source/assets/browserconfig.xml",
   "./source/assets/manifest.json",
+  "./source/assets/loadtestertool.xml",
   "./source/assets/favicon.ico"
 ]
 const STYLE = "index.css"
