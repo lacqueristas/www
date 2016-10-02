@@ -5,6 +5,8 @@
   "main": "transpiled/server/index.js",
   "scripts": {
     "start": "node './transpiled/server/index.js'",
+    "now-build": "",
+    "deploy": "now deploy --env NODE_ENV=production --env PORT=8080 --env WEB_CONCURRENCY=1",
     "build": "npm-run-all build:transpiled --parallel build:server build:assets build:client",
     "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --retain-lines --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
@@ -72,8 +74,6 @@
     "gulp-size": "^2",
     "mocha": "^3",
     "now": "0.25.1",
-    "react-logger": "^1",
-    "redux-logger": "^2",
     "watchify": "^3"
   },
   "dependencies": {
@@ -99,6 +99,8 @@
     "react-addons-shallow-compare": "^15",
     "react-dom": "^15",
     "react-redux": "^4",
+    "react-logger": "^1",
+    "redux-logger": "^2",
     "redux": "^3",
     "regexp-map": "0.3.1",
     "require-environment-variables": "^1",

@@ -14,7 +14,9 @@ import Application from "./components/Application"
 import store from "./store"
 import {logger} from "./remote"
 
-Dotenv.load({silent: true})
+Dotenv.load({
+  silent: true
+})
 
 requireEnvironmentVariables([
   "PORT",
@@ -27,8 +29,8 @@ const application = express()
 application.use(cors())
 application.use(morgan("combined"))
 application.use(compression())
-
 application.use(express.static(join(__dirname, "..", "client")))
+
 application.get("*", function get (request, response) {
   const navigation = urlParse(request.url, true)
 
