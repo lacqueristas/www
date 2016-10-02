@@ -5,7 +5,6 @@
   "main": "transpiled/server/index.js",
   "scripts": {
     "start": "node './transpiled/server/index.js'",
-    "postinstall": "npm run build",
     "build": "npm-run-all build:transpiled --parallel build:server build:assets build:client",
     "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --retain-lines --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
@@ -72,6 +71,7 @@
     "gulp-myth": "^1",
     "gulp-size": "^2",
     "mocha": "^3",
+    "now": "0.25.1",
     "react-logger": "^1",
     "redux-logger": "^2",
     "watchify": "^3"
