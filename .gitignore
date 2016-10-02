@@ -6,12 +6,13 @@
 
 # Regenerable files
 /node_modules/
+/transpiled/
 
 # Temporary files
-/tmp/
+/tmp
 
 # Log files
 /*.log
 
 # Sensitive files
-/.env
+/.env*
