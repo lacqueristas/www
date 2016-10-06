@@ -1,18 +1,11 @@
 import React from "react"
 
 import Layout from "../Layout"
-import PageHat from "../PageHat"
 import SectionHeading from "../SectionHeading"
 
 export default function DataPolicy () {
-  return <Layout subtitle="Data Policy">
-    <PageHat>
-      <h1 className="title">
-        Data Policy
-      </h1>
-    </PageHat>
-
-    <article className="section content">
+  return <Layout title="Data Policy">
+    <article>
       <SectionHeading>
         What we collect
       </SectionHeading>
@@ -21,10 +14,8 @@ export default function DataPolicy () {
         Every web application or program collects some amount of data. Ranging from user input to advanced mouse movement tracking. We largely track as much as we can think of and we want you to know exactly what that means.
       </p>
 
-      <aside className="message">
-        <p className="message-body">
-          This section will be updated as frequently as we change our tracking. We might not actually track something described in this currently, but we will.
-        </p>
+      <aside>
+        This section will be updated as frequently as we change our tracking. We might not actually track something described in this currently, but we will.
       </aside>
 
       <p>

@@ -1,18 +1,11 @@
 import React from "react"
 
 import Layout from "../Layout"
-import PageHat from "../PageHat"
 import SectionHeading from "../SectionHeading"
 
 export default function CodeOfConduct () {
-  return <Layout subtitle="Code Of Conduct">
-    <PageHat>
-      <h1 className="title">
-        Code of Conduct
-      </h1>
-    </PageHat>
-
-    <article className="section content">
+  return <Layout title="Code Of Conduct">
+    <article>
       <SectionHeading>
         Our Pledge
       </SectionHeading>
