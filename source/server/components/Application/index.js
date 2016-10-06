@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react"
 import {connect} from "react-redux"
 
-import NotFound from "../NotFound"
+import PageNotFound from "../PageNotFound"
 import route from "./route"
 
 const connectNavigation = connect(({navigation}, props) => ({navigation, ...props}))
@@ -16,7 +16,7 @@ export default connectNavigation(class Application extends Component {
 
   render () {
     const {navigation} = this.props
-    const CurrentComponent = route(navigation.pathname) || NotFound
+    const CurrentComponent = route(navigation.pathname) || PageNotFound
 
     return <CurrentComponent />
   }

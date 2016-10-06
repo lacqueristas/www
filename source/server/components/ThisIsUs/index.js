@@ -3,8 +3,8 @@ import React from "react"
 import Layout from "../Layout"
 import SectionHeading from "../SectionHeading"
 
-export default function TermsOfService () {
-  return <Layout title="Terms Of Service">
+export default function ThisIsUs () {
+  return <Layout title="ThisIsUs">
     <article>
     </article>
   </Layout>

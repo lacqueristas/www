@@ -73,13 +73,13 @@
     "gulp-myth": "^1",
     "gulp-size": "^2",
     "mocha": "^3",
+    "normalize.css": "^4.2.0",
     "now": "0.25.1",
     "watchify": "^3"
   },
   "dependencies": {
     "abstraction": "^8",
     "body-parser": "^1",
-    "bulma": "0.1.2",
     "bunyan": "^1",
     "case": "^1",
     "compression": "^1",

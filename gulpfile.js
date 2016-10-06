@@ -14,7 +14,7 @@ requireEnvironmentVariables([])
 
 const STYLES = [
   "./node_modules/font-awesome/css/font-awesome.css",
-  "./node_modules/bulma/css/bulma.css",
+  "./node_modules/normalize.css/normalize.css",
   "./source/client/index.css"
 ]
 const IMAGES = [
