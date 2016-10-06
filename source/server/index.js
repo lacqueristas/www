@@ -33,12 +33,13 @@ application.use(express.static(join(__dirname, "..", "client")))
 
 application.get("*", function get (request, response) {
   const navigation = urlParse(request.url, true)
-
-  return response.send(renderToStaticMarkup(
+  const html = renderToStaticMarkup(
     <Provider store={store}>
       <Application navigation={navigation} />
     </Provider>
-  ))
+  )
+
+  return response.send(`<!DOCTYPE html>${html}`)
 })
 
 application.listen(process.env.PORT, () => {
