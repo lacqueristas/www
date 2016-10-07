@@ -8,7 +8,7 @@ import PrivacyPolicy from "../../PrivacyPolicy"
 import TermsOfService from "../../TermsOfService"
 import ThisIsUs from "../../ThisIsUs"
 
-const path = (slug = "") => `^/${slug}\$`
+const path = (slug = "?") => `^/${slug}\$`
 
 export default regexpMap(
   {
