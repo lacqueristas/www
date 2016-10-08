@@ -9,7 +9,7 @@ import store from "./store"
 const history = createHistory()
 
 history.listen(function locationChange () {
-  return store.dispatch({type: "NAVIGATE", payload: {location}})
+  return store.dispatch({type: "NAVIGATE", payload: location})
 })
 
 render(
