@@ -22,9 +22,11 @@ export default connect()(class Anchor extends Component {
 
       if (!(metaKey || which === MIDDLE_CLICK)) {
         event.preventDefault()
+
+        return dispatch({type: "NAVIGATE", payload: {href}})
       }
 
-      return dispatch({type: "NAVIGATE", payload: {href}})
+      return null
     }
   }
 
