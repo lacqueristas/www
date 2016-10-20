@@ -74,7 +74,7 @@
     "gulp-size": "^2",
     "mocha": "^3",
     "normalize.css": "^4.2.0",
-    "now": "0.25.1",
+    "now": "0.26.0",
     "watchify": "^3"
   },
   "dependencies": {
