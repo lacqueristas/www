@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --watch './transpiled/server' './transpiled/server/index.js'",
     "now-build": "",
-    "deploy": "now deploy --env NODE_ENV=production --env PORT=8080 --env WEB_CONCURRENCY=1",
+    "deploy": "now deploy --env NODE_ENV=production --env PORT=8080",
     "build": "npm-run-all build:transpiled --parallel build:server build:assets build:client",
     "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --retain-lines --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
