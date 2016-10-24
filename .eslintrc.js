@@ -11,7 +11,8 @@ module.exports = {
     "import",
     "mocha",
     "node",
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   env: {
     es6: true,
@@ -342,6 +343,30 @@ module.exports = {
     // "react/jsx-sort-props": "error",
     "react/jsx-space-before-closing": "error",
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "jsx-a11y/anchor-has-content": "error",
+    "jsx-a11y/aria-props": "error",
+    "jsx-a11y/aria-proptypes": "error",
+    "jsx-a11y/aria-role": "error",
+    "jsx-a11y/aria-unsupported-elements": "error",
+    "jsx-a11y/click-events-have-key-events": "error",
+    "jsx-a11y/heading-has-content": "error",
+    "jsx-a11y/href-no-hash": "error",
+    "jsx-a11y/html-has-lang": "error",
+    "jsx-a11y/img-has-alt": "error",
+    "jsx-a11y/img-redundant-alt": "error",
+    "jsx-a11y/label-has-for": "error",
+    "jsx-a11y/lang": "error",
+    "jsx-a11y/mouse-events-have-key-events": "error",
+    "jsx-a11y/no-access-key": "error",
+    "jsx-a11y/no-marquee": "error",
+    "jsx-a11y/no-onchange": "error",
+    "jsx-a11y/no-static-element-interactions": "error",
+    "jsx-a11y/onclick-has-focus": "error",
+    "jsx-a11y/onclick-has-role": "error",
+    "jsx-a11y/role-has-required-aria-props": "error",
+    "jsx-a11y/role-supports-aria-props": "error",
+    "jsx-a11y/scope": "error",
+    "jsx-a11y/tabindex-no-positive": "error"
   }
 }

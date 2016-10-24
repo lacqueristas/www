@@ -26,7 +26,7 @@ export default function Head ({title, subtitle}) {
     <link rel="manifest" href="/manifest.json" />
 
     <link rel="stylesheet" href="/index.css" />
-    <link rel="copyright" href="/copyright.html" />
+    <link rel="copyright" href="/copyright.txt" />
     <link rel="author" href="/humans.txt" />
 
     <meta name="robots" content="index,follow" />
