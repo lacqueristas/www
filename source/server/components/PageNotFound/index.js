@@ -6,7 +6,9 @@ import SectionHeading from "../SectionHeading"
 export default function PageNotFound () {
   return <Layout title="PageNotFound">
     <article>
-
+      <p>
+        I'm sorry, but we couldn't find that page.
+      </p>
     </article>
   </Layout>
 }
