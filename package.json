@@ -92,7 +92,7 @@
     "history": "^4",
     "httpstatuses": "^3",
     "morgan": "^1",
-    "nodemon": "^1.11.0",
+    "nodemon": "^1",
     "npm-run-all": "^3",
     "pusher-js": "^3",
     "ramda": "0.22.1",
