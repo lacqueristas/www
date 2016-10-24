@@ -1,5 +1,5 @@
 {
-  "name": "www",
+  "name": "@lacqueristas/www",
   "version": "1.0.0",
   "description": "The frontend browser client for the lacqueristas API",
   "main": "transpiled/server/index.js",
