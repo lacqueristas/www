@@ -48,6 +48,7 @@
     "babel-plugin-relative-import": "^1",
     "babel-plugin-transform-class-properties": "^6",
     "babel-plugin-transform-object-rest-spread": "^6",
+    "babel-plugin-transform-runtime": "^6",
     "babel-preset-latest": "^6",
     "babel-preset-react": "^6",
     "babelify": "^7",
