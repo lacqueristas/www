@@ -21,9 +21,6 @@
     "watch:build:assets": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
     "lint": "eslint './source/'",
-    "data:migrate": "knex migrate:latest",
-    "data:change": "knex migrate:make",
-    "data:seed": "knex seed:run"
   },
   "repository": {
     "type": "git",
