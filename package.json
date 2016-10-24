@@ -4,7 +4,7 @@
   "description": "The frontend browser client for the lacqueristas API",
   "main": "transpiled/server/index.js",
   "scripts": {
-    "start": "node './transpiled/server/index.js'",
+    "start": "nodemon --watch './transpiled/server' './transpiled/server/index.js'",
     "now-build": "",
     "deploy": "now deploy --env NODE_ENV=production --env PORT=8080 --env WEB_CONCURRENCY=1",
     "build": "npm-run-all build:transpiled --parallel build:server build:assets build:client",
@@ -92,6 +92,7 @@
     "httpstatuses": "^3",
     "morgan": "^1",
     "normalize.css": "^5",
+    "nodemon": "^1.11.0",
     "npm-run-all": "^3",
     "pusher-js": "^3",
     "ramda": "0.22.1",
