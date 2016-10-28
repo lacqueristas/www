@@ -46,7 +46,7 @@
   "devDependencies": {
     "babel": "^6",
     "babel-cli": "^6",
-    "babel-eslint": "^6",
+    "babel-eslint": "^7",
     "babel-plugin-relative-import": "^1",
     "babel-plugin-transform-class-properties": "^6",
     "babel-plugin-transform-object-rest-spread": "^6",
