@@ -46,7 +46,7 @@
   "devDependencies": {
     "babel": "^6",
     "babel-cli": "^6",
-    "babel-eslint": "^6",
+    "babel-eslint": "^7",
     "babel-plugin-relative-import": "^1",
     "babel-plugin-transform-class-properties": "^6",
     "babel-plugin-transform-object-rest-spread": "^6",
@@ -63,7 +63,7 @@
     "eslint-plugin-jsx-a11y": "^2",
     "eslint-plugin-import": "^2",
     "eslint-plugin-mocha": "^4",
-    "eslint-plugin-node": "^2",
+    "eslint-plugin-node": "^3",
     "eslint-plugin-react": "^6",
     "greenkeeper": "^4",
     "gulp": "^3",
@@ -74,7 +74,7 @@
     "gulp-myth": "^1",
     "gulp-size": "^2",
     "mocha": "^3",
-    "now": "0.26.0",
+    "now": "0.27.0",
     "font-awesome": "^4",
     "normalize.css": "^5",
     "watchify": "^3"
