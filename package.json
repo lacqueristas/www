@@ -93,7 +93,7 @@
     "morgan": "^1",
     "nodemon": "^1.11.0",
     "npm-run-all": "^3",
-    "pusher-js": "^3",
+    "pusher-js": "^3.2.2",
     "ramda": "0.22.1",
     "ramda-extra": "^1",
     "raw-body": "^2",
