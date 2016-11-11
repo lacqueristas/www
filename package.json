@@ -83,7 +83,7 @@
     "abstraction": "^8",
     "body-parser": "^1",
     "bunyan": "^1",
-    "case": "^1",
+    "case": "^1.4.2",
     "compression": "^1",
     "cors": "^2",
     "dotenv": "^2",
