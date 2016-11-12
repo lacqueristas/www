@@ -20,7 +20,6 @@ Dotenv.load({
 
 requireEnvironmentVariables([
   "PORT",
-  "WEB_CONCURRENCY",
   "NODE_ENV"
 ])
 
