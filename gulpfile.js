@@ -1,3 +1,4 @@
+/* eslint import/no-commonjs: "off", node/no-unpublished-require: "off" */
 const join = require("path").join
 const Dotenv = require("dotenv")
 const requireEnvironmentVariables = require("require-environment-variables")
