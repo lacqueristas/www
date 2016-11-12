@@ -252,7 +252,7 @@ module.exports = {
     "babel/object-shorthand": "error",
 
     "immutable/no-let": "error",
-    "immutable/no-mutation": "error",
+    "immutable/no-mutation": "warn",
     // Doesn't work with react
     // "immutable/no-this": "error",
 
