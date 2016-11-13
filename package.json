@@ -70,7 +70,7 @@
     "greenkeeper": "^4",
     "gulp": "^3",
     "gulp-cli": "^1",
-    "gulp-concat": "^2",
+    "gulp-concat": "^2.6.1",
     "gulp-gzip": "^1",
     "gulp-imagemin": "^3",
     "gulp-myth": "^1",
