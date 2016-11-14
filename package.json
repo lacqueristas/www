@@ -86,7 +86,7 @@
     "abstraction": "^8",
     "babel-runtime": "^6",
     "body-parser": "^1",
-    "bunyan": "^1",
+    "bunyan": "^1.8.5",
     "case": "^1",
     "compression": "^1",
     "cors": "^2",
