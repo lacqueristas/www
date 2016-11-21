@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from "react"
+import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
 import {primary} from "../colors"
@@ -13,7 +13,7 @@ const styles = {
   }
 }
 
-export default connect()(class Button extends Component {
+export default connect()(class Button extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     type: PropTypes.string.isRequired,

@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from "react"
+import React, {PureComponent, PropTypes} from "react"
 
 import Head from "../Head"
 import Body from "../Body"
 
-export default class Layout extends Component {
+export default class Layout extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     title: PropTypes.string,

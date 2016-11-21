@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from "react"
+import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
 const MIDDLE_CLICK = 0
 
-export default connect()(class Anchor extends Component {
+export default connect()(class Anchor extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     href: PropTypes.string.isRequired,

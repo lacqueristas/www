@@ -313,7 +313,7 @@ module.exports = {
     "react/no-string-refs": "error",
     "react/no-unknown-property": "error",
     "react/prefer-es6-class": "error",
-    "react/prefer-stateless-function": "warn",
+    "react/prefer-stateless-function": ["warn", {ignorePureComponents: true}],
     "react/prop-types": "error",
     "react/react-in-jsx-scope": "error",
     // Freaks out with stateless components

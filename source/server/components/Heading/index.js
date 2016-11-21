@@ -1,6 +1,6 @@
-import React, {Component, PropTypes} from "react"
+import React, {PureComponent, PropTypes} from "react"
 
-export default class Heading extends Component {
+export default class Heading extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     style: PropTypes.object.isRequired,
