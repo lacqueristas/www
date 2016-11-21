@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react"
 
-import Head from "./Head"
-import Body from "./Body"
+import Head from "../Head"
+import Body from "../Body"
 
 export default class Layout extends Component {
   static propTypes = {
