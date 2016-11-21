@@ -1,9 +1,14 @@
 import React, {PropTypes} from "react"
 
-import Footer from "./Footer"
+import {neutral} from "../colors"
+import Footer from "../Footer"
+
+const style = {
+  backgroundColor: neutral
+}
 
 export default function Body ({children}) {
-  return <body>
+  return <body style={style}>
     <main id="application">
       {children}
     </main>
