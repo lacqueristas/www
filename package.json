@@ -4,9 +4,7 @@
   "description": "The frontend browser client for the lacqueristas API",
   "main": "transpiled/server/index.js",
   "scripts": {
-    "start": "npm run start:$NODE_ENV",
-    "start:development": "nodemon --watch './transpiled/server' './transpiled/server/index.js'",
-    "start:production": "node'./transpiled/server/index.js'",
+    "start": "nodemon -L --watch './transpiled/server/' './transpiled/server/index.js'",
     "now-build": "",
     "deploy": "npm-run-all deploy:build deploy:ship",
     "deploy:build": "NODE_ENV=production npm run build",
