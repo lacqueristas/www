@@ -1,14 +1,14 @@
 import React from "react"
 
 import Layout from "../Layout"
-import SectionHeading from "../SectionHeading"
+import Heading from "../Heading"
 
 export default function DataPolicy () {
   return <Layout title="Data Policy">
     <article>
-      <SectionHeading>
+      <Heading type="section">
         What we collect
-      </SectionHeading>
+      </Heading>
 
       <p>
         Every web application or program collects some amount of data. Ranging from user input to advanced mouse movement tracking. We largely track as much as we can think of and we want you to know exactly what that means.
@@ -33,17 +33,17 @@ export default function DataPolicy () {
         <li>Browser keypresses (exception: secure inputs, i.e. credit card forms)</li>
       </ul>
 
-      <SectionHeading>
+      <Heading type="section">
         Where we send data
-      </SectionHeading>
+      </Heading>
 
       <p>
         We store this information in various places and usually duplicated to various services. For example, we store page requests in: Google Analytics, Mixpanel, and our own activity tracker. Unilaterally we store this information in our personal warehouses like AWS RDS, AWS S3, or AWS Redshift. The data will pass through services like AWS Kinesis.
       </p>
 
-      <SectionHeading>
+      <Heading type="section">
         How we store information
-      </SectionHeading>
+      </Heading>
 
       <p>
         The way we store information is varried based on the information we're storing. We usually have a continual stream of the data that is indexed by the performer. Anytime we give data to an external service like Google Analytics or Mixpanel they get access to a distinct identifier that we use to map to you, the user. They never and will never get access to this mapping.
@@ -57,9 +57,9 @@ export default function DataPolicy () {
         Information that could have personal importance like comments, messages, or profile data are ecrypted in our datastores. We use SCrypt for encrypting passwords.
       </p>
 
-      <SectionHeading>
+      <Heading type="section">
         What a breach looks like
-      </SectionHeading>
+      </Heading>
 
       <p>
         Obviously we don't know what attackers will do and how they'll do it, but we can do our very best to ensure you know what has happened and how it happened. We will use our social media accounts to notify you, our user, and additionally send an email to the address we know.

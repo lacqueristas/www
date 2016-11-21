@@ -1,11 +1,17 @@
 import React from "react"
 
 import Layout from "../Layout"
-import SectionHeading from "../SectionHeading"
+import Heading from "../Heading"
 
 export default function ThisIsUs () {
   return <Layout title="ThisIsUs">
     <article>
+      <Heading type="section">
+        Empty
+      </Heading>
+      <p>
+        To be filled
+      </p>
     </article>
   </Layout>
 }

@@ -1,14 +1,14 @@
 import React from "react"
 
 import Layout from "../Layout"
-import SectionHeading from "../SectionHeading"
+import Heading from "../Heading"
 
 export default function CodeOfConduct () {
   return <Layout title="Code Of Conduct">
     <article>
-      <SectionHeading>
+      <Heading type="section">
         Our Pledge
-      </SectionHeading>
+      </Heading>
       <p>
         In the interest of fostering an open and welcoming environment, we as Lacqueristas pledge to making participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. Our goal is to make nail polish open to everyone. These guidelines allow us to ensure that all nail polish enthusiasts feel safe and welcome to share their art and express themselves without fear.
       </p>
@@ -16,9 +16,9 @@ export default function CodeOfConduct () {
         In the interest of fostering an open and welcoming environment, we as Lacqueristas pledge to making participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. Our goal is to make nail polish open to everyone. These guidelines allow us to ensure that all nail polish enthusiasts feel safe and welcome to share their art and express themselves without fear.
       </p>
 
-      <SectionHeading>
+      <Heading type="section">
         Our Standards
-      </SectionHeading>
+      </Heading>
       <p>
         Examples of behavior that contributes to creating a positive environment include:
       </p>
@@ -44,9 +44,9 @@ export default function CodeOfConduct () {
         <li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
       </ul>
 
-      <SectionHeading>
+      <Heading type="section">
         Our Responsibilities
-      </SectionHeading>
+      </Heading>
       <p>
         We are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
       </p>
@@ -57,16 +57,16 @@ export default function CodeOfConduct () {
         As community members, you have the ability to hold us accountable to these responsibilities. We will be available for contact at any given time and hold ourselves responsible to responding to the use of our reporting tools in a timely and respectful manner.
       </p>
 
-      <SectionHeading>
+      <Heading type="section">
         Scope
-      </SectionHeading>
+      </Heading>
       <p>
         This Code of Conduct applies both within the community and in public spaces when an individual is representing Lacqueristas or its community. Examples of representing a project or community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. We reserve the right to redefine and clarify what representation means for Lacqueristas in the future.
       </p>
 
-      <SectionHeading>
+      <Heading type="section">
         Enforcement
-      </SectionHeading>
+      </Heading>
       <p>
         Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the Lacqueristas admin team at <a href="mailto:support@lacqueristas.club">support@lacqueristas.club</a>. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
       </p>

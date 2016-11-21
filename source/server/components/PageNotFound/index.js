@@ -1,10 +1,9 @@
 import React from "react"
 
 import Layout from "../Layout"
-import SectionHeading from "../SectionHeading"
 
 export default function PageNotFound () {
-  return <Layout title="PageNotFound">
+  return <Layout title="We couldn't find the page you wanted">
     <article>
       <p>
         I'm sorry, but we couldn't find that page.

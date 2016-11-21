@@ -1,40 +1,40 @@
 import React from "react"
 
 import Layout from "../Layout"
-import SectionHeading from "../SectionHeading"
+import Heading from "../Heading"
 
 export default function OurTechnology () {
   return <Layout title="Our Technology">
     <article>
-      <SectionHeading>
+      <Heading type="section">
         Resource Server
-      </SectionHeading>
+      </Heading>
 
-      <SectionHeading>
+      <Heading type="section">
         Origin Server
-      </SectionHeading>
+      </Heading>
 
       - Express
 
-      <SectionHeading>
+      <Heading type="section">
         Browser Client
-      </SectionHeading>
+      </Heading>
 
       - React
       - Redux
       - Browserify
       - Gulp
 
-      <SectionHeading>
+      <Heading type="section">
         Mobile Client
-      </SectionHeading>
+      </Heading>
 
       - React Native
       - Redux
 
-      <SectionHeading>
+      <Heading type="section">
         General Technologies
-      </SectionHeading>
+      </Heading>
 
       - Babel
       - Node
@@ -42,9 +42,9 @@ export default function OurTechnology () {
       - Chrome
       - Atom
 
-      <SectionHeading>
+      <Heading type="section">
         External Services
-      </SectionHeading>
+      </Heading>
 
       - Google Analytics
       - Mixpanel
