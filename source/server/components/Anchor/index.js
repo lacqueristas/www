@@ -10,7 +10,7 @@ export default connect()(class Anchor extends Component {
     dispatch: PropTypes.func.isRequired
   }
 
-  onClickA () {
+  onClick () {
     const {dispatch} = this.props
 
     return function trigger (event) {
@@ -34,6 +34,8 @@ export default connect()(class Anchor extends Component {
     const {children} = this.props
     const {href} = this.props
 
-    return <a href={href} onClick={this.onClickA()}>{children}</a>
+    return <a href={href} onClick={this.onClick()}>
+      {children}
+    </a>
   }
 })
