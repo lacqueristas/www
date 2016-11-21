@@ -4,7 +4,7 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function DataPolicy () {
-  return <Layout title="Data Policy">
+  return <Layout subtitle="Data Policy">
     <article>
       <Heading type="section">
         What we collect

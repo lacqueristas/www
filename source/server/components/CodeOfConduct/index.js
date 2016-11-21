@@ -4,7 +4,7 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function CodeOfConduct () {
-  return <Layout title="Code Of Conduct">
+  return <Layout subtitle="Code Of Conduct">
     <article>
       <Heading type="section">
         Our Pledge

@@ -4,7 +4,7 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function OurTechnology () {
-  return <Layout title="Our Technology">
+  return <Layout subtitle="Our Technology">
     <article>
       <Heading type="section">
         Resource Server

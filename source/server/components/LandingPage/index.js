@@ -5,7 +5,7 @@ import Anchor from "../Anchor"
 import Button from "../Button"
 
 export default function LandingPage () {
-  return <Layout title="Lacqueristas" subtitle="Welcome to Polish">
+  return <Layout subtitle="Welcome to Polish">
     <section>
       <img src="/keyhole-llama.png" alt="the cute llama mascot protruding from a hole in the website" />
       <section data-intent="call to action">

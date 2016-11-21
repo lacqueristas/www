@@ -4,7 +4,7 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function PrivacyPolicy () {
-  return <Layout title="Privacy Policy">
+  return <Layout subtitle="Privacy Policy">
     <article>
       <Heading type="section">
         Empty

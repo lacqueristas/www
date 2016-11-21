@@ -4,7 +4,7 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function TermsOfService () {
-  return <Layout title="Terms Of Service">
+  return <Layout subtitle="Terms Of Service">
     <article>
       <Heading type="section">
         Empty
