@@ -18,6 +18,8 @@ export default regexpMap(
     [path("our-technology")]: OurTechnology,
     [path("privacy-policy")]: PrivacyPolicy,
     [path("terms-of-service")]: TermsOfService,
-    [path("this-is-us")]: ThisIsUs
+    [path("this-is-us")]: ThisIsUs,
+    [path("sign-up")]: SignUp,
+    [path("sign-in")]: SignIn
   }
 )
