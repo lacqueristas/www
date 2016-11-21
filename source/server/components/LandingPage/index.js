@@ -2,18 +2,17 @@ import React from "react"
 
 import Layout from "../Layout"
 import Anchor from "../Anchor"
-import Button from "../Button"
 
 export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish">
     <section>
       <img src="/keyhole-llama.png" alt="the cute llama mascot protruding from a hole in the website" />
-      <section data-intent="call to action">
-        <Button type="primary" href="/sign-up">
+      <section data-intent="call to action" style={{padding: 25, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
+        <Anchor type="primary" href="/sign-up">
           Join us
-        </Button>
+        </Anchor>
 
-        <Anchor href="/sign-in">Login</Anchor>
+        <Anchor type="normal" href="/sign-in">Login</Anchor>
       </section>
     </section>
   </Layout>
