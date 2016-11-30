@@ -81,7 +81,7 @@
     "watchify": "^3"
   },
   "dependencies": {
-    "abstraction": "^8",
+    "abstraction": "^9.0.0",
     "babel-runtime": "^6",
     "body-parser": "^1",
     "bunyan": "^1",
