@@ -6,7 +6,7 @@ import Heading from "../Heading"
 export default function DataPolicy () {
   return <Layout subtitle="Data Policy">
     <article>
-      <Heading type="section">
+      <Heading kind="section">
         What we collect
       </Heading>
 
@@ -33,7 +33,7 @@ export default function DataPolicy () {
         <li>Browser keypresses (exception: secure inputs, i.e. credit card forms)</li>
       </ul>
 
-      <Heading type="section">
+      <Heading kind="section">
         Where we send data
       </Heading>
 
@@ -41,7 +41,7 @@ export default function DataPolicy () {
         We store this information in various places and usually duplicated to various services. For example, we store page requests in: Google Analytics, Mixpanel, and our own activity tracker. Unilaterally we store this information in our personal warehouses like AWS RDS, AWS S3, or AWS Redshift. The data will pass through services like AWS Kinesis.
       </p>
 
-      <Heading type="section">
+      <Heading kind="section">
         How we store information
       </Heading>
 
@@ -57,7 +57,7 @@ export default function DataPolicy () {
         Information that could have personal importance like comments, messages, or profile data are ecrypted in our datastores. We use SCrypt for encrypting passwords.
       </p>
 
-      <Heading type="section">
+      <Heading kind="section">
         What a breach looks like
       </Heading>
 

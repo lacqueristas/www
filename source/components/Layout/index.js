@@ -2,6 +2,13 @@ import React, {PureComponent, PropTypes} from "react"
 
 import Head from "../Head"
 import Body from "../Body"
+import Footer from "../Footer"
+
+const styles = {
+  main: {
+    minHeight: 400
+  }
+}
 
 export default class Layout extends PureComponent {
   static propTypes = {
@@ -16,13 +23,18 @@ export default class Layout extends PureComponent {
     const {subtitle} = this.props
 
     if (global.window) {
-      return <div>{children}</div>
+      return <main data-component="Layout">
+        {children}
+        <Footer />
+      </main>
     }
 
     return <html lang="en">
       <Head title={title} subtitle={subtitle} />
       <Body>
-        {children}
+        <main data-component="Layout" style={styles.main}>
+          {children}
+        </main>
       </Body>
     </html>
   }

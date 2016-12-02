@@ -8,10 +8,23 @@ const connectNavigation = connect(({navigation}, props) => ({navigation, ...prop
 
 export default connectNavigation(class Application extends PureComponent {
   static propTypes = {
+    signals: PropTypes.object.isRequired,
     navigation: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
       query: PropTypes.object
-    })
+    }).isRequired
+  }
+
+  static childContextTypes = {
+    signals: PropTypes.object.isRequired
+  }
+
+  getChildContext () {
+    const {signals} = this.props
+
+    return {
+      signals
+    }
   }
 
   render () {

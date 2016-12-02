@@ -4,7 +4,7 @@ export default class Heading extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     style: PropTypes.object.isRequired,
-    type: PropTypes.string.isRequired
+    kind: PropTypes.oneOf(["page", "section"]).isRequired
   }
 
   static defaultProps = {
@@ -14,9 +14,9 @@ export default class Heading extends PureComponent {
   render () {
     const {children} = this.props
     const {style} = this.props
-    const {type} = this.props
+    const {kind} = this.props
 
-    switch (type) {
+    switch (kind) {
       case "page": {
         return <h1 style={{...style}}>
           {children}

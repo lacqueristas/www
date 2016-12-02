@@ -1,19 +1,13 @@
 import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
-import {primary} from "../colors"
-import {neutral} from "../colors"
+import {primaryInteraction} from "../styles"
 
 const styles = {
   primary: {
-    background: neutral,
-    borderWidth: "2px",
-    borderStyle: "solid",
-    borderColor: primary,
-    textDecoration: "none",
-    padding: 15
+    ...primaryInteraction
   },
-  regular: {}
+  normal: {}
 }
 const MIDDLE_CLICK = 0
 
@@ -21,12 +15,24 @@ export default connect()(class Anchor extends PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
+    style: PropTypes.object.isRequired,
     href: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
+    kind: PropTypes.oneOf(["primary", "normal"]).isRequired
+  }
+
+  static defaultProps = {
+    style: {}
+  }
+
+  static contextTypes = {
+    signals: PropTypes.shape({
+      updateLocation: global.window ? PropTypes.func.isRequired : PropTypes.func
+    }).isRequired
   }
 
   onClick () {
     const {dispatch} = this.props
+    const {signals: {updateLocation}} = this.context
 
     return function trigger (event) {
       const {target} = event
@@ -34,11 +40,12 @@ export default connect()(class Anchor extends PureComponent {
       const {nativeEvent} = event
       const {which} = nativeEvent
       const {href} = target
+      const isOpeningNewInstance = metaKey || which === MIDDLE_CLICK
 
-      if (!(metaKey || which === MIDDLE_CLICK)) {
+      if (!isOpeningNewInstance) {
         event.preventDefault()
 
-        return dispatch({type: "NAVIGATE", payload: {href}})
+        return dispatch(updateLocation(href))
       }
 
       return null
@@ -48,15 +55,10 @@ export default connect()(class Anchor extends PureComponent {
   render () {
     const {children} = this.props
     const {href} = this.props
-    const {type} = this.props
+    const {style} = this.props
+    const {kind} = this.props
 
-    if (type) {
-      return <a href={href} style={styles[type]} onClick={this.onClick()}>
-        {children}
-      </a>
-    }
-
-    return <a href={href} onClick={this.onClick()}>
+    return <a href={href} style={{...styles[kind], ...style}} onClick={this.onClick()}>
       {children}
     </a>
   }

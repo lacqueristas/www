@@ -6,7 +6,7 @@ import Heading from "../Heading"
 export default function CodeOfConduct () {
   return <Layout subtitle="Code Of Conduct">
     <article>
-      <Heading type="section">
+      <Heading kind="section">
         Our Pledge
       </Heading>
       <p>
@@ -16,7 +16,7 @@ export default function CodeOfConduct () {
         In the interest of fostering an open and welcoming environment, we as Lacqueristas pledge to making participation in our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. Our goal is to make nail polish open to everyone. These guidelines allow us to ensure that all nail polish enthusiasts feel safe and welcome to share their art and express themselves without fear.
       </p>
 
-      <Heading type="section">
+      <Heading kind="section">
         Our Standards
       </Heading>
       <p>
@@ -44,7 +44,7 @@ export default function CodeOfConduct () {
         <li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
       </ul>
 
-      <Heading type="section">
+      <Heading kind="section">
         Our Responsibilities
       </Heading>
       <p>
@@ -57,14 +57,14 @@ export default function CodeOfConduct () {
         As community members, you have the ability to hold us accountable to these responsibilities. We will be available for contact at any given time and hold ourselves responsible to responding to the use of our reporting tools in a timely and respectful manner.
       </p>
 
-      <Heading type="section">
+      <Heading kind="section">
         Scope
       </Heading>
       <p>
         This Code of Conduct applies both within the community and in public spaces when an individual is representing Lacqueristas or its community. Examples of representing a project or community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. We reserve the right to redefine and clarify what representation means for Lacqueristas in the future.
       </p>
 
-      <Heading type="section">
+      <Heading kind="section">
         Enforcement
       </Heading>
       <p>

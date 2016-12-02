@@ -8,11 +8,11 @@ export default function LandingPage () {
     <section>
       <img src="/keyhole-llama.png" alt="the cute llama mascot protruding from a hole in the website" />
       <section data-intent="call to action" style={{padding: 25, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around"}}>
-        <Anchor type="primary" href="/sign-up">
+        <Anchor kind="primary" href="/sign-up">
           Join us
         </Anchor>
 
-        <Anchor type="normal" href="/sign-in">Login</Anchor>
+        <Anchor kind="normal" href="/sign-in">Login</Anchor>
       </section>
     </section>
   </Layout>

@@ -1,24 +1,25 @@
 import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
-import {primary} from "../colors"
-import {neutral} from "../colors"
+import {primaryInteraction} from "../styles"
 
 const styles = {
   primary: {
-    background: neutral,
-    borderWidth: "2px",
-    borderStyle: "solid",
-    borderColor: primary
+    ...primaryInteraction
   }
 }
 
 export default connect()(class Button extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    type: PropTypes.string.isRequired,
-    href: PropTypes.string,
+    style: PropTypes.object.isRequired,
+    kind: PropTypes.oneOf(["primary"]).isRequired,
+    type: PropTypes.oneOf(["submit", "reset"]),
     dispatch: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    style: {}
   }
 
   onClick () {
@@ -30,24 +31,23 @@ export default connect()(class Button extends PureComponent {
 
       event.preventDefault()
 
-      return dispatch({type: "NAVIGATE", payload: {href}})
+      return dispatch({type: "navigate", payload: {href}})
     }
   }
 
   render () {
     const {children} = this.props
+    const {kind} = this.props
     const {type} = this.props
-    const {href} = this.props
 
-    if (href) {
-      return <button style={styles[type]}>
+    if (type) {
+      return <button type={type} style={styles[kind]}>
         {children}
       </button>
     }
 
-    return <button>
+    return <button style={styles[kind]}>
       {children}
     </button>
   }
-
 })

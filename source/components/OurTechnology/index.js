@@ -6,17 +6,17 @@ import Heading from "../Heading"
 export default function OurTechnology () {
   return <Layout subtitle="Our Technology">
     <article>
-      <Heading type="section">
+      <Heading kind="section">
         Resource Server
       </Heading>
 
-      <Heading type="section">
+      <Heading kind="section">
         Origin Server
       </Heading>
 
       - Express
 
-      <Heading type="section">
+      <Heading kind="section">
         Browser Client
       </Heading>
 
@@ -25,14 +25,14 @@ export default function OurTechnology () {
       - Browserify
       - Gulp
 
-      <Heading type="section">
+      <Heading kind="section">
         Mobile Client
       </Heading>
 
       - React Native
       - Redux
 
-      <Heading type="section">
+      <Heading kind="section">
         General Technologies
       </Heading>
 
@@ -42,7 +42,7 @@ export default function OurTechnology () {
       - Chrome
       - Atom
 
-      <Heading type="section">
+      <Heading kind="section">
         External Services
       </Heading>
 

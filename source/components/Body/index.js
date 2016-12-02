@@ -1,17 +1,15 @@
 import React, {PropTypes} from "react"
 
 import {neutral} from "../colors"
-import Footer from "../Footer"
 
 const style = {
-  backgroundColor: neutral
+  backgroundColor: neutral,
+  fontSize: 18
 }
 
 export default function Body ({children}) {
-  return <body style={style}>
-    <main id="application">
-      {children}
-    </main>
+  return <body style={style} id="application">
+    {children}
 
     <noscript>
       <h1>Hello!</h1>
@@ -46,8 +44,6 @@ export default function Body ({children}) {
         to join us.
       </p>
     </noscript>
-
-    <Footer />
     <script async type="text/javascript" src="index.js" />
   </body>
 }

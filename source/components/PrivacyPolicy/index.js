@@ -3,10 +3,10 @@ import React from "react"
 import Layout from "../Layout"
 import Heading from "../Heading"
 
-export default function ThisIsUs () {
-  return <Layout subtitle="This Is Us">
+export default function PrivacyPolicy () {
+  return <Layout subtitle="Privacy Policy">
     <article>
-      <Heading type="section">
+      <Heading kind="section">
         Empty
       </Heading>
       <p>

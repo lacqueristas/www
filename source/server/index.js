@@ -10,7 +10,7 @@ import morgan from "morgan"
 import compression from "compression"
 import urlParse from "url-parse"
 
-import {Application} from "./components"
+import {Application} from "../components"
 import store from "./store"
 import {logger} from "./remote"
 

@@ -6,7 +6,7 @@ import Heading from "../Heading"
 export default function TermsOfService () {
   return <Layout subtitle="Terms Of Service">
     <article>
-      <Heading type="section">
+      <Heading kind="section">
         Empty
       </Heading>
       <p>
