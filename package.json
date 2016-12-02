@@ -74,10 +74,10 @@
     "gulp-myth": "^1",
     "gulp-size": "^2",
     "mocha": "^3",
-    "now": "0.33.0",
+    "now": "0.33.2",
     "font-awesome": "^4",
     "normalize.css": "^5",
-    "now": "0.33.0",
+    "now": "0.33.2",
     "watchify": "^3"
   },
   "dependencies": {
