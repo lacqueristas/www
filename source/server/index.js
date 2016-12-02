@@ -32,9 +32,10 @@ application.use(express.static(join(__dirname, "..", "client")))
 
 application.get("*", function get (request, response) {
   const navigation = urlParse(request.url, true)
+  const signals = {}
   const html = renderToStaticMarkup(
     <Provider store={store}>
-      <Application navigation={navigation} />
+      <Application navigation={navigation} signals={signals} />
     </Provider>
   )
 
