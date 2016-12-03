@@ -9,7 +9,7 @@ import initialState from "./initialState"
 
 const sdk = hsdk({
   protocol: "http",
-  host: "192.168.99.100:3000",
+  host: "origin.lacqueristas.dev",
   root: "v1/resources"
 })
 
