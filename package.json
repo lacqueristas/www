@@ -91,7 +91,7 @@
     "dotenv": "^2",
     "express": "^4",
     "history": "^4",
-    "hsdk": "^1",
+    "hsdk": "^2",
     "httpstatuses": "^3",
     "morgan": "^1",
     "nodemon": "^1",
