@@ -89,7 +89,7 @@
     "cors": "^2",
     "dotenv": "^2",
     "express": "^4",
-    "history": "^4",
+    "history": "^4.4.0",
     "httpstatuses": "^3",
     "morgan": "^1",
     "nodemon": "^1",
