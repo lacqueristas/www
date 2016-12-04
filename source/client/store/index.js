@@ -7,11 +7,7 @@ import hsdk from "hsdk"
 import reaction from "../reaction"
 import initialState from "./initialState"
 
-const sdk = hsdk({
-  protocol: "http",
-  host: "origin.lacqueristas.dev",
-  root: "v1/resources"
-})
+const sdk = hsdk({home: "http://origin.lacqueristas.dev/v1/resources"})
 
 export default createStore(
   reaction,
