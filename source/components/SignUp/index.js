@@ -77,6 +77,10 @@ export default withForm(class SignUp extends PureComponent {
         <form onSubmit={this.onSubmitForm()} style={styles.form}>
           <fieldset style={styles.fieldset}>
             <section>
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" onChange={this.onChangeInput()} value={name} style={styles.input} />
+            </section>
+
             <section>
               <label htmlFor="email">Email</label>
               <input type="email" id="email" name="email" onChange={this.onChangeInput()} value={email} style={styles.input} />
