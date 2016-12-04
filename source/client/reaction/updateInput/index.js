@@ -1,13 +1,13 @@
-export default function updateInput ({state, payload: {formName, data}}) {
+export default function updateInput ({state, payload: {slug, attributes}}) {
   return {
     ...state,
     ui: {
       ...state.ui,
       forms: {
         ...state.ui.forms,
-        [formName]: {
-          ...state.ui.forms[formName],
-          ...data
+        [slug]: {
+          ...state.ui.forms[slug],
+          ...attributes
         }
       }
     }
