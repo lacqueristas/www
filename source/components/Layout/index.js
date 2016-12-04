@@ -35,6 +35,7 @@ export default class Layout extends PureComponent {
       <Body>
         <main data-component="Layout" style={styles.main}>
           {children}
+          <Footer />
         </main>
       </Body>
     </html>
