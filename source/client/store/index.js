@@ -1,8 +1,22 @@
 import {createStore} from "redux"
 import {applyMiddleware} from "redux"
 import createLogger from "redux-logger"
+import thunkMiddleware from "redux-thunk"
+import hsdk from "hsdk"
 
-import listener from "./listener"
-import {initialState} from "./listener"
+import reaction from "../reaction"
+import initialState from "./initialState"
 
-export default createStore(listener, initialState, applyMiddleware(createLogger()))
+const sdk = hsdk({home: "http://origin.lacqueristas.dev/v1/resources"})
+
+export default createStore(
+  reaction,
+  initialState(),
+  applyMiddleware(
+    thunkMiddleware.withExtraArgument({sdk}),
+    createLogger({
+      duration: true,
+      collapsed: true
+    })
+  )
+)

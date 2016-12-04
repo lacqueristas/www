@@ -1,7 +1,18 @@
 import {createStore} from "redux"
 import {applyMiddleware} from "redux"
 import createLogger from "redux-logger"
-import listener from "./listener"
-import {initialState} from "./listener"
+import thunkMiddleware from "redux-thunk"
 
-export default createStore(listener, initialState, applyMiddleware(createLogger()))
+import initialState from "./initialState"
+
+export default createStore(
+  (state) => state,
+  initialState(),
+  applyMiddleware(
+    thunkMiddleware,
+    createLogger({
+      duration: true,
+      collapsed: true
+    })
+  )
+)
