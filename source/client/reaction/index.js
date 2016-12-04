@@ -1,16 +1,16 @@
 import {prop} from "ramda"
 
 import receiveResources from "./receiveResources"
-import requestSignUp from "./requestSignUp"
 import updateInput from "./updateInput"
 import updateNavigation from "./updateNavigation"
 import updateLocation from "./updateLocation"
+import clearForm from "./clearForm"
 
 export const events = {
   receiveResources,
   updateLocation,
-  requestSignUp,
   updateInput,
+  clearForm,
   updateNavigation
 }
 export default function reaction (state, signal) {
