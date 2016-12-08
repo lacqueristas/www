@@ -78,7 +78,7 @@
     "normalize.css": "^5",
     "font-awesome": "^4",
     "normalize.css": "^5",
-    "now": "0.34.0",
+    "now": "0.36.0",
     "watchify": "^3"
   },
   "dependencies": {
