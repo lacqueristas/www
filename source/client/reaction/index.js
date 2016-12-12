@@ -1,9 +1,17 @@
 import {prop} from "ramda"
+import {aside} from "ramda-extra"
+import {curry} from "ramda"
+import {set} from "store"
 
 import mergeResource from "./mergeResource"
 import updateInput from "./updateInput"
 import updateNavigation from "./updateNavigation"
 import clearForm from "./clearForm"
+
+const defaultReaction = prop("state")
+const trailing = aside(
+  curry(set)("state")
+)
 
 export const events = {
   mergeResource,
@@ -13,7 +21,8 @@ export const events = {
 }
 export default function reaction (state, signal) {
   const {type} = signal
-  const {payload} = signal
+  const {payload = {}} = signal
+  const currentReaction = events[type] || defaultReaction
 
-  return (events[type] || prop("state"))({state, payload})
+  return trailing(currentReaction({state, payload}))
 }
