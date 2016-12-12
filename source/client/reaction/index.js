@@ -1,12 +1,12 @@
 import {prop} from "ramda"
 
-import receiveResources from "./receiveResources"
+import mergeResource from "./mergeResource"
 import updateInput from "./updateInput"
 import updateNavigation from "./updateNavigation"
 import clearForm from "./clearForm"
 
 export const events = {
-  receiveResources,
+  mergeResource,
   updateInput,
   clearForm,
   updateNavigation
