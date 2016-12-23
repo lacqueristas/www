@@ -20,7 +20,8 @@ window.env = reduce(
       [element.getAttribute("name")]: element.getAttribute("content")
     }
   },
-  document.getElementsByTagName("meta")
+  document.getElementsByTagName("meta"),
+  {}
 )
 
 const sdk = hsdk({home: `${window.env.ORIGIN_LOCATION}/v1/resources`})
