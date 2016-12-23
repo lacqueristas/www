@@ -31,10 +31,6 @@
       "ORIGIN_LOCATION": "origin.lacqueristas.club"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lacqueristas/www.git"
-  },
   "keywords": [
     "lacqueristas",
     "nailpolish",
@@ -42,10 +38,14 @@
   ],
   "author": "Kurtis Rainbolt-Greene (@krainboltgreene) <me@kurtisrainboltgreene.name>",
   "license": "MIT",
+  "homepage": "https://github.com/lacqueristas/www#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lacqueristas/www.git"
+  },
   "bugs": {
     "url": "https://github.com/lacqueristas/www/issues"
   },
-  "homepage": "https://github.com/lacqueristas/www#readme",
   "engines": {
     "node": "^7",
     "npm": "^4"
