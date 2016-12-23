@@ -5,6 +5,7 @@
   "main": "transpiled/server/index.js",
   "scripts": {
     "start": "nodemon -L --watch './transpiled/server/' './transpiled/server/index.js'",
+    "now": "now",
     "now-build": "",
     "deploy": "npm-run-all deploy:build deploy:ship",
     "deploy:build": "NODE_ENV=production npm run build",
