@@ -73,7 +73,6 @@
     "gulp-cli": "^1",
     "gulp-concat": "^2",
     "gulp-gzip": "^1",
-    "gulp-imagemin": "^3",
     "gulp-myth": "^1",
     "gulp-size": "^2",
     "font-awesome": "^4",

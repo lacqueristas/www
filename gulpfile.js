@@ -7,7 +7,7 @@ const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
 const gulpSize = require("gulp-size")
 const gulpGzip = require("gulp-gzip")
-const gulpImagemin = require("gulp-imagemin")
+// const gulpImagemin = require("gulp-imagemin")
 
 Dotenv.load({silent: true})
 
@@ -54,7 +54,7 @@ gulp.task("styles", () => {
 
 gulp.task("images", () => {
   return gulp.src(IMAGES)
-    .pipe(gulpImagemin({verbose: true}))
+    // .pipe(gulpImagemin({verbose: true}))
     .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
     .pipe(gulpGzip({
