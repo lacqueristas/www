@@ -5,11 +5,8 @@
   "main": "transpiled/server/index.js",
   "scripts": {
     "now": "now",
-    "now-build": "",
-    "deploy": "npm-run-all deploy:build deploy:ship",
-    "deploy:build": "NODE_ENV=production npm run build",
-    "deploy:ship": "now deploy --env NODE_ENV=production --env PORT=8080",
     "start": "node './transpiled/server/index.js'",
+    "deploy": "now deploy --npm --env NODE_ENV=production --env PORT=8080",
     "build": "npm-run-all build:transpiled --parallel build:server build:components build:assets build:client",
     "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
@@ -26,6 +23,7 @@
     "watch:build:assets": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
     "lint": "eslint './source/'"
+    "now-build": ""
   },
   "repository": {
     "type": "git",
@@ -47,16 +45,7 @@
     "npm": "^3"
   },
   "devDependencies": {
-    "babel-cli": "^6",
     "babel-eslint": "^7",
-    "babel-plugin-relative-import": "^1",
-    "babel-plugin-transform-class-properties": "^6",
-    "babel-plugin-transform-object-rest-spread": "^6",
-    "babel-plugin-transform-runtime": "^6",
-    "babel-preset-latest": "^6",
-    "babel-preset-react": "^6",
-    "babelify": "^7",
-    "browserify": "^13",
     "chai": "^3",
     "chokidar-cli": "^1",
     "eslint": "^3",
@@ -68,6 +57,19 @@
     "eslint-plugin-node": "^3",
     "eslint-plugin-react": "^6",
     "greenkeeper": "^4",
+    "mocha": "^3",
+    "now": "0.36.0",
+    "watchify": "^3"
+  },
+  "dependencies": {
+    "babel-cli": "^6",
+    "babel-plugin-transform-class-properties": "^6",
+    "babel-plugin-transform-object-rest-spread": "^6",
+    "babel-plugin-transform-runtime": "^6",
+    "babel-preset-latest": "^6",
+    "babel-preset-react": "^6",
+    "browserify": "^13",
+    "babelify": "^7",
     "gulp": "^3",
     "gulp-cli": "^1",
     "gulp-concat": "^2",
@@ -75,14 +77,8 @@
     "gulp-imagemin": "^3",
     "gulp-myth": "^1",
     "gulp-size": "^2",
-    "mocha": "^3",
-    "normalize.css": "^5",
     "font-awesome": "^4",
     "normalize.css": "^5",
-    "now": "0.36.0",
-    "watchify": "^3"
-  },
-  "dependencies": {
     "abstraction": "^9",
     "babel-runtime": "^6",
     "body-parser": "^1",
@@ -96,7 +92,6 @@
     "hsdk": "^3",
     "httpstatuses": "^3",
     "morgan": "^1",
-    "nodemon": "^1",
     "npm-run-all": "^3",
     "pusher-js": "^4",
     "ramda": "0.22.1",
@@ -105,7 +100,6 @@
     "react": "^15",
     "react-addons-shallow-compare": "^15",
     "react-dom": "^15",
-    "react-logger": "^1",
     "react-redux": "^4",
     "redux": "^3",
     "redux-logger": "^2",
