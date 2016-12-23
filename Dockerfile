@@ -13,4 +13,10 @@ COPY package.json $APPLICATION/
 
 RUN npm install
 
+COPY source/ $APPLICATION/source
+COPY .babelrc $APPLICATION/
+COPY gulpfile.js $APPLICATION/
+
+RUN npm run build
+
 CMD npm start
