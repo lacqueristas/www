@@ -4,6 +4,7 @@ ENV APPLICATION /usr/src/www
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV PORT 3001
 
+EXPOSE $PORT
 WORKDIR $APPLICATION
 COPY package.json $APPLICATION/
 
@@ -12,4 +13,3 @@ RUN apk add --no-cache --repository http://nl.alpinelinux.org/alpine/edge/commun
 RUN npm install
 
 CMD "npm start"
-EXPOSE $PORT
