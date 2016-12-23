@@ -6,7 +6,7 @@
   "scripts": {
     "now": "now",
     "start": "node './transpiled/server/index.js'",
-    "deploy": "now deploy --docker --env NODE_ENV=production --env PORT=8080",
+    "deploy": "now deploy --docker",
     "build": "npm-run-all build:transpiled --parallel build:server build:components build:assets build:client",
     "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
@@ -23,6 +23,13 @@
     "watch:build:assets": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
     "lint": "eslint './source/'"
+  },
+  "now": {
+    "env": {
+      "NODE_ENV": "production",
+      "WWW_LOCATION": "www.lacqueristas.club",
+      "ORIGIN_LOCATION": "origin.lacqueristas.club"
+    }
   },
   "repository": {
     "type": "git",
