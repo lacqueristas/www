@@ -22,7 +22,7 @@
     "watch:build:client": "watchify --verbose --transform babelify --entry './source/client/index.js' --outfile './transpiled/client/index.js'",
     "watch:build:assets": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
-    "lint": "eslint './source/'"
+    "lint": "eslint './source/'",
     "now-build": ""
   },
   "repository": {
