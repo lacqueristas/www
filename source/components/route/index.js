@@ -1,3 +1,5 @@
+/* eslint no-useless-escape: "off"  */
+
 import regexpMap from "regexp-map"
 
 import LandingPage from "../LandingPage"
