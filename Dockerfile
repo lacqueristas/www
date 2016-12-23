@@ -12,4 +12,4 @@ RUN apk add --no-cache build-base autoconf automake nasm libjpeg-turbo-utils tzd
 RUN apk add --no-cache --repository http://nl.alpinelinux.org/alpine/edge/community optipng gifsicle
 RUN npm install
 
-CMD "npm start"
+CMD npm start
