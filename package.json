@@ -40,8 +40,8 @@
   },
   "homepage": "https://github.com/lacqueristas/www#readme",
   "engines": {
-    "node": "^6",
-    "npm": "^3"
+    "node": "^7",
+    "npm": "^4"
   },
   "devDependencies": {
     "babel-eslint": "^7",
