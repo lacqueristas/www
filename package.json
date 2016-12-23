@@ -6,7 +6,7 @@
   "scripts": {
     "now": "now",
     "start": "node './transpiled/server/index.js'",
-    "deploy": "now deploy --npm --env NODE_ENV=production --env PORT=8080",
+    "deploy": "now deploy --docker --env NODE_ENV=production --env PORT=8080",
     "build": "npm-run-all build:transpiled --parallel build:server build:components build:assets build:client",
     "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
@@ -22,8 +22,7 @@
     "watch:build:client": "watchify --verbose --transform babelify --entry './source/client/index.js' --outfile './transpiled/client/index.js'",
     "watch:build:assets": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
-    "lint": "eslint './source/'",
-    "now-build": ""
+    "lint": "eslint './source/'"
   },
   "repository": {
     "type": "git",
