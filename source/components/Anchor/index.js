@@ -15,7 +15,7 @@ export default connect()(class Anchor extends PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.objectOf(PropTypes.anyOf(PropTypes.string, PropTypes.number)).isRequired,
     href: PropTypes.string.isRequired,
     kind: PropTypes.oneOf(["primary", "normal"]).isRequired
   }

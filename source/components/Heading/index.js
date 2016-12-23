@@ -3,7 +3,7 @@ import React, {PureComponent, PropTypes} from "react"
 export default class Heading extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.objectOf(PropTypes.anyOf(PropTypes.string, PropTypes.number)).isRequired,
     kind: PropTypes.oneOf(["page", "section"]).isRequired
   }
 

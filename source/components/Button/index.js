@@ -12,7 +12,7 @@ const styles = {
 export default connect()(class Button extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.objectOf(PropTypes.anyOf(PropTypes.string, PropTypes.number)).isRequired,
     kind: PropTypes.oneOf(["primary"]).isRequired,
     type: PropTypes.oneOf(["submit", "reset"]),
     dispatch: PropTypes.func.isRequired
