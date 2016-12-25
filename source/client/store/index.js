@@ -20,7 +20,7 @@ window.env = reduce(
       [element.getAttribute("name")]: element.getAttribute("content")
     }
   },
-  document.getElementsByTagName("meta"),
+  [...document.querySelectorAll("meta[type='environment']")],
   {}
 )
 
