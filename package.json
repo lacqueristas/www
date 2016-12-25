@@ -8,7 +8,7 @@
     "start": "node './transpiled/server/index.js'",
     "deploy": "now deploy --docker --env NODE_ENV=production --env WWW_LOCATION=www.lacqueristas.club --env ORIGIN_LOCATION=origin.lacqueristas.club",
     "build": "npm-run-all build:transpiled --parallel build:server build:components build:assets build:client",
-    "build:transpiled": "rm -rf './transpiled/' && mkdir -p './transpiled/client/' './transpiled/server'",
+    "build:transpiled": "mkdir -p './transpiled/client/' './transpiled/server'",
     "build:server": "babel --ignore './source/server/**/test.js' -d './transpiled/server/' './source/server/'",
     "build:components": "babel --ignore './source/components/**/test.js' -d './transpiled/components/' './source/components/'",
     "build:client": "browserify --verbose --transform babelify --entry './source/client/index.js' --outfile './transpiled/client/index.js'",
