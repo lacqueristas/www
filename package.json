@@ -98,7 +98,7 @@
     "nodemon": "^1",
     "npm-run-all": "^3",
     "pusher-js": "^4",
-    "ramda": "0.22.1",
+    "ramda": "0.23.0",
     "ramda-extra": "^1",
     "raw-body": "^2",
     "react": "^15",
