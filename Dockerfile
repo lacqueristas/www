@@ -1,6 +1,6 @@
 FROM node:7.1.0-alpine
 
-ENV APPLICATION /usr/src/www
+ENV APPLICATION /usr/lib/www
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV PORT 3001
 
