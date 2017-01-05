@@ -29,9 +29,7 @@ export default class Heading extends PureComponent {
         {children}
       </HeadingElement>
       {
-        subtitle && <p className={`Heading-${kind}-subtitle`}>
-          {subtitle}
-        </p>
+        subtitle && <p className={`Heading-${kind}-subtitle`}>{subtitle}</p>
       }
     </header>
   }
