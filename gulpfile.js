@@ -90,11 +90,4 @@ gulp.task("fonts", () => {
     .pipe(gulp.dest(join(DESINATION, "fonts")))
 })
 
-gulp.task("watch", ["styles", "images", "assets"], () => {
-  gulp.watch(STYLES, ["styles"])
-  gulp.watch(IMAGES, ["images"])
-  gulp.watch(ASSETS, ["assets"])
-  gulp.watch(FONTS, ["fonts"])
-})
-
 gulp.task("build", ["styles", "images", "assets", "fonts"])
