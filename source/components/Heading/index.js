@@ -24,8 +24,8 @@ export default class Heading extends PureComponent {
     const {subtitle} = this.props
     const HeadingElement = headings[kind]
 
-    return <header>
-      <HeadingElement className={`Heading-${kind}`} style={{...style}}>
+    return <header data-component="Heading">
+      <HeadingElement data-component="Heading" className={`Heading-${kind}`} style={{...style}}>
         {children}
       </HeadingElement>
       {
