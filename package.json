@@ -89,7 +89,7 @@
     "case": "^1",
     "compression": "^1",
     "cors": "^2",
-    "dotenv": "^2",
+    "dotenv": "^3.0.0",
     "express": "^4",
     "history": "^4",
     "hsdk": "^3",
