@@ -39,18 +39,18 @@ export default withForm(class SignUp extends PureComponent {
 
   static contextTypes = {
     signals: PropTypes.shape({
-      pushAccount: global.window ? PropTypes.func.isRequired : PropTypes.func,
+      signup: global.window ? PropTypes.func.isRequired : PropTypes.func,
       updateInput: global.window ? PropTypes.func.isRequired : PropTypes.func
     }).isRequired
   }
 
   onSubmitForm () {
     const {dispatch} = this.props
-    const {signals: {pushAccount}} = this.context
+    const {signals: {signup}} = this.context
 
     return (event) => {
       event.preventDefault()
-      dispatch(pushAccount({slug}))
+      dispatch(signup({slug}))
     }
   }
 

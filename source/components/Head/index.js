@@ -1,3 +1,4 @@
+/* eslint immutable/no-mutation: "off"  */
 import React, {PropTypes} from "react"
 
 export default function Head ({title, subtitle}) {
@@ -30,6 +31,8 @@ export default function Head ({title, subtitle}) {
     <link rel="author" href="/humans.txt" />
 
     <meta name="robots" content="index,follow" />
+
+    <meta type="environment" name="ORIGIN_LOCATION" content={process.env.ORIGIN_LOCATION} />
   </head>
 }
 

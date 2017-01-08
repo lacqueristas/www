@@ -1,13 +1,30 @@
+/* eslint immutable/no-mutation: "off"  */
 import {createStore} from "redux"
 import {applyMiddleware} from "redux"
 import createLogger from "redux-logger"
 import thunkMiddleware from "redux-thunk"
 import hsdk from "hsdk"
+import {reduce} from "ramda"
 
 import reaction from "../reaction"
 import initialState from "./initialState"
 
-const sdk = hsdk({home: "http://origin.lacqueristas.dev/v1/resources"})
+window.env = reduce(
+  (previous, element) => {
+    if (element.getAttribute("type") !== "environment") {
+      return previous
+    }
+
+    return {
+      ...previous,
+      [element.getAttribute("name")]: element.getAttribute("content")
+    }
+  },
+  {},
+  [...document.querySelectorAll("meta[type='environment']")]
+)
+
+const sdk = hsdk({home: `${window.env.ORIGIN_LOCATION}/v1/resources`})
 
 export default createStore(
   reaction,

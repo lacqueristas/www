@@ -1,12 +1,22 @@
 FROM node:7.1.0-alpine
 
-ENV APPLICATION /usr/src/www
-ENV NPM_CONFIG_LOGLEVEL warn
-ENV PORT 3001
+ENV \
+  APPLICATION=/usr/lib/www \
+  NPM_CONFIG_LOGLEVEL=warn \
+  PORT=3001
 
 WORKDIR $APPLICATION
+
+RUN apk add --no-cache tzdata
+
 COPY package.json $APPLICATION/
 
-RUN apk add --no-cache build-base autoconf automake nasm libjpeg-turbo-utils tzdata zlib-dev
-RUN apk add --no-cache --repository http://nl.alpinelinux.org/alpine/edge/community optipng gifsicle
 RUN npm install
+
+COPY source/ $APPLICATION/source
+COPY .babelrc $APPLICATION/
+COPY gulpfile.js $APPLICATION/
+
+RUN npm run build
+
+CMD npm start

@@ -1,3 +1,4 @@
+/* eslint immutable/no-mutation: "off"  */
 import React, {PropTypes} from "react"
 
 import {neutral} from "../colors"

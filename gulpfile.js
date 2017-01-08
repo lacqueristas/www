@@ -7,7 +7,7 @@ const gulpConcat = require("gulp-concat")
 const gulpMyth = require("gulp-myth")
 const gulpSize = require("gulp-size")
 const gulpGzip = require("gulp-gzip")
-const gulpImagemin = require("gulp-imagemin")
+// const gulpImagemin = require("gulp-imagemin")
 
 Dotenv.load({silent: true})
 
@@ -54,7 +54,7 @@ gulp.task("styles", () => {
 
 gulp.task("images", () => {
   return gulp.src(IMAGES)
-    .pipe(gulpImagemin({verbose: true}))
+    // .pipe(gulpImagemin({verbose: true}))
     .pipe(gulpSize({showFiles: true}))
     .pipe(gulp.dest(DESINATION))
     .pipe(gulpGzip({
@@ -88,13 +88,6 @@ gulp.task("assets", () => {
 gulp.task("fonts", () => {
   return gulp.src(FONTS)
     .pipe(gulp.dest(join(DESINATION, "fonts")))
-})
-
-gulp.task("watch", ["styles", "images", "assets"], () => {
-  gulp.watch(STYLES, ["styles"])
-  gulp.watch(IMAGES, ["images"])
-  gulp.watch(ASSETS, ["assets"])
-  gulp.watch(FONTS, ["fonts"])
 })
 
 gulp.task("build", ["styles", "images", "assets", "fonts"])
