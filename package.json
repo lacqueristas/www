@@ -75,7 +75,7 @@
     "case": "^1",
     "compression": "^1",
     "cors": "^2",
-    "dotenv": "^2",
+    "dotenv": "^4",
     "express": "^4",
     "font-awesome": "^4",
     "gulp": "^3",
