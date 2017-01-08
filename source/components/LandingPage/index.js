@@ -4,7 +4,13 @@ import Layout from "../Layout"
 import Anchor from "../Anchor"
 import Heading from "../Heading"
 
-const callToActionStyle = {padding: 25, display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around"}
+const callToActionStyle = {
+  padding: 25,
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-around"
+}
 
 export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish">
