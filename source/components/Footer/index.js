@@ -3,9 +3,23 @@ import React from "react"
 import Anchor from "../Anchor"
 import Heading from "../Heading"
 
+const documentationStyle = {
+
+}
+const copyrightStyle = {
+
+}
+const socialStyle = {
+
+}
+const rowStyle = {
+  display: "flex",
+  flexDirection: "row"
+}
+
 export default function Footer () {
   return <footer data-component="Footer">
-    <section data-intent="documentation links">
+    <section data-intent="documentation links" style={{...rowStyle, ...documentationStyle}}>
       <Heading kind="section">
         Documentation
       </Heading>
@@ -16,7 +30,8 @@ export default function Footer () {
       <Anchor kind="normal" href="/privacy-policy">Privacy Policy</Anchor>
       <Anchor kind="normal" href="/terms-of-service">Terms Of Service</Anchor>
     </section>
-    <section data-intent="copyright information">
+
+    <section data-intent="copyright information" style={{...rowStyle, ...copyrightStyle}}>
       <Heading kind="section">
         Legal
       </Heading>
@@ -25,7 +40,7 @@ export default function Footer () {
       </p>
     </section>
 
-    <section data-intent="social profiles">
+    <section data-intent="social profiles" style={{...rowStyle, ...socialStyle}}>
       <Heading kind="section">
         Find us
       </Heading>
