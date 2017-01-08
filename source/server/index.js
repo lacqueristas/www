@@ -20,7 +20,9 @@ Dotenv.load({
 
 requireEnvironmentVariables([
   "PORT",
-  "NODE_ENV"
+  "NODE_ENV",
+  "WWW_LOCATION",
+  "ORIGIN_LOCATION"
 ])
 
 const application = express()

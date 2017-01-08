@@ -15,7 +15,7 @@ export default connect()(class Anchor extends PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
-    style: PropTypes.object.isRequired,
+    style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
     href: PropTypes.string.isRequired,
     kind: PropTypes.oneOf(["primary", "normal"]).isRequired
   }
@@ -26,13 +26,13 @@ export default connect()(class Anchor extends PureComponent {
 
   static contextTypes = {
     signals: PropTypes.shape({
-      updateLocation: global.window ? PropTypes.func.isRequired : PropTypes.func
+      clickAnchor: global.window ? PropTypes.func.isRequired : PropTypes.func
     }).isRequired
   }
 
   onClick () {
     const {dispatch} = this.props
-    const {signals: {updateLocation}} = this.context
+    const {signals: {clickAnchor}} = this.context
 
     return function trigger (event) {
       const {target} = event
@@ -45,7 +45,7 @@ export default connect()(class Anchor extends PureComponent {
       if (!isOpeningNewInstance) {
         event.preventDefault()
 
-        return dispatch(updateLocation(href))
+        return dispatch(clickAnchor(href))
       }
 
       return null

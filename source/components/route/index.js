@@ -1,3 +1,5 @@
+/* eslint no-useless-escape: "off"  */
+
 import regexpMap from "regexp-map"
 
 import LandingPage from "../LandingPage"
@@ -8,6 +10,7 @@ import PrivacyPolicy from "../PrivacyPolicy"
 import TermsOfService from "../TermsOfService"
 import ThisIsUs from "../ThisIsUs"
 import SignUp from "../SignUp"
+import FrontPage from "../FrontPage"
 
 const path = (slug = "?") => `^/${slug}\$`
 
@@ -20,6 +23,7 @@ export default regexpMap(
     [path("privacy-policy")]: PrivacyPolicy,
     [path("terms-of-service")]: TermsOfService,
     [path("this-is-us")]: ThisIsUs,
-    [path("sign-up")]: SignUp
+    [path("sign-up")]: SignUp,
+    [path("front-page")]: FrontPage
   }
 )
