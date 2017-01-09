@@ -6,6 +6,5 @@ export const primaryInteraction = {
   borderStyle: "solid",
   borderColor: primary,
   borderRadius: 3,
-  textDecoration: "none",
-  padding: 15
+  textDecoration: "none"
 }
