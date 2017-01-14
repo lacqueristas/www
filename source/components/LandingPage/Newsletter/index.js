@@ -20,11 +20,9 @@ export default function Newsletter () {
       <input id="name" name="name" type="text" required />
     </section>
 
-    <div>
-      <div style={{position: "absolute", left: -5000}} aria-hidden="true">
-        <input type="text" name="b_2659100f5014c16e6b9ba2742_cf213912a3" tabIndex="-1" value="" />
-      </div>
-    </div>
+    <section style={{position: "absolute", left: -5000}} aria-hidden="true">
+      <input type="text" name="b_2659100f5014c16e6b9ba2742_cf213912a3" tabIndex="-1" value="" />
+    </section>
 
     <section>
       <Button type="submit" kind="primary">
