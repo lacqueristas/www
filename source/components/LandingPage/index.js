@@ -7,7 +7,7 @@ import Newsletter from "./Newsletter"
 
 const callToActionStyle = {
   padding: 25,
-  display: "flex",
+  display: "none",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-around"
