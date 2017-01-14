@@ -21,12 +21,14 @@ export default function LandingPage () {
           Lacqueristas
         </Heading>
 
-        <img src="/llama-sitting.png" alt="the cute llama mascot sitting and looking silly" />
+
       </section>
 
       <section id="right-panel">
-        <Newsletter />
+        <img src="/llama-sitting.png" alt="the cute llama mascot sitting and looking silly" />
       </section>
+
+      <Newsletter />
 
       <section data-intent="call to action" style={callToActionStyle}>
         <Anchor kind="primary" href="/sign-up">
