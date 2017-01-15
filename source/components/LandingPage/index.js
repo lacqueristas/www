@@ -5,22 +5,25 @@ import Heading from "../Heading"
 import Newsletter from "./Newsletter"
 import Registration from "./Registration"
 
+const landingPageStyle = {
+  display: "flex",
+  justifyContent: "center",
   alignItems: "center",
+  paddingTop: 150,
+  paddingBottom: 150
 }
 const isSiteReady = false
 
 export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish">
-    <section data-componet="LandingPage">
-      <section id="left-panel">
+    <section data-componet="LandingPage" style={landingPageStyle}>
+      <section id="brand">
         <Heading kind="page" subtitle="Welcome to Polish">
           Lacqueristas
         </Heading>
-
-
       </section>
 
-      <section id="right-panel">
+      <section id="logo">
         <img src="/llama-sitting.png" alt="the cute llama mascot sitting and looking silly" />
       </section>
 
