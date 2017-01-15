@@ -83,7 +83,7 @@
     "gulp-myth": "^1",
     "gulp-size": "^2",
     "history": "^4",
-    "hsdk": "^3",
+    "hsdk": "^4",
     "httpstatuses": "^3",
     "morgan": "^1",
     "normalize.css": "^5",
