@@ -21,7 +21,8 @@ export default connect()(class Anchor extends PureComponent {
   }
 
   static defaultProps = {
-    style: {}
+    style: {},
+    kind: "normal"
   }
 
   static contextTypes = {

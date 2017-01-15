@@ -25,6 +25,7 @@ export default function Head ({title, subtitle}) {
     <link rel="icon" kind="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Handlee|Open+Sans" />
 
     <link rel="stylesheet" href="/index.css" />
     <link rel="copyright" href="/copyright.txt" />
