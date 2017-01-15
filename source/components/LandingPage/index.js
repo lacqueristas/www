@@ -1,17 +1,13 @@
 import React from "react"
 
 import Layout from "../Layout"
-import Anchor from "../Anchor"
 import Heading from "../Heading"
 import Newsletter from "./Newsletter"
+import Registration from "./Registration"
 
-const callToActionStyle = {
-  padding: 25,
-  display: "none",
-  flexDirection: "row",
   alignItems: "center",
-  justifyContent: "space-around"
 }
+const isSiteReady = false
 
 export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish">
@@ -28,14 +24,12 @@ export default function LandingPage () {
         <img src="/llama-sitting.png" alt="the cute llama mascot sitting and looking silly" />
       </section>
 
-      <Newsletter />
-
-      <section data-intent="call to action" style={callToActionStyle}>
-        <Anchor kind="primary" href="/sign-up">
-          Join us
-        </Anchor>
-
-        <Anchor kind="normal" href="/sign-in">Login</Anchor>
+      <section id="call-to-action">
+        {
+          isSiteReady
+          ? <Registration />
+          : <Newsletter />
+        }
       </section>
     </section>
   </Layout>
