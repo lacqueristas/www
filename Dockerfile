@@ -3,7 +3,7 @@ FROM node:7.1.0-alpine
 ENV \
   APPLICATION=/usr/lib/www \
   NPM_CONFIG_LOGLEVEL=warn \
-  PORT=3001
+  NODE_ENV=production
 
 WORKDIR $APPLICATION
 
@@ -17,6 +17,12 @@ COPY source/ $APPLICATION/source
 COPY .babelrc $APPLICATION/
 COPY gulpfile.js $APPLICATION/
 
-RUN npm run build
+RUN \
+  npm run build \
+  && \
+  npm run minify
+
+ENV \
+  PORT=3001
 
 CMD npm start
