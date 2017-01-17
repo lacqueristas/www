@@ -19,6 +19,7 @@
     "watch:build:components": "chokidar './source/components/' --command 'npm run build:components --silent'",
     "watch:build:assets": "chokidar './source/assets/' --command 'npm run build:assets --silent'",
     "watch:build:client": "watchify --verbose --transform babelify --outfile './transpiled/client/index.js' --entry './source/client/index.js'",
+    "minify": "uglifyjs --compress --mangle --output './transpiled/client/index.js' -- './transpiled/client/index.js'",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
     "lint": "eslint './source/'"
   },
@@ -103,6 +104,7 @@
     "require-environment-variables": "^1",
     "skeleton-css": "^2",
     "store": "^1",
+    "uglify-js": "^2",
     "url-parse": "^1"
   }
 }
