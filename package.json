@@ -69,7 +69,7 @@
     "babel-runtime": "^6",
     "babelify": "^7",
     "body-parser": "^1",
-    "browserify": "^13",
+    "browserify": "^14.1.0",
     "bunyan": "^1",
     "case": "^1",
     "compression": "^1",
