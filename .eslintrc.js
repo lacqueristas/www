@@ -30,7 +30,7 @@ module.exports = {
     "brace-style": "error",
     "callback-return": "error",
     "camelcase": "warn",
-    "comma-dangle": "error",
+    "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": "error",
     "comma-style": "error",
     "complexity": "error",
