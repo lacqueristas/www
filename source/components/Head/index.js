@@ -1,4 +1,3 @@
-/* eslint immutable/no-mutation: "off"  */
 import React, {PropTypes, PureComponent} from "react"
 
 export default class Head extends PureComponent {

@@ -36,6 +36,8 @@ export default withForm(class FormSection extends PureComponent {
     required: false,
     stored: false,
     style: {},
+    name: null,
+    value: null,
   }
 
   static contextTypes = {
@@ -79,7 +81,7 @@ export default withForm(class FormSection extends PureComponent {
 
     return <section className={cxs(mergeDeep(baseStyle, style))}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name || id} type={type} required={required} value={initialValue || localValue} onChange={this.onChangeInput()} />
+      <input id={id} name={name || id} type={type} required={required} value={initialValue || localValue} onChange={this.onChangeInput()}/>
     </section>
   }
 })

@@ -1,3 +1,4 @@
+/* eslint-disable import/max-dependencies */
 import {join} from "path"
 import requireEnvironmentVariables from "require-environment-variables"
 import {createElement} from "react"

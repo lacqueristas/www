@@ -12,6 +12,7 @@ export default class NativeForm extends PureComponent {
 
   static defaultProps = {
     style: {},
+    target: null,
   }
 
   render () {

@@ -1,10 +1,10 @@
 import React from "react"
+import {connect} from "react-redux"
+import {path} from "ramda"
 
 import Layout from "../Layout"
 import WelcomeMessage from "./WelcomeMessage"
 
-import {connect} from "react-redux"
-import {path} from "ramda"
 const currentSession = (state) => {
   const id = path(["ephemeral", "self", "id"], state)
 

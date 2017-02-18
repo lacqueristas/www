@@ -1,4 +1,4 @@
-/* eslint no-useless-escape: "off"  */
+/* eslint-disable no-useless-escape  */
 
 import regexpMap from "regexp-map"
 

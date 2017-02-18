@@ -52,7 +52,7 @@ export default function Footer () {
         Legal
       </Heading>
       <p>
-        <strong>Lacqueristas</strong> by <Anchor kind="normal" style={{color: inverseAnchorColor}} href="https://www.kurtisrainboltgreene.name">Kurtis Rainbolt-Greene</Anchor>. The source code is licensed <Anchor kind="normal" style={{color: inverseAnchorColor}} href="http://opensource.org/licenses/isc-license.php">ISC</Anchor>. The website content is licensed <Anchor kind="normal" style={{color: inverseAnchorColor}} href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</Anchor>.
+        <strong>Lacqueristas</strong> by <Anchor style={{color: inverseAnchorColor}} href="https://www.kurtisrainboltgreene.name">Kurtis Rainbolt-Greene</Anchor>. The source code is licensed <Anchor style={{color: inverseAnchorColor}} href="http://opensource.org/licenses/isc-license.php">ISC</Anchor>. The website content is licensed <Anchor style={{color: inverseAnchorColor}} href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</Anchor>.
       </p>
     </section>
 
@@ -61,12 +61,8 @@ export default function Footer () {
         Find us
       </Heading>
       <p>
-        <Anchor kind="normal" style={{color: inverseAnchorColor}} href="https://github.com/lacqueristas">
-          <icon className="fa fa-github" />
-        </Anchor>
-        <Anchor kind="normal" style={{color: inverseAnchorColor}} href="https://twitter.com/lacqueristas">
-          <icon className="fa fa-twitter" />
-        </Anchor>
+        <Anchor style={{color: inverseAnchorColor}} href="https://github.com/lacqueristas"><icon className="fa fa-github" /></Anchor>
+        <Anchor style={{color: inverseAnchorColor}} href="https://twitter.com/lacqueristas"><icon className="fa fa-twitter" /></Anchor>
       </p>
     </section>
   </footer>

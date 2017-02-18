@@ -18,7 +18,7 @@ export default function Newsletter () {
 
     <section>
       <Button type="submit" kind="primary">
-        We'll keep in touch!
+        We&apos;ll keep in touch!
       </Button>
     </section>
   </NativeForm>

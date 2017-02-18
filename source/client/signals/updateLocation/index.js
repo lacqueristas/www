@@ -1,6 +1,6 @@
 import urlParse from "url-parse"
 import {tapP} from "ramda-extra"
-import {history} from "../../history"
+import history from "../../history"
 import updateNavigation from "../updateNavigation"
 
 export default function updateLocation (href) {

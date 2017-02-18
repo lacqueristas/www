@@ -46,11 +46,11 @@ export default function DataPolicy () {
       </Heading>
 
       <p>
-        The way we store information is varried based on the information we're storing. We usually have a continual stream of the data that is indexed by the performer. Anytime we give data to an external service like Google Analytics or Mixpanel they get access to a distinct identifier that we use to map to you, the user. They never and will never get access to this mapping.
+        The way we store information is varried based on the information we&apos;re storing. We usually have a continual stream of the data that is indexed by the performer. Anytime we give data to an external service like Google Analytics or Mixpanel they get access to a distinct identifier that we use to map to you, the user. They never and will never get access to this mapping.
       </p>
 
       <p>
-        Externally owned services like Google Analytics or Mixpanel will never get personally identifying information. If they have a breach we don't want you to be harmed. Information like name, address, or phone numbers might transmit over the wire through things like AWS Kinesis, but rests soley in our internal datastores.
+        Externally owned services like Google Analytics or Mixpanel will never get personally identifying information. If they have a breach we don&apos;t want you to be harmed. Information like name, address, or phone numbers might transmit over the wire through things like AWS Kinesis, but rests soley in our internal datastores.
       </p>
 
       <p>
@@ -62,7 +62,7 @@ export default function DataPolicy () {
       </Heading>
 
       <p>
-        Obviously we don't know what attackers will do and how they'll do it, but we can do our very best to ensure you know what has happened and how it happened. We will use our social media accounts to notify you, our user, and additionally send an email to the address we know.
+        Obviously we don&apos;t know what attackers will do and how they&apos;ll do it, but we can do our very best to ensure you know what has happened and how it happened. We will use our social media accounts to notify you, our user, and additionally send an email to the address we know.
       </p>
 
       <p>
@@ -74,16 +74,16 @@ export default function DataPolicy () {
           <strong>Google Analytics, Mixpanel, or external services:</strong> The data is rather meaningless. They would know a lot about our users as a collective, but not individual people.
         </li>
         <li>
-          <strong>AWS S3:</strong> They'd have access to images or assets you uploaded and more stream of activity type information as above.
+          <strong>AWS S3:</strong> They&apos;d have access to images or assets you uploaded and more stream of activity type information as above.
         </li>
         <li>
-          <strong>AWS RDS:</strong> They'd have access to all the information you stored, but not access to your personal information, password(s), comments, or identifying data. They could theoretically spend a "long time" on identifing a single user, but it would essentially be at random who they targeted.
+          <strong>AWS RDS:</strong> They&apos;d have access to all the information you stored, but not access to your personal information, password(s), comments, or identifying data. They could theoretically spend a &ldquo;long time&rdquo; on identifing a single user, but it would essentially be at random who they targeted.
         </li>
         <li>
-          <strong>Stripe:</strong> They would have access to our purchase and payout information, but not really anything beyond that. Stripe doesn't know who you are and the attacker wouldn't either.
+          <strong>Stripe:</strong> They would have access to our purchase and payout information, but not really anything beyond that. Stripe doesn&apos;t know who you are and the attacker wouldn&apos;t either.
         </li>
         <li>
-          <strong>Github:</strong> Were they to access our code...which is weird since it's free and open source... they would know only how our system works and see my crappy notes.
+          <strong>Github:</strong> Were they to access our code...which is weird since it&apos;s free and open source... they would know only how our system works and see my crappy notes.
         </li>
       </ul>
     </article>

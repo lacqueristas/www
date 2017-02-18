@@ -4,7 +4,7 @@ import {Provider} from "react-redux"
 
 import {Application} from "../components"
 import store from "./store"
-import {history} from "./history"
+import history from "./history"
 import * as signals from "./signals"
 
 history.listen(function locationChange (next, action) {

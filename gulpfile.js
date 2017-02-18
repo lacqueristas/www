@@ -1,4 +1,4 @@
-/* eslint import/no-commonjs: "off", node/no-unpublished-require: "off" */
+/* eslint-disable import/no-commonjs, node/no-unpublished-require, import/max-dependencies */
 const {join} = require("path")
 const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")

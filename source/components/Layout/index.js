@@ -21,6 +21,8 @@ export default class Layout extends PureComponent {
 
   static defaultProps = {
     hasFooter: true,
+    title: null,
+    subtitle: null,
   }
 
   render () {

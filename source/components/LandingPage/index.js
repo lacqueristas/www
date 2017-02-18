@@ -28,11 +28,7 @@ export default function LandingPage () {
       </section>
 
       <section id="call-to-action">
-        {
-          isSiteReady
-          ? <Registration />
-          : <Newsletter />
-        }
+        {isSiteReady ? <Registration /> : <Newsletter />}
         <Newsletter />
       </section>
     </section>

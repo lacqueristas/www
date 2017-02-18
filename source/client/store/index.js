@@ -1,4 +1,4 @@
-/* eslint immutable/no-mutation: "off"  */
+/* eslint-disable immutable/no-mutation  */
 import {createStore} from "redux"
 import {applyMiddleware} from "redux"
 import createLogger from "redux-logger"

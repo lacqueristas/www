@@ -36,6 +36,7 @@ export default class Heading extends PureComponent {
   static defaultProps = {
     customHeadingsStyle: {},
     customSubtitlesStyle: {},
+    subtitle: null,
   }
 
   render () {
@@ -47,12 +48,14 @@ export default class Heading extends PureComponent {
     const HeadingElement = headings[kind]
 
     return <header data-component="Heading">
-      <HeadingElement data-component="Heading" className={`Heading-${kind}`} style={{...customHeadingsStyle, ...headingsStyle[kind]}}>
+      <HeadingElement
+        data-component="Heading"
+        className={`Heading-${kind}`}
+        style={{...customHeadingsStyle, ...headingsStyle[kind]}}
+      >
         {children}
       </HeadingElement>
-      {
-        subtitle && <p className={`Heading-${kind}-subtitle`} style={{...customSubtitlesStyle, ...subtitlesStyle[kind]}}>{subtitle}</p>
-      }
+      {subtitle && <p className={`Heading-${kind}-subtitle`} style={{...customSubtitlesStyle, ...subtitlesStyle[kind]}}>{subtitle}</p>}
     </header>
   }
 }
