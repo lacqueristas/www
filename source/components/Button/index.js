@@ -2,24 +2,34 @@ import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
 import {primaryInteraction} from "../styles"
+import {secondaryInteraction} from "../styles"
 
 const styles = {
   primary: {
-    ...primaryInteraction
-  }
+    ...primaryInteraction,
+  },
+  secondary: {
+    ...secondaryInteraction,
+  },
 }
+const kinds = [
+  "primary",
+  "secondary",
+  "normal",
+]
 
 export default connect()(class Button extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
-    kind: PropTypes.oneOf(["primary"]).isRequired,
-    type: PropTypes.oneOf(["submit", "reset"]),
-    dispatch: PropTypes.func.isRequired
+    style: PropTypes.object.isRequired,
+    kind: PropTypes.oneOf(kinds).isRequired,
+    type: PropTypes.oneOf(["submit", "reset"]).isRequired,
+    dispatch: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     style: {},
+    kind: "normal",
   }
 
   onClick () {
@@ -39,14 +49,9 @@ export default connect()(class Button extends PureComponent {
     const {children} = this.props
     const {kind} = this.props
     const {type} = this.props
+    const {style} = this.props
 
-    if (type) {
-      return <button type={type} style={styles[kind]}>
-        {children}
-      </button>
-    }
-
-    return <button style={styles[kind]}>
+    return <button type={type} style={{...styles[kind], ...style}}>
       {children}
     </button>
   }

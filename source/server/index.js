@@ -1,13 +1,15 @@
 import {join} from "path"
 import requireEnvironmentVariables from "require-environment-variables"
-import React from "react"
+import {createElement} from "react"
 import {Provider} from "react-redux"
 import {renderToStaticMarkup} from "react-dom/server"
+import {getCss} from "cxs"
 import express from "express"
 import cors from "cors"
 import morgan from "morgan"
 import compression from "compression"
 import urlParse from "url-parse"
+import {replace} from "ramda"
 
 import {Application} from "../components"
 import store from "./store"
@@ -20,6 +22,8 @@ requireEnvironmentVariables([
   "ORIGIN_LOCATION",
 ])
 
+const cssEmbed = replace("<style type=\"text/css\" data-id=\"cxs\"></style>")
+
 const application = express()
 
 application.use(cors())
@@ -31,12 +35,10 @@ application.get("*", function get (request, response) {
   const navigation = urlParse(request.url, true)
   const signals = {}
   const html = renderToStaticMarkup(
-    <Provider store={store}>
-      <Application navigation={navigation} signals={signals} />
-    </Provider>
+    createElement(Provider, {store}, createElement(Application, {navigation, signals}))
   )
 
-  return response.send(`<!DOCTYPE html>${html}`)
+  return response.send(cssEmbed(`<style type="text/css">${getCss()}</style>`, `<!DOCTYPE html>${html}`))
 })
 
 application.listen(process.env.PORT, () => {

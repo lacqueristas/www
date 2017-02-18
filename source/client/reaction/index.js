@@ -7,7 +7,7 @@ import mergeResource from "./mergeResource"
 import updateInput from "./updateInput"
 import updateNavigation from "./updateNavigation"
 import clearForm from "./clearForm"
-import storeToken from "./storeToken"
+import storeSelf from "./storeSelf"
 
 const defaultReaction = prop("state")
 const trailing = aside(
@@ -18,7 +18,7 @@ export const events = {
   mergeResource,
   updateInput,
   clearForm,
-  storeToken,
+  storeSelf,
   updateNavigation,
 }
 export default function reaction (state, signal) {

@@ -1,16 +1,27 @@
 import React from "react"
 
 import Layout from "../Layout"
-import Anchor from "../Anchor"
+import WelcomeMessage from "./WelcomeMessage"
 
-export default function LandingPage () {
+import {connect} from "react-redux"
+import {path} from "ramda"
+const currentSession = (state) => {
+  const id = path(["ephemeral", "self", "id"], state)
+
+  return path(["resources", "sessions", id], state)
+}
+const associatedAccount = (session) => {
+  return path(["relationships", "account"], session)
+}
+const withName = connect((state) => {
+  return {
+    name: path(["data", "attributes", "name"], associatedAccount(currentSession(state))),
+  }
+})
+export default function FrontPage () {
   return <Layout subtitle="The Front Page of Polish">
-    <section>
-      <Anchor kind="primary" href="/sign-up">
-        Join us
-      </Anchor>
-
-      <Anchor kind="normal" href="/sign-in">Login</Anchor>
+    <section data-component="FrontPage">
+      <WelcomeMessage />
     </section>
   </Layout>
 }

@@ -1,21 +1,16 @@
 import React from "react"
 
 import Anchor from "../../Anchor"
-
-const registrationStyle = {
-  padding: 25,
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-around"
-}
+import ButtonGroup from "../../ButtonGroup"
 
 export default function Registration () {
-  return <section style={registrationStyle}>
+  return <ButtonGroup>
     <Anchor kind="primary" href="/sign-up">
       Join us
     </Anchor>
 
-    <Anchor kind="normal" href="/sign-in">Login</Anchor>
-  </section>
+    <Anchor kind="secondary" href="/sign-in">
+      Login
+    </Anchor>
+  </ButtonGroup>
 }

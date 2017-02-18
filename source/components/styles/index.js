@@ -1,13 +1,37 @@
 import {primary} from "../colors"
+import {dark} from "../colors"
+import {secondaryText} from "../colors"
+
+const interaction = {
+  backgroundColor: "white",
+  borderRadius: 3,
+  borderStyle: "solid",
+  borderWidth: 2,
+  boxSizing: "border-box",
+  cursor: "pointer",
+  display: "inline-block",
+  fontFamily: "'Open Sans', sans-serif",
+  height: "inherit",
+  letterSpacing: ".1rem",
+  lineHeight: "38px",
+  textAlign: "center",
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+  width: "100%",
+}
 
 export const primaryInteraction = {
-  fontFamily: "'Open Sans', sans-serif",
-  background: "#ffffff",
-  borderWidth: "2px",
-  borderStyle: "solid",
+  ...interaction,
+  color: dark,
   borderColor: primary,
-  borderRadius: 3,
-  textDecoration: "none",
-  width: "100%",
-  height: "inherit"
+  fontWeight: 600,
+  paddingLeft: 30,
+  paddingRight: 30,
+  textTransform: "uppercase",
+}
+export const secondaryInteraction = {
+  ...interaction,
+  color: secondaryText,
+  borderColor: secondaryText,
+  borderWidth: 1,
 }

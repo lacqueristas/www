@@ -2,22 +2,31 @@ import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
 import {primaryInteraction} from "../styles"
+import {secondaryInteraction} from "../styles"
 
 const styles = {
   primary: {
     ...primaryInteraction,
   },
-  normal: {}
+  secondary: {
+    ...secondaryInteraction,
+  },
+  normal: {},
 }
 const MIDDLE_CLICK = 0
+const kinds = [
+  "primary",
+  "secondary",
+  "normal",
+]
 
 export default connect()(class Anchor extends PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
-    style: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+    style: PropTypes.object.isRequired,
     href: PropTypes.string.isRequired,
-    kind: PropTypes.oneOf(["primary", "normal"]).isRequired
+    kind: PropTypes.oneOf(kinds).isRequired,
   }
 
   static defaultProps = {
@@ -28,6 +37,7 @@ export default connect()(class Anchor extends PureComponent {
   static contextTypes = {
     signals: PropTypes.shape({
       clickAnchor: global.window ? PropTypes.func.isRequired : PropTypes.func,
+    }).isRequired,
   }
 
   onClick () {

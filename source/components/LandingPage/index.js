@@ -12,11 +12,11 @@ const landingPageStyle = {
   paddingTop: 150,
   paddingBottom: 150
 }
-const isSiteReady = false
+const isSiteReady = true
 
 export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish">
-    <section data-componet="LandingPage" style={landingPageStyle}>
+    <section data-component="LandingPage" style={landingPageStyle}>
       <section id="brand">
         <Heading kind="page" subtitle="Welcome to Polish">
           Lacqueristas
@@ -33,6 +33,7 @@ export default function LandingPage () {
           ? <Registration />
           : <Newsletter />
         }
+        <Newsletter />
       </section>
     </section>
   </Layout>

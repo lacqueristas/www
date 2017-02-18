@@ -5,8 +5,9 @@ const defaultRelationship = {}
 
 export default function asGetter (tree) {
   return function asGetterWithTree (relationship) {
-    return function getter () {
-      const {data} = relationship
+    const {data} = relationship
+
+    if (data) {
       const {id} = data
       const {type} = data
 
@@ -17,5 +18,7 @@ export default function asGetter (tree) {
         }
       )
     }
+
+    return {}
   }
 }

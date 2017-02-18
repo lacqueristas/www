@@ -1,9 +1,8 @@
 import {prop} from "ramda"
-import {path} from "ramda"
 import {asideP} from "ramda-extra"
 
 import mergeResource from "../../mergeResource"
-import storeToken from "../../storeToken"
+import storeSelf from "../../storeSelf"
 
 export default function createSessions ({attributes, dispatch}) {
   const {email} = attributes
@@ -23,7 +22,6 @@ export default function createSessions ({attributes, dispatch}) {
     })
       .then(prop("data"))
       .then(asideP(mergeResource, dispatch))
-      .then(path(["data", "meta"]))
-      .then(asideP(storeToken, dispatch))
+      .then(asideP(({data}) => ({id: data.id}), storeSelf, dispatch))
   }
 }

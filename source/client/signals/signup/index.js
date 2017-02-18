@@ -9,8 +9,8 @@ import createSession from "./createSession"
 
 export default function signup ({slug}) {
   return function thunk (dispatch, getState, {sdk}) {
-    const {ui} = getState()
-    const {forms} = ui
+    const {ephemeral} = getState()
+    const {forms} = ephemeral
     const attributes = forms[slug]
 
     return sdk

@@ -4,11 +4,10 @@ import {omit} from "ramda"
 import {mergeDeep} from "ramda-extra"
 
 const raw = {
-  ui: {
+  ephemeral: {
     forms: {},
   },
   resources: {},
-  ephemeral: {}
 }
 
 export default function initialState () {
