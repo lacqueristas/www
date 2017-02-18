@@ -1,13 +1,10 @@
 FROM node:7.1.0-alpine
 
-ENV \
-  APPLICATION=/usr/lib/www \
-  NPM_CONFIG_LOGLEVEL=warn \
-  NODE_ENV=production
+ENV APPLICATION /usr/lib/www
+ENV NPM_CONFIG_LOGLEVEL warn
+ENV NODE_ENV production
 
 WORKDIR $APPLICATION
-
-RUN apk add --no-cache tzdata
 
 COPY package.json $APPLICATION/
 
@@ -17,12 +14,6 @@ COPY source/ $APPLICATION/source
 COPY .babelrc $APPLICATION/
 COPY gulpfile.js $APPLICATION/
 
-RUN \
-  npm run build \
-  && \
-  npm run minify
+RUN npm run build
 
-ENV \
-  PORT=3001
-
-CMD npm start
+CMD npm run start
