@@ -5,21 +5,15 @@
   "main": "transpiled/server/index.js",
   "scripts": {
     "start": "node './transpiled/server/index.js'",
-    "build": "npm-run-all build:transpiled --parallel build:server build:components build:assets build:client",
-    "build:transpiled": "mkdir -p './transpiled/client/' './transpiled/server'",
-    "build:server": "babel --ignore './source/**/test.js' -d './transpiled/server/' './source/server/'",
-    "build:components": "babel --ignore './source/**/test.js' -d './transpiled/components/' './source/components/'",
-    "build:assets": "gulp build",
-    "build:client": "browserify --verbose --transform babelify --outfile './transpiled/client/index.js' --entry './source/client/index.js'",
+    "build": "gulp build",
+    "build:server": "gulp server",
+    "build:client": "gulp client",
+    "build:components": "gulp server client",
     "watch": "npm-run-all --parallel watch:build watch:lint watch:test",
     "watch:lint": "chokidar './source/' --command 'npm run lint --silent'",
     "watch:test": "chokidar './source/' --command 'npm run test --silent'",
-    "watch:build": "npm-run-all --parallel watch:build:server watch:build:components watch:build:client watch:build:assets",
-    "watch:build:server": "chokidar './source/server/' --command 'npm run build:server --silent'",
-    "watch:build:components": "chokidar './source/components/' --command 'npm run build:components --silent'",
-    "watch:build:assets": "chokidar './source/assets/' --command 'npm run build:assets --silent'",
-    "watch:build:client": "watchify --verbose --transform babelify --outfile './transpiled/client/index.js' --entry './source/client/index.js'",
-    "minify": "uglifyjs --compress --mangle --output './transpiled/client/index.js' -- './transpiled/client/index.js'",
+    "watch:build": "gulp watch",
+    "minify": "uglifyjs --compress --mangle --output './transpiled/public/index.js' -- './transpiled/public/index.js'",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
     "lint": "eslint './source/'"
   },
@@ -55,8 +49,7 @@
     "eslint-plugin-node": "^3",
     "eslint-plugin-react": "^6",
     "greenkeeper": "^4",
-    "mocha": "^3",
-    "watchify": "^3"
+    "mocha": "^3"
   },
   "dependencies": {
     "abstraction": "^9",
@@ -66,7 +59,6 @@
     "babel-plugin-transform-runtime": "^6",
     "babel-preset-latest": "^6",
     "babel-preset-react": "^6",
-    "babel-runtime": "^6",
     "babelify": "^7",
     "body-parser": "^1",
     "browserify": "^13",
@@ -75,9 +67,12 @@
     "compression": "^1",
     "cors": "^2",
     "dotenv": "^4",
+    "cxs": "^3.0.4",
     "express": "^4",
     "font-awesome": "^4",
     "gulp": "^3",
+    "gulp-babel": "^6",
+    "gulp-changed": "^1",
     "gulp-cli": "^1",
     "gulp-concat": "^2",
     "gulp-gzip": "^1",
@@ -94,7 +89,6 @@
     "ramda-extra": "^1",
     "raw-body": "^2",
     "react": "^15",
-    "react-addons-shallow-compare": "^15",
     "react-dom": "^15",
     "react-redux": "^4",
     "redux": "^3",
@@ -104,7 +98,8 @@
     "require-environment-variables": "^1",
     "skeleton-css": "^2",
     "store": "^1",
-    "uglify-js": "^2",
-    "url-parse": "^1"
+    "url-parse": "^1",
+    "vinyl-buffer": "^1",
+    "vinyl-source-stream": "^1"
   }
 }
