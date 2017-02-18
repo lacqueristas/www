@@ -13,7 +13,7 @@ export default function asGetter (tree) {
       return mergeDeep(
         relationship,
         {
-          data: pathOr(defaultRelationship, [type, id], tree)
+          data: pathOr(defaultRelationship, [type, id], tree),
         }
       )
     }

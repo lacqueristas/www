@@ -7,8 +7,8 @@ import Footer from "../Footer"
 
 const styles = {
   main: {
-    minHeight: 400
-  }
+    minHeight: 400,
+  },
 }
 
 export default class Layout extends PureComponent {
@@ -16,11 +16,11 @@ export default class Layout extends PureComponent {
     children: PropTypes.node.isRequired,
     title: PropTypes.string,
     subtitle: PropTypes.string,
-    hasFooter: PropTypes.bool.isRequired
+    hasFooter: PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
-    hasFooter: true
+    hasFooter: true,
   }
 
   render () {

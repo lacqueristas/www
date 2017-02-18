@@ -16,10 +16,10 @@ export default function createSessions ({attributes, dispatch}) {
           type: "sessions",
           attributes: {
             email,
-            password
-          }
-        }
-      }
+            password,
+          },
+        },
+      },
     })
       .then(prop("data"))
       .then(asideP(mergeResource, dispatch))

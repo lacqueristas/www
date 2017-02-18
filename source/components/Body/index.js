@@ -5,7 +5,7 @@ import {neutral} from "../colors"
 
 const style = {
   backgroundColor: neutral,
-  fontSize: 18
+  fontSize: 18,
 }
 
 export default function Body ({children}) {

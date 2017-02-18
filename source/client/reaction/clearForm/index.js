@@ -6,6 +6,6 @@ export default function clearForm ({state, payload: {slug}}) {
     ui: {
       ...state.ui,
       forms: omit(slug, state.ui.forms)
-    }
+    },
   }
 }

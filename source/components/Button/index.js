@@ -19,7 +19,7 @@ export default connect()(class Button extends PureComponent {
   }
 
   static defaultProps = {
-    style: {}
+    style: {},
   }
 
   onClick () {

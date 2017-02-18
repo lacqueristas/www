@@ -24,6 +24,6 @@ export default regexpMap(
     [path("terms-of-service")]: TermsOfService,
     [path("this-is-us")]: ThisIsUs,
     [path("sign-up")]: SignUp,
-    [path("front-page")]: FrontPage
+    [path("front-page")]: FrontPage,
   }
 )

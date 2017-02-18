@@ -4,24 +4,24 @@ import {secondaryText as secondaryTextColor} from "../colors"
 
 const headings = {
   page: "h1",
-  section: "h2"
+  section: "h2",
 }
 const headingsStyle = {
   page: {
-    fontFamily: "'Handlee', cursive"
+    fontFamily: "'Handlee', cursive",
   },
   section: {
-    fontFamily: "'Open Sans', sans-serif"
-  }
+    fontFamily: "'Open Sans', sans-serif",
+  },
 }
 const subtitlesStyle = {
   page: {
     color: secondaryTextColor,
-    textAlign: "center"
+    textAlign: "center",
   },
   section: {
-    color: secondaryTextColor
-  }
+    color: secondaryTextColor,
+  },
 }
 
 export default class Heading extends PureComponent {
@@ -30,12 +30,12 @@ export default class Heading extends PureComponent {
     subtitle: PropTypes.string,
     customHeadingsStyle: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
     customSubtitlesStyle: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
-    kind: PropTypes.oneOf(["page", "section"]).isRequired
+    kind: PropTypes.oneOf(["page", "section"]).isRequired,
   }
 
   static defaultProps = {
     customHeadingsStyle: {},
-    customSubtitlesStyle: {}
+    customSubtitlesStyle: {},
   }
 
   render () {

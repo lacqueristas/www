@@ -5,7 +5,7 @@ import {primaryInteraction} from "../styles"
 
 const styles = {
   primary: {
-    ...primaryInteraction
+    ...primaryInteraction,
   },
   normal: {}
 }
@@ -22,13 +22,12 @@ export default connect()(class Anchor extends PureComponent {
 
   static defaultProps = {
     style: {},
-    kind: "normal"
+    kind: "normal",
   }
 
   static contextTypes = {
     signals: PropTypes.shape({
-      clickAnchor: global.window ? PropTypes.func.isRequired : PropTypes.func
-    }).isRequired
+      clickAnchor: global.window ? PropTypes.func.isRequired : PropTypes.func,
   }
 
   onClick () {

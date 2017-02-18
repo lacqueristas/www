@@ -3,6 +3,6 @@ export default function initialState () {
     ui: {
       forms: {}
     },
-    data: {}
+    data: {},
   }
 }

@@ -6,9 +6,9 @@ export default function updateInput ({state, payload: {slug, attributes}}) {
     {
       ui: {
         forms: {
-          [slug]: attributes
-        }
-      }
-    }
+          [slug]: attributes,
+        },
+      },
+    },
   )
 }

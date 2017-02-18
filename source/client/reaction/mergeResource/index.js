@@ -6,6 +6,6 @@ import asGraph from "./asGraph"
 export default function mergeResource ({state, payload}) {
   return {
     ...state,
-    resources: asGraph(mergeDeep(state.resources, treeify([payload.data])))
+    resources: asGraph(mergeDeep(state.resources, treeify([payload.data]))),
   }
 }

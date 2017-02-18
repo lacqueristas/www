@@ -19,7 +19,7 @@ export const events = {
   updateInput,
   clearForm,
   storeToken,
-  updateNavigation
+  updateNavigation,
 }
 export default function reaction (state, signal) {
   const {type} = signal

@@ -11,19 +11,19 @@ export default connectNavigation(class Application extends PureComponent {
     signals: PropTypes.objectOf(PropTypes.func).isRequired,
     navigation: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
-      query: PropTypes.object
-    }).isRequired
+      query: PropTypes.object,
+    }).isRequired,
   }
 
   static childContextTypes = {
-    signals: PropTypes.object.isRequired
+    signals: PropTypes.object.isRequired,
   }
 
   getChildContext () {
     const {signals} = this.props
 
     return {
-      signals
+      signals,
     }
   }
 

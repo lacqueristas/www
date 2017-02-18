@@ -5,7 +5,7 @@ import {mergeDeep} from "ramda-extra"
 
 const raw = {
   ui: {
-    forms: {}
+    forms: {},
   },
   resources: {},
   ephemeral: {}
@@ -16,7 +16,7 @@ export default function initialState () {
     raw,
     {
       navigation: urlParse(location, true),
-      ...omit("navigation", get("state"))
+      ...omit("navigation", get("state")),
     }
   )
 }

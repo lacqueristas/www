@@ -16,10 +16,10 @@ export default function createAccount ({attributes, dispatch}) {
           attributes: {
             name,
             email,
-            password
-          }
-        }
-      }
+            password,
+          },
+        },
+      },
     })
       .then(prop("data"))
       .then(aside(mergeResource, dispatch))

@@ -22,15 +22,15 @@ const footerStyle = {
   paddingTop: 75,
   paddingBottom: 100,
   backgroundColor: darkColor,
-  color: neutralColor
+  color: neutralColor,
 }
 const columnStyle = {
   display: "flex",
   flexDirection: "column",
-  flex: 1
+  flex: 1,
 }
 const headingStyle = {
-  fontSize: "3rem"
+  fontSize: "3rem",
 }
 
 export default function Footer () {
