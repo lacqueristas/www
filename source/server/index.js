@@ -1,5 +1,4 @@
 import {join} from "path"
-import Dotenv from "dotenv"
 import requireEnvironmentVariables from "require-environment-variables"
 import React from "react"
 import {Provider} from "react-redux"
@@ -13,10 +12,6 @@ import urlParse from "url-parse"
 import {Application} from "../components"
 import store from "./store"
 import {logger} from "./remote"
-
-Dotenv.load({
-  silent: true
-})
 
 requireEnvironmentVariables([
   "PORT",
