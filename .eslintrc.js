@@ -28,7 +28,6 @@ module.exports = {
     "arrow-spacing": "error",
     "babel/new-cap": "error",
     "babel/no-invalid-this": "error",
-    "babel/object-curly-spacing": "error",
     "block-scoped-var": "error",
     "block-spacing": "error",
     "brace-style": "error",
