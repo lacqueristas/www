@@ -17,7 +17,7 @@ window.env = reduce(
 
     return {
       ...previous,
-      [element.getAttribute("name")]: element.getAttribute("content")
+      [element.getAttribute("name")]: element.getAttribute("content"),
     }
   },
   {},
@@ -33,7 +33,7 @@ export default createStore(
     thunkMiddleware.withExtraArgument({sdk}),
     createLogger({
       duration: true,
-      collapsed: true
+      collapsed: true,
     })
   )
 )

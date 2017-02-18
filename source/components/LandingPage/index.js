@@ -10,7 +10,7 @@ const landingPageStyle = {
   justifyContent: "center",
   alignItems: "center",
   paddingTop: 150,
-  paddingBottom: 150
+  paddingBottom: 150,
 }
 const isSiteReady = true
 

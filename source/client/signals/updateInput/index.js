@@ -4,8 +4,8 @@ export default function updateInput ({slug, name, value}) {
     payload: {
       slug,
       attributes: {
-        [name]: value
-      }
-    }
+        [name]: value,
+      },
+    },
   }
 }

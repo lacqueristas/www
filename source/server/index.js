@@ -41,6 +41,4 @@ application.get("*", function get (request, response) {
   return response.send(cssEmbed(`<style type="text/css">${getCss()}</style>`, `<!DOCTYPE html>${html}`))
 })
 
-application.listen(process.env.PORT, () => {
-  return logger.info(`Listening to ${process.env.PORT}`)
-})
+application.listen(process.env.PORT, () => logger.info(`Listening to ${process.env.PORT}`))

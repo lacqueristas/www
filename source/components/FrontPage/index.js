@@ -10,14 +10,11 @@ const currentSession = (state) => {
 
   return path(["resources", "sessions", id], state)
 }
-const associatedAccount = (session) => {
-  return path(["relationships", "account"], session)
-}
-const withName = connect((state) => {
-  return {
-    name: path(["data", "attributes", "name"], associatedAccount(currentSession(state))),
-  }
-})
+const associatedAccount = (session) => path(["relationships", "account"], session)
+const withName = connect((state) => ({
+  name: path(["data", "attributes", "name"], associatedAccount(currentSession(state))),
+}))
+
 export default function FrontPage () {
   return <Layout subtitle="The Front Page of Polish">
     <section data-component="FrontPage">
