@@ -1,16 +1,14 @@
 import React, {PureComponent, PropTypes} from "react"
+import cxs from "cxs"
 import {connect} from "react-redux"
+import {mergeDeep} from "ramda-extra"
 
 import {primaryInteraction} from "../styles"
 import {secondaryInteraction} from "../styles"
 
 const styles = {
-  primary: {
-    ...primaryInteraction,
-  },
-  secondary: {
-    ...secondaryInteraction,
-  },
+  primary: primaryInteraction,
+  secondary: secondaryInteraction,
   normal: {},
 }
 const MIDDLE_CLICK = 0
@@ -34,11 +32,7 @@ export default connect()(class Anchor extends PureComponent {
     kind: "normal",
   }
 
-  static contextTypes = {
-    signals: PropTypes.shape({
-      clickAnchor: global.window ? PropTypes.func.isRequired : PropTypes.func,
-    }).isRequired,
-  }
+  static contextTypes = {signals: PropTypes.shape({clickAnchor: PropTypes.func})}
 
   onClick () {
     const {dispatch} = this.props
@@ -67,8 +61,12 @@ export default connect()(class Anchor extends PureComponent {
     const {href} = this.props
     const {style} = this.props
     const {kind} = this.props
+    const combineStyle = mergeDeep(
+      styles[kind],
+      style
+    )
 
-    return <a href={href} style={{...styles[kind], ...style}} onClick={this.onClick()}>
+    return <a href={href} className={cxs(combineStyle)} onClick={this.onClick()}>
       {children}
     </a>
   }

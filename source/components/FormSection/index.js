@@ -40,11 +40,7 @@ export default withForm(class FormSection extends PureComponent {
     value: null,
   }
 
-  static contextTypes = {
-    signals: PropTypes.shape({
-      updateInput: global.window ? PropTypes.func.isRequired : PropTypes.func,
-    }).isRequired,
-  }
+  static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func})}
 
   constructor (props) {
     super(props)
@@ -65,7 +61,11 @@ export default withForm(class FormSection extends PureComponent {
 
       this.setState({value})
 
-      return dispatch(updateInput({slug, name, value}))
+      return dispatch(updateInput({
+        slug,
+        name,
+        value,
+      }))
     }.bind(this)
   }
 
@@ -78,10 +78,11 @@ export default withForm(class FormSection extends PureComponent {
     const {style} = this.props
     const {value: initialValue} = this.props
     const {value: localValue} = this.state
+    const combineStyle = mergeDeep(baseStyle, style)
 
-    return <section className={cxs(mergeDeep(baseStyle, style))}>
+    return <section className={cxs(combineStyle)}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name || id} type={type} required={required} value={initialValue || localValue} onChange={this.onChangeInput()}/>
+      <input id={id} name={name || id} type={type} required={required} value={initialValue || localValue} onChange={this.onChangeInput()} />
     </section>
   }
 })

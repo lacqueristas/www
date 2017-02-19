@@ -26,5 +26,8 @@ export default function reaction (state, signal) {
   const {payload = {}} = signal
   const currentReaction = events[type] || defaultReaction
 
-  return trailing(currentReaction({state, payload}))
+  return trailing(currentReaction({
+    state,
+    payload,
+  }))
 }

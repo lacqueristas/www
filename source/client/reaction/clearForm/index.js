@@ -1,6 +1,8 @@
 import {omit} from "ramda"
 
-export default function clearForm ({state, payload: {slug}}) {
+export default function clearForm ({state, payload}) {
+  const {slug} = payload
+
   return {
     ...state,
     ephemeral: {

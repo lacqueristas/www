@@ -1,15 +1,11 @@
 import React, {PureComponent, PropTypes} from "react"
+import cxs from "cxs"
 
 import Head from "../Head"
 import Body from "../Body"
 import Footer from "../Footer"
 
-
-const styles = {
-  main: {
-    minHeight: 400,
-  },
-}
+const mainStyle = cxs({minHeight: 400})
 
 export default class Layout extends PureComponent {
   static propTypes = {
@@ -41,7 +37,7 @@ export default class Layout extends PureComponent {
     return <html lang="en">
       <Head title={title} subtitle={subtitle} />
       <Body>
-        <main data-component="Layout" style={styles.main}>
+        <main data-component="Layout" className={mainStyle}>
           {children}
           {hasFooter && <Footer />}
         </main>

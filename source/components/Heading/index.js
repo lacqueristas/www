@@ -1,4 +1,6 @@
 import React, {PureComponent, PropTypes} from "react"
+import cxs from "cxs"
+import {mergeDeep} from "ramda-extra"
 
 import {secondaryText as secondaryTextColor} from "../colors"
 
@@ -7,21 +9,15 @@ const headings = {
   section: "h2",
 }
 const headingsStyle = {
-  page: {
-    fontFamily: "'Handlee', cursive",
-  },
-  section: {
-    fontFamily: "'Open Sans', sans-serif",
-  },
+  page: {fontFamily: "'Handlee', cursive"},
+  section: {fontFamily: "'Open Sans', sans-serif"},
 }
 const subtitlesStyle = {
   page: {
     color: secondaryTextColor,
     textAlign: "center",
   },
-  section: {
-    color: secondaryTextColor,
-  },
+  section: {color: secondaryTextColor},
 }
 
 export default class Heading extends PureComponent {
@@ -46,16 +42,20 @@ export default class Heading extends PureComponent {
     const {kind} = this.props
     const {subtitle} = this.props
     const HeadingElement = headings[kind]
+    const combineHeadingStyle = mergeDeep(
+      headingsStyle[kind],
+      customHeadingsStyle
+    )
+    const combineSubtitleStyle = mergeDeep(
+      subtitlesStyle[kind],
+      customSubtitlesStyle
+    )
 
     return <header data-component="Heading">
-      <HeadingElement
-        data-component="Heading"
-        className={`Heading-${kind}`}
-        style={{...customHeadingsStyle, ...headingsStyle[kind]}}
-      >
+      <HeadingElement data-component="Heading" data-kind={kind} className={cxs(combineHeadingStyle)}>
         {children}
       </HeadingElement>
-      {subtitle && <p className={`Heading-${kind}-subtitle`} style={{...customSubtitlesStyle, ...subtitlesStyle[kind]}}>{subtitle}</p>}
+      {subtitle && <p className={cxs(combineSubtitleStyle)}>{subtitle}</p>}
     </header>
   }
 }

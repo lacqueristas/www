@@ -24,13 +24,9 @@ export default withForm(class Form extends PureComponent {
     style: PropTypes.object.isRequired,
   }
 
-  static defaultProps = {
-    style: {},
-  }
+  static defaultProps = {style: {}}
 
-  static contextTypes = {
-    signals: PropTypes.object.isRequired,
-  }
+  static contextTypes = {signals: PropTypes.object.isRequired}
 
   onSubmitForm () {
     const {dispatch} = this.props
@@ -52,9 +48,8 @@ export default withForm(class Form extends PureComponent {
     const {slug} = this.props
     const {children} = this.props
     const {style} = this.props
-    const className = cxs(style)
 
-    return <form data-component={name} onSubmit={this.onSubmitForm()} data-action={action} data-slug={slug} name={name} className={className}>
+    return <form data-component={name} onSubmit={this.onSubmitForm()} data-action={action} data-slug={slug} name={name} className={cxs(style)}>
       {children}
     </form>
   }

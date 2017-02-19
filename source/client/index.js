@@ -2,7 +2,7 @@ import React from "react"
 import {render} from "react-dom"
 import {Provider} from "react-redux"
 
-import {Application} from "../components"
+import Application from "../components"
 import store from "./store"
 import history from "./history"
 import * as signals from "./signals"

@@ -1,4 +1,5 @@
 import React from "react"
+import cxs from "cxs"
 
 import Anchor from "../Anchor"
 import Heading from "../Heading"
@@ -6,15 +7,14 @@ import {dark as darkColor} from "../colors"
 import {neutral as neutralColor} from "../colors"
 import {inverseAnchor as inverseAnchorColor} from "../colors"
 
-const documentationStyle = {
-
+const columnStyle = {
+  display: "flex",
+  flexDirection: "column",
+  flex: 1,
 }
-const copyrightStyle = {
-
-}
-const socialStyle = {
-
-}
+const documentationStyle = columnStyle
+const copyrightStyle = columnStyle
+const socialStyle = columnStyle
 const footerStyle = {
   display: "flex",
   flexDirection: "row",
@@ -24,45 +24,41 @@ const footerStyle = {
   backgroundColor: darkColor,
   color: neutralColor,
 }
-const columnStyle = {
-  display: "flex",
-  flexDirection: "column",
-  flex: 1,
-}
-const headingStyle = {
-  fontSize: "3rem",
-}
+const headingStyle = {fontSize: "3rem"}
+const linkStyle = {color: inverseAnchorColor}
 
 export default function Footer () {
-  return <footer data-component="Footer" style={footerStyle}>
-    <section data-intent="documentation links" style={{...columnStyle, ...documentationStyle}}>
+  return <footer data-component="Footer" className={cxs(footerStyle)}>
+    <section data-intent="documentation links" className={cxs(documentationStyle)}>
       <Heading kind="section" customHeadingsStyle={headingStyle}>
         Documentation
       </Heading>
-      <Anchor kind="normal" style={{color: inverseAnchorColor}} href="/this-is-us">This Is Us</Anchor>
-      <Anchor kind="normal" style={{color: inverseAnchorColor}} href="/code-of-conduct">Code of Conduct</Anchor>
-      <Anchor kind="normal" style={{color: inverseAnchorColor}} href="/data-policy">Data Policy</Anchor>
-      <Anchor kind="normal" style={{color: inverseAnchorColor}} href="/our-technology">Our Technology</Anchor>
-      <Anchor kind="normal" style={{color: inverseAnchorColor}} href="/privacy-policy">Privacy Policy</Anchor>
-      <Anchor kind="normal" style={{color: inverseAnchorColor}} href="/terms-of-service">Terms Of Service</Anchor>
+      <Anchor className={cxs(linkStyle)} href="/this-is-us">This Is Us</Anchor>
+      <Anchor className={cxs(linkStyle)} href="/code-of-conduct">Code of Conduct</Anchor>
+      <Anchor className={cxs(linkStyle)} href="/data-policy">Data Policy</Anchor>
+      <Anchor className={cxs(linkStyle)} href="/our-technology">Our Technology</Anchor>
+      <Anchor className={cxs(linkStyle)} href="/privacy-policy">Privacy Policy</Anchor>
+      <Anchor className={cxs(linkStyle)} href="/terms-of-service">Terms Of Service</Anchor>
     </section>
 
-    <section data-intent="copyright information" style={{...columnStyle, ...copyrightStyle}}>
+    <section data-intent="copyright information" className={cxs(copyrightStyle)}>
       <Heading kind="section" customHeadingsStyle={headingStyle}>
         Legal
       </Heading>
       <p>
-        <strong>Lacqueristas</strong> by <Anchor style={{color: inverseAnchorColor}} href="https://www.kurtisrainboltgreene.name">Kurtis Rainbolt-Greene</Anchor>. The source code is licensed <Anchor style={{color: inverseAnchorColor}} href="http://opensource.org/licenses/isc-license.php">ISC</Anchor>. The website content is licensed <Anchor style={{color: inverseAnchorColor}} href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</Anchor>.
+        <strong>Lacqueristas</strong> by <Anchor className={cxs(linkStyle)} href="https://www.kurtisrainboltgreene.name">Kurtis Rainbolt-Greene</Anchor>.
+        The source code is licensed <Anchor className={cxs(linkStyle)} href="http://opensource.org/licenses/isc-license.php">ISC</Anchor>.
+        The website content is licensed <Anchor className={cxs(linkStyle)} href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</Anchor>.
       </p>
     </section>
 
-    <section data-intent="social profiles" style={{...columnStyle, ...socialStyle}}>
+    <section data-intent="social profiles" className={cxs(socialStyle)}>
       <Heading kind="section" customHeadingsStyle={headingStyle}>
         Find us
       </Heading>
       <p>
-        <Anchor style={{color: inverseAnchorColor}} href="https://github.com/lacqueristas"><icon className="fa fa-github" /></Anchor>
-        <Anchor style={{color: inverseAnchorColor}} href="https://twitter.com/lacqueristas"><icon className="fa fa-twitter" /></Anchor>
+        <Anchor className={cxs(linkStyle)} href="https://github.com/lacqueristas"><icon className="fa fa-github" /></Anchor>
+        <Anchor className={cxs(linkStyle)} href="https://twitter.com/lacqueristas"><icon className="fa fa-twitter" /></Anchor>
       </p>
     </section>
   </footer>

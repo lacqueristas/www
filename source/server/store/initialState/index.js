@@ -1,8 +1,6 @@
 export default function initialState () {
   return {
-    ephemeral: {
-      forms: {},
-    },
+    ephemeral: {forms: {}},
     data: {},
   }
 }

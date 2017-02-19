@@ -1,16 +1,14 @@
 import React, {PureComponent, PropTypes} from "react"
+import cxs from "cxs"
 import {connect} from "react-redux"
+import {mergeDeep} from "ramda-extra"
 
 import {primaryInteraction} from "../styles"
 import {secondaryInteraction} from "../styles"
 
 const styles = {
-  primary: {
-    ...primaryInteraction,
-  },
-  secondary: {
-    ...secondaryInteraction,
-  },
+  primary: primaryInteraction,
+  secondary: secondaryInteraction,
 }
 const kinds = [
   "primary",
@@ -41,7 +39,10 @@ export default connect()(class Button extends PureComponent {
 
       event.preventDefault()
 
-      return dispatch({type: "navigate", payload: {href}})
+      return dispatch({
+        type: "navigate",
+        payload: {href},
+      })
     }
   }
 
@@ -50,8 +51,12 @@ export default connect()(class Button extends PureComponent {
     const {kind} = this.props
     const {type} = this.props
     const {style} = this.props
+    const combineStyle = mergeDeep(
+      styles[kind],
+      style
+    )
 
-    return <button type={type} style={{...styles[kind], ...style}}>
+    return <button type={type} className={cxs(combineStyle)}>
       {children}
     </button>
   }

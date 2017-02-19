@@ -3,9 +3,7 @@ export default function updateInput ({slug, name, value}) {
     type: "updateInput",
     payload: {
       slug,
-      attributes: {
-        [name]: value,
-      },
+      attributes: {[name]: value},
     },
   }
 }

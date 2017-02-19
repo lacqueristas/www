@@ -1,4 +1,5 @@
 import React from "react"
+import cxs from "cxs"
 
 import Layout from "../Layout"
 import Heading from "../Heading"
@@ -16,7 +17,7 @@ const isSiteReady = true
 
 export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish">
-    <section data-component="LandingPage" style={landingPageStyle}>
+    <section data-component="LandingPage" className={cxs(landingPageStyle)}>
       <section id="brand">
         <Heading kind="page" subtitle="Welcome to Polish">
           Lacqueristas

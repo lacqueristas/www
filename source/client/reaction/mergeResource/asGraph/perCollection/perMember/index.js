@@ -9,9 +9,7 @@ export default function perMember (tree) {
 
     return mergeDeep(
       member,
-      {
-        relationships: map(asGetter(tree), relationships),
-      }
+      {relationships: map(asGetter(tree), relationships)}
     )
   }
 }

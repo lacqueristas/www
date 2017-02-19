@@ -15,8 +15,14 @@ export default function signup ({slug}) {
 
     return sdk
       .then(tapP(() => dispatch(startingRequest())))
-      .then(tapP(createAccount({attributes, dispatch})))
-      .then(tapP(createSession({attributes, dispatch})))
+      .then(tapP(createAccount({
+        attributes,
+        dispatch,
+      })))
+      .then(tapP(createSession({
+        attributes,
+        dispatch,
+      })))
       .then(() => dispatch(finishingRequest()))
       .then(() => dispatch(clearForm("sign-up")))
       .then(() => dispatch(updateLocation("/front-page")))

@@ -1,4 +1,5 @@
 import React, {PropTypes, PureComponent} from "react"
+import cxs from "cxs"
 
 import {neutral} from "../colors"
 
@@ -8,14 +9,12 @@ const style = {
 }
 
 export default class Body extends PureComponent {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-  }
+  static propTypes = {children: PropTypes.node.isRequired}
 
   render () {
     const {children} = this.props
 
-    return <body style={style} id="application">
+    return <body className={cxs(style)} id="application">
       {children}
 
       <noscript>

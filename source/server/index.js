@@ -12,7 +12,7 @@ import compression from "compression"
 import urlParse from "url-parse"
 import {replace} from "ramda"
 
-import {Application} from "../components"
+import Application from "../components"
 import store from "./store"
 import {logger} from "./remote"
 
@@ -36,7 +36,17 @@ application.get("*", function get (request, response) {
   const navigation = urlParse(request.url, true)
   const signals = {}
   const html = renderToStaticMarkup(
-    createElement(Provider, {store}, createElement(Application, {navigation, signals}))
+    createElement(
+      Provider,
+      {store},
+      createElement(
+        Application,
+        {
+          navigation,
+          signals,
+        },
+      )
+    )
   )
 
   return response.send(cssEmbed(`<style type="text/css">${getCss()}</style>`, `<!DOCTYPE html>${html}`))
