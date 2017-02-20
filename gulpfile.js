@@ -49,7 +49,7 @@ gulp.task("server", ["components"], () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("client", ["styles", "images", "assets", "fonts"], () => {
+gulp.task("client", ["components", "styles", "images", "assets", "fonts"], () => {
   const destination = join(DESINATION, "client")
 
   return browserify({
