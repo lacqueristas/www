@@ -9,11 +9,13 @@ const raw = {
 }
 
 export default function initialState () {
+  const state = get("state") || {}
+
   return mergeDeep(
     raw,
     {
       navigation: urlParse(location, true),
-      ...omit("navigation", get("state")),
+      ...omit(["navigation"], state),
     }
   )
 }

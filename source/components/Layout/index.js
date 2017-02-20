@@ -10,15 +10,14 @@ const mainStyle = cxs({minHeight: 400})
 export default class Layout extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
     hasFooter: PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
+    title: "Lacqueristas",
     hasFooter: true,
-    title: null,
-    subtitle: null,
   }
 
   render () {

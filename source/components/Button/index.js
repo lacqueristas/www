@@ -16,34 +16,18 @@ const kinds = [
   "normal",
 ]
 
+// TODO: Hook up to ui loading state
 export default connect()(class Button extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     style: PropTypes.object.isRequired,
     kind: PropTypes.oneOf(kinds).isRequired,
     type: PropTypes.oneOf(["submit", "reset"]).isRequired,
-    dispatch: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     style: {},
     kind: "normal",
-  }
-
-  onClick () {
-    const {dispatch} = this.props
-
-    return function trigger (event) {
-      const {target} = event
-      const {href} = target
-
-      event.preventDefault()
-
-      return dispatch({
-        type: "navigate",
-        payload: {href},
-      })
-    }
   }
 
   render () {

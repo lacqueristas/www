@@ -37,7 +37,7 @@ export default withForm(class FormSection extends PureComponent {
     stored: false,
     style: {},
     name: null,
-    value: null,
+    value: "",
   }
 
   static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func})}

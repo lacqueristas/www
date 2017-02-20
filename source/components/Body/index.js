@@ -15,8 +15,6 @@ export default class Body extends PureComponent {
     const {children} = this.props
 
     return <body className={cxs(style)} id="application">
-      {children}
-
       <noscript>
         <h1>Hello!</h1>
 
@@ -50,6 +48,8 @@ export default class Body extends PureComponent {
           to join us.
         </p>
       </noscript>
+      {children}
+
       <script async type="text/javascript" src="index.js" />
     </body>
   }

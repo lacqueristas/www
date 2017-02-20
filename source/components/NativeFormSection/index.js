@@ -22,7 +22,7 @@ export default class NativeFormSection extends PureComponent {
     required: false,
     style: {},
     name: null,
-    value: null,
+    value: "",
   }
 
   render () {

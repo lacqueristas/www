@@ -3,8 +3,8 @@ import {mergeDeep} from "ramda-extra"
 
 const defaultRelationship = {}
 
-export default function asGetter (tree) {
-  return function asGetterWithTree (relationship) {
+export default function mergeData (tree) {
+  return function mergeDataWithTree (relationship) {
     const {data} = relationship
 
     if (data) {
