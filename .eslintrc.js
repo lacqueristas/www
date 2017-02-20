@@ -1,8 +1,8 @@
 module.exports = {
   parser: "babel-eslint",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
     }
   },
   plugins: [
@@ -297,7 +297,6 @@ module.exports = {
     "prefer-template": "error",
     "quote-props": ["error", "consistent-as-needed", {keywords: true}],
     "quotes": "error",
-    "radix": "error",
     "radix": "error",
     "react/display-name": "error",
     "react/forbid-component-props": "off", // Not sure this is a good idea
