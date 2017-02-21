@@ -11,6 +11,7 @@ import TermsOfService from "../TermsOfService"
 import ThisIsUs from "../ThisIsUs"
 import SignUp from "../SignUp"
 import FrontPage from "../FrontPage"
+import MakeProject from "../MakeProject"
 
 const path = (slug = "?") => `^/${slug}\$`
 
@@ -25,5 +26,6 @@ export default regexpMap(
     [path("this-is-us")]: ThisIsUs,
     [path("sign-up")]: SignUp,
     [path("front-page")]: FrontPage,
+    [path("make-project")]: MakeProject,
   }
 )
