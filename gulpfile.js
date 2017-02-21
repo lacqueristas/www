@@ -11,6 +11,8 @@ const babelify = require("babelify")
 const vinylSourceStream = require("vinyl-source-stream")
 const vinylBuffer = require("vinyl-buffer")
 const gulpChanged = require("gulp-changed")
+const gulpUglify = require("gulp-uglify")
+const {production} = require("gulp-environments")
 
 const DESINATION = "./transpiled/"
 const GZIP = {
@@ -55,22 +57,17 @@ gulp.task("client", ["components", "styles", "images", "assets", "fonts"], () =>
   return browserify({
     entries: "./source/client/index.js",
     transform: [
-      [babelify, {
-        ignore: "./source/**/test.js",
-      }],
+      [babelify, {ignore: "./source/**/test.js"}],
     ],
   })
     .bundle()
     .pipe(vinylSourceStream("index.js"))
     .pipe(vinylBuffer())
+    .pipe(production(gulpUglify()))
+    .pipe(production(gulp.dest(destination)))
+    .pipe(production(gulpGzip(GZIP)))
     .pipe(gulpSize({
       title: "client",
-      showFiles: true,
-    }))
-    .pipe(gulp.dest(destination))
-    .pipe(gulpGzip(GZIP))
-    .pipe(gulpSize({
-      title: "client.gz",
       showFiles: true,
     }))
     .pipe(gulp.dest(destination))
@@ -88,14 +85,10 @@ gulp.task("styles", () => {
     .pipe(gulpChanged(destination))
     .pipe(gulpConcat("index.css"))
     .pipe(gulpMyth())
+    .pipe(production(gulp.dest(destination)))
+    .pipe(production(gulpGzip(GZIP)))
     .pipe(gulpSize({
       title: "styles",
-      showFiles: true,
-    }))
-    .pipe(gulp.dest(destination))
-    .pipe(gulpGzip(GZIP))
-    .pipe(gulpSize({
-      title: "styles.gz",
       showFiles: true,
     }))
     .pipe(gulp.dest(destination))
@@ -109,14 +102,10 @@ gulp.task("images", () => {
     "./source/images/*.ico",
   ])
     .pipe(gulpChanged(destination))
+    .pipe(production(gulp.dest(destination)))
+    .pipe(production(gulpGzip(GZIP)))
     .pipe(gulpSize({
       title: "images",
-      showFiles: true,
-    }))
-    .pipe(gulp.dest(destination))
-    .pipe(gulpGzip(GZIP))
-    .pipe(gulpSize({
-      title: "images.gz",
       showFiles: true,
     }))
     .pipe(gulp.dest(destination))
@@ -132,14 +121,10 @@ gulp.task("assets", () => {
     "./source/assets/favicon.ico",
   ])
     .pipe(gulpChanged(destination))
+    .pipe(production(gulp.dest(destination)))
+    .pipe(production(gulpGzip(GZIP)))
     .pipe(gulpSize({
       title: "assets",
-      showFiles: true,
-    }))
-    .pipe(gulp.dest(destination))
-    .pipe(gulpGzip(GZIP))
-    .pipe(gulpSize({
-      title: "assets.gz",
       showFiles: true,
     }))
     .pipe(gulp.dest(destination))
@@ -152,14 +137,10 @@ gulp.task("fonts", () => {
     "./node_modules/font-awesome/fonts/**/*",
   ])
     .pipe(gulpChanged(destination))
+    .pipe(production(gulp.dest(destination)))
+    .pipe(production(gulpGzip(GZIP)))
     .pipe(gulpSize({
       title: "fonts",
-      showFiles: true,
-    }))
-    .pipe(gulp.dest(destination))
-    .pipe(gulpGzip(GZIP))
-    .pipe(gulpSize({
-      title: "fonts.gz",
       showFiles: true,
     }))
     .pipe(gulp.dest(destination))
