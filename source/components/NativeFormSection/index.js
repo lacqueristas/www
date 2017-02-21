@@ -25,6 +25,21 @@ export default class NativeFormSection extends PureComponent {
     value: "",
   }
 
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  onChangeInput () {
+    return function thunk (event) {
+      const {target} = event
+      const {value} = target
+
+      this.setState({value})
+    }.bind(this)
+  }
+
   render () {
     const {id} = this.props
     const {name} = this.props
@@ -32,12 +47,13 @@ export default class NativeFormSection extends PureComponent {
     const {label} = this.props
     const {required} = this.props
     const {style} = this.props
-    const {value} = this.props
-    const className = cxs(mergeDeep(baseStyle, style))
+    const {value: initialValue} = this.props
+    const {value: localValue = initialValue} = this.state
+    const className = mergeDeep(baseStyle, style)
 
-    return <section className={className}>
+    return <section className={cxs(className)}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name || id} type={type} required={required} value={value} />
+      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
     </section>
   }
 }

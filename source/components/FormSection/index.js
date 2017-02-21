@@ -77,12 +77,12 @@ export default withForm(class FormSection extends PureComponent {
     const {required} = this.props
     const {style} = this.props
     const {value: initialValue} = this.props
-    const {value: localValue} = this.state
+    const {value: localValue = initialValue} = this.state
     const combineStyle = mergeDeep(baseStyle, style)
 
     return <section className={cxs(combineStyle)}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name || id} type={type} required={required} value={initialValue || localValue} onChange={this.onChangeInput()} />
+      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
     </section>
   }
 })
