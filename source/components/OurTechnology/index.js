@@ -4,53 +4,65 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function OurTechnology () {
-  return <Layout subtitle="Our Technology">
-    <article>
+  return <Layout subtitle="Our Technology" kind="article" data-component="OurTechnology">
+    <section>
       <Heading kind="section">
         Resource Server
       </Heading>
 
+      <p>
+        To be filled
+      </p>
+    </section>
+
+    <section>
       <Heading kind="section">
         Origin Server
       </Heading>
 
-      - Express
+      <p>
+        To be filled
+      </p>
+    </section>
 
+    <section>
       <Heading kind="section">
         Browser Client
       </Heading>
 
-      - React
-      - Redux
-      - Browserify
-      - Gulp
+      <p>
+        To be filled
+      </p>
+    </section>
 
+    <section>
       <Heading kind="section">
         Mobile Client
       </Heading>
 
-      - React Native
-      - Redux
+      <p>
+        To be filled
+      </p>
+    </section>
 
+    <section>
       <Heading kind="section">
         General Technologies
       </Heading>
 
-      - Babel
-      - Node
-      - Javascript
-      - Chrome
-      - Atom
+      <p>
+        To be filled
+      </p>
+    </section>
 
+    <section>
       <Heading kind="section">
         External Services
       </Heading>
 
-      - Google Analytics
-      - Mixpanel
-      - Bloodhound
-      - Metrix
-      - SocialKardia
-    </article>
+      <p>
+        To be filled
+      </p>
+    </section>
   </Layout>
 }

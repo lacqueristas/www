@@ -4,14 +4,15 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function ThisIsUs () {
-  return <Layout subtitle="This Is Us">
-    <article>
+  return <Layout subtitle="This Is Us" kind="article" data-component="ThisIsUs">
+    <section>
       <Heading kind="section">
         Empty
       </Heading>
+
       <p>
         To be filled
       </p>
-    </article>
+    </section>
   </Layout>
 }

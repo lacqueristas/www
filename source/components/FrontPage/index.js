@@ -32,10 +32,8 @@ export default clientDataRequired(withAccount(class FrontPage extends PureCompon
   render () {
     const {account: {attributes: {name}}} = this.props
 
-    return <Layout subtitle="The Front Page of Polish">
-      <section data-component="FrontPage">
-        <WelcomeMessage name={name} />
-      </section>
+    return <Layout subtitle="The Front Page of Polish" data-component="FrontPage">
+      <WelcomeMessage name={name} />
     </Layout>
   }
 }))

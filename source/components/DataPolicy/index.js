@@ -4,8 +4,8 @@ import Layout from "../Layout"
 import Heading from "../Heading"
 
 export default function DataPolicy () {
-  return <Layout subtitle="Data Policy">
-    <article>
+  return <Layout subtitle="Data Policy" kind="article" data-component="DataPolicy">
+    <section>
       <Heading kind="section">
         What we collect
       </Heading>
@@ -24,15 +24,24 @@ export default function DataPolicy () {
 
       <ul>
         <li>Page request</li>
+
         <li>Page load</li>
+
         <li>Browser provided IP address</li>
+
         <li>Browser provided user agent</li>
+
         <li>Browser scroll events</li>
+
         <li>Browser click events</li>
+
         <li>Browser select events</li>
+
         <li>Browser keypresses (exception: secure inputs, i.e. credit card forms)</li>
       </ul>
+    </section>
 
+    <section>
       <Heading kind="section">
         Where we send data
       </Heading>
@@ -40,7 +49,9 @@ export default function DataPolicy () {
       <p>
         We store this information in various places and usually duplicated to various services. For example, we store page requests in: Google Analytics, Mixpanel, and our own activity tracker. Unilaterally we store this information in our personal warehouses like AWS RDS, AWS S3, or AWS Redshift. The data will pass through services like AWS Kinesis.
       </p>
+    </section>
 
+    <section>
       <Heading kind="section">
         How we store information
       </Heading>
@@ -57,6 +68,9 @@ export default function DataPolicy () {
         Information that could have personal importance like comments, messages, or profile data are ecrypted in our datastores. We use SCrypt for encrypting passwords.
       </p>
 
+    </section>
+
+    <section>
       <Heading kind="section">
         What a breach looks like
       </Heading>
@@ -73,19 +87,23 @@ export default function DataPolicy () {
         <li>
           <strong>Google Analytics, Mixpanel, or external services:</strong> The data is rather meaningless. They would know a lot about our users as a collective, but not individual people.
         </li>
+
         <li>
           <strong>AWS S3:</strong> They&apos;d have access to images or assets you uploaded and more stream of activity type information as above.
         </li>
+
         <li>
           <strong>AWS RDS:</strong> They&apos;d have access to all the information you stored, but not access to your personal information, password(s), comments, or identifying data. They could theoretically spend a &ldquo;long time&rdquo; on identifing a single user, but it would essentially be at random who they targeted.
         </li>
+
         <li>
           <strong>Stripe:</strong> They would have access to our purchase and payout information, but not really anything beyond that. Stripe doesn&apos;t know who you are and the attacker wouldn&apos;t either.
         </li>
+
         <li>
           <strong>Github:</strong> Were they to access our code...which is weird since it&apos;s free and open source... they would know only how our system works and see my crappy notes.
         </li>
       </ul>
-    </article>
+    </section>
   </Layout>
 }
