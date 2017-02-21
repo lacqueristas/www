@@ -8,6 +8,7 @@ const gulpGzip = require("gulp-gzip")
 const gulpBabel = require("gulp-babel")
 const browserify = require("browserify")
 const babelify = require("babelify")
+const envify = require("envify")
 const vinylSourceStream = require("vinyl-source-stream")
 const vinylBuffer = require("vinyl-buffer")
 const gulpChanged = require("gulp-changed")
@@ -58,6 +59,7 @@ gulp.task("client", ["components", "styles", "images", "assets", "fonts"], () =>
     entries: "./source/client/index.js",
     transform: [
       [babelify, {ignore: "./source/**/test.js"}],
+      envify,
     ],
   })
     .bundle()
