@@ -21,8 +21,8 @@ export default function SignIn () {
     </section>
 
     <Form name="SignIn" action="signIn" slug="signIn">
-      <FormSection id="email" type="email" required label="Your email" slug="sign-in" />
-      <FormSection id="password" type="password" required label="Your password" slug="sign-up" />
+      <FormSection id="email" type="email" required label="Your email" slug="signIn" />
+      <FormSection id="password" type="password" required label="Your password" slug="signIn" />
 
       <ButtonGroup>
         <Button kind="primary" type="submit">
