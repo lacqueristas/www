@@ -10,7 +10,7 @@ import storeSelf from "../storeSelf"
 import createAccount from "./createAccount"
 import createSession from "./createSession"
 
-export default function signup ({slug}) {
+export default function signUp ({slug}) {
   return function thunk (dispatch, getState, {client}) {
     const {ephemeral} = getState()
     const {forms} = ephemeral
