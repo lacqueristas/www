@@ -7,8 +7,8 @@ import clearForm from "../clearForm"
 import mergeResource from "../mergeResource"
 import storeSelf from "../storeSelf"
 
-import createAccount from "./createAccount"
-import createSession from "./createSession"
+import pushAccount from "./pushAccount"
+import pushSession from "./pushSession"
 
 export default function signUp ({slug}) {
   return function thunk (dispatch, getState, {client}) {
@@ -19,14 +19,14 @@ export default function signUp ({slug}) {
     return Promise
       .resolve(dispatch(startingRequest({slug})))
       .then(() => {
-        return createAccount({
+        return pushAccount({
           attributes,
           client,
         })
       })
       .then(({data}) => dispatch(mergeResource(data)))
       .then(() => {
-        return createSession({
+        return pushSession({
           attributes,
           client,
         })

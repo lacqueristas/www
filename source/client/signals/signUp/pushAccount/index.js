@@ -1,15 +1,17 @@
-export default function createSessions ({attributes, client}) {
+export default function pushAccount ({attributes, client}) {
+  const {name} = attributes
   const {email} = attributes
   const {password} = attributes
 
   return client
-    .sessions
+    .accounts
     .v1
     .create({
       payload: {
         data: {
-          type: "sessions",
+          type: "accounts",
           attributes: {
+            name,
             email,
             password,
           },
