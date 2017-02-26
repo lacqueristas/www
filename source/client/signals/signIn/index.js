@@ -7,10 +7,10 @@ import clearForm from "../clearForm"
 import mergeResource from "../mergeResource"
 import storeSelf from "../storeSelf"
 
-import pushAccount from "./pushAccount"
+import pullAccount from "./pullAccount"
 import pushSession from "./pushSession"
 
-export default function signUp ({slug}) {
+export default function signIn ({slug}) {
   return function thunk (dispatch, getState, {client}) {
     const {ephemeral} = getState()
     const {forms} = ephemeral
@@ -19,13 +19,6 @@ export default function signUp ({slug}) {
     return Promise
       .resolve(dispatch(startingRequest({slug})))
       .then(() => {
-        return pushAccount({
-          attributes,
-          client,
-        })
-      })
-      .then(tapP(({data}) => dispatch(mergeResource(data))))
-      .then(() => {
         return pushSession({
           attributes,
           client,
@@ -33,6 +26,13 @@ export default function signUp ({slug}) {
       })
       .then(tapP(({data}) => dispatch(mergeResource(data))))
       .then(tapP(({data}) => dispatch(storeSelf({id: data.data.id}))))
+      .then(({data}) => {
+        return pullAccount({
+          attributes: data.data.relationships.account.data,
+          client,
+        })
+      })
+      .then(tapP(({data}) => dispatch(mergeResource(data))))
       .then(() => dispatch(finishingRequest({slug})))
       .then(() => dispatch(clearForm("sign-up")))
       .then(() => dispatch(updateLocation("/front-page")))
