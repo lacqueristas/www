@@ -28,7 +28,7 @@ const cssEmbed = replace("<style type=\"text/css\" data-id=\"cxs\"></style>")
 const application = express()
 
 application.use(cors())
-application.use(morgan("combined"))
+application.use(morgan("dev"))
 application.use(compression())
 application.use(express.static(join(__dirname, "..", "client")))
 
