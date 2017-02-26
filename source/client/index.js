@@ -3,7 +3,7 @@ import {render} from "react-dom"
 import {Provider} from "react-redux"
 import {tapP} from "ramda-extra"
 
-import Application from "../components"
+import {Application} from "@lacqueristas/ui"
 import environment from "./environment"
 import redux from "./redux"
 import history from "./history"

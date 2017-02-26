@@ -12,7 +12,7 @@ import compression from "compression"
 import urlParse from "url-parse"
 import {replace} from "ramda"
 
-import Application from "../components"
+import {Application} from "@lacqueristas/ui"
 import store from "./store"
 import {logger} from "./remote"
 

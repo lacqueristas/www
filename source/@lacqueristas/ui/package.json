@@ -1,0 +1,19 @@
+{
+  "name": "@lacqueristas/ui",
+  "version": "1.0.0",
+  "description": "Basic UI",
+  "main": "index.js",
+  "browserify": {
+    "transform": ["babelify"]
+  },
+  "dependencies": {
+    "@lacqueristas/colors": "file:../colors",
+    "@lacqueristas/elements": "file:../elements",
+    "@lacqueristas/pages": "file:../pages",
+    "@lacqueristas/route": "file:../route",
+    "cxs": "3.0.4",
+    "ramda-extra": "1.7.0",
+    "react-redux": "5.0.2",
+    "react": "15.4.2"
+  }
+}

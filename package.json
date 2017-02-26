@@ -3,17 +3,17 @@
   "version": "1.1.0",
   "description": "The frontend browser client for the lacqueristas API",
   "scripts": {
-    "start": "node './transpiled/server/index.js'",
+    "start": "babel-node './transpiled/server/index.js'",
+    "link": "linklocal link --long --recursive",
     "build": "gulp build",
     "build:server": "gulp server",
     "build:client": "gulp client",
-    "build:components": "gulp server client",
     "watch": "npm-run-all --parallel watch:build watch:lint watch:test",
-    "watch:lint": "chokidar './source/' --command 'npm run lint --silent'",
-    "watch:test": "chokidar './source/' --command 'npm run test --silent'",
+    "watch:lint": "chokidar './source/' --ignore '/node_modules/' --command 'npm run lint --silent'",
+    "watch:test": "chokidar './source/' --ignore '/node_modules/' --command 'npm run test --silent'",
     "watch:build": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
-    "lint": "eslint './source/'"
+    "lint": "eslint './source/' --ignore-pattern 'node_modules'"
   },
   "keywords": [
     "lacqueristas",
@@ -50,6 +50,7 @@
     "mocha": "3.2.0"
   },
   "dependencies": {
+    "@lacqueristas/ui": "file:./source/@lacqueristas/ui",
     "abstraction": "9.0.1",
     "babel-cli": "6.23.0",
     "babel-plugin-transform-class-properties": "6.23.0",
@@ -81,6 +82,7 @@
     "history": "4.5.1",
     "hsdk": "5.0.0",
     "httpstatuses": "3.0.0",
+    "linklocal": "2.8.0",
     "morgan": "1.8.1",
     "normalize.css": "5.0.0",
     "npm-run-all": "4.0.1",
