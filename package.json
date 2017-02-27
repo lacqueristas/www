@@ -50,6 +50,7 @@
     "mocha": "3.2.0"
   },
   "dependencies": {
+    "@lacqueristas/signals": "file:./source/@lacqueristas/signals",
     "@lacqueristas/ui": "file:./source/@lacqueristas/ui",
     "abstraction": "9.0.1",
     "babel-cli": "6.23.0",

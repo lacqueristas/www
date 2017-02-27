@@ -7,7 +7,7 @@ import {Application} from "@lacqueristas/ui"
 import environment from "./environment"
 import redux from "./redux"
 import history from "./history"
-import * as signals from "./signals"
+import * as signals from "@lacqueristas/signals"
 import sdk from "./sdk"
 
 window.env = environment(
