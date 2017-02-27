@@ -1,6 +1,6 @@
 import {mergeDeep} from "ramda-extra"
 
-import asGraph from "../../asGraph"
+import asGraph from "./asGraph"
 import treeify from "./treeify"
 
 export default function mergeResource ({state, payload}) {

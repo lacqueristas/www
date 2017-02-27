@@ -1,0 +1,13 @@
+{
+  "name": "@lacqueristas/reactions",
+  "version": "1.0.0",
+  "description": "All the reactions to signals",
+  "main": "index.js",
+  "browserify": {
+    "transform": ["babelify"]
+  },
+  "dependencies": {
+    "ramda": "0.23.0",
+    "ramda-extra": "1.7.0"
+  }
+}
