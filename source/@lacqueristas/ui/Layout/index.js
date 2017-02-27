@@ -5,7 +5,14 @@ import Head from "../Head"
 import Body from "../Body"
 import Footer from "../Footer"
 
-const pageStyle = {minHeight: "90vh"}
+const pageStyle = {
+  marginLeft: "auto",
+  marginRight: "auto",
+  minHeight: "90vh",
+  minWidth: 320,
+  maxWidth: 1024,
+  width: "80vw",
+}
 
 export default class Layout extends PureComponent {
   static propTypes = {
