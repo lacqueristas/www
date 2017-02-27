@@ -82,7 +82,13 @@ export default withForm(class FormSection extends PureComponent {
 
     return <section className={cxs(combineStyle)}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
+
+      {
+        type === "text"
+        ? <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
+        : <textarea id={id} name={name || id} required={required} onChange={this.onChangeInput()} defaultValue={localValue} />
+      }
+
     </section>
   }
 })
