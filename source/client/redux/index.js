@@ -4,6 +4,7 @@ import {applyMiddleware} from "redux"
 import createLogger from "redux-logger"
 import thunkMiddleware from "redux-thunk"
 
+import history from "../history"
 import reaction from "../reaction"
 import initialState from "./initialState"
 
@@ -22,7 +23,10 @@ export default function redux ({client}) {
     reaction,
     initialState(),
     applyMiddleware(
-      thunkMiddleware.withExtraArgument({client}),
+      thunkMiddleware.withExtraArgument({
+        client,
+        history,
+      }),
       createLogger({
         duration: true,
         collapsed: true,
