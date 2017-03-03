@@ -4,10 +4,10 @@ import {Provider} from "react-redux"
 import {tapP} from "ramda-extra"
 
 import {Application} from "@lacqueristas/ui"
+import * as signals from "@lacqueristas/signals"
 import environment from "./environment"
 import redux from "./redux"
 import history from "./history"
-import * as signals from "@lacqueristas/signals"
 import sdk from "./sdk"
 
 window.env = environment(
