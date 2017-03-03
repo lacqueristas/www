@@ -45,6 +45,9 @@ export default clientSide(class MakeProject extends PureComponent {
           <Button kind="primary" type="submit">
             Publish!
           </Button>
+          <Button kind="secondary" type="submit">
+            Save as draft
+          </Button>
         </ButtonGroup>
       </Form>
     </Layout>
