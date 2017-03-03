@@ -3,7 +3,7 @@ import {curry} from "ramda"
 import {aside} from "ramda-extra"
 import {set} from "store"
 
-import * as reactions from "@lacqueristas/reactions"
+import reactions from "@lacqueristas/reactions"
 
 const defaultReaction = prop("state")
 const persist = aside(
