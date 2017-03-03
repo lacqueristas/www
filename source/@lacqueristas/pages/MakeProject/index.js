@@ -38,12 +38,12 @@ export default clientSide(class MakeProject extends PureComponent {
       </Heading>
 
       <Form name="SignUp" action="signUp" slug="signUp">
-        <FormSection id="name" type="text" required label="What do you call this?" slug="makeAProject" value={name} />
+        <FormSection id="name" type="text" required label="What do you call this project?" slug="makeAProject" value={name} />
         <FormSection id="email" type="textarea" required label="All the details" slug="makeAProject" defaultValue={description} />
 
         <ButtonGroup>
           <Button kind="primary" type="submit">
-            Create my first draft
+            Publish!
           </Button>
         </ButtonGroup>
       </Form>
