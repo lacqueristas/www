@@ -80,15 +80,16 @@ export default withForm(class FormSection extends PureComponent {
     const {value: localValue = initialValue} = this.state
     const combineStyle = mergeDeep(baseStyle, style)
 
+    if (type === "textarea") {
+      return <section className={cxs(combineStyle)}>
+        <label htmlFor={id}>{label}</label>
+        <textarea id={id} name={name || id} required={required} onChange={this.onChangeInput()} defaultValue={localValue} />
+      </section>
+    }
+
     return <section className={cxs(combineStyle)}>
       <label htmlFor={id}>{label}</label>
-
-      {
-        type === "text"
-        ? <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
-        : <textarea id={id} name={name || id} required={required} onChange={this.onChangeInput()} defaultValue={localValue} />
-      }
-
+      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
     </section>
   }
 })
