@@ -1,7 +1,6 @@
 import React from "react"
 import {render} from "react-dom"
 import {Provider} from "react-redux"
-import {tapP} from "ramda-extra"
 
 import {Application} from "@lacqueristas/ui"
 import * as signals from "@lacqueristas/signals"
@@ -15,10 +14,11 @@ window.env = environment(
 )
 
 sdk()
-  .then((client) => {
-    return redux({client})
-  })
-  .then(tapP((store) => {
+  .then((client) => redux({
+    client,
+    history,
+  }))
+  .then((store) => {
     history.listen(function locationChange (next, action) {
       if (action !== "PUSH") {
         return store.dispatch(signals.updateNavigation(next))
@@ -26,12 +26,16 @@ sdk()
 
       return null
     })
-  }))
-  .then(tapP((store) => {
+
+    return store
+  })
+  .then((store) => {
     setInterval(() => store.dispatch(signals.refreshResources()), 25000)
 
-    return store.dispatch(signals.refreshResources())
-  }))
+    store.dispatch(signals.refreshResources())
+
+    return store
+  })
   .then((store) => {
     return render(
       <Provider store={store}>
