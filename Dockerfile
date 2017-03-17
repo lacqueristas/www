@@ -8,6 +8,8 @@ WORKDIR $APPLICATION
 
 COPY package.json $APPLICATION/
 
+COPY source/@lacqueristas/ $APPLICATION/source/@lacqueristas/
+
 RUN npm install
 
 COPY source/ $APPLICATION/source
