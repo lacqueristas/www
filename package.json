@@ -41,10 +41,12 @@
     "chokidar-cli": "1.2.0",
     "eslint": "3.16.0",
     "eslint-plugin-babel": "4.0.1",
+    "eslint-plugin-flowtype": "2.30.0",
     "eslint-plugin-immutable": "1.0.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-mocha": "4.8.0",
+    "eslint-plugin-promise": "3.5.0",
     "eslint-plugin-react": "6.10.0",
     "greenkeeper": "4.2.1",
     "mocha": "3.2.0"

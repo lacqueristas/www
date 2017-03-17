@@ -11,7 +11,9 @@ module.exports = {
     "import",
     "mocha",
     "react",
-    "jsx-a11y"
+    "jsx-a11y",
+    "flowtype",
+    "promise"
   ],
   env: {
     es6: true,
@@ -20,6 +22,17 @@ module.exports = {
     browser: true
   },
   rules: {
+    "promise/always-return": "error",
+    "promise/no-return-wrap": "error",
+    "promise/param-names": "error",
+    "promise/catch-or-return": "error",
+    "promise/no-native": "off", // We have babel
+    "promise/no-nesting": "error",
+    "promise/no-promise-in-callback": "error",
+    "promise/no-callback-in-promise": "error",
+    "promise/avoid-new": "error",
+    "promise/prefer-await-to-then": "off", // Not convinced of await/async
+    "promise/prefer-await-to-callbacks": "off", // Not convinced of await/async
     "accessor-pairs": "error",
     "array-bracket-spacing": "error",
     "array-callback-return": "error",
@@ -49,6 +62,25 @@ module.exports = {
     "dot-notation": "error",
     "eol-last": "error",
     "eqeqeq": "error",
+    "flowtype/boolean-style": "error",
+    "flowtype/define-flow-type": "error",
+    "flowtype/delimiter-dangle": ["error", "only-multiline"],
+    "flowtype/generic-spacing": "error",
+    "flowtype/no-dupe-keys": "error",
+    "flowtype/no-primitive-constructor-types": "error",
+    "flowtype/no-weak-types": "off", // Not very useful
+    "flowtype/object-type-delimiter": "error",
+    "flowtype/require-parameter-type": "error",
+    "flowtype/require-return-type": "error",
+    "flowtype/require-variable-type": "off", // Super annoying
+    "flowtype/semi": "off", // Super annoying
+    "flowtype/sort-keys": "off", // Causes more work than anything else
+    "flowtype/space-after-type-colon": "error",
+    "flowtype/space-before-generic-bracket": "error",
+    "flowtype/space-before-type-colon": "error",
+    "flowtype/type-id-match": "error",
+    "flowtype/union-intersection-spacing": "error",
+    "flowtype/use-flow-type": "error",
     "func-call-spacing": "error",
     "func-name-matching": "error",
     "func-names": "error",
