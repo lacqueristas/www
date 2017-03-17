@@ -9,7 +9,6 @@ module.exports = {
     "babel",
     "immutable",
     "import",
-    "mocha",
     "react",
     "jsx-a11y",
     "flowtype",
@@ -18,7 +17,6 @@ module.exports = {
   env: {
     es6: true,
     node: true,
-    mocha: true,
     browser: true
   },
   rules: {
@@ -162,14 +160,6 @@ module.exports = {
     "max-params": "error",
     "max-statements-per-line": "error",
     "max-statements": "error",
-    "mocha/handle-done-callback": "error",
-    "mocha/no-exclusive-tests": "error",
-    "mocha/no-global-tests": "error",
-    "mocha/no-pending-tests": "error",
-    "mocha/no-skipped-tests": "error",
-    "mocha/no-synchronous-tests": "off", // Just not very good
-    "mocha/valid-suite-description": "error",
-    "mocha/valid-test-description": "off", // "Should" is crap wording
     "multiline-ternary": ["error", "never"],
     "new-cap": "error",
     "new-parens": "error",
