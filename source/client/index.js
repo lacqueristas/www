@@ -14,12 +14,12 @@ window.env = environment(
 )
 
 sdk()
-  .then((client) => redux({
+  .then((client: HSDKClienType): ReduxStoreType => redux({
     client,
     history,
   }))
-  .then((store) => {
-    history.listen(function locationChange (next, action) {
+  .then((store: ReduxStoreType): ReduxStoreType => {
+    history.listen(function locationChange (next: LocationType, action: HistoryActionType): any {
       if (action !== "PUSH") {
         return store.dispatch(signals.updateNavigation(next))
       }
@@ -29,14 +29,14 @@ sdk()
 
     return store
   })
-  .then((store) => {
-    setInterval(() => store.dispatch(signals.refreshResources()), 25000)
+  .then((store: ReduxStoreType): ReduxStoreType => {
+    setInterval((): any => store.dispatch(signals.refreshResources()), 25000)
 
     store.dispatch(signals.refreshResources())
 
     return store
   })
-  .then((store) => {
+  .then((store: ReduxStoreType): ReduxStoreType => {
     return render(
       <Provider store={store}>
         <Application signals={signals} />

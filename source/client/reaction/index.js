@@ -10,10 +10,21 @@ const persist = aside(
   curry(set)("state")
 )
 
-export default function reaction (state, signal) {
+type StateType = {
+  resources: any,
+  ephemeral: any,
+  navigation: any,
+}
+
+type SignalType = {
+  type: string,
+  payload: any,
+}
+
+export default function reaction (state: StateType, signal: SignalType): StateType {
   const {type} = signal
   const {payload = {}} = signal
-  const currentReaction = reactions[type] || defaultReaction
+  const currentReaction: Function = reactions[type] || defaultReaction
 
   const newState = currentReaction({
     state,

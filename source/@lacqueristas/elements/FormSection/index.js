@@ -8,7 +8,7 @@ const baseStyle = {
   display: "flex",
   flexDirection: "column",
 }
-const withForm = connect((state, props) => {
+const withForm = connect((state: StateType, props: any): any => {
   const {slug} = props
   const {id} = props
   const value = path(["ephemeral", "forms", slug, id], state)
@@ -48,13 +48,13 @@ export default withForm(class FormSection extends PureComponent {
     this.state = {}
   }
 
-  onChangeInput () {
+  onChangeInput (): Function {
     const {dispatch} = this.props
     const {slug} = this.props
     const {signals} = this.context
     const {updateInput} = signals
 
-    return function thunk (event) {
+    return function thunk (event: Event) {
       const {target} = event
       const {name} = target
       const {value} = target
@@ -69,9 +69,9 @@ export default withForm(class FormSection extends PureComponent {
     }.bind(this)
   }
 
-  render () {
+  render (): any {
     const {id} = this.props
-    const {name} = this.props
+    const {name = id} = this.props
     const {type} = this.props
     const {label} = this.props
     const {required} = this.props

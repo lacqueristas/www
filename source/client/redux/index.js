@@ -8,7 +8,20 @@ import thunkMiddleware from "redux-thunk"
 import reaction from "../reaction"
 import initialState from "./initialState"
 
-export default function redux ({client, history}) {
+type HSDKClienType = {
+  accounts: {
+    v1: {
+      show: Function,
+      update: Function
+    }
+  }
+}
+
+type HistoryType = {
+  push: Function
+}
+
+export default function redux ({client, history}: {client: HSDKClienType, history: HistoryType}): any {
   if (process.env.NODE_ENV === "production") {
     return createStore(
       reaction,
