@@ -35,7 +35,6 @@
     "npm": "4.0.0"
   },
   "devDependencies": {
-    "npm-check-updates": "2.10.3",
     "babel-eslint": "7.1.1",
     "chai": "3.5.0",
     "chokidar-cli": "1.2.0",
@@ -52,7 +51,8 @@
     "flow-bin": "0.40.0",
     "flow-typed": "2.0.0",
     "greenkeeper": "4.2.1",
-    "mocha": "3.2.0"
+    "mocha": "3.2.0",
+    "npm-check-updates": "2.10.3"
   },
   "dependencies": {
     "@lacqueristas/reactions": "file:./source/@lacqueristas/reactions",
