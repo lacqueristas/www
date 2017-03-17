@@ -30,10 +30,6 @@
   "bugs": {
     "url": "https://github.com/lacqueristas/www/issues"
   },
-  "engines": {
-    "node": "7.0.0",
-    "npm": "4.0.0"
-  },
   "devDependencies": {
     "babel-eslint": "7.1.1",
     "chokidar-cli": "1.2.0",
