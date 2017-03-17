@@ -40,13 +40,11 @@ export default withForm(class FormSection extends PureComponent {
     value: "",
   }
 
-  static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func})}
-
-  constructor (props) {
-    super(props)
-
-    this.state = {}
+  state: {
+    value: any
   }
+
+  static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func})}
 
   onChangeInput (): Function {
     const {dispatch} = this.props
