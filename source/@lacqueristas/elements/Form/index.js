@@ -28,17 +28,17 @@ export default withForm(class Form extends PureComponent {
 
   static contextTypes = {signals: PropTypes.object.isRequired}
 
-  onSubmitForm () {
+  onSubmitForm (): Function {
     const {dispatch} = this.props
     const {slug} = this.props
     const {action} = this.props
     const {signals} = this.context
     const signal = signals[action]
 
-    return function thunk (event) {
+    return function thunk (event: Event) {
       event.preventDefault()
 
-      return dispatch(signal({slug}))
+      dispatch(signal({slug}))
     }
   }
 

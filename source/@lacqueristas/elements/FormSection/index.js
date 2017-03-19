@@ -59,7 +59,7 @@ export default withForm(class FormSection extends PureComponent {
 
       this.setState({value})
 
-      return dispatch(updateInput({
+      dispatch(updateInput({
         slug,
         name,
         value,
