@@ -14,7 +14,6 @@ export default function reaction (state: StateType, signal: SignalType): StateTy
   const {type} = signal
   const {payload = {}} = signal
   const currentReaction: Function = reactions[type] || defaultReaction
-
   const newState = currentReaction({
     state,
     payload,
