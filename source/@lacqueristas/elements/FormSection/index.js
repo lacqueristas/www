@@ -23,7 +23,7 @@ export default withForm(class FormSection extends PureComponent {
   static propTypes = {
     slug: PropTypes.string.isRequired,
     name: PropTypes.string,
-    value: PropTypes.any,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     required: PropTypes.bool.isRequired,
@@ -40,8 +40,10 @@ export default withForm(class FormSection extends PureComponent {
     value: "",
   }
 
+  state = {}
+
   state: {
-    value: any
+    value: string | number
   }
 
   static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func})}

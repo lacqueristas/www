@@ -10,7 +10,7 @@ const baseStyle = {
 export default class NativeFormSection extends PureComponent {
   static propTypes = {
     name: PropTypes.string,
-    value: PropTypes.any,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     required: PropTypes.bool.isRequired,
@@ -25,8 +25,10 @@ export default class NativeFormSection extends PureComponent {
     value: "",
   }
 
+  state = {}
+
   state: {
-    value: any
+    value: string | number
   }
 
   onChangeInput (): Function {
