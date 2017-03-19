@@ -11,6 +11,7 @@ const columnStyle = {
   display: "flex",
   flexDirection: "column",
   flex: 1,
+  minWidth: 320,
 }
 const documentationStyle = columnStyle
 const copyrightStyle = columnStyle
