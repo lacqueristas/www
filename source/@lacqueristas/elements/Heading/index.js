@@ -13,10 +13,7 @@ const headingsStyle = {
   section: {fontFamily: "'Open Sans', sans-serif"},
 }
 const subtitlesStyle = {
-  page: {
-    color: secondaryTextColor,
-    textAlign: "center",
-  },
+  page: {color: secondaryTextColor},
   section: {color: secondaryTextColor},
 }
 
