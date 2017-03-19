@@ -16,6 +16,7 @@ COPY source/ $APPLICATION/source
 COPY .babelrc $APPLICATION/
 COPY gulpfile.js $APPLICATION/
 
+RUN npm run link
 RUN npm run build
 
 CMD npm run start
