@@ -11,7 +11,6 @@ const pageStyle = {
   minHeight: "90vh",
   minWidth: 320,
   maxWidth: 1024,
-  width: "80vw",
 }
 
 export default class Layout extends PureComponent {
