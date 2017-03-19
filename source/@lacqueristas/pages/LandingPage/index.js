@@ -11,10 +11,10 @@ const landingPageStyle = {
   justifyContent: "center",
   alignItems: "center",
   flexWrap: "wrap",
-  paddingTop: 150,
-  paddingBottom: 150,
+  paddingTop: 75,
+  paddingBottom: 75,
 }
-const sectionStyle = {minWidth: 400}
+const sectionStyle = {minWidth: 320}
 const isSiteReady = true
 
 export default function LandingPage () {

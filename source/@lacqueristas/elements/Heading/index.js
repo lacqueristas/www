@@ -32,7 +32,7 @@ export default class Heading extends PureComponent {
     subtitle: null,
   }
 
-  render () {
+  render (): any {
     const {children} = this.props
     const {customHeadingsStyle} = this.props
     const {customSubtitlesStyle} = this.props
