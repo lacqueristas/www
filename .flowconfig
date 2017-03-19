@@ -6,7 +6,7 @@
 ./source/
 
 [libs]
-
+flow-typed
 
 [options]
 all=true
