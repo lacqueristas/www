@@ -41,7 +41,7 @@ export default class NativeFormSection extends PureComponent {
 
   render (): any {
     const {id} = this.props
-    const {name = id} = this.props
+    const {name} = this.props
     const {type} = this.props
     const {label} = this.props
     const {required} = this.props
@@ -52,7 +52,7 @@ export default class NativeFormSection extends PureComponent {
 
     return <section className={cxs(className)}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
+      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
     </section>
   }
 }

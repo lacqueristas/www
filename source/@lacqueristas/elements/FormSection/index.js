@@ -15,6 +15,7 @@ const withForm = connect((state: StateType, props: any): any => {
 
   return {
     ...props,
+    name: id,
     value,
   }
 })
@@ -22,7 +23,7 @@ const withForm = connect((state: StateType, props: any): any => {
 export default withForm(class FormSection extends PureComponent {
   static propTypes = {
     slug: PropTypes.string.isRequired,
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -70,7 +71,7 @@ export default withForm(class FormSection extends PureComponent {
 
   render (): any {
     const {id} = this.props
-    const {name = id} = this.props
+    const {name} = this.props
     const {type} = this.props
     const {label} = this.props
     const {required} = this.props
