@@ -23,7 +23,7 @@ export default function SignUp (): any {
       <img src="/llama-standing.png" alt="the cute llama mascot standing with tongue out" />
     </section>
 
-    <Form name="SignUp" action="signUp" slug="signUp" style={sectionStyle}>
+    <Form name="SignUpForm" action="signUp" slug="signUp" style={sectionStyle}>
       <FormSection id="name" type="text" required label="Your name" slug="signUp" />
       <FormSection id="email" type="email" required label="Your email" slug="signUp" />
       <FormSection id="password" type="password" required label="A good password" slug="signUp" />

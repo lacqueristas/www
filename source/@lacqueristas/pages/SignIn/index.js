@@ -20,7 +20,7 @@ export default function SignIn (): any {
       <img src="/llama-standing.png" alt="the cute llama mascot standing with tongue out" />
     </section>
 
-    <Form name="SignIn" action="signIn" slug="signIn">
+    <Form name="SignInForm" action="signIn" slug="signIn">
       <FormSection id="email" type="email" required label="Your email" slug="signIn" />
       <FormSection id="password" type="password" required label="Your password" slug="signIn" />
 
