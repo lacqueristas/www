@@ -17,7 +17,6 @@ export default clientSide(class MakeProject extends PureComponent {
       }).isRequired,
     }).isRequired,
   }
-
   static defaultProps = {
     project: {
       attributes: {
