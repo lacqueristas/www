@@ -29,7 +29,7 @@ export default clientSide(withAccount(class FrontPage extends PureComponent {
     }).isRequired,
   }
 
-  render () {
+  render (): any {
     const {account: {attributes: {name}}} = this.props
 
     return <Layout subtitle="The Front Page of Polish" data-component="FrontPage">
