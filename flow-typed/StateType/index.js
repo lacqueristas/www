@@ -1,5 +1,5 @@
 type StateType = {
-  resources: any,
-  ephemeral: any,
-  navigation: any,
+  resources: object,
+  ephemeral: object,
+  navigation: object,
 }
