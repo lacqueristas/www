@@ -1,6 +1,6 @@
 import {omit} from "ramda"
 
-export default function clearForm ({state, payload}) {
+export default function clearForm ({state, payload}): StateType {
   const {slug} = payload
 
   return {

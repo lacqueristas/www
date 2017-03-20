@@ -1,4 +1,4 @@
-export default function updateNavigation ({state, payload: {navigation}}) {
+export default function updateNavigation ({state, payload: {navigation}}): StateType {
   return {
     ...state,
     navigation,

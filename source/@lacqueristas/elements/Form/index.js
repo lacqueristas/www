@@ -2,7 +2,7 @@ import React, {PropTypes, PureComponent} from "react"
 import {connect} from "react-redux"
 import cxs from "cxs"
 
-const withForm = connect((state, props) => {
+const withForm = connect((state: StateType, props: object): object => {
   const {slug} = props
   const {ephemeral} = state
   const {forms} = ephemeral
