@@ -18,6 +18,7 @@ const withAccount = connect((state: StateType, props: mixed): mixed => {
 })
 
 export default clientSide(withAccount(class FrontPage extends PureComponent {
+  static authetnicated = true
   static propTypes = {
     account: PropTypes.shape({
       id: PropTypes.string.isRequired,

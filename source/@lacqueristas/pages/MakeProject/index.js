@@ -8,6 +8,7 @@ import {Button} from "@lacqueristas/elements"
 import {ButtonGroup} from "@lacqueristas/elements"
 
 export default clientSide(class MakeProject extends PureComponent {
+  static authenticated = true
   static propTypes = {
     project: PropTypes.shape({
       attributes: PropTypes.shape({
