@@ -36,7 +36,6 @@ export default withForm(class FormSection extends PureComponent {
     required: false,
     stored: false,
     style: {},
-    name: null,
     value: "",
   }
 
