@@ -89,7 +89,7 @@
     "npm-run-all": "4.0.1",
     "pusher-js": "4.0.0",
     "ramda": "0.23.0",
-    "ramda-extra": "1.7.0",
+    "ramda-extra": "4.0.0",
     "raw-body": "2.2.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
