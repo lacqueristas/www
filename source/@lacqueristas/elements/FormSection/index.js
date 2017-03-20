@@ -8,7 +8,7 @@ const baseStyle = {
   display: "flex",
   flexDirection: "column",
 }
-const withForm = connect((state: StateType, props: any): any => {
+const withForm = connect((state: StateType, props: mixed): mixed => {
   const {slug} = props
   const {id} = props
   const value = path(["ephemeral", "forms", slug, id], state)
