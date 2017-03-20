@@ -14,7 +14,7 @@ const style = {
   paddingBottom: 150,
 }
 
-export default function SignIn () {
+export default function SignIn (): any {
   return <Layout subtitle="Join our website!" data-component="SignIn" style={style}>
     <section id="logo">
       <img src="/llama-standing.png" alt="the cute llama mascot standing with tongue out" />

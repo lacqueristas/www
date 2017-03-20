@@ -6,7 +6,7 @@ import {Layout} from "@lacqueristas/ui"
 import {clientSide} from "@lacqueristas/decorators"
 import WelcomeMessage from "./WelcomeMessage"
 
-const withAccount = connect((state, props) => {
+const withAccount = connect((state: StateType, props: mixed): mixed => {
   const {id} = path(["ephemeral", "self"], state)
   const session = path(["resources", "sessions", id], state)
   const account = path(["relationships", "account", "data"], session)

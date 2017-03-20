@@ -26,7 +26,7 @@ export default clientSide(class MakeProject extends PureComponent {
     },
   }
 
-  render () {
+  render (): any {
     const {project} = this.props
     const {attributes} = project
     const {name} = attributes

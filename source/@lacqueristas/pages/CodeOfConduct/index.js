@@ -3,7 +3,7 @@ import React from "react"
 import {Layout} from "@lacqueristas/ui"
 import {Heading} from "@lacqueristas/elements"
 
-export default function CodeOfConduct () {
+export default function CodeOfConduct (): any {
   return <Layout subtitle="Code Of Conduct" kind="article" data-component="CodeOfConduct">
     <section>
       <Heading kind="section">

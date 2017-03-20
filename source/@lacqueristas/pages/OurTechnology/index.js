@@ -3,7 +3,7 @@ import React from "react"
 import {Layout} from "@lacqueristas/ui"
 import {Heading} from "@lacqueristas/elements"
 
-export default function OurTechnology () {
+export default function OurTechnology (): any {
   return <Layout subtitle="Our Technology" kind="article" data-component="OurTechnology">
     <section>
       <Heading kind="section">

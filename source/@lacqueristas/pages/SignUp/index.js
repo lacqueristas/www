@@ -17,7 +17,7 @@ const style = {
 }
 const sectionStyle = {minWidth: 320}
 
-export default function SignUp () {
+export default function SignUp (): any {
   return <Layout subtitle="Join our website!" data-component="SignUp" style={style}>
     <section id="logo" className={cxs(sectionStyle)}>
       <img src="/llama-standing.png" alt="the cute llama mascot standing with tongue out" />

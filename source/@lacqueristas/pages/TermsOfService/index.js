@@ -3,7 +3,7 @@ import React from "react"
 import {Layout} from "@lacqueristas/ui"
 import {Heading} from "@lacqueristas/elements"
 
-export default function TermsOfService () {
+export default function TermsOfService (): any {
   return <Layout subtitle="Terms Of Service" kind="article" data-component="TermsOfService">
     <section>
       <Heading kind="section">
