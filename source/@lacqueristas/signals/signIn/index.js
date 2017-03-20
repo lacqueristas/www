@@ -10,7 +10,7 @@ import storeSelf from "../storeSelf"
 import pullAccount from "./pullAccount"
 import pushSession from "./pushSession"
 
-export default function signIn ({slug}) {
+export default function signIn (slug: string): Function {
   return function thunk (dispatch: ReduxDispatchType, getState: Function, {client}: {client: HSDKClientType}): Promise<SignalType> {
     const {ephemeral} = getState()
     const {forms} = ephemeral
