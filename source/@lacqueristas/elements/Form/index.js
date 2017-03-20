@@ -42,7 +42,7 @@ export default withForm(class Form extends PureComponent {
     }
   }
 
-  render () {
+  render (): any {
     const {name} = this.props
     const {action} = this.props
     const {slug} = this.props
