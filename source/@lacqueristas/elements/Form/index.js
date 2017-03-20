@@ -38,7 +38,7 @@ export default withForm(class Form extends PureComponent {
     return function thunk (event: Event) {
       event.preventDefault()
 
-      dispatch(signal({slug}))
+      dispatch(signal(slug))
     }
   }
 
