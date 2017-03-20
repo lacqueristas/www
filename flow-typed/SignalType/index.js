@@ -1,4 +1,4 @@
 type SignalType = {
   type: string,
-  payload: any,
+  payload?: mixed,
 }
