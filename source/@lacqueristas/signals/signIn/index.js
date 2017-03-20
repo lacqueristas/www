@@ -17,24 +17,26 @@ export default function signIn (slug: string): Function {
     const attributes = forms[slug]
 
     return Promise
-      .resolve(dispatch(startingRequest({slug})))
-      .then(() => {
-        return pushSession({
-          attributes,
-          client,
-        })
+      .resolve(dispatch(startingRequest(slug)))
+      .then((): any => pushSession({
+        attributes,
+        client,
+      }))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf({id: data.data.id}))))
+      .then(({data}: {data: any}): any => pullAccount({
+        attributes: data.data.relationships.account.data,
+        client,
+      }))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
+      .then((): SignalType => dispatch(finishingRequest(slug)))
+      .then((): SignalType => dispatch(clearForm("sign-up")))
+      .then((): SignalType => dispatch(updateLocation("/front-page")))
+      .then((): SignalType => {
+        return {
+          type: "signIn",
+          payload: slug,
+        }
       })
-      .then(tapP(({data}) => dispatch(mergeResource(data))))
-      .then(tapP(({data}) => dispatch(storeSelf({id: data.data.id}))))
-      .then(({data}) => {
-        return pullAccount({
-          attributes: data.data.relationships.account.data,
-          client,
-        })
-      })
-      .then(tapP(({data}) => dispatch(mergeResource(data))))
-      .then(() => dispatch(finishingRequest({slug})))
-      .then(() => dispatch(clearForm("sign-up")))
-      .then(() => dispatch(updateLocation("/front-page")))
   }
 }

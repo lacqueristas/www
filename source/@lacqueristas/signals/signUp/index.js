@@ -18,23 +18,25 @@ export default function signUp (slug: string): Function {
 
     return Promise
       .resolve(dispatch(startingRequest(slug)))
-      .then((): any => {
-        return pushAccount({
-          attributes,
-          client,
-        })
+      .then((): any => pushAccount({
+        attributes,
+        client,
+      }))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
+      .then((): any => pushSession({
+        attributes,
+        client,
+      }))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf({id: data.data.id}))))
+      .then((): SignalType => dispatch(finishingRequest(slug)))
+      .then((): SignalType => dispatch(clearForm("sign-up")))
+      .then((): SignalType => dispatch(updateLocation("/front-page")))
+      .then((): SignalType => {
+        return {
+          type: "signUp",
+          payload: slug,
+        }
       })
-      .then(tapP(({data}: {data: any}): any => dispatch(mergeResource(data))))
-      .then((): any => {
-        return pushSession({
-          attributes,
-          client,
-        })
-      })
-      .then(tapP(({data}: {data: any}): any => dispatch(mergeResource(data))))
-      .then(tapP(({data}: {data: any}): any => dispatch(storeSelf({id: data.data.id}))))
-      .then((): any => dispatch(finishingRequest({slug})))
-      .then((): any => dispatch(clearForm("sign-up")))
-      .then((): any => dispatch(updateLocation("/front-page")))
   }
 }
