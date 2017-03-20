@@ -11,7 +11,7 @@ import pullAccount from "./pullAccount"
 import pushSession from "./pushSession"
 
 export default function signIn ({slug}) {
-  return function thunk (dispatch, getState, {client}) {
+  return function thunk (dispatch: ReduxDispatchType, getState: Function, {client}: {client: HSDKClientType}): Promise<SignalType> {
     const {ephemeral} = getState()
     const {forms} = ephemeral
     const attributes = forms[slug]
