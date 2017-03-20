@@ -1,12 +1,12 @@
 import React, {PureComponent, PropTypes} from "react"
 import {connect} from "react-redux"
 
-import {PageNotFound} from "@lacqueristas/pages"
 import route from "@lacqueristas/route"
 
-const connectNavigation = connect(({navigation}, props) => {
+const connectNavigation = connect((state: StateType, props: mixed): object => {
   return {
-    navigation,
+    navigation: state.navigation,
+    ephemeral: state.ephemeral,
     ...props,
   }
 })
@@ -14,6 +14,7 @@ const connectNavigation = connect(({navigation}, props) => {
 export default connectNavigation(class Application extends PureComponent {
   static propTypes = {
     signals: PropTypes.objectOf(PropTypes.func).isRequired,
+    ephemeral: PropTypes.shape({self: PropTypes.shape({id: PropTypes.string})}),
     navigation: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
       query: PropTypes.object,
@@ -21,6 +22,7 @@ export default connectNavigation(class Application extends PureComponent {
   }
 
   static childContextTypes = {signals: PropTypes.object.isRequired}
+  static defaultProps = {ephemeral: {}}
 
   getChildContext () {
     const {signals} = this.props
@@ -30,7 +32,8 @@ export default connectNavigation(class Application extends PureComponent {
 
   render () {
     const {navigation} = this.props
-    const CurrentComponent = route(navigation.pathname) || PageNotFound
+    const {ephemeral} = this.props
+    const CurrentComponent = route(navigation, ephemeral)
 
     return <CurrentComponent />
   }
