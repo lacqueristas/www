@@ -29,7 +29,6 @@ export default class Heading extends PureComponent {
   static defaultProps = {
     customHeadingsStyle: {},
     customSubtitlesStyle: {},
-    subtitle: null,
   }
 
   render (): any {

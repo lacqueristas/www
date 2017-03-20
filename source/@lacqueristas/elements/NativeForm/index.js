@@ -10,10 +10,7 @@ export default class NativeForm extends PureComponent {
     style: PropTypes.object.isRequired,
   }
 
-  static defaultProps = {
-    style: {},
-    target: null,
-  }
+  static defaultProps = {style: {}}
 
   render () {
     const {children} = this.props

@@ -21,7 +21,6 @@ export default class NativeFormSection extends PureComponent {
   static defaultProps = {
     required: false,
     style: {},
-    name: null,
     value: "",
   }
 
