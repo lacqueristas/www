@@ -6,11 +6,11 @@
   "browserify": {
     "transform": ["babelify"]
   },
-  "dependencies": {
-    "@lacqueristas/colors": "file:../colors",
-    "@lacqueristas/styles": "file:../styles",
+  "peerDependencies": {
+    "@lacqueristas/colors": "1.0.0",
+    "@lacqueristas/styles": "1.0.0",
     "cxs": "3.0.4",
-    "ramda-extra": "1.7.0",
+    "ramda-extra": "4.0.0",
     "ramda": "0.23.0",
     "react-redux": "5.0.2",
     "react": "15.4.2"

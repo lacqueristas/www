@@ -6,15 +6,13 @@
   "browserify": {
     "transform": ["babelify"]
   },
-  "peerDepenecies": {
-  },
-  "dependencies": {
-    "@lacqueristas/colors": "file:../colors",
-    "@lacqueristas/elements": "file:../elements",
-    "@lacqueristas/styles": "file:../styles",
-    "@lacqueristas/ui": "file:../ui",
+  "peerDependencies": {
+    "@lacqueristas/colors": "1.0.0",
+    "@lacqueristas/elements": "1.0.0",
+    "@lacqueristas/styles": "1.0.0",
+    "@lacqueristas/ui": "1.0.0",
     "cxs": "3.0.4",
-    "ramda-extra": "1.7.0",
+    "ramda-extra": "4.0.0",
     "react-redux": "5.0.2",
     "react": "15.4.2"
   }

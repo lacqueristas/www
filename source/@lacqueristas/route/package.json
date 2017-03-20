@@ -6,8 +6,8 @@
   "browserify": {
     "transform": ["babelify"]
   },
-  "dependencies": {
-    "@lacqueristas/pages": "file:../pages",
+  "peerDependencies": {
+    "@lacqueristas/pages": "1.0.0",
     "regexp-map": "0.3.1"
   }
 }

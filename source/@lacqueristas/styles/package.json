@@ -6,7 +6,7 @@
   "browserify": {
     "transform": ["babelify"]
   },
-  "dependencies": {
-    "@lacqueristas/colors": "file:../colors"
+  "peerDependencies": {
+    "@lacqueristas/colors": "1.0.0"
   }
 }

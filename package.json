@@ -48,8 +48,14 @@
     "npm-check-updates": "2.10.3"
   },
   "dependencies": {
+    "@lacqueristas/colors": "file:./source/@lacqueristas/colors",
+    "@lacqueristas/decorators": "file:./source/@lacqueristas/decorators",
+    "@lacqueristas/elements": "file:./source/@lacqueristas/elements",
+    "@lacqueristas/pages": "file:./source/@lacqueristas/pages",
     "@lacqueristas/reactions": "file:./source/@lacqueristas/reactions",
+    "@lacqueristas/route": "file:./source/@lacqueristas/route",
     "@lacqueristas/signals": "file:./source/@lacqueristas/signals",
+    "@lacqueristas/styles": "file:./source/@lacqueristas/styles",
     "@lacqueristas/ui": "file:./source/@lacqueristas/ui",
     "abstraction": "9.0.1",
     "babel-cli": "6.23.0",
@@ -97,6 +103,7 @@
     "redux": "3.6.0",
     "redux-logger": "2.8.1",
     "redux-thunk": "2.2.0",
+    "regexp-map": "0.3.1",
     "require-environment-variables": "1.1.2",
     "skeleton-css": "2.0.4",
     "store": "1.3.20",
