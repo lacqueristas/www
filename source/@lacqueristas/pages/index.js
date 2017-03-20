@@ -1,3 +1,4 @@
+export {default as AuthenticationRequired} from "./AuthenticationRequired"
 export {default as CodeOfConduct} from "./CodeOfConduct"
 export {default as DataPolicy} from "./DataPolicy"
 export {default as FrontPage} from "./FrontPage"
