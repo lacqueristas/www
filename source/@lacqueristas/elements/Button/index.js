@@ -37,7 +37,7 @@ export default connect()(class Button extends PureComponent {
     onClick: (): any => null,
   }
 
-  render () {
+  render (): any {
     const {children} = this.props
     const {kind} = this.props
     const {type} = this.props

@@ -24,13 +24,11 @@ export default connectNavigation(class Application extends PureComponent {
   static childContextTypes = {signals: PropTypes.object.isRequired}
   static defaultProps = {ephemeral: {}}
 
-  getChildContext () {
-    const {signals} = this.props
-
-    return {signals}
+  getChildContext (): object {
+    return {signals: this.props.signals}
   }
 
-  render () {
+  render (): any {
     const {navigation} = this.props
     const {ephemeral} = this.props
     const CurrentComponent = route(navigation, ephemeral)
