@@ -79,7 +79,7 @@
     "gulp-size": "2.1.0",
     "gulp-uglify": "^2.0.1",
     "history": "4.5.1",
-    "hsdk": "5.0.0",
+    "hsdk": "6.0.1",
     "httpstatuses": "3.0.0",
     "morgan": "1.8.1",
     "normalize.css": "5.0.0",
