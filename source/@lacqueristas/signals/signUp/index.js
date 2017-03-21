@@ -30,7 +30,7 @@ export default function signUp (slug: string): Function {
       .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
       .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf({id: data.data.id}))))
       .then((): SignalType => dispatch(finishingRequest(slug)))
-      .then((): SignalType => dispatch(clearForm("sign-up")))
+      .then((): SignalType => dispatch(clearForm(slug)))
       .then((): SignalType => dispatch(updateLocation("/front-page")))
       .then((): SignalType => {
         return {
