@@ -53,7 +53,7 @@ export default authenticate(clientSide(class MakeAProject extends PureComponent 
           <Button kind="primary" type="submit">
             Publish!
           </Button>
-          <Button kind="secondary" type="normal" onClick={this.onClickSaveAsDraft()}>
+          <Button kind="secondary" onClick={this.onClickSaveAsDraft()}>
             Save as draft
           </Button>
         </ButtonGroup>
