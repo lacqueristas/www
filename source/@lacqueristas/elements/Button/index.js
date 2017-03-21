@@ -17,6 +17,7 @@ const kinds = [
 ]
 const types = [
   "submit",
+  "normal",
   "reset",
 ]
 
@@ -27,24 +28,27 @@ export default connect()(class Button extends PureComponent {
     style: PropTypes.object.isRequired,
     kind: PropTypes.oneOf(kinds).isRequired,
     type: PropTypes.oneOf(types).isRequired,
+    onClick: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     style: {},
     kind: "normal",
+    onClick: (): any => null,
   }
 
   render () {
     const {children} = this.props
     const {kind} = this.props
     const {type} = this.props
+    const {onClick} = this.props
     const {style} = this.props
     const combineStyle = mergeDeep(
       styles[kind],
       style
     )
 
-    return <button type={type} className={cxs(combineStyle)}>
+    return <button type={type} className={cxs(combineStyle)} onClick={onClick}>
       {children}
     </button>
   }
