@@ -15,6 +15,10 @@ const kinds = [
   "secondary",
   "normal",
 ]
+const types = [
+  "submit",
+  "reset",
+]
 
 // TODO: Hook up to ui loading state
 export default connect()(class Button extends PureComponent {
@@ -22,7 +26,7 @@ export default connect()(class Button extends PureComponent {
     children: PropTypes.node.isRequired,
     style: PropTypes.object.isRequired,
     kind: PropTypes.oneOf(kinds).isRequired,
-    type: PropTypes.oneOf(["submit", "reset"]).isRequired,
+    type: PropTypes.oneOf(types).isRequired,
   }
 
   static defaultProps = {
