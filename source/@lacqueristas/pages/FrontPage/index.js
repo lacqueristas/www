@@ -4,11 +4,12 @@ import {path} from "ramda"
 
 import {Layout} from "@lacqueristas/ui"
 import {clientSide} from "@lacqueristas/decorators"
+import {authenticate} from "@lacqueristas/decorators"
 import WelcomeMessage from "./WelcomeMessage"
 
 const withAccount = connect((state: StateType, props: mixed): mixed => {
-  const {id} = path(["ephemeral", "self"], state)
-  const session = path(["resources", "sessions", id], state)
+  const self = path(["ephemeral", "self"], state)
+  const session = path(["resources", "sessions", self], state)
   const account = path(["relationships", "account", "data"], session)
 
   return {
@@ -17,8 +18,7 @@ const withAccount = connect((state: StateType, props: mixed): mixed => {
   }
 })
 
-export default clientSide(withAccount(class FrontPage extends PureComponent {
-  static authetnicated = true
+export default authenticate(clientSide(withAccount(class FrontPage extends PureComponent {
   static propTypes = {
     account: PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ export default clientSide(withAccount(class FrontPage extends PureComponent {
       <WelcomeMessage name={name} />
     </Layout>
   }
-}))
+})))

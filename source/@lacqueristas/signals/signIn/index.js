@@ -23,15 +23,15 @@ export default function signIn (slug: string): Function {
         client,
       }))
       .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf({id: data.data.id}))))
+      .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf(data.data.id))))
       .then(({data}: {data: any}): any => pullAccount({
         attributes: data.data.relationships.account.data,
         client,
       }))
       .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then((): SignalType => dispatch(finishingRequest(slug)))
-      .then((): SignalType => dispatch(clearForm(slug)))
-      .then((): SignalType => dispatch(updateLocation("/front-page")))
+      .then(tapP((): SignalType => dispatch(finishingRequest(slug))))
+      .then(tapP((): SignalType => dispatch(clearForm(slug))))
+      .then(tapP((): SignalType => dispatch(updateLocation("/front-page"))))
       .then((): SignalType => {
         return {
           type: "signIn",

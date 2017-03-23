@@ -14,7 +14,7 @@ const connectNavigation = connect((state: StateType, props: mixed): object => {
 export default connectNavigation(class Application extends PureComponent {
   static propTypes = {
     signals: PropTypes.objectOf(PropTypes.func).isRequired,
-    ephemeral: PropTypes.shape({self: PropTypes.shape({id: PropTypes.string})}),
+    ephemeral: PropTypes.shape({self: PropTypes.string}),
     navigation: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
       query: PropTypes.object,

@@ -5,10 +5,20 @@ import {pascal} from "case"
 import * as pages from "@lacqueristas/pages"
 import {AuthenticationRequired} from "@lacqueristas/pages"
 import {PageNotFound} from "@lacqueristas/pages"
+import {LandingPage} from "@lacqueristas/pages"
+import {LoadingScreen} from "@lacqueristas/pages"
 
 export default function route (navigation: object, ephemeral: object): any {
   const {pathname} = navigation
   const component = prop(pascal(pathname), pages)
+
+  if (component.clientSide && !global.window) {
+    return LoadingScreen
+  }
+
+  if (pathname === "/") {
+    return LandingPage
+  }
 
   if (component && component.authenticate && ephemeral.self) {
     return component
