@@ -87,6 +87,7 @@
     "gulp-size": "2.1.0",
     "gulp-uglify": "2.0.1",
     "history": "4.5.1",
+    "hoist-non-react-statics": "1.2.0",
     "hsdk": "6.0.1",
     "httpstatuses": "3.0.0",
     "linklocal": "2.8.0",

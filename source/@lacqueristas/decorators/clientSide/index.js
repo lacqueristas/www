@@ -1,12 +1,15 @@
-import React from "react"
-import LoadingScreen from "./LoadingScreen"
+import React, {PureComponent} from "react"
+import hoist from "hoist-non-react-statics"
 
-export default function clientSide (Component: any): Function {
-  return function ClientContainer (props: object): any {
-    if (global.window) {
-      return <Component {...props} />
-    }
+export default function clientSide (Component: any): any {
+  return hoist(
+    class ClientSideComponent extends PureComponent {
+      static clientSide = true
 
-    return <LoadingScreen />
-  }
+      render (): any {
+        return <Component />
+      }
+    },
+    Component
+  )
 }
