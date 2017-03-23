@@ -13,7 +13,7 @@ const styles = {
 const kinds = [
   "primary",
   "secondary",
-  "button",
+  "normal",
 ]
 const types = [
   "submit",
@@ -33,7 +33,8 @@ export default connect()(class Button extends PureComponent {
 
   static defaultProps = {
     style: {},
-    kind: "button",
+    kind: "normal",
+    type: "button",
     onClick: (): any => null,
   }
 
