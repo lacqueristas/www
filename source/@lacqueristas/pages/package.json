@@ -1,0 +1,21 @@
+{
+  "name": "@lacqueristas/pages",
+  "version": "1.0.0",
+  "description": "Pages for the lacqueristas website",
+  "main": "index.js",
+  "browserify": {
+    "transform": ["babelify"]
+  },
+  "peerDependencies": {
+    "@lacqueristas/colors": "1.0.0",
+    "@lacqueristas/elements": "1.0.0",
+    "@lacqueristas/styles": "1.0.0",
+    "@lacqueristas/ui": "1.0.0",
+    "@lacqueristas/decorators": "1.0.0",
+    "cxs": "3.0.4",
+    "ramda-extra": "4.0.0",
+    "ramda": "0.23.0",
+    "react-redux": "5.0.2",
+    "react": "15.4.2"
+  }
+}

@@ -25,19 +25,7 @@ const GZIP = {
   },
 }
 
-gulp.task("components", () => {
-  const destination = join(DESINATION, "components")
-
-  return gulp.src([
-    "./source/components/**/*.js",
-  ])
-    .pipe(gulpChanged(destination))
-    .pipe(gulpBabel())
-    .pipe(gulpSize({showFiles: true}))
-    .pipe(gulp.dest(destination))
-})
-
-gulp.task("server", ["components"], () => {
+gulp.task("server", () => {
   const destination = join(DESINATION, "server")
 
   return gulp.src([
@@ -52,7 +40,7 @@ gulp.task("server", ["components"], () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("client", ["components", "styles", "images", "assets", "fonts"], () => {
+gulp.task("client", ["styles", "images", "assets", "fonts"], () => {
   const destination = join(DESINATION, "client")
 
   return browserify({

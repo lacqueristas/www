@@ -1,0 +1,15 @@
+{
+  "name": "@lacqueristas/route",
+  "version": "1.0.0",
+  "description": "Route mapper from navigation to component",
+  "main": "index.js",
+  "browserify": {
+    "transform": ["babelify"]
+  },
+  "peerDependencies": {
+    "@lacqueristas/pages": "1.0.0",
+    "ramda": "0.23.0",
+    "case": "1.4.2",
+    "regexp-map": "0.3.1"
+  }
+}

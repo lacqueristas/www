@@ -1,13 +1,12 @@
 import React from "react"
 import {render} from "react-dom"
 import {Provider} from "react-redux"
-import {tapP} from "ramda-extra"
 
-import Application from "../components"
+import {Application} from "@lacqueristas/ui"
+import * as signals from "@lacqueristas/signals"
 import environment from "./environment"
 import redux from "./redux"
 import history from "./history"
-import * as signals from "./signals"
 import sdk from "./sdk"
 
 window.env = environment(
@@ -15,24 +14,29 @@ window.env = environment(
 )
 
 sdk()
-  .then((client) => {
-    return redux({client})
-  })
-  .then(tapP((store) => {
-    history.listen(function locationChange (next, action) {
+  .then((client: HSDKClienType): ReduxStoreType => redux({
+    client,
+    history,
+  }))
+  .then((store: ReduxStoreType): ReduxStoreType => {
+    history.listen(function locationChange (next: LocationType, action: HistoryActionType): any {
       if (action !== "PUSH") {
         return store.dispatch(signals.updateNavigation(next))
       }
 
       return null
     })
-  }))
-  .then(tapP((store) => {
-    setInterval(() => store.dispatch(signals.refreshResources()), 25000)
 
-    return store.dispatch(signals.refreshResources())
-  }))
-  .then((store) => {
+    return store
+  })
+  .then((store: ReduxStoreType): ReduxStoreType => {
+    setInterval((): any => store.dispatch(signals.refreshResources()), 25000)
+
+    store.dispatch(signals.refreshResources())
+
+    return store
+  })
+  .then((store: ReduxStoreType): ReduxStoreType => {
     return render(
       <Provider store={store}>
         <Application signals={signals} />
