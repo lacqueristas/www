@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-eval "$(docker-machine env lacqueristas)" &&
+eval "$(docker-machine env lacqueristas --shell default)" &&
 heroku container:login &&
 heroku container:push web --app="lacqueristas-www-$1"
