@@ -13,7 +13,7 @@ import urlParse from "url-parse"
 import {replace} from "ramda"
 
 import {Application} from "@lacqueristas/ui"
-import store from "./store"
+import redux from "./redux"
 import {logger} from "./remote"
 
 requireEnvironmentVariables([
@@ -38,7 +38,7 @@ application.get("*", function get (request: any, response: any): string {
   const html = renderToStaticMarkup(
     createElement(
       Provider,
-      {store},
+      {store: redux},
       createElement(
         Application,
         {
