@@ -1,4 +1,4 @@
-/* eslint-disable immutable/no-mutation, no-underscore-dangle  */
+/* eslint-disable no-underscore-dangle  */
 import {createStore} from "redux"
 import {applyMiddleware} from "redux"
 import {compose} from "redux"
