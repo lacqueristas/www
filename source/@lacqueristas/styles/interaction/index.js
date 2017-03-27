@@ -1,0 +1,17 @@
+export default {
+  backgroundColor: "white",
+  borderRadius: 3,
+  borderStyle: "solid",
+  borderWidth: 2,
+  boxSizing: "border-box",
+  cursor: "pointer",
+  display: "inline-block",
+  fontFamily: "'Open Sans', sans-serif",
+  height: "inherit",
+  letterSpacing: ".1rem",
+  lineHeight: "38px",
+  textAlign: "center",
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+  width: "100%",
+}

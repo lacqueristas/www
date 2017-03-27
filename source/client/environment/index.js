@@ -1,7 +1,7 @@
 import {reduce} from "ramda"
 
 export default reduce(
-  (previous, element) => {
+  (previous: object, element: any): object => {
     if (element.getAttribute("type") !== "environment") {
       return previous
     }

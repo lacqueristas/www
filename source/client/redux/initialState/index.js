@@ -8,7 +8,7 @@ const raw = {
   resources: {},
 }
 
-export default function initialState () {
+export default function initialState (): any {
   const state = get("state") || {}
 
   return mergeDeep(
