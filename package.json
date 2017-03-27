@@ -107,7 +107,7 @@
     "regexp-map": "0.3.1",
     "require-environment-variables": "1.1.2",
     "skeleton-css": "2.0.4",
-    "store": "2.0.3",
+    "store": "2.0.4",
     "url-parse": "1.1.8",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0"
