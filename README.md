@@ -1,5 +1,6 @@
 # www
 
+The frontend for the lacqueristas project
 
 ## setup
 

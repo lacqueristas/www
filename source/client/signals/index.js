@@ -1,7 +1,0 @@
-export {default as updateNavigation} from "./updateNavigation"
-export {default as updateLocation} from "./updateLocation"
-export {default as updateInput} from "./updateInput"
-export {default as clearForm} from "./clearForm"
-export {default as signUp} from "./signUp"
-export {default as clickAnchor} from "./clickAnchor"
-export {default as refreshResources} from "./refreshResources"

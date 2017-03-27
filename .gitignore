@@ -5,11 +5,12 @@
 #   git config --global core.excludesfile ~/.gitignore
 
 # Regenerable files
-/node_modules/
-/transpiled/
+node_modules/
+transpiled/
+flow-typed/
 
 # Temporary files
-/tmp
+tmp/
 
 # Log files
 /*.log

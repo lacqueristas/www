@@ -1,0 +1,3 @@
+type HistoryType = {
+  push: Function
+}

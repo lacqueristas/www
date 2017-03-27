@@ -8,12 +8,15 @@ WORKDIR $APPLICATION
 
 COPY package.json $APPLICATION/
 
+COPY source/@lacqueristas/ $APPLICATION/source/@lacqueristas/
+
 RUN npm install
 
 COPY source/ $APPLICATION/source
 COPY .babelrc $APPLICATION/
 COPY gulpfile.js $APPLICATION/
 
+RUN npm run link
 RUN npm run build
 
 CMD npm run start

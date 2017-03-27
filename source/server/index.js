@@ -12,7 +12,7 @@ import compression from "compression"
 import urlParse from "url-parse"
 import {replace} from "ramda"
 
-import Application from "../components"
+import {Application} from "@lacqueristas/ui"
 import store from "./store"
 import {logger} from "./remote"
 
@@ -28,11 +28,11 @@ const cssEmbed = replace("<style type=\"text/css\" data-id=\"cxs\"></style>")
 const application = express()
 
 application.use(cors())
-application.use(morgan("combined"))
+application.use(morgan("dev"))
 application.use(compression())
 application.use(express.static(join(__dirname, "..", "client")))
 
-application.get("*", function get (request, response) {
+application.get("*", function get (request: any, response: any): string {
   const navigation = urlParse(request.url, true)
   const signals = {}
   const html = renderToStaticMarkup(
@@ -52,4 +52,7 @@ application.get("*", function get (request, response) {
   return response.send(cssEmbed(`<style type="text/css">${getCss()}</style>`, `<!DOCTYPE html>${html}`))
 })
 
-application.listen(process.env.PORT, () => logger.info(`Listening to ${process.env.PORT}`))
+application.listen(
+  process.env.PORT,
+  (): any => logger.info(`Listening to ${process.env.PORT}`)
+)
