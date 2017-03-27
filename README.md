@@ -1,5 +1,7 @@
 # www
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lacqueristas/www.svg)](https://greenkeeper.io/)
+
 The frontend for the lacqueristas project
 
 ## setup
