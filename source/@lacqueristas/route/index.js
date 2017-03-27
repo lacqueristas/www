@@ -12,12 +12,12 @@ export default function route (navigation: object, ephemeral: object): any {
   const {pathname} = navigation
   const component = prop(pascal(pathname), pages)
 
-  if (component.clientSide && !global.window) {
-    return LoadingScreen
-  }
-
   if (pathname === "/") {
     return LandingPage
+  }
+
+  if (component.clientSide && !global.window) {
+    return LoadingScreen
   }
 
   if (component && component.authenticate && ephemeral.self) {
