@@ -1,18 +1,10 @@
 import {createStore} from "redux"
-import {applyMiddleware} from "redux"
-import createLogger from "redux-logger"
-import thunkMiddleware from "redux-thunk"
+import {identity} from "ramda"
 
 import initialState from "./initialState"
 
+// TODO: Possibly use client redux style with a cache layer to create pre-populated data.
 export default createStore(
-  (state: object): object => state,
-  initialState(),
-  applyMiddleware(
-    thunkMiddleware,
-    createLogger({
-      duration: true,
-      collapsed: true,
-    })
-  )
+  identity,
+  initialState()
 )

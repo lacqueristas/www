@@ -1,8 +1,8 @@
-/* eslint-disable immutable/no-mutation, no-underscore-dangle  */
+/* eslint-disable no-underscore-dangle  */
 import {createStore} from "redux"
 import {applyMiddleware} from "redux"
 import {compose} from "redux"
-import createLogger from "redux-logger"
+import logger from "redux-logger"
 import thunkMiddleware from "redux-thunk"
 
 import reaction from "../reaction"
@@ -14,10 +14,7 @@ export default function redux ({client, history}: {client: HSDKClientType, histo
       client,
       history,
     }),
-    createLogger({
-      duration: true,
-      collapsed: true,
-    })
+    logger
   )
 
   if (process.env.NODE_ENV === "production") {
