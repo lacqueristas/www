@@ -49,10 +49,8 @@ export default connect()(class Anchor extends PureComponent {
       if (!isOpeningNewInstance) {
         event.preventDefault()
 
-        return dispatch(clickAnchor(href))
+        dispatch(clickAnchor(href))
       }
-
-      return null
     }
   }
 
