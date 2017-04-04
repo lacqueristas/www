@@ -29,7 +29,7 @@ export default class Layout extends PureComponent {
     style: {},
   }
 
-  render () {
+  render (): any {
     const {children} = this.props
     const {style} = this.props
     const {title} = this.props

@@ -34,11 +34,11 @@ export default connect()(class Anchor extends PureComponent {
 
   static contextTypes = {signals: PropTypes.shape({clickAnchor: PropTypes.func})}
 
-  onClick () {
+  onClick (): Function {
     const {dispatch} = this.props
     const {signals: {clickAnchor}} = this.context
 
-    return function trigger (event) {
+    return function trigger (event: Event) {
       const {target} = event
       const {metaKey} = event
       const {nativeEvent} = event
@@ -56,7 +56,7 @@ export default connect()(class Anchor extends PureComponent {
     }
   }
 
-  render () {
+  render (): any {
     const {children} = this.props
     const {href} = this.props
     const {style} = this.props

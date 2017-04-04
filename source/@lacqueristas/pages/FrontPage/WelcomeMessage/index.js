@@ -5,7 +5,7 @@ import {Anchor} from "@lacqueristas/elements"
 export default class WelcomeMessage extends PureComponent {
   static propTypes = {name: PropTypes.string.isRequired}
 
-  render () {
+  render (): any {
     const {name} = this.props
 
     return <p>

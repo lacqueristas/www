@@ -1,4 +1,4 @@
-export default function initialState () {
+export default function initialState (): ServerStateType {
   return {
     ephemeral: {forms: {}},
     data: {},

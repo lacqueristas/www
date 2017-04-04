@@ -3,7 +3,7 @@ import {map} from "ramda"
 import mergeResource from "../mergeResource"
 
 export default function refreshResources (): Function {
-  return function thunk (dispatch: DispatchType, getState: Function, {client}: {client: HSDKClientType}): Promise<SignalType> {
+  return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
     const state = getState()
 
     map((collection: Array<any>) => {

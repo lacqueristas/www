@@ -1,4 +1,4 @@
-export default function pushSessions ({attributes, client}) {
+export default function pushSessions ({attributes, client}: {attributes: FreshSessionsAttributesType, client: HSDKClientType}): Promise<any> {
   const {email} = attributes
   const {password} = attributes
 

@@ -11,7 +11,7 @@ const hiddenStyle = {
   left: -5000,
 }
 
-export default function Newsletter () {
+export default function Newsletter (): any {
   return <NativeForm name="mc-embedded-subscribe-form" action={mailchimpURL} target="_blank">
 
     <NativeFormSection id="email" name="EMAIL" type="email" required label="Your email" />
