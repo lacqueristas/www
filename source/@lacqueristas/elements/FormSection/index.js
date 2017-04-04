@@ -61,11 +61,7 @@ export default withForm(class FormSection extends PureComponent {
 
       this.setState({value})
 
-      dispatch(updateInput({
-        slug,
-        name,
-        value,
-      }))
+      dispatch(updateInput(slug, name, value))
     }.bind(this)
   }
 

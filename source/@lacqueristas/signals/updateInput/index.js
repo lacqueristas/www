@@ -1,9 +1,11 @@
-export default function updateInput ({slug, name, value}: {slug: string, name: string, value: any}): SignalType {
+export default function updateInput (slug: string, name: string, value: any, multiple: boolean = false): SignalType {
   return {
     type: "updateInput",
     payload: {
       slug,
-      attributes: {[name]: value},
+      name,
+      value,
+      multiple,
     },
   }
 }
