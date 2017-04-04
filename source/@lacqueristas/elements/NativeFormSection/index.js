@@ -22,6 +22,7 @@ export default class NativeFormSection extends PureComponent {
     required: false,
     style: {},
     value: "",
+    name: null,
   }
 
   state = {}
