@@ -9,6 +9,8 @@ import redux from "./redux"
 import history from "./history"
 import sdk from "./sdk"
 
+const REFRESH_WAIT_TIME = 25000
+
 window.env = environment(
   [...document.querySelectorAll("meta[type='environment']")]
 )
@@ -30,7 +32,7 @@ sdk()
     return store
   })
   .then((store: ReduxStoreType): ReduxStoreType => {
-    setInterval((): any => store.dispatch(signals.refreshResources()), 25000)
+    setInterval((): any => store.dispatch(signals.refreshResources()), REFRESH_WAIT_TIME)
 
     store.dispatch(signals.refreshResources())
 
