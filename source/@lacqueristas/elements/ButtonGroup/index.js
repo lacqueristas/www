@@ -1,3 +1,5 @@
+/* eslint-disable id-length */
+
 import React, {PropTypes, PureComponent} from "react"
 import cxs from "cxs"
 
