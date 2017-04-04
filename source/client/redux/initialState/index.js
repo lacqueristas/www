@@ -1,5 +1,5 @@
 import urlParse from "url-parse"
-import {get} from "store"
+import store from "store"
 import {omit} from "ramda"
 import {mergeDeep} from "ramda-extra"
 
@@ -9,7 +9,7 @@ const raw = {
 }
 
 export default function initialState (): any {
-  const state = get("state") || {}
+  const state = store.get("state") || {}
 
   return mergeDeep(
     raw,
