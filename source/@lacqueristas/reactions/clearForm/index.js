@@ -1,13 +1,8 @@
-import {omit} from "ramda"
+import {mergeDeep} from "ramda-extra"
 
-export default function clearForm ({state, payload}): StateType {
-  const {slug} = payload
-
-  return {
-    ...state,
-    ephemeral: {
-      ...state.ephemeral,
-      forms: omit(slug, state.ephemeral.forms),
-    },
-  }
+export default function clearForm ({state, payload: slug}: {state: StateType, payload: string}): StateType {
+  return mergeDeep(
+    state,
+    {ephemeral: {forms: {[slug]: {}}}}
+  )
 }
