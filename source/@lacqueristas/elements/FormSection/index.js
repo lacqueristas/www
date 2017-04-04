@@ -46,7 +46,7 @@ export default withForm(class FormSection extends PureComponent {
     value: string | number
   }
 
-  static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func})}
+  static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func.isRequired}).isRequired}
 
   onChangeInput (): Function {
     const {dispatch} = this.props
