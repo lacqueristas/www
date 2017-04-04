@@ -53,6 +53,8 @@ export default class Head extends PureComponent {
       <meta type="environment" name="ORIGIN_LOCATION" content={process.env.ORIGIN_LOCATION} />
 
       <style type="text/css" data-id="cxs" />
+
+      <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey={process.env.BUGSNAG_API_PUBLIC} />
     </head>
   }
 }

@@ -11,6 +11,7 @@ import morgan from "morgan"
 import compression from "compression"
 import urlParse from "url-parse"
 import {replace} from "ramda"
+import bugsnag from "bugsnag"
 
 import {Application} from "@lacqueristas/ui"
 import redux from "./redux"
@@ -21,9 +22,12 @@ requireEnvironmentVariables([
   "NODE_ENV",
   "WWW_LOCATION",
   "ORIGIN_LOCATION",
+  "BUGSNAG_API_PRIVATE",
 ])
 
 const cssEmbed = replace("<style type=\"text/css\" data-id=\"cxs\"></style>")
+
+bugsnag.register(process.env.BUGSNAG_API_PRIVATE)
 
 const application = express()
 
