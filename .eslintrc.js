@@ -45,7 +45,21 @@ module.exports = {
     "callback-return": "error",
     "camelcase": "warn",
     "capitalized-comments": "error",
-    "class-methods-use-this": "error",
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": [
+          "componentDidMount",
+          "componentDidUpdate",
+          "componentWillMount",
+          "componentWillReceiveProps",
+          "componentWillUnmount",
+          "componentWillUpdate",
+          "render",
+          "shouldComponentUpdate",
+        ]
+      }
+    ],
     "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": "error",
     "comma-style": "error",
