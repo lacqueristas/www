@@ -51,6 +51,8 @@ export default class Head extends PureComponent {
       <meta name="robots" content="index,follow" />
 
       <meta type="environment" name="ORIGIN_LOCATION" content={process.env.ORIGIN_LOCATION} />
+      <meta type="environment" name="WWW_LOCATION" content={process.env.WWW_LOCATION} />
+      <meta type="environment" name="LUMIN_LOCATION" content={process.env.LUMIN_LOCATION} />
 
       <style type="text/css" data-id="cxs" />
 
