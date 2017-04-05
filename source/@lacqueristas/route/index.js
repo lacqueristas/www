@@ -1,4 +1,5 @@
 import {prop} from "ramda"
+import {path} from "ramda"
 import {isNil} from "ramda"
 import {pascal} from "case"
 
@@ -8,7 +9,7 @@ import {PageNotFound} from "@lacqueristas/pages"
 import {LandingPage} from "@lacqueristas/pages"
 import {LoadingScreen} from "@lacqueristas/pages"
 
-export default function route (navigation: object, ephemeral: object): any {
+export default function route (navigation: NavigationState, ephemeral: EphemeralState): any {
   const {pathname} = navigation
   const component = prop(pascal(pathname), pages)
 
@@ -16,21 +17,22 @@ export default function route (navigation: object, ephemeral: object): any {
     return LandingPage
   }
 
-  if (component.clientSide && !global.window) {
+  if (isNil(component)) {
+    return PageNotFound
+  }
+
+  const {clientSide} = component
+
+  if (clientSide && !global.window) {
     return LoadingScreen
   }
 
-  if (component && component.authenticate && ephemeral.self) {
-    return component
-  }
+  const {authenticate} = component
+  const self = path(["current", "self"], ephemeral)
 
-  if (component && component.authenticate && isNil(ephemeral.self)) {
+  if (authenticate && isNil(self)) {
     return AuthenticationRequired
   }
 
-  if (component) {
-    return component
-  }
-
-  return PageNotFound
+  return component
 }

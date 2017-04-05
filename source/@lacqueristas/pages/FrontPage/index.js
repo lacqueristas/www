@@ -8,7 +8,7 @@ import {authenticate} from "@lacqueristas/decorators"
 import WelcomeMessage from "./WelcomeMessage"
 
 const withAccount = connect((state: StateType, props: mixed): mixed => {
-  const self = path(["ephemeral", "self"], state)
+  const self = path(["ephemeral", "current", "self"], state)
   const session = path(["resources", "sessions", self], state)
   const account = path(["relationships", "account", "data"], session)
 

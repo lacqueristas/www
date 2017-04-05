@@ -12,7 +12,7 @@ import pushProject from "./pushProject"
 export default function createProject (slug: string): Function {
   return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
     const state = getState()
-    const self = path(["ephemeral", "self"], state)
+    const self = path(["ephemeral", "current", "self"], state)
     const session = path(["resources", "sessions", self], state)
     const attributes = path(["ephemeral", "forms", slug], state)
 
