@@ -30,7 +30,7 @@ export default function createProject (slug: string): Function {
       .then(tapP(({data}: {data: any}): SignalType => dispatch(updateLocation(`/projects/${data.id}`))))
       .then((): SignalType => {
         return {
-          type: "signUp",
+          type: "createProject",
           payload: slug,
         }
       })
