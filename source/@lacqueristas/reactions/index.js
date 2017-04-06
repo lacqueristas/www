@@ -1,6 +1,6 @@
 import clearForm from "./clearForm"
 import mergeResource from "./mergeResource"
-import storeSelf from "./storeSelf"
+import storeCurrent from "./storeCurrent"
 import updateFile from "./updateFile"
 import updateInput from "./updateInput"
 import updateNavigation from "./updateNavigation"
@@ -8,7 +8,7 @@ import updateNavigation from "./updateNavigation"
 export default {
   clearForm,
   mergeResource,
-  storeSelf,
+  storeCurrent,
   updateFile,
   updateInput,
   updateNavigation,

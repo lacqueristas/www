@@ -5,7 +5,7 @@ import finishingRequest from "../finishingRequest"
 import updateLocation from "../updateLocation"
 import clearForm from "../clearForm"
 import mergeResource from "../mergeResource"
-import storeSelf from "../storeSelf"
+import storeCurrent from "../storeCurrent"
 
 import pullAccount from "./pullAccount"
 import pushSession from "./pushSession"
