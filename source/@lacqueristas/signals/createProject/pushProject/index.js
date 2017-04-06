@@ -1,8 +1,6 @@
 import {path} from "ramda"
 
 export default function pushProject ({attributes, client, session}: {attributes: FreshProjectAttributesType, client: HSDKClientType, session: SessionType}): Promise<any> {
-  const {name} = attributes
-  const {description} = attributes
   const secret = path(["attributes", "bearer"], session)
 
   return client
@@ -16,10 +14,7 @@ export default function pushProject ({attributes, client, session}: {attributes:
       payload: {
         data: {
           type: "projects",
-          attributes: {
-            name,
-            description,
-          },
+          attributes,
         },
       },
     })

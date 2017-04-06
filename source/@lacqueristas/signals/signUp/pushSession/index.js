@@ -1,7 +1,4 @@
 export default function pushSessions ({attributes, client}: {attributes: FreshSessionAttributesType, client: HSDKClientType}): Promise<any> {
-  const {email} = attributes
-  const {password} = attributes
-
   return client
     .sessions
     .v1
@@ -9,10 +6,7 @@ export default function pushSessions ({attributes, client}: {attributes: FreshSe
       payload: {
         data: {
           type: "sessions",
-          attributes: {
-            email,
-            password,
-          },
+          attributes,
         },
       },
     })
