@@ -9,6 +9,20 @@ import reaction from "../reaction"
 import initialState from "./initialState"
 
 export default function redux ({client, history}: {client: HSDKClientType, history: HistoryType}): any {
+  if (process.env.NODE_ENV === "production") {
+    const middleware = applyMiddleware(
+      thunkMiddleware.withExtraArgument({
+        client,
+        history,
+      })
+    )
+
+    return createStore(
+      reaction,
+      initialState(),
+      middleware
+    )
+  }
   const middleware = applyMiddleware(
     thunkMiddleware.withExtraArgument({
       client,
@@ -16,15 +30,6 @@ export default function redux ({client, history}: {client: HSDKClientType, histo
     }),
     logger
   )
-
-  if (process.env.NODE_ENV === "production") {
-    return createStore(
-      reaction,
-      initialState(),
-      middleware
-    )
-  }
-
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
   return createStore(
