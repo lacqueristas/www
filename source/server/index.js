@@ -27,7 +27,9 @@ requireEnvironmentVariables([
 
 const cssEmbed = replace("<style type=\"text/css\" data-id=\"cxs\"></style>")
 
-bugsnag.register(process.env.BUGSNAG_API_PRIVATE)
+if (process.env.NODE_ENV === "production") {
+  bugsnag.register(process.env.BUGSNAG_API_PRIVATE)
+}
 
 const application = express()
 
