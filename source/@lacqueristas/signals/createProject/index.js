@@ -1,5 +1,5 @@
 import {path} from "ramda"
-import {tapP} from "ramda-extra"
+import {allObjectP} from "ramda-extra"
 
 import startingRequest from "../startingRequest"
 import finishingRequest from "../finishingRequest"
@@ -15,24 +15,34 @@ export default function createProject (slug: string): Function {
     const state = getState()
     const self = path(["ephemeral", "current", "self"], state)
     const session = path(["resources", "sessions", self], state)
+    const bearer = path(["attributes", "bearer"], session)
     const attributes = path(["ephemeral", "forms", slug], state)
+
+    const projectRequest = pushProject(client)
 
     return Promise
       .resolve(dispatch(startingRequest(slug)))
-      .then((): any => pushProject({
+      .then((): Promise<ProjectResourceType> => projectRequest({
         attributes,
-        client,
-        session,
+        bearer,
       }))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then(tapP((): SignalType => dispatch(finishingRequest(slug))))
-      .then(tapP((): SignalType => dispatch(clearForm(slug))))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(updateLocation(`/projects/${data.id}`))))
-      .then((): SignalType => {
-        return {
-          type: "createProject",
-          payload: slug,
-        }
+      .then((project: ProjectResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType, project: ProjectResourceType}> => {
+        return allObjectP({
+          mergedResourceSignal: dispatch(mergeResource(project)),
+          storeCurrentSignal: dispatch(storeCurrent({
+            id: project.id,
+            key: "project",
+          })),
+          project,
+        })
       })
+      .then(({project}: {project: ProjectResourceType}): Promise<{finishingRequestSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+        return allObjectP({
+          finishingRequestSignal: dispatch(finishingRequest(slug)),
+          storeCurrentSignal: dispatch(clearForm(slug)),
+          updateLocationSignal: dispatch(updateLocation(`/projects/${project.id}`)),
+        })
+      })
+      .then((): SignalType => dispatch({type: "createProject"}))
   }
 }
