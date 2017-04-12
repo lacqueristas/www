@@ -1,4 +1,5 @@
-import {tapP} from "ramda-extra"
+import {path} from "ramda"
+import {allObjectP} from "ramda-extra"
 
 import startingRequest from "../startingRequest"
 import finishingRequest from "../finishingRequest"
@@ -16,27 +17,39 @@ export default function signIn (slug: string): Function {
     const {forms} = ephemeral
     const attributes = forms[slug]
 
+    const sessionRequest = pushSession(client)
+    const accountRequest = pullAccount(client)
+
     return Promise
       .resolve(dispatch(startingRequest(slug)))
-      .then((): any => pushSession({
-        attributes,
-        client,
-      }))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf(data.data.id))))
-      .then(({data}: {data: any}): any => pullAccount({
-        attributes: data.data.relationships.account.data,
-        client,
-      }))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then(tapP((): SignalType => dispatch(finishingRequest(slug))))
-      .then(tapP((): SignalType => dispatch(clearForm(slug))))
-      .then(tapP((): SignalType => dispatch(updateLocation("/front-page"))))
-      .then((): SignalType => {
-        return {
-          type: "signIn",
-          payload: slug,
-        }
+      .then((): Promise<SessionResourceType> => sessionRequest(attributes))
+      .then((session: SessionResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType, session: SessionResourceType}> => {
+        return allObjectP({
+          mergedResourceSignal: dispatch(mergeResource(session)),
+          storeCurrentSignal: dispatch(storeCurrent({
+            id: session.id,
+            key: "self",
+          })),
+          session,
+        })
       })
+      .then(({session}: {session: SessionResourceType}): Promise<AccountResourceType> => accountRequest({id: path(["relationships", "account", "data", "id"], session)}))
+      .then((account: AccountResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType}> => {
+        return allObjectP({
+          mergedResourceSignal: dispatch(mergeResource(account)),
+          storeCurrentSignal: dispatch(storeCurrent({
+            id: account.id,
+            key: "account",
+          })),
+        })
+      })
+      .then((): Promise<{finishingRequestSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+        return allObjectP({
+          finishingRequestSignal: dispatch(finishingRequest(slug)),
+          clearFormSignal: dispatch(clearForm(slug)),
+          updateLocationSignal: dispatch(updateLocation("/front-page")),
+        })
+      })
+      .then((): SignalType => dispatch({type: "signIn"}))
   }
 }
