@@ -7,8 +7,10 @@
     "transform": ["babelify"]
   },
   "peerDependencies": {
+    "@lacqueristas/resources": "1.0.0",
     "ramda": "0.23.0",
-    "url-parse": "1.1.8"
     "ramda-extra": "4.2.0",
+    "url-parse": "1.1.8",
+    "httpstatuses": "3.0.0"
   }
 }
