@@ -53,6 +53,7 @@
     "@lacqueristas/elements": "file:./source/@lacqueristas/elements",
     "@lacqueristas/pages": "file:./source/@lacqueristas/pages",
     "@lacqueristas/reactions": "file:./source/@lacqueristas/reactions",
+    "@lacqueristas/resources": "file:./source/@lacqueristas/resources",
     "@lacqueristas/route": "file:./source/@lacqueristas/route",
     "@lacqueristas/signals": "file:./source/@lacqueristas/signals",
     "@lacqueristas/styles": "file:./source/@lacqueristas/styles",
