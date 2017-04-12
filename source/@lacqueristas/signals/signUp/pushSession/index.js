@@ -4,6 +4,9 @@ import {session} from "@lacqueristas/resources"
 
 export default function pushSession (client: HSDKClientType): Function {
   return function pushSessionClient (attributes: FreshSessionAttributesType): Promise<SessionResourceType> {
+    const {email} = attributes
+    const {password} = attributes
+
     return client
       .sessions
       .v1
@@ -11,7 +14,10 @@ export default function pushSession (client: HSDKClientType): Function {
         payload: {
           data: {
             type: "sessions",
-            attributes,
+            attributes: {
+              email,
+              password
+            },
           },
         },
       })
