@@ -11,15 +11,13 @@ const resourceTreeify = treeify([
   indexBy(prop("id")),
 ])
 
-export default function mergeResource ({state, payload}: {state: StateType, payload: object}): StateType {
-  const {data} = payload
-
+export default function mergeResource ({state, payload}: {state: StateType, payload: Object}): StateType {
   return {
     ...state,
     resources: asGraph(
       mergeDeep(
         state.resources,
-        resourceTreeify([data])
+        resourceTreeify([payload])
       )
     ),
   }
