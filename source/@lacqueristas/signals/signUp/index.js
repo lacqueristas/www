@@ -1,4 +1,4 @@
-import {tapP} from "ramda-extra"
+import {allObjectP} from "ramda-extra"
 
 import startingRequest from "../startingRequest"
 import finishingRequest from "../finishingRequest"
@@ -16,27 +16,38 @@ export default function signUp (slug: string): Function {
     const {forms} = ephemeral
     const attributes = forms[slug]
 
+    const accountRequest = pushAccount(client)
+    const sessionRequest = pushSession(client)
+
     return Promise
       .resolve(dispatch(startingRequest(slug)))
-      .then((): any => pushAccount({
-        attributes,
-        client,
-      }))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then((): any => pushSession({
-        attributes,
-        client,
-      }))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(mergeResource(data))))
-      .then(tapP(({data}: {data: any}): SignalType => dispatch(storeSelf(data.data.id))))
-      .then(tapP((): SignalType => dispatch(finishingRequest(slug))))
-      .then(tapP((): SignalType => dispatch(clearForm(slug))))
-      .then(tapP((): SignalType => dispatch(updateLocation("/front-page"))))
-      .then((): SignalType => {
-        return {
-          type: "signUp",
-          payload: slug,
-        }
+      .then((): Promise<AccountResourceType> => accountRequest(attributes))
+      .then((account: AccountResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType}> => {
+        return allObjectP({
+          mergedResourceSignal: dispatch(mergeResource(account)),
+          storeCurrentSignal: dispatch(storeCurrent({
+            id: account.id,
+            key: "account",
+          })),
+        })
       })
+      .then((): Promise<SessionResourceType> => sessionRequest(attributes))
+      .then((session: SessionResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType}> => {
+        return allObjectP({
+          mergedResourceSignal: dispatch(mergeResource(session)),
+          storeCurrentSignal: dispatch(storeCurrent({
+            id: session.id,
+            key: "self",
+          })),
+        })
+      })
+      .then((): Promise<{finishingRequestSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+        return allObjectP({
+          finishingRequestSignal: dispatch(finishingRequest(slug)),
+          clearFormSignal: dispatch(clearForm(slug)),
+          updateLocationSignal: dispatch(updateLocation("/front-page")),
+        })
+      })
+      .then((): SignalType => dispatch({type: "signUp"}))
   }
 }
