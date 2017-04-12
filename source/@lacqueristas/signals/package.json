@@ -8,7 +8,7 @@
   },
   "peerDependencies": {
     "ramda": "0.23.0",
-    "ramda-extra": "4.0.0",
     "url-parse": "1.1.8"
+    "ramda-extra": "4.2.0",
   }
 }
