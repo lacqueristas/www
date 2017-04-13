@@ -1,8 +1,8 @@
 import {path} from "ramda"
 import {allObjectP} from "ramda-extra"
 
-import startingRequest from "../startingRequest"
-import finishingRequest from "../finishingRequest"
+import startLoading from "../startLoading"
+import finishLoading from "../finishLoading"
 import updateLocation from "../updateLocation"
 import clearForm from "../clearForm"
 import mergeResource from "../mergeResource"
@@ -21,7 +21,7 @@ export default function signIn (slug: string): Function {
     const accountRequest = pullAccount(client)
 
     return Promise
-      .resolve(dispatch(startingRequest(slug)))
+      .resolve(dispatch(startLoading(slug)))
       .then((): Promise<SessionResourceType> => sessionRequest(attributes))
       .then((session: SessionResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType, session: SessionResourceType}> => {
         return allObjectP({
@@ -43,9 +43,9 @@ export default function signIn (slug: string): Function {
           })),
         })
       })
-      .then((): Promise<{finishingRequestSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+      .then((): Promise<{finishLoadingSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
         return allObjectP({
-          finishingRequestSignal: dispatch(finishingRequest(slug)),
+          finishLoadingSignal: dispatch(finishLoading(slug)),
           clearFormSignal: dispatch(clearForm(slug)),
           updateLocationSignal: dispatch(updateLocation("/front-page")),
         })

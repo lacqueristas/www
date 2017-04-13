@@ -1,8 +1,8 @@
 import {path} from "ramda"
 import {allObjectP} from "ramda-extra"
 
-import startingRequest from "../startingRequest"
-import finishingRequest from "../finishingRequest"
+import startLoading from "../startLoading"
+import finishLoading from "../finishLoading"
 import updateLocation from "../updateLocation"
 import clearForm from "../clearForm"
 import mergeResource from "../mergeResource"
@@ -21,7 +21,7 @@ export default function createProject (slug: string): Function {
     const projectRequest = pushProject(client)
 
     return Promise
-      .resolve(dispatch(startingRequest(slug)))
+      .resolve(dispatch(startLoading(slug)))
       .then((): Promise<ProjectResourceType> => projectRequest({
         attributes,
         bearer,
@@ -36,9 +36,9 @@ export default function createProject (slug: string): Function {
           project,
         })
       })
-      .then(({project}: {project: ProjectResourceType}): Promise<{finishingRequestSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+      .then(({project}: {project: ProjectResourceType}): Promise<{finishLoadingSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
         return allObjectP({
-          finishingRequestSignal: dispatch(finishingRequest(slug)),
+          finishLoadingSignal: dispatch(finishLoading(slug)),
           storeCurrentSignal: dispatch(clearForm(slug)),
           updateLocationSignal: dispatch(updateLocation(`/projects/${project.id}`)),
         })
