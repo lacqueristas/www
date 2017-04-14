@@ -13,6 +13,7 @@
     "watch:test": "chokidar './source/' --ignore '/node_modules/' --command 'npm run test --silent'",
     "watch:build": "gulp watch",
     "test": "mocha --compilers js:babel-register './source/**/test.js'",
+    "check": "flow './source'",
     "lint": "eslint './source/' --ignore-pattern 'node_modules'"
   },
   "keywords": [
