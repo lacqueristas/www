@@ -1,12 +1,10 @@
 import React, {PureComponent, PropTypes} from "react"
-import {forEach} from "ramda"
+import {map} from "ramda"
 import Dropzone from "react-dropzone"
 import {connect} from "react-redux"
 
-const withPhotographs = connect((state, props) => {
-  return {
-    ...props,
-  }
+const withPhotographs = connect((state: StateType, props: any): any => {
+  return {...props}
 })
 
 export default withPhotographs(class UploadPhotographs extends PureComponent {
@@ -33,17 +31,15 @@ export default withPhotographs(class UploadPhotographs extends PureComponent {
   onDrop (slug: string): Function {
     const {dispatch} = this.props
     const {signals} = this.context
-    const {updateInput} = signals
-    const {errorInput} = signals
+    const {manageFiles} = signals
 
-    // TODO: Either make it so update input takes an adidtional top level resourec ("project", "photographs") or something else
-    // TODO: Switch back to destructured, makes the most sense to me IMO.
-    // TODO: Figure out ho to take a file and turn it into a photograph and where that should happen
-    // TODO: Turn this entire thunk into an action that promise.all
-    // TODO: Maybe all thunks for handlers are just dispatched actions?
     return function thunk (accepted: Array<any>, rejected: Array<any>) {
-      forEach((file: any): any => dispatch(updateInput(slug, "photographs", file, true)), accepted)
-      forEach((file: any): any => dispatch(errorInput(slug, "photographs", file)), rejected)
+      dispatch(manageFiles({
+        slug,
+        name: "photographs",
+        accepted,
+        rejected,
+      }))
     }
   }
 
