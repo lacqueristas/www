@@ -1,4 +1,4 @@
-FROM node:7.1.0-alpine
+FROM node:7.9.0-alpine
 
 ENV APPLICATION /usr/lib/www
 ENV NPM_CONFIG_LOGLEVEL warn
