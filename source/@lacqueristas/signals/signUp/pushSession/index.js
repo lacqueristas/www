@@ -16,7 +16,7 @@ export default function pushSession (client: HSDKClientType): Function {
             type: "sessions",
             attributes: {
               email,
-              password
+              password,
             },
           },
         },
