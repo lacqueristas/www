@@ -38,7 +38,7 @@ export default connect(
   state = {}
 
   state: {
-    value: string | number
+    value: any
   }
 
   static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func.isRequired}).isRequired}
