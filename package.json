@@ -58,6 +58,7 @@
     "@lacqueristas/route": "file:./source/@lacqueristas/route",
     "@lacqueristas/signals": "file:./source/@lacqueristas/signals",
     "@lacqueristas/styles": "file:./source/@lacqueristas/styles",
+    "@lacqueristas/queries": "file:./source/@lacqueristas/queries",
     "@lacqueristas/ui": "file:./source/@lacqueristas/ui",
     "abstraction": "10.0.0",
     "babel-cli": "6.24.0",
