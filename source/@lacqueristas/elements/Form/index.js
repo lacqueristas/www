@@ -19,11 +19,10 @@ export default connect(
   static defaultProps = {style: {}}
 
   onSubmitForm (): Function {
-    const {slug} = this.props
-    const {action} = this.props
-    const signal = actions[action]
-
     return function thunk (event: Event) {
+      const {slug} = this.props
+      const {onSubmit} = this.props
+
       event.preventDefault()
 
       onSubmit(slug)
