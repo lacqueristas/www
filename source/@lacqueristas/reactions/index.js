@@ -1,15 +1,13 @@
-import clearForm from "./clearForm"
-import mergeResource from "./mergeResource"
-import storeCurrent from "./storeCurrent"
-import updateFile from "./updateFile"
-import updateInput from "./updateInput"
-import updateNavigation from "./updateNavigation"
+import clearFormReaction from "./clearFormReaction"
+import mergeResourceReaction from "./mergeResourceReaction"
+import storeCurrentReaction from "./storeCurrentReaction"
+import updateInputReaction from "./updateInputReaction"
+import updateNavigationReaction from "./updateNavigationReaction"
 
 export default {
-  clearForm,
-  mergeResource,
-  storeCurrent,
-  updateFile,
-  updateInput,
-  updateNavigation,
+  clearFormReaction,
+  mergeResourceReaction,
+  storeCurrentReaction,
+  updateInputReaction,
+  updateNavigationReaction,
 }

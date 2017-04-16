@@ -13,18 +13,11 @@ const connectNavigation = connect((state: StateType, props: mixed): object => {
 
 export default connectNavigation(class Application extends PureComponent {
   static propTypes = {
-    signals: PropTypes.objectOf(PropTypes.func).isRequired,
     ephemeral: PropTypes.shape({current: PropTypes.shape({self: PropTypes.string}).isRequired}).isRequired,
     navigation: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
       query: PropTypes.object,
     }).isRequired,
-  }
-
-  static childContextTypes = {signals: PropTypes.object.isRequired}
-
-  getChildContext (): object {
-    return {signals: this.props.signals}
   }
 
   render (): any {

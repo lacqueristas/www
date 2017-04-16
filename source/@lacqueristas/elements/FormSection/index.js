@@ -5,6 +5,7 @@ import {mergeDeep} from "ramda-extra"
 import {createSelector} from "reselect"
 import {formSectionQuery} from "@lacqueristas/queries"
 import {dispatched} from "@lacqueristas/signals"
+import {updateInputSignal} from "@lacqueristas/signals"
 
 const baseStyle = {
   display: "flex",
@@ -13,6 +14,7 @@ const baseStyle = {
 
 export default connect(
   createSelector(formSectionQuery),
+  dispatched({updateInput: updateInputSignal}),
 )(class FormSection extends PureComponent {
   static propTypes = {
     updateInput: PropTypes.func.isRequired,
@@ -42,10 +44,9 @@ export default connect(
   static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func.isRequired}).isRequired}
 
   onChangeInput (): Function {
-    const {updateInput} = this.props
-    const {slug} = this.props
-
     return function thunk (event: Event) {
+      const {slug} = this.props
+      const {updateInput} = this.props
       const {target} = event
       const {name} = target
       const {value} = target

@@ -1,0 +1,3 @@
+type FormQueryStateType = {
+  slug: string,
+}

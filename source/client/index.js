@@ -3,7 +3,8 @@ import {render} from "react-dom"
 import {Provider} from "react-redux"
 
 import {Application} from "@lacqueristas/ui"
-import * as signals from "@lacqueristas/signals"
+import {updateNavigationSignal} from "@lacqueristas/signals"
+import {refreshResourcesSignal} from "@lacqueristas/signals"
 import environment from "./environment"
 import redux from "./redux"
 import history from "./history"
@@ -21,9 +22,9 @@ sdk()
     history,
   }))
   .then((store: ReduxStoreType): ReduxStoreType => {
-    history.listen(function locationChange (next: LocationType, action: HistoryActionType): any {
+    history.listen(function locationChange (next: LocationType, action: HistoryActionType): ?SignalType {
       if (action !== "PUSH") {
-        return store.dispatch(signals.updateNavigation(next))
+        return store.dispatch(updateNavigationSignal(next))
       }
 
       return null
@@ -32,16 +33,14 @@ sdk()
     return store
   })
   .then((store: ReduxStoreType): ReduxStoreType => {
-    setInterval((): any => store.dispatch(signals.refreshResources()), REFRESH_WAIT_TIME)
-
-    store.dispatch(signals.refreshResources())
+    setInterval((): SignalType => store.dispatch(refreshResourcesSignal()), REFRESH_WAIT_TIME)
 
     return store
   })
   .then((store: ReduxStoreType): ReduxStoreType => {
     return render(
       <Provider store={store}>
-        <Application signals={signals} />
+        <Application />
       </Provider>,
       document.getElementById("application")
     )

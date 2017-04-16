@@ -5,7 +5,7 @@ import {compose} from "redux"
 import logger from "redux-logger"
 import thunkMiddleware from "redux-thunk"
 
-import reaction from "../reaction"
+import reaction from "./reaction"
 import initialState from "./initialState"
 
 export default function redux ({client, history}: {client: HSDKClientType, history: HistoryType}): any {
