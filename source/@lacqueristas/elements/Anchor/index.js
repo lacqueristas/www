@@ -20,7 +20,7 @@ const kinds = [
 
 export default connect()(class Anchor extends PureComponent {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    clickAnchor: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
     style: PropTypes.object.isRequired,
     href: PropTypes.string.isRequired,
@@ -35,8 +35,7 @@ export default connect()(class Anchor extends PureComponent {
   static contextTypes = {signals: PropTypes.shape({clickAnchor: PropTypes.func})}
 
   onClick (): Function {
-    const {dispatch} = this.props
-    const {signals: {clickAnchor}} = this.context
+    const {clickAnchor} = this.props
 
     return function trigger (event: Event) {
       const {target} = event
@@ -49,7 +48,7 @@ export default connect()(class Anchor extends PureComponent {
       if (!isOpeningNewInstance) {
         event.preventDefault()
 
-        dispatch(clickAnchor(href))
+        clickAnchor(href)
       }
     }
   }

@@ -1,5 +1,4 @@
 import React, {PureComponent, PropTypes} from "react"
-import {map} from "ramda"
 import Dropzone from "react-dropzone"
 import {connect} from "react-redux"
 
@@ -9,6 +8,7 @@ const withPhotographs = connect((state: StateType, props: any): any => {
 
 export default withPhotographs(class UploadPhotographs extends PureComponent {
   static propTypes = {
+    manageFiles: PropTypes.func.isRequired,
     photographs: PropTypes.arrayOf(PropTypes.shape({
       attributes: PropTypes.shape({
         "src": PropTypes.string,
@@ -17,29 +17,19 @@ export default withPhotographs(class UploadPhotographs extends PureComponent {
         "updated-at": PropTypes.string,
       }).isRequired,
     })).isRequired,
-    dispatch: PropTypes.func.isRequired,
   }
   static defaultProps = {photographs: []}
-  static contextTypes = {
-    signals: PropTypes.shape({
-      clearForm: PropTypes.func.isRequired,
-      updateInput: PropTypes.func.isRequired,
-      errorInput: PropTypes.func.isRequired,
-    }).isRequired,
-  }
 
   onDrop (slug: string): Function {
-    const {dispatch} = this.props
-    const {signals} = this.context
-    const {manageFiles} = signals
+    const {manageFiles} = this.props
 
     return function thunk (accepted: Array<any>, rejected: Array<any>) {
-      dispatch(manageFiles({
+      manageFiles({
         slug,
         name: "photographs",
         accepted,
         rejected,
-      }))
+      })
     }
   }
 

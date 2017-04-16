@@ -14,19 +14,14 @@ import UploadPhotographs from "./UploadPhotographs"
 
 export default authenticate(clientSide(connect()(class MakeAProject extends PureComponent {
   static propTypes = {
+    draftProject: PropTypes.func.isRequired,
+    clearForm: PropTypes.func.isRequired,
     project: PropTypes.shape({
       attributes: PropTypes.shape({
         "name": PropTypes.string,
         "description": PropTypes.string,
         "painted-at": PropTypes.string,
       }).isRequired,
-    }).isRequired,
-    dispatch: PropTypes.func.isRequired,
-  }
-  static contextTypes = {
-    signals: PropTypes.shape({
-      draftProject: PropTypes.func.isRequired,
-      clearForm: PropTypes.func.isRequired,
     }).isRequired,
   }
   static defaultProps = {
@@ -40,24 +35,20 @@ export default authenticate(clientSide(connect()(class MakeAProject extends Pure
   }
 
   onClickDraft (): Function {
-    const {dispatch} = this.props
-    const {signals} = this.context
-    const {draftProject} = signals
+    const {draftProject} = this.props
 
     return function thunk (event: Event) {
       event.preventDefault()
-      dispatch(draftProject())
+      draftProject()
     }
   }
 
   onClickReset (slug: string): Function {
-    const {dispatch} = this.props
-    const {signals} = this.context
-    const {clearForm} = signals
+    const {clearForm} = this.props
 
     return function thunk () {
       event.preventDefault()
-      dispatch(clearForm(slug))
+      clearForm(slug)
     }
   }
 

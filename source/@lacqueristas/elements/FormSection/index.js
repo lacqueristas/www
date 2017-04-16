@@ -22,6 +22,7 @@ const withForm = connect((state: StateType, props: mixed): mixed => {
 
 export default withForm(class FormSection extends PureComponent {
   static propTypes = {
+    updateInput: PropTypes.func.isRequired,
     slug: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -30,7 +31,6 @@ export default withForm(class FormSection extends PureComponent {
     required: PropTypes.bool.isRequired,
     type: PropTypes.string.isRequired,
     style: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -49,10 +49,8 @@ export default withForm(class FormSection extends PureComponent {
   static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func.isRequired}).isRequired}
 
   onChangeInput (): Function {
-    const {dispatch} = this.props
+    const {updateInput} = this.props
     const {slug} = this.props
-    const {signals} = this.context
-    const {updateInput} = signals
 
     return function thunk (event: Event) {
       const {target} = event
@@ -61,11 +59,11 @@ export default withForm(class FormSection extends PureComponent {
 
       this.setState({value})
 
-      dispatch(updateInput({
+      updateInput({
         slug,
         name,
         value,
-      }))
+      })
     }.bind(this)
   }
 
