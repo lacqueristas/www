@@ -2,8 +2,9 @@ import React, {PureComponent, PropTypes} from "react"
 import cxs from "cxs"
 import {connect} from "react-redux"
 import {mergeDeep} from "ramda-extra"
-
 import {onlyProps} from "@lacqueristas/queries"
+import {dispatched} from "@lacqueristas/signals"
+import {clickAnchorSignal} from "@lacqueristas/signals"
 import {primaryInteraction} from "@lacqueristas/styles"
 import {secondaryInteraction} from "@lacqueristas/styles"
 
@@ -21,6 +22,7 @@ const kinds = [
 
 export default connect(
   onlyProps,
+  dispatched({clickAnchor: clickAnchorSignal})
 )(class Anchor extends PureComponent {
   static propTypes = {
     clickAnchor: PropTypes.func.isRequired,
