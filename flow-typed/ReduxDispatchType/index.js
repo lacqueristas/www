@@ -1,1 +1,1 @@
-type ReduxDispatchType = (signal: SignalType): any
+type ReduxDispatchType = (signal: SignalType) => SignalType
