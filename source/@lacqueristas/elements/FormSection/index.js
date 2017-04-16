@@ -2,25 +2,18 @@ import React, {PropTypes, PureComponent} from "react"
 import {connect} from "react-redux"
 import cxs from "cxs"
 import {mergeDeep} from "ramda-extra"
-import {path} from "ramda"
+import {createSelector} from "reselect"
+import {formSectionQuery} from "@lacqueristas/queries"
+import {dispatched} from "@lacqueristas/signals"
 
 const baseStyle = {
   display: "flex",
   flexDirection: "column",
 }
-const withForm = connect((state: StateType, props: mixed): mixed => {
-  const {slug} = props
-  const {id} = props
-  const value = path(["ephemeral", "forms", slug, id], state)
 
-  return {
-    ...props,
-    name: id,
-    value,
-  }
-})
-
-export default withForm(class FormSection extends PureComponent {
+export default connect(
+  createSelector(formSectionQuery),
+)(class FormSection extends PureComponent {
   static propTypes = {
     updateInput: PropTypes.func.isRequired,
     slug: PropTypes.string.isRequired,

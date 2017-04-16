@@ -1,20 +1,12 @@
 import React, {PropTypes, PureComponent} from "react"
 import {connect} from "react-redux"
+import {createSelector} from "reselect"
 import cxs from "cxs"
-
-const withForm = connect((state: StateType, props: object): object => {
-  const {slug} = props
-  const {ephemeral} = state
-  const {forms} = ephemeral
-  const attributes = forms[slug]
-
-  return {
-    ...props,
-    ...attributes,
-  }
-})
-
-export default withForm(class Form extends PureComponent {
+import {dispatched} from "@lacqueristas/signals"
+import {formQuery} from "@lacqueristas/queries"
+export default connect(
+  createSelector(formQuery),
+)(class Form extends PureComponent {
   static propTypes = {
     slug: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
