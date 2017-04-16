@@ -109,6 +109,7 @@
     "redux-logger": "3.0.0",
     "redux-thunk": "2.2.0",
     "require-environment-variables": "1.1.2",
+    "reselect": "3.0.0",
     "skeleton-css": "2.0.4",
     "store": "2.0.4",
     "url-parse": "1.1.8",
