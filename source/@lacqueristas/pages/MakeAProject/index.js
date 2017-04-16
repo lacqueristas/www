@@ -9,12 +9,12 @@ import {Button} from "@lacqueristas/elements"
 import {ButtonGroup} from "@lacqueristas/elements"
 import {Form} from "@lacqueristas/elements"
 import {FormSection} from "@lacqueristas/elements"
+import {FileInput} from "@lacqueristas/elements"
 import {onlyProps} from "@lacqueristas/queries"
 import {dispatched} from "@lacqueristas/signals"
 import {clearFormSignal} from "@lacqueristas/signals"
 import {createProjectSignal} from "@lacqueristas/signals"
 
-import UploadPhotographs from "./UploadPhotographs"
 
 const slug = "makeAProject"
 
@@ -80,11 +80,11 @@ export default authenticate(clientSide(connect(
         Make a Project
       </Heading>
 
-        <UploadPhotographs />
       <Form name="MakeAProjectForm" onSubmit={createProject} slug={slug}>
         <FormSection id="name" type="text" required label="What do you call this project?" slug={slug} value={name} />
         <FormSection id="description" type="textarea" required label="All the details" slug={slug} defaultValue={description} />
         <FormSection id="painted-at" type="date" required label="When did you do it?" slug={slug} value={paintedAt} />
+        <FileInput id="photographs" slug={slug} />
 
         <ButtonGroup>
           <Button kind="primary" type="submit">
