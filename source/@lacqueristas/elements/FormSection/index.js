@@ -2,7 +2,7 @@ import React, {PropTypes, PureComponent} from "react"
 import {connect} from "react-redux"
 import cxs from "cxs"
 import {mergeDeep} from "ramda-extra"
-import {createSelector} from "reselect"
+import {query} from "@lacqueristas/queries"
 import {formSectionQuery} from "@lacqueristas/queries"
 import {dispatched} from "@lacqueristas/signals"
 import {updateInputSignal} from "@lacqueristas/signals"
@@ -13,7 +13,7 @@ const baseStyle = {
 }
 
 export default connect(
-  createSelector(formSectionQuery),
+  query([formSectionQuery]),
   dispatched({updateInput: updateInputSignal}),
 )(class FormSection extends PureComponent {
   static propTypes = {
@@ -40,8 +40,6 @@ export default connect(
   state: {
     value: any
   }
-
-  static contextTypes = {signals: PropTypes.shape({updateInput: PropTypes.func.isRequired}).isRequired}
 
   onChangeInput (): Function {
     return function thunk (event: Event) {
