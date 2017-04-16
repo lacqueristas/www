@@ -1,6 +1,6 @@
 import {created} from "httpstatuses"
 import {omit} from "ramda"
-// Import {project} from "@lacqueristas/resources"
+import {project} from "@lacqueristas/resources"
 
 export default function pushProject (client: HSDKClientType): Function {
   return function pushProjectClient ({attributes, bearer}: {attributes: FreshProjectAttributesType}): Promise<ProjectResourceType> {

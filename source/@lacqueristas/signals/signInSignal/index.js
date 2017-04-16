@@ -8,8 +8,8 @@ import clearFormSignal from "../clearFormSignal"
 import mergeResourceSignal from "../mergeResourceSignal"
 import storeCurrentSignal from "../storeCurrentSignal"
 
-import pullAccount from "./pullAccount"
-import pushSession from "./pushSession"
+import pullAccount from "../pullAccount"
+import pushSession from "../pushSession"
 
 export default function signInSignal (slug: string): Function {
   return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
