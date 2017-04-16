@@ -3,6 +3,7 @@ import cxs from "cxs"
 import {connect} from "react-redux"
 import {mergeDeep} from "ramda-extra"
 
+import {onlyProps} from "@lacqueristas/queries"
 import {primaryInteraction} from "@lacqueristas/styles"
 import {secondaryInteraction} from "@lacqueristas/styles"
 
@@ -18,7 +19,9 @@ const kinds = [
   "normal",
 ]
 
-export default connect()(class Anchor extends PureComponent {
+export default connect(
+  onlyProps,
+)(class Anchor extends PureComponent {
   static propTypes = {
     clickAnchor: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
@@ -35,9 +38,8 @@ export default connect()(class Anchor extends PureComponent {
   static contextTypes = {signals: PropTypes.shape({clickAnchor: PropTypes.func})}
 
   onClick (): Function {
-    const {clickAnchor} = this.props
-
-    return function trigger (event: Event) {
+    return function thunk (event: Event) {
+      const {clickAnchor} = this.props
       const {target} = event
       const {metaKey} = event
       const {nativeEvent} = event
@@ -50,7 +52,7 @@ export default connect()(class Anchor extends PureComponent {
 
         clickAnchor(href)
       }
-    }
+    }.bind(this)
   }
 
   render (): any {

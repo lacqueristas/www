@@ -12,6 +12,8 @@
     "@lacqueristas/styles": "1.0.0",
     "@lacqueristas/ui": "1.0.0",
     "@lacqueristas/decorators": "1.0.0",
+    "@lacqueristas/signals": "1.0.0",
+    "@lacqueristas/queries": "1.0.0",
     "cxs": "3.0.4",
     "ramda-extra": "4.2.0",
     "ramda": "0.23.0",

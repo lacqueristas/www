@@ -1,12 +1,11 @@
 import React, {PropTypes, PureComponent} from "react"
 import {connect} from "react-redux"
-import {createSelector} from "reselect"
 import cxs from "cxs"
-import {dispatched} from "@lacqueristas/signals"
+import {query} from "@lacqueristas/queries"
 import {formQuery} from "@lacqueristas/queries"
 
 export default connect(
-  createSelector(formQuery),
+  query([formQuery]),
 )(class Form extends PureComponent {
   static propTypes = {
     slug: PropTypes.string.isRequired,
