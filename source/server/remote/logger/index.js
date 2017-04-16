@@ -1,3 +1,3 @@
 import {createLogger} from "bunyan"
 
-export default createLogger({name: "lumin"})
+export default createLogger({name: "www"})
