@@ -1,4 +1,5 @@
 import {path} from "ramda"
+import {resolveP} from "ramda-extra"
 import {allObjectP} from "ramda-extra"
 
 import startLoadingSignal from "../startLoadingSignal"
@@ -20,8 +21,7 @@ export default function signInSignal (slug: string): Function {
     const sessionRequest = pushSession(client)
     const accountRequest = pullAccount(client)
 
-    return Promise
-      .resolve(dispatch(startLoadingSignal(slug)))
+    return resolveP(dispatch(startLoadingSignal(slug)))
       .then((): Promise<SessionResourceType> => sessionRequest(attributes))
       .then((session: SessionResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType, session: SessionResourceType}> => {
         return allObjectP({
