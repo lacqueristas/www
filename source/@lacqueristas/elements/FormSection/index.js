@@ -30,7 +30,6 @@ export default connect(
 
   static defaultProps = {
     required: false,
-    stored: false,
     style: {},
     value: "",
   }
