@@ -44,7 +44,7 @@ export default function createProjectSignal (slug: string): Function {
       .then(({project}: {project: ProjectResourceType}): Promise<{finishLoadingSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
         return allObjectP({
           finishLoadingSignal: dispatch(finishLoadingSignal(slug)),
-          storeCurrentSignal: dispatch(clearFormSignal(slug)),
+          clearFormSignal: dispatch(clearFormSignal(slug)),
           updateLocationSignal: dispatch(updateLocationSignal(`/projects/${project.id}`)),
         })
       })
