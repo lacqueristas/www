@@ -15,7 +15,7 @@ export default function uploadFilesSignal ({slug, name, accepted, rejected}: Upd
   const input = asInput(name)(slug)
 
   return function thunk (dispatch: ReduxDispatchType): Promise<SignalType> {
-    const dispatchFiles = map((signal: Function): Function => pipe(input, signal, dispatch))
+    const dispatchFiles = (signal: Function): Function => map(pipe(input, signal, dispatch))
 
     return allP(dispatchFiles(errorInputSignal)(rejected))
       .then((): Promise<Array<SignalType>> => allP(map(pushFile, accepted)))
