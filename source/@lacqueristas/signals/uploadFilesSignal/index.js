@@ -10,7 +10,6 @@ import pushFile from "../pushFile"
 
 const asInput = (name: string): Function => (slug: string): Function => pipe(objOf("value"), merge({multiple: true}), merge({slug}), merge({name}))
 
-
 export default function uploadFilesSignal ({slug, name, accepted, rejected}: UpdateFilesPayloadType): SignalType {
   const input = asInput(name)(slug)
 
