@@ -29,22 +29,6 @@ export default authenticate(clientSide(connect(
     draftProject: PropTypes.func.isRequired,
     clearForm: PropTypes.func.isRequired,
     createProject: PropTypes.func.isRequired,
-    project: PropTypes.shape({
-      attributes: PropTypes.shape({
-        "name": PropTypes.string,
-        "description": PropTypes.string,
-        "painted-at": PropTypes.string,
-      }).isRequired,
-    }).isRequired,
-  }
-  static defaultProps = {
-    project: {
-      attributes: {
-        "name": "",
-        "description": "",
-        "painted-at": (new Date()).toISOString(),
-      },
-    },
   }
 
   onClickDraft (): Function {
@@ -69,11 +53,6 @@ export default authenticate(clientSide(connect(
 
   render (): any {
     const {createProject} = this.props
-    const {project} = this.props
-    const {attributes} = project
-    const {name} = attributes
-    const {description} = attributes
-    const paintedAt = attributes["painted-at"]
 
     return <Layout subtitle="Making a project" data-component="MakeAProject">
       <Heading kind="page">
@@ -81,9 +60,9 @@ export default authenticate(clientSide(connect(
       </Heading>
 
       <Form name="MakeAProjectForm" onSubmit={createProject} slug={slug}>
-        <FormSection id="name" type="text" required label="What do you call this project?" slug={slug} value={name} />
-        <FormSection id="description" type="textarea" required label="All the details" slug={slug} defaultValue={description} />
-        <FormSection id="painted-at" type="date" required label="When did you do it?" slug={slug} value={paintedAt} />
+        <FormSection id="name" type="text" required label="What do you call this project?" slug={slug} />
+        <FormSection id="description" type="textarea" required label="All the details" slug={slug} />
+        <FormSection id="painted-at" type="date" required label="When did you do it?" slug={slug} />
         <FileInput id="photographs" slug={slug} />
 
         <ButtonGroup>
