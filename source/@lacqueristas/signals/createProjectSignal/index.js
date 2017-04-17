@@ -1,4 +1,10 @@
 import {path} from "ramda"
+import {omit} from "ramda"
+import {prop} from "ramda"
+import {map} from "ramda"
+import {merge} from "ramda"
+import {allP} from "ramda-extra"
+import {resolveP} from "ramda-extra"
 import {allObjectP} from "ramda-extra"
 
 import startLoadingSignal from "../startLoadingSignal"
@@ -7,8 +13,8 @@ import updateLocationSignal from "../updateLocationSignal"
 import clearFormSignal from "../clearFormSignal"
 import mergeResourceSignal from "../mergeResourceSignal"
 import storeCurrentSignal from "../storeCurrentSignal"
-
-import pushProject from "./pushProject"
+import pushProject from "../pushProject"
+import pushPhotograph from "../pushPhotograph"
 
 export default function createProjectSignal (slug: string): Function {
   return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
@@ -16,16 +22,14 @@ export default function createProjectSignal (slug: string): Function {
     const self = path(["ephemeral", "current", "self"], state)
     const session = path(["resources", "sessions", self], state)
     const bearer = path(["attributes", "bearer"], session)
-    const attributes = path(["ephemeral", "forms", slug], state)
+    const form = path(["ephemeral", "forms", slug], state)
+    const attributes = omit(["photographs"], form)
+    const photographs = prop("photographs", form)
+    const projectRequest = pushProject(client)(bearer)
+    const photographRequest = pushPhotograph(client)(bearer)
 
-    const projectRequest = pushProject(client)
-
-    return Promise
-      .resolve(dispatch(startLoadingSignal(slug)))
-      .then((): Promise<ProjectResourceType> => projectRequest({
-        attributes,
-        bearer,
-      }))
+    return resolveP(dispatch(startLoadingSignal(slug)))
+      .then((): Promise<ProjectResourceType> => projectRequest(attributes))
       .then((project: ProjectResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType, project: ProjectResourceType}> => {
         return allObjectP({
           mergedResourceSignal: dispatch(mergeResourceSignal(project)),
@@ -33,6 +37,7 @@ export default function createProjectSignal (slug: string): Function {
             id: project.id,
             key: "project",
           })),
+          photographs: allP(map(photographRequest, map(merge({project}), photographs))),
           project,
         })
       })
