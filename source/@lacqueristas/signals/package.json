@@ -11,6 +11,7 @@
     "ramda": "0.23.0",
     "ramda-extra": "4.2.0",
     "url-parse": "1.1.8",
+    "li": "1.2.1",
     "httpstatuses": "3.0.0"
   }
 }
