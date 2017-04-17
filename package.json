@@ -93,6 +93,7 @@
     "hoist-non-react-statics": "1.2.0",
     "hsdk": "6.0.1",
     "httpstatuses": "3.0.0",
+    "li": "1.2.1",
     "linklocal": "2.8.0",
     "moment": "2.18.1",
     "morgan": "1.8.1",
