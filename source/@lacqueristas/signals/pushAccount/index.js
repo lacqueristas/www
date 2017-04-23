@@ -1,6 +1,8 @@
-import {created} from "httpstatuses"
-import {omit} from "ramda"
 import {account} from "@lacqueristas/resources"
+
+import dispatched from "../dispatched"
+import receiveResources from "../receiveResources"
+import exceptionSignal from "../exceptionSignal"
 
 export default function pushAccount (client: HSDKClientType): Function {
   return function pushAccountClient (attributes: FreshAccountAttributesType): Promise<AccountResourceType> {
@@ -15,15 +17,7 @@ export default function pushAccount (client: HSDKClientType): Function {
           },
         },
       })
-      .then(({data, status}: {data: JSONAPIResponse, status: number}): AccountResourceType => {
-        switch (status) {
-          case created: {
-            return omit(["__abstraction__"], account(data.data))
-          }
-          default: {
-            return Promise.reject(new Error("We received an unexpected status code from the server"))
-          }
-        }
-      })
+      .then(receiveResources(account))
+      .catch(dispatched(exceptionSignal))
   }
 }

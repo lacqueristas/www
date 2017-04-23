@@ -1,6 +1,8 @@
-import {created} from "httpstatuses"
-import {omit} from "ramda"
 import {session} from "@lacqueristas/resources"
+
+import dispatched from "../dispatched"
+import receiveResources from "../receiveResources"
+import exceptionSignal from "../exceptionSignal"
 
 export default function pushSession (client: HSDKClientType): Function {
   return function pushSessionClient (attributes: FreshSessionAttributesType): Promise<SessionResourceType> {
@@ -21,15 +23,7 @@ export default function pushSession (client: HSDKClientType): Function {
           },
         },
       })
-      .then(({data, status}: {data: JSONAPIResponse, status: number}): SessionResourceType => {
-        switch (status) {
-          case created: {
-            return omit(["__abstraction__"], session(data.data))
-          }
-          default: {
-            return Promise.reject(new Error("We received an unexpected status code from the server"))
-          }
-        }
-      })
+      .then(receiveResources(session))
+      .catch(dispatched(exceptionSignal))
   }
 }

@@ -1,6 +1,8 @@
-import {created} from "httpstatuses"
-import {omit} from "ramda"
 import {project} from "@lacqueristas/resources"
+
+import dispatched from "../dispatched"
+import receiveResources from "../receiveResources"
+import exceptionSignal from "../exceptionSignal"
 
 export default function pushProject (client: HSDKClientType): Function {
   return function pushProjectClient (bearer: string): Function {
@@ -20,16 +22,8 @@ export default function pushProject (client: HSDKClientType): Function {
             },
           },
         })
-        .then(({data, status}: {data: JSONAPIResponse, status: number}): ProjectResourceType => {
-          switch (status) {
-            case created: {
-              return omit(["__abstraction__"], project(data.data))
-            }
-            default: {
-              return Promise.reject(new Error("We received an unexpected status code from the server"))
-            }
-          }
-        })
+        .then(receiveResources(project))
+        .catch(dispatched(exceptionSignal))
     }
   }
 }

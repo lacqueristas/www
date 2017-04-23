@@ -1,7 +1,9 @@
-import {created} from "httpstatuses"
-import {omit} from "ramda"
 import {pick} from "ramda"
 import {photographIncomingResource} from "@lacqueristas/resources"
+
+import dispatched from "../dispatched"
+import receiveResources from "../receiveResources"
+import exceptionSignal from "../exceptionSignal"
 
 type PhotographPayloadType = {
   projectId: string,
@@ -35,16 +37,8 @@ export default function pushPhotograph (client: HSDKClientType): Function {
             },
           },
         })
-      .then(({data, status}: {data: JSONAPIResponse, status: number}): PhotographResourceType => {
-        switch (status) {
-          case created: {
-            return omit(["__abstraction__"], photographIncomingResource(data.data))
-          }
-          default: {
-            return Promise.reject(new Error("We received an unexpected status code from the server"))
-          }
-        }
-      })
+        .then(receiveResources(photographIncomingResource))
+        .catch(dispatched(exceptionSignal))
     }
   }
 }
