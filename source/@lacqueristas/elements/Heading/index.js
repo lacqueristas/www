@@ -1,6 +1,7 @@
 import React, {PureComponent, PropTypes} from "react"
 import cxs from "cxs"
-import {mergeDeep} from "ramda-extra"
+import mergeDeepRight from "@unction/mergedeepright"
+import {prop} from "ramda"
 
 import {secondaryText as secondaryTextColor} from "@lacqueristas/colors"
 
@@ -39,14 +40,8 @@ export default class Heading extends PureComponent {
     const {kind} = this.props
     const {subtitle} = this.props
     const HeadingElement = headings[kind]
-    const combineHeadingStyle = mergeDeep(
-      headingsStyle[kind],
-      customHeadingsStyle
-    )
-    const combineSubtitleStyle = mergeDeep(
-      subtitlesStyle[kind],
-      customSubtitlesStyle
-    )
+    const combineHeadingStyle = mergeDeepRight(prop(kind)(headingsStyle))(customHeadingsStyle)
+    const combineSubtitleStyle = mergeDeepRight(prop(kind)(subtitlesStyle))(customSubtitlesStyle)
 
     return <header data-component="Heading">
       <HeadingElement data-component="Heading" data-kind={kind} className={cxs(combineHeadingStyle)}>

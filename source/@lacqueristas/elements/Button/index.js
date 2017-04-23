@@ -1,7 +1,8 @@
 import React, {PureComponent, PropTypes} from "react"
 import cxs from "cxs"
 import {connect} from "react-redux"
-import {mergeDeep} from "ramda-extra"
+import {prop} from "ramda"
+import mergeDeepRight from "@unction/mergedeepright"
 
 import {primaryInteraction} from "@lacqueristas/styles"
 import {secondaryInteraction} from "@lacqueristas/styles"
@@ -44,10 +45,7 @@ export default connect()(class Button extends PureComponent {
     const {type} = this.props
     const {onClick} = this.props
     const {style} = this.props
-    const combineStyle = mergeDeep(
-      styles[kind],
-      style
-    )
+    const combineStyle = mergeDeepRight(prop(kind)(styles))(style)
 
     return <button type={type} className={cxs(combineStyle)} onClick={onClick}>
       {children}

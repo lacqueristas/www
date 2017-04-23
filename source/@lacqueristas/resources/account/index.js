@@ -4,8 +4,8 @@ import {prop} from "ramda"
 import {is} from "ramda"
 import {equals} from "ramda"
 import {both} from "ramda"
-import {isPresent} from "ramda-extra"
-import {isPopulated} from "ramda-extra"
+import isPresent from "@unction/ispresent"
+import isPopulated from "@unction/ispopulated"
 
 import attributes from "./attributes"
 

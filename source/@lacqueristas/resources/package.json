@@ -8,8 +8,9 @@
   },
   "peerDependencies": {
     "abstraction": "10.0.0",
+    "@unction/ispresent": "1.0.0",
+    "@unction/ispopulated": "1.0.0",
     "ramda": "0.23.0",
-    "ramda-extra": "4.2.0",
     "moment": "2.18.1"
   }
 }

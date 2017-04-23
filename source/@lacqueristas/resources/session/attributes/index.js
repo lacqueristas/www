@@ -2,7 +2,7 @@ import abstraction from "abstraction"
 import {propSatisfies} from "ramda"
 import {prop} from "ramda"
 import {is} from "ramda"
-import {isPresent} from "ramda-extra"
+import isPresent from "@unction/ispresent"
 import moment from "moment"
 
 export default abstraction({

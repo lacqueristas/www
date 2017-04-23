@@ -1,4 +1,4 @@
-import {resolveP} from "ramda-extra"
+import resolveP from "@unction/resolvep"
 
 import updateLocationSignal from "../updateLocationSignal"
 

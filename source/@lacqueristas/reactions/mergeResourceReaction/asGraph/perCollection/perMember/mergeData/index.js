@@ -1,5 +1,6 @@
 import {pathOr} from "ramda"
-import {mergeDeep} from "ramda-extra"
+import {objOf} from "ramda"
+import mergeDeepRight from "@unction/mergedeepright"
 
 const defaultRelationship = {}
 
@@ -11,10 +12,7 @@ export default function mergeData (tree) {
       const {id} = data
       const {type} = data
 
-      return mergeDeep(
-        relationship,
-        {data: pathOr(defaultRelationship, [type, id], tree)}
-      )
+      return mergeDeepRight(relationship)(objOf("data")(pathOr(defaultRelationship, [type, id], tree)))
     }
 
     return {}

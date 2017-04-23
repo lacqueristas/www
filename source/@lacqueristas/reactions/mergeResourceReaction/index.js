@@ -1,8 +1,10 @@
 import {groupBy} from "ramda"
 import {prop} from "ramda"
 import {indexBy} from "ramda"
-import {mergeDeep} from "ramda-extra"
-import {treeify} from "ramda-extra"
+import {merge} from "ramda"
+import {objOf} from "ramda"
+import mergeDeepRight from "@unction/mergedeepright"
+import treeify from "@unction/treeify"
 
 import asGraph from "./asGraph"
 
@@ -12,13 +14,8 @@ const resourceTreeify = treeify([
 ])
 
 export default function mergeResourceReaction ({state, payload}: {state: StateType}): StateType {
-  return {
-    ...state,
-    resources: asGraph(
-      mergeDeep(
-        state.resources,
-        resourceTreeify([payload])
-      )
-    ),
-  }
+  const resources = prop("resources")(state)
+  const tree = resourceTreeify([payload])
+
+  return merge(state)(objOf("resources")(asGraph(mergeDeepRight(resources)(tree))))
 }

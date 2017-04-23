@@ -2,7 +2,7 @@ import {pipe} from "ramda"
 import {map} from "ramda"
 import {objOf} from "ramda"
 import {merge} from "ramda"
-import {allP} from "ramda-extra"
+import allP from "@unction/allp"
 
 import updateInputSignal from "../updateInputSignal"
 import errorInputSignal from "../errorInputSignal"

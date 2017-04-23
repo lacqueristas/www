@@ -13,7 +13,6 @@
     "@lacqueristas/ui": "1.0.0",
     "hoist-non-react-statics": "1.2.0",
     "cxs": "3.0.4",
-    "ramda-extra": "4.2.0",
     "react-redux": "5.0.3",
     "react": "15.4.2"
   }

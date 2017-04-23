@@ -1,5 +1,5 @@
 import urlParse from "url-parse"
-import {resolveP} from "ramda-extra"
+import resolveP from "@unction/resolvep"
 import updateNavigationSignal from "../updateNavigationSignal"
 
 export default function updateLocationSignal (href: string): Function {

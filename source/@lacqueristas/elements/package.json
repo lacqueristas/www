@@ -12,10 +12,10 @@
     "@lacqueristas/signals": "1.0.0",
     "@lacqueristas/queries": "1.0.0",
     "cxs": "3.0.4",
-    "ramda-extra": "4.2.0",
     "ramda": "0.23.0",
     "react-redux": "5.0.3",
     "react-dropzone": "3.12.2",
+    "@unction/mergedeepright": "1.0.3",
     "react": "15.4.2"
   }
 }

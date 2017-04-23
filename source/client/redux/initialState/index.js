@@ -1,7 +1,9 @@
 import urlParse from "url-parse"
 import store from "store"
 import {omit} from "ramda"
-import {mergeDeep} from "ramda-extra"
+import {merge} from "ramda"
+import {objOf} from "ramda"
+import mergeDeepRight from "@unction/mergedeepright"
 
 const raw = {
   ephemeral: {
@@ -14,11 +16,5 @@ const raw = {
 export default function initialState (): any {
   const state = store.get("state") || {}
 
-  return mergeDeep(
-    raw,
-    {
-      navigation: urlParse(location, true),
-      ...omit(["navigation"], state),
-    }
-  )
+  return mergeDeepRight(raw)(merge(objOf("navigation")(urlParse(location, true)), omit(["navigation"], state)))
 }

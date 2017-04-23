@@ -1,4 +1,5 @@
-import {mergeDeep} from "ramda-extra"
+import mergeDeepRight from "@unction/mergedeepright"
+import nestedObjOf from "@unction/nestedobjof"
 
 export default function updateInputReaction ({state, payload}: {state: StateType}): StateType {
   const {slug} = payload
@@ -7,14 +8,8 @@ export default function updateInputReaction ({state, payload}: {state: StateType
   const {multiple} = payload
 
   if (multiple) {
-    return mergeDeep(
-      state,
-      {ephemeral: {forms: {[slug]: {[name]: [value]}}}}
-    )
+    return mergeDeepRight(state)(nestedObjOf(["ephemeral", "forms", slug, name])([value]))
   }
 
-  return mergeDeep(
-    state,
-    {ephemeral: {forms: {[slug]: {[name]: value}}}}
-  )
+  return mergeDeepRight(state)(nestedObjOf(["ephemeral", "forms", slug, name])(value))
 }

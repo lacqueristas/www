@@ -2,7 +2,7 @@ import React, {PureComponent, PropTypes} from "react"
 import cxs from "cxs"
 import {connect} from "react-redux"
 import {prop} from "ramda"
-import {mergeDeep} from "ramda-extra"
+import mergeDeepRight from "@unction/mergedeepright"
 import {onlyProps} from "@lacqueristas/queries"
 import {dispatched} from "@lacqueristas/signals"
 import {clickAnchorSignal} from "@lacqueristas/signals"
@@ -63,10 +63,7 @@ export default connect(
     const {href} = this.props
     const {style} = this.props
     const {kind} = this.props
-    const combineStyle = mergeDeep(
-      prop(kind, styles),
-      style
-    )
+    const combineStyle = mergeDeepRight(prop(kind)(styles))(style)
 
     return <a href={href} className={cxs(combineStyle)} onClick={this.onClick()}>
       {children}

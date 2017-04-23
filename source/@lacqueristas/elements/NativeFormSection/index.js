@@ -1,6 +1,6 @@
 import React, {PropTypes, PureComponent} from "react"
 import cxs from "cxs"
-import {mergeDeep} from "ramda-extra"
+import mergeDeepRight from "@unction/mergedeepright"
 
 const baseStyle = {
   display: "flex",
@@ -49,7 +49,7 @@ export default class NativeFormSection extends PureComponent {
     const {style} = this.props
     const {value: initialValue} = this.props
     const {value: localValue = initialValue} = this.state
-    const className = mergeDeep(baseStyle, style)
+    const className = mergeDeepRight(baseStyle)(style)
 
     return <section className={cxs(className)}>
       <label htmlFor={id}>{label}</label>

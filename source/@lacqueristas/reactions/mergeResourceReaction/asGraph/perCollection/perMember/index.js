@@ -1,15 +1,15 @@
 import {map} from "ramda"
-import {mergeDeep} from "ramda-extra"
+import {objOf} from "ramda"
+import mergeDeepRight from "@unction/mergedeepright"
 
 import mergeData from "./mergeData"
 
 export default function perMember (tree) {
+  const mergeDataTrees = map(mergeData(tree))
+
   return function perMemberWithTree (member) {
     const {relationships = {}} = member
 
-    return {
-      ...member,
-      relationships: map(mergeData(tree), relationships),
-    }
+    return mergeDeepRight(member)(objOf("relationships")(mergeDataTrees(relationships)))
   }
 }

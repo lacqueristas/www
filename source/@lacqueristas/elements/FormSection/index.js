@@ -1,7 +1,7 @@
 import React, {PropTypes, PureComponent} from "react"
 import {connect} from "react-redux"
 import cxs from "cxs"
-import {mergeDeep} from "ramda-extra"
+import mergeDeepRight from "@unction/mergedeepright"
 import {query} from "@lacqueristas/queries"
 import {formSectionQuery} from "@lacqueristas/queries"
 import {dispatched} from "@lacqueristas/signals"
@@ -67,7 +67,7 @@ export default connect(
     const {style} = this.props
     const {value: initialValue} = this.props
     const {value: localValue = initialValue} = this.state
-    const combineStyle = mergeDeep(baseStyle, style)
+    const combineStyle = mergeDeepRight(baseStyle)(style)
 
     return <section className={cxs(combineStyle)}>
       <label htmlFor={id}>{label}</label>

@@ -7,7 +7,9 @@
     "transform": ["babelify"]
   },
   "dependencies": {
-    "ramda": "0.23.0",
-    "ramda-extra": "4.2.0"
+    "@unction/mergedeepright": "1.0.3",
+    "@unction/nestedobjof": "1.0.0",
+    "@unction/treeify": "1.0.3",
+    "ramda": "0.23.0"
   }
 }

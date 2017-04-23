@@ -1,5 +1,5 @@
-import {resolveP} from "ramda-extra"
-import {allObjectP} from "ramda-extra"
+import resolveP from "@unction/resolvep"
+import allObjectP from "@unction/allobjectp"
 
 import startLoadingSignal from "../startLoadingSignal"
 import finishLoadingSignal from "../finishLoadingSignal"
