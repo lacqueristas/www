@@ -5,5 +5,5 @@ export default function storeCurrentReaction ({state, payload}: StoreCurrentReac
   const {key} = payload
   const {id} = payload
 
-  return mergeDeepRight(state)(nestedObjOf(["ephemeral", "current", key], id))
+  return mergeDeepRight(state)(nestedObjOf(["ephemeral", "current", key])(id))
 }
