@@ -67,6 +67,7 @@
     "@unction/mergedeepright": "1.0.3",
     "@unction/nestedobjof": "1.0.0",
     "@unction/resolvep": "1.0.0",
+    "@unction/rejectp": "1.0.0",
     "@unction/treeify": "1.0.3",
     "abstraction": "10.0.0",
     "babel-cli": "6.24.0",
