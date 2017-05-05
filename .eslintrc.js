@@ -65,7 +65,7 @@ module.exports = {
     "class-methods-use-this": [
       "error",
       {
-        "exceptMethods": [
+        exceptMethods: [
           "componentDidMount",
           "componentDidUpdate",
           "componentWillMount",
@@ -73,7 +73,7 @@ module.exports = {
           "componentWillUnmount",
           "componentWillUpdate",
           "render",
-          "shouldComponentUpdate",
+          "shouldComponentUpdate"
         ]
       }
     ],
@@ -439,6 +439,6 @@ module.exports = {
     "wrap-iife": "error",
     "wrap-regex": "error",
     "yield-star-spacing": "error",
-    "yoda": "error",
+    "yoda": "error"
   }
 }
