@@ -1,8 +1,6 @@
-import {session} from "@lacqueristas/resources"
+import {sessionIncomingResource} from "@lacqueristas/resources"
 
-import dispatched from "../dispatched"
 import receiveResources from "../receiveResources"
-import exceptionSignal from "../exceptionSignal"
 
 export default function pushSession (client: HSDKClientType): Function {
   return function pushSessionClient (attributes: FreshSessionAttributesType): Promise<SessionResourceType> {
@@ -23,7 +21,6 @@ export default function pushSession (client: HSDKClientType): Function {
           },
         },
       })
-      .then(receiveResources(session))
-      .catch(dispatched(exceptionSignal))
+      .then(receiveResources(sessionIncomingResource))
   }
 }

@@ -6,6 +6,7 @@ import {equals} from "ramda"
 import {any} from "ramda"
 import resolveP from "@unction/resolvep"
 import rejectP from "@unction/rejectp"
+import withoutKeyRecursive from "@unction/withoutkeyrecursive"
 
 const toRaw = path(["data", "data"])
 const successful = [ok, created, redirect]
@@ -17,7 +18,7 @@ export default function receiveResources (abstraction: AbstractionType): Functio
     const everyThingIsFine = any(equals(status), successful)
 
     if (everyThingIsFine) {
-      return resolveP(abstraction(raw))
+      return resolveP(withoutKeyRecursive("__abstraction__")(abstraction(raw)))
     }
 
     return rejectP(new Error("Client received an unexpected status code from the server"))

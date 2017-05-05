@@ -1,8 +1,8 @@
 import {pipe} from "ramda"
-import {map} from "ramda"
 import {objOf} from "ramda"
 import {merge} from "ramda"
 import allP from "@unction/allp"
+import mapValues from "@unction/mapvalues"
 
 import updateInputSignal from "../updateInputSignal"
 import errorInputSignal from "../errorInputSignal"
@@ -14,10 +14,10 @@ export default function uploadFilesSignal ({slug, name, accepted, rejected}: Upd
   const input = asInput(name)(slug)
 
   return function thunk (dispatch: ReduxDispatchType): Promise<SignalType> {
-    const dispatchFiles = (signal: Function): Function => map(pipe(input, signal, dispatch))
+    const dispatchFiles = (signal: Function): Function => mapValues(pipe(input, signal, dispatch))
 
     return allP(dispatchFiles(errorInputSignal)(rejected))
-      .then((): Promise<Array<SignalType>> => allP(map(pushFile, accepted)))
+      .then((): Promise<Array<SignalType>> => allP(mapValues(pushFile)(accepted)))
       .then((pushed: Array<FileResourceType>): Array<SignalType> => {
         return allP([
           ...dispatchFiles(updateInputSignal)(pushed),

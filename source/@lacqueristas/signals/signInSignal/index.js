@@ -1,4 +1,6 @@
+import {pipe} from "ramda"
 import {path} from "ramda"
+import {prop} from "ramda"
 import resolveP from "@unction/resolvep"
 import allObjectP from "@unction/allobjectp"
 
@@ -8,6 +10,7 @@ import updateLocationSignal from "../updateLocationSignal"
 import clearFormSignal from "../clearFormSignal"
 import mergeResourceSignal from "../mergeResourceSignal"
 import storeCurrentSignal from "../storeCurrentSignal"
+import exceptionSignal from "../exceptionSignal"
 
 import pullAccount from "../pullAccount"
 import pushSession from "../pushSession"
@@ -16,7 +19,7 @@ export default function signInSignal (slug: string): Function {
   return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
     const {ephemeral} = getState()
     const {forms} = ephemeral
-    const attributes = forms[slug]
+    const attributes = prop(slug)(forms)
 
     const sessionRequest = pushSession(client)
     const accountRequest = pullAccount(client)
@@ -28,7 +31,7 @@ export default function signInSignal (slug: string): Function {
           mergedResourceSignal: dispatch(mergeResourceSignal(session)),
           storeCurrentSignal: dispatch(storeCurrentSignal({
             id: session.id,
-            key: "self",
+            key: "session",
           })),
           session,
         })
@@ -51,5 +54,6 @@ export default function signInSignal (slug: string): Function {
         })
       })
       .then((): SignalType => dispatch({type: "signInSignal"}))
+      .catch(pipe(exceptionSignal, dispatch))
   }
 }

@@ -1,8 +1,6 @@
-import {project} from "@lacqueristas/resources"
+import {projectIncomingResource} from "@lacqueristas/resources"
 
-import dispatched from "../dispatched"
 import receiveResources from "../receiveResources"
-import exceptionSignal from "../exceptionSignal"
 
 export default function pushProject (client: HSDKClientType): Function {
   return function pushProjectClient (bearer: string): Function {
@@ -22,8 +20,7 @@ export default function pushProject (client: HSDKClientType): Function {
             },
           },
         })
-        .then(receiveResources(project))
-        .catch(dispatched(exceptionSignal))
+        .then(receiveResources(projectIncomingResource))
     }
   }
 }

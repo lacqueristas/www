@@ -1,8 +1,6 @@
-import {account} from "@lacqueristas/resources"
+import {accountIncomingResource} from "@lacqueristas/resources"
 
-import dispatched from "../dispatched"
 import receiveResources from "../receiveResources"
-import exceptionSignal from "../exceptionSignal"
 
 export default function pushAccount (client: HSDKClientType): Function {
   return function pushAccountClient (attributes: FreshAccountAttributesType): Promise<AccountResourceType> {
@@ -17,7 +15,6 @@ export default function pushAccount (client: HSDKClientType): Function {
           },
         },
       })
-      .then(receiveResources(account))
-      .catch(dispatched(exceptionSignal))
+      .then(receiveResources(accountIncomingResource))
   }
 }

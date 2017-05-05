@@ -1,3 +1,4 @@
+import {pipe} from "ramda"
 import resolveP from "@unction/resolvep"
 import allObjectP from "@unction/allobjectp"
 
@@ -7,6 +8,7 @@ import updateLocationSignal from "../updateLocationSignal"
 import clearFormSignal from "../clearFormSignal"
 import mergeResourceSignal from "../mergeResourceSignal"
 import storeCurrentSignal from "../storeCurrentSignal"
+import exceptionSignal from "../exceptionSignal"
 
 import pushAccount from "../pushAccount"
 import pushSession from "../pushSession"
@@ -37,7 +39,7 @@ export default function signUpSignal (slug: string): Function {
           mergedResourceSignal: dispatch(mergeResourceSignal(session)),
           storeCurrentSignal: dispatch(storeCurrentSignal({
             id: session.id,
-            key: "self",
+            key: "session",
           })),
         })
       })
@@ -49,5 +51,6 @@ export default function signUpSignal (slug: string): Function {
         })
       })
       .then((): SignalType => dispatch({type: "signUpSignal"}))
+      .catch(pipe(exceptionSignal, dispatch))
   }
 }

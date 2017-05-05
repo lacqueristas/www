@@ -1,9 +1,7 @@
 import {pick} from "ramda"
 import {photographIncomingResource} from "@lacqueristas/resources"
 
-import dispatched from "../dispatched"
 import receiveResources from "../receiveResources"
-import exceptionSignal from "../exceptionSignal"
 
 type PhotographPayloadType = {
   projectId: string,
@@ -38,7 +36,6 @@ export default function pushPhotograph (client: HSDKClientType): Function {
           },
         })
         .then(receiveResources(photographIncomingResource))
-        .catch(dispatched(exceptionSignal))
     }
   }
 }

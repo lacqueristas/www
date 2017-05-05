@@ -1,11 +1,12 @@
 import {path} from "ramda"
 import {omit} from "ramda"
 import {prop} from "ramda"
-import {map} from "ramda"
 import {merge} from "ramda"
+import {pipe} from "ramda"
 import allP from "@unction/allp"
 import resolveP from "@unction/resolvep"
 import allObjectP from "@unction/allobjectp"
+import mapValues from "@unction/mapvalues"
 
 import startLoadingSignal from "../startLoadingSignal"
 import finishLoadingSignal from "../finishLoadingSignal"
@@ -13,14 +14,16 @@ import updateLocationSignal from "../updateLocationSignal"
 import clearFormSignal from "../clearFormSignal"
 import mergeResourceSignal from "../mergeResourceSignal"
 import storeCurrentSignal from "../storeCurrentSignal"
+import exceptionSignal from "../exceptionSignal"
+
 import pushProject from "../pushProject"
 import pushPhotograph from "../pushPhotograph"
 
 export default function createProjectSignal (slug: string): Function {
   return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
     const state = getState()
-    const self = path(["ephemeral", "current", "self"], state)
-    const session = path(["resources", "sessions", self], state)
+    const currentSession = path(["ephemeral", "current", "session"], state)
+    const session = path(["resources", "sessions", currentSession], state)
     const bearer = path(["attributes", "bearer"], session)
     const form = path(["ephemeral", "forms", slug], state)
     const attributes = omit(["photographs"], form)
@@ -37,7 +40,7 @@ export default function createProjectSignal (slug: string): Function {
             id: project.id,
             key: "project",
           })),
-          photographs: allP(map(photographRequest, map(merge({project}), photographs))),
+          photographs: allP(mapValues(photographRequest)(mapValues(merge({project}))(photographs))),
           project,
         })
       })
@@ -49,5 +52,6 @@ export default function createProjectSignal (slug: string): Function {
         })
       })
       .then((): SignalType => dispatch({type: "createProjectSignal"}))
+      .catch(pipe(exceptionSignal, dispatch))
   }
 }

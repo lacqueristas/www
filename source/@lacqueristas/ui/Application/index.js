@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 
 import route from "@lacqueristas/route"
 
+// TODO: Turn this into a query
 const connectNavigation = connect((state: StateType, props: mixed): object => {
   return {
     navigation: state.navigation,
@@ -13,7 +14,7 @@ const connectNavigation = connect((state: StateType, props: mixed): object => {
 
 export default connectNavigation(class Application extends PureComponent {
   static propTypes = {
-    ephemeral: PropTypes.shape({current: PropTypes.shape({self: PropTypes.string}).isRequired}).isRequired,
+    ephemeral: PropTypes.shape({current: PropTypes.shape({session: PropTypes.string}).isRequired}).isRequired,
     navigation: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
       query: PropTypes.object,

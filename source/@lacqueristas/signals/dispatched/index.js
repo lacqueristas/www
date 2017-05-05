@@ -1,4 +1,4 @@
-import {map} from "ramda"
+import mapValues from "@unction/mapvalues"
 import {merge} from "ramda"
 
 import piped from "./piped"
@@ -6,7 +6,7 @@ import piped from "./piped"
 export default function dispatched (signals: {[name]: Function}): Function {
   return function dispatchedSignals (dispatch: ReduxDispatchType, props: mixed): {[name]: Function} {
     return merge(
-      map(piped(dispatch), signals),
+      mapValues(piped(dispatch))(signals),
       props
     )
   }

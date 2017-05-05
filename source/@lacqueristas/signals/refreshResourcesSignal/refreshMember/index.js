@@ -1,17 +1,17 @@
 import {prop} from "ramda"
+import {pipe} from "ramda"
+import {path} from "ramda"
 import resolveP from "@unction/resolvep"
 import * as resources from "@lacqueristas/resources"
 
-
-import dispatched from "../../dispatched"
 import mergeResourceSignal from "../../mergeResourceSignal"
 import receiveResources from "../../receiveResources"
 import exceptionSignal from "../../exceptionSignal"
 
 const MAPPING = {
-  accounts: "account",
-  sessions: "session",
-  projects: "project",
+  accounts: "accountIncomingResource",
+  sessions: "sessionIncomingResource",
+  projects: "projectIncomingResource",
 }
 
 export default function refreshMember (dispatch: ReduxDispatchType): Function {
@@ -21,16 +21,16 @@ export default function refreshMember (dispatch: ReduxDispatchType): Function {
       const {type} = member
       const {meta} = member
       const {version} = meta
+      const show = path([type, version, "show"])(client)
 
       // TODO: Check for staleness instead of always refreshing
-      if (id && type && version && client[type][version].show) {
+      if (id && type && show) {
         const abstraction = prop(prop(type)(MAPPING))(resources)
 
-        return client[type][version]
-          .show({id})
+        return show({id})
           .then(receiveResources(abstraction))
           .then((resource: ResourceType): SignalType => dispatch(mergeResourceSignal(resource)))
-          .catch(dispatched(exceptionSignal))
+          .catch(pipe(exceptionSignal, dispatch))
       }
 
       return resolveP(false)
