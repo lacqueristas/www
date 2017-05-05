@@ -1,21 +1,22 @@
 import {groupBy} from "ramda"
-import {prop} from "ramda"
+import {path} from "ramda"
 import {indexBy} from "ramda"
-import {merge} from "ramda"
 import {objOf} from "ramda"
 import mergeDeepRight from "@unction/mergedeepright"
 import treeify from "@unction/treeify"
 
-import asGraph from "./asGraph"
-
-const resourceTreeify = treeify([
-  groupBy(prop("type")),
-  indexBy(prop("id")),
+const toResourceTree = treeify([
+  groupBy(path(["type"])),
+  indexBy(path(["id"])),
 ])
+const asResources = objOf("resources")
 
-export default function mergeResourceReaction ({state, payload}: {state: StateType}): StateType {
-  const resources = prop("resources")(state)
-  const tree = resourceTreeify([payload])
-
-  return merge(state)(objOf("resources")(asGraph(mergeDeepRight(resources)(tree))))
+export default function mergeResourceReaction (state: StateType): Function {
+  return function mergeResourceReactionState (payload: any): StateType {
+    return mergeDeepRight(
+      state
+    )(
+      asResources(toResourceTree([payload]))
+    )
+  }
 }
