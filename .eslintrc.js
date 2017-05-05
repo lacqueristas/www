@@ -19,6 +19,23 @@ module.exports = {
     node: true,
     browser: true
   },
+  settings: {
+    "import/resolver": {
+      "babel-module": {
+        "@lacqueristas/colors": "./source/@lacqueristas/colors",
+        "@lacqueristas/decorators": "./source/@lacqueristas/decorators",
+        "@lacqueristas/elements": "./source/@lacqueristas/elements",
+        "@lacqueristas/pages": "./source/@lacqueristas/pages",
+        "@lacqueristas/queries": "./source/@lacqueristas/queries",
+        "@lacqueristas/reactions": "./source/@lacqueristas/reactions",
+        "@lacqueristas/resources": "./source/@lacqueristas/resources",
+        "@lacqueristas/route": "./source/@lacqueristas/route",
+        "@lacqueristas/signals": "./source/@lacqueristas/signals",
+        "@lacqueristas/styles": "./source/@lacqueristas/styles",
+        "@lacqueristas/ui": "./source/@lacqueristas/ui"
+      }
+    }
+  },
   rules: {
     "promise/always-return": "error",
     "promise/no-return-wrap": "error",

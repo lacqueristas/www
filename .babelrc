@@ -1,4 +1,18 @@
 {
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-inline-elements"
+      ]
+    },
+    "development": {
+      "plugins": [
+        "transform-react-jsx-source",
+        "transform-react-jsx-self"
+      ]
+    }
+  },
   "presets": [
     "env",
     "react"
@@ -7,5 +21,6 @@
     "transform-class-properties",
     "transform-object-rest-spread",
     "transform-runtime",
+    "external-helpers"
   ]
 }
