@@ -56,6 +56,7 @@ export default class Head extends PureComponent {
 
       <style type="text/css" data-id="cxs" />
 
+      <script type="application/javascript" src="/babel-helpers.js" />
       {process.env.NODE_ENV === "production" && <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey={process.env.BUGSNAG_API_PUBLIC} />}
     </head>
   }

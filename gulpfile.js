@@ -124,7 +124,7 @@ gulp.task("assets", () => {
     "./source/assets/browserconfig.xml",
     "./source/assets/manifest.json",
     "./source/assets/loadtestertool.xml",
-    "./source/assets/favicon.ico",
+    "./source/assets/babel-helpers.js",
   ])
     .pipe(gulpChanged(destination))
     .pipe(production(gulp.dest(destination)))
