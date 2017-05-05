@@ -11,6 +11,7 @@ import {LoadingScreen} from "@lacqueristas/pages"
 
 export default function route (navigation: NavigationState, ephemeral: EphemeralState): any {
   const {pathname} = navigation
+  // TODO: This is not an appropriate way to handle pathing :P
   const component = prop(pascal(pathname), pages)
 
   if (pathname === "/") {
@@ -28,9 +29,9 @@ export default function route (navigation: NavigationState, ephemeral: Ephemeral
   }
 
   const {authenticate} = component
-  const self = path(["current", "self"], ephemeral)
+  const currentSession = path(["current", "session"], ephemeral)
 
-  if (authenticate && isNil(self)) {
+  if (authenticate && isNil(currentSession)) {
     return AuthenticationRequired
   }
 
