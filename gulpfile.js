@@ -1,4 +1,4 @@
-/* eslint-disable import/no-commonjs, node/no-unpublished-require, import/max-dependencies */
+/* eslint-disable import/no-commonjs, node/no-unpublished-require, import/max-dependencies, flowtype/require-return-type */
 const {join} = require("path")
 const gulp = require("gulp")
 const gulpConcat = require("gulp-concat")
@@ -25,7 +25,23 @@ const GZIP = {
   },
 }
 
-gulp.task("server", () => {
+
+gulp.task("@lacqueristas", () => {
+  const destination = join(DESINATION, "@lacqueristas")
+
+  return gulp.src([
+    "./source/@lacqueristas/**/*.js",
+  ])
+    .pipe(gulpChanged(destination))
+    .pipe(gulpBabel())
+    .pipe(gulpSize({
+      title: "@lacqueristas",
+      showFiles: true,
+    }))
+    .pipe(gulp.dest(destination))
+})
+
+gulp.task("server", ["@lacqueristas"], () => {
   const destination = join(DESINATION, "server")
 
   return gulp.src([
