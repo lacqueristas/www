@@ -1,3 +1,5 @@
 type CurrentEphemeralState = {
-  self?: string
+  session?: string,
+  account?: string,
+  project?: string,
 }
