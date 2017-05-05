@@ -6,19 +6,19 @@ import isPresent from "@unction/ispresent"
 
 export default abstraction({
   attributes: {
-    original: {source: prop("original")},
-    thumbnail: {source: prop("thumbnail")},
+    email: {source: prop("email")},
+    name: {source: prop("name")},
     createdAt: {source: prop("created-at")},
     updatedAt: {source: prop("updated-at")},
   },
   validations: {
-    original: {
-      presenceRequired: propSatisfies(isPresent, "original"),
-      stringRequired: propSatisfies(is(String), "original"),
+    email: {
+      presenceRequired: propSatisfies(isPresent, "email"),
+      stringRequired: propSatisfies(is(String), "email"),
     },
-    thumbnail: {
-      presenceRequired: propSatisfies(isPresent, "thumbnail"),
-      stringRequired: propSatisfies(is(String), "thumbnail"),
+    name: {
+      presenceRequired: propSatisfies(isPresent, "name"),
+      stringRequired: propSatisfies(is(String), "name"),
     },
     createdAt: {presenceRequired: propSatisfies(isPresent, "createdAt")},
     updatedAt: {presenceRequired: propSatisfies(isPresent, "updatedAt")},

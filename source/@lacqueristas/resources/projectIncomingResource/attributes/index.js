@@ -6,26 +6,22 @@ import isPresent from "@unction/ispresent"
 
 export default abstraction({
   attributes: {
-    email: {source: prop("email")},
     name: {source: prop("name")},
-    createdAt: {
-      source: prop("created-at"),
-      coerce: (value: any): Date => new Date(value),
-    },
-    updatedAt: {
-      source: prop("updated-at"),
-      coerce: (value: any): Date => new Date(value),
-    },
+    description: {source: prop("description")},
+    paintedAt: {source: prop("painted-at")},
+    createdAt: {source: prop("created-at")},
+    updatedAt: {source: prop("updated-at")},
   },
   validations: {
-    email: {
-      presenceRequired: propSatisfies(isPresent, "email"),
-      stringRequired: propSatisfies(is(String), "email"),
-    },
     name: {
       presenceRequired: propSatisfies(isPresent, "name"),
       stringRequired: propSatisfies(is(String), "name"),
     },
+    description: {
+      presenceRequired: propSatisfies(isPresent, "description"),
+      stringRequired: propSatisfies(is(String), "description"),
+    },
+    paintedAt: {presenceRequired: propSatisfies(isPresent, "paintedAt")},
     createdAt: {presenceRequired: propSatisfies(isPresent, "createdAt")},
     updatedAt: {presenceRequired: propSatisfies(isPresent, "updatedAt")},
   },
