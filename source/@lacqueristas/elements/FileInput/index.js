@@ -11,6 +11,7 @@ export default connect(
   dispatched({uploadFiles: uploadFilesSignal})
 )(class FileInput extends PureComponent {
   static propTypes = {
+    children: PropTypes.node.isRequired,
     uploadFiles: PropTypes.func.isRequired,
     slug: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -32,10 +33,10 @@ export default connect(
   }
 
   render (): any {
+    const {children} = this.props
+
     return <Dropzone onDrop={this.onDrop()}>
-      <p>
-        Drag &amp; drop your files here.
-      </p>
+      {children}
     </Dropzone>
   }
 })
