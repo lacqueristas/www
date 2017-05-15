@@ -3,6 +3,7 @@ import mergeResourceReaction from "./mergeResourceReaction"
 import storeCurrentReaction from "./storeCurrentReaction"
 import updateInputReaction from "./updateInputReaction"
 import updateNavigationReaction from "./updateNavigationReaction"
+import exceptionReaction from "./exceptionReaction"
 
 export default {
   clearFormReaction,
@@ -10,4 +11,5 @@ export default {
   storeCurrentReaction,
   updateInputReaction,
   updateNavigationReaction,
+  exceptionReaction,
 }
