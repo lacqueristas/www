@@ -8,22 +8,23 @@ import updateInputSignal from "../updateInputSignal"
 import errorInputSignal from "../errorInputSignal"
 import pushFile from "../pushFile"
 
-const asInput = (name: string): Function => (slug: string): Function => pipe(objOf("value"), merge({multiple: true}), merge({slug}), merge({name}))
+const asInput = (name: string): Function => (slug: string): Function =>
 
 export default function uploadFilesSignal ({slug, name, accepted, rejected}: UpdateFilesPayloadType): SignalType {
-  const input = asInput(name)(slug)
+  const file = pipe(objOf("value"), merge({
+    multiple: true,
+    slug,
+    name,
+  }))
 
   return function thunk (dispatch: ReduxDispatchType): Promise<SignalType> {
-    const dispatchFiles = (signal: Function): Function => mapValues(pipe(input, signal, dispatch))
+    const dispatches = (signal: Function): Function => mapValues(pipe(file, signal, dispatch))
 
-    return allP(dispatchFiles(errorInputSignal)(rejected))
-      .then((): Promise<Array<SignalType>> => allP(mapValues(pushFile)(accepted)))
-      .then((pushed: Array<FileResourceType>): Array<SignalType> => {
-        return allP([
-          ...dispatchFiles(updateInputSignal)(pushed),
-          ...dispatchFiles(errorInputSignal)(rejected),
-        ])
-      })
+    return allP(mapValues(pushFile)(accepted))
+      .then((delivered: Array<Promise<FileResourceType>>): Array<SignalType> => allP([
+        ...dispatches(updateInputSignal)(delivered),
+        ...dispatches(errorInputSignal)(rejected),
+      ]))
       .then((): SignalType => dispatch({type: "uploadFilesSignal"}))
   }
 }
