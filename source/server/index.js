@@ -9,6 +9,7 @@ import express from "express"
 import cors from "cors"
 import morgan from "morgan"
 import compression from "compression"
+import helmet from "helmet"
 import urlParse from "url-parse"
 import {replace} from "ramda"
 import bugsnag from "bugsnag"
@@ -36,6 +37,7 @@ const application = express()
 application.use(cors())
 application.use(morgan("dev"))
 application.use(compression())
+application.use(helmet())
 application.use(express.static(join(__dirname, "..", "client")))
 
 application.get("*", function get (request: any, response: any): string {

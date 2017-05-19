@@ -96,6 +96,7 @@
     "gulp-myth": "1.1.0",
     "gulp-size": "2.1.0",
     "gulp-uglify": "2.1.2",
+    "helmet": "3.6.0",
     "history": "4.6.1",
     "hoist-non-react-statics": "1.2.0",
     "hsdk": "8.0.1",
