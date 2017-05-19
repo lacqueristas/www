@@ -11,7 +11,7 @@ import redux from "./redux"
 import history from "./history"
 import sdk from "./sdk"
 
-const REFRESH_WAIT_TIME = 25000
+const REFRESH_WAIT_TIME = 900000
 
 window.env = environment(
   [...document.querySelectorAll("meta[type='environment']")]
