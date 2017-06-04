@@ -1,6 +1,6 @@
 import {path} from "ramda"
 
-export default function selfQuery (state: StateType): SelfQueryStateType {
+export default function selfQuery (state) {
   const sessionId = path(["ephemeral", "current", "session"], state)
   const session = path(["resources", "sessions", sessionId], state)
   const accountId = path(["relationships", "account", "data", "id"], session)

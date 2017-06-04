@@ -2,10 +2,10 @@ import resolveP from "@unction/resolvep"
 
 import updateLocationSignal from "../updateLocationSignal"
 
-export default function clickAnchorSignal (href: string): SignalType {
-  return function thunk (dispatch: ReduxDispatchType): Promise<SignalType> {
+export default function clickAnchorSignal (href) {
+  return function thunk (dispatch) {
     return resolveP(href)
-      .then((): SignalType => dispatch(updateLocationSignal(href)))
-      .then((): SignalType => dispatch({type: "clickAnchorSignal"}))
+      .then(() => dispatch(updateLocationSignal(href)))
+      .then(() => dispatch({type: "clickAnchorSignal"}))
   }
 }

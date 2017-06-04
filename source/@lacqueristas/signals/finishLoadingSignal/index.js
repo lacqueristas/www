@@ -1,4 +1,4 @@
-export default function finishLoadingSignal (slug: string): SignalType {
+export default function finishLoadingSignal (slug) {
   return {
     type: "finishLoadingSignal",
     payload: slug,

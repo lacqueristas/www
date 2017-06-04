@@ -1,4 +1,4 @@
-export default function updateInputSignal ({slug, name, value, multiple = false}: UpdateInputPayloadType): SignalType {
+export default function updateInputSignal ({slug, name, value, multiple = false}){
   return {
     type: "updateInputSignal",
     payload: {

@@ -11,8 +11,8 @@ const toResourceTree = treeify([
 ])
 const asResources = objOf("resources")
 
-export default function mergeResourceReaction (state: StateType): Function {
-  return function mergeResourceReactionState (payload: any): StateType {
+export default function mergeResourceReaction (state) {
+  return function mergeResourceReactionState (payload) {
     return mergeDeepRight(
       state
     )(

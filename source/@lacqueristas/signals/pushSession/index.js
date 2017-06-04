@@ -2,8 +2,8 @@ import {sessionIncomingResource} from "@lacqueristas/resources"
 
 import receiveResources from "../receiveResources"
 
-export default function pushSession (client: HSDKClientType): Function {
-  return function pushSessionClient (attributes: FreshSessionAttributesType): Promise<SessionResourceType> {
+export default function pushSession (client) {
+  return function pushSessionClient (attributes) {
     const {email} = attributes
     const {password} = attributes
 

@@ -15,7 +15,7 @@ const style = {
 export default class ButtonGroup extends PureComponent {
   static propTypes = {children: PropTypes.node.isRequired}
 
-  render (): any {
+  render (){
     const {children} = this.props
 
     return <section className={cxs(style)}>

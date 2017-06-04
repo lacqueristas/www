@@ -1,3 +1,3 @@
-export default function errorInputSignal (): SignalType {
+export default function errorInputSignal () {
   return {type: "errorInputSignal"}
 }

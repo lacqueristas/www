@@ -31,7 +31,7 @@ export default class NativeFormSection extends PureComponent {
     value: string | number
   }
 
-  onChangeInput (): Function {
+  onChangeInput () {
     return function thunk (event: Event) {
       const {target} = event
       const {value} = target
@@ -40,7 +40,7 @@ export default class NativeFormSection extends PureComponent {
     }.bind(this)
   }
 
-  render (): any {
+  render () {
     const {id} = this.props
     const {name} = this.props
     const {type} = this.props

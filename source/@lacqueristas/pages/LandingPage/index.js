@@ -17,7 +17,7 @@ const landingPageStyle = {
 const sectionStyle = {minWidth: 320}
 const isSiteReady = true
 
-export default function LandingPage (): any {
+export default function LandingPage () {
   return <Layout subtitle="Welcome to Polish" data-component="LandingPage" style={landingPageStyle}>
     <section id="brand" className={cxs(sectionStyle)}>
       <Heading kind="page" subtitle="Welcome to Polish">

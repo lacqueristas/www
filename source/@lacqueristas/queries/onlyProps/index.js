@@ -1,3 +1,3 @@
-export default function onlyProps (state: StateType, props: mixed): mixed {
+export default function onlyProps (state, props) {
   return props
 }

@@ -3,15 +3,9 @@ import {photographIncomingResource} from "@lacqueristas/resources"
 
 import receiveResources from "../receiveResources"
 
-type PhotographPayloadType = {
-  projectId: string,
-  original: string,
-  thumbnail: string,
-}
-
-export default function pushPhotograph (client: HSDKClientType): Function {
-  return function pushPhotographClient (bearer: string): Function {
-    return function pushPhotographClientBearer (payload: PhotographPayloadType): Promise<PhotographResourceType> {
+export default function pushPhotograph (client) {
+  return function pushPhotographClient (bearer) {
+    return function pushPhotographClientBearer (payload) {
       const {project} = payload
       const {original} = payload
       const {thumbnail} = payload

@@ -1,4 +1,4 @@
-export default function updateNavigationSignal (navigation: LocationType): SignalType {
+export default function updateNavigationSignal (navigation){
   return {
     type: "updateNavigationSignal",
     payload: {navigation},

@@ -17,7 +17,7 @@ export default connect(
 
   static defaultProps = {style: {}}
 
-  onSubmitForm (): Function {
+  onSubmitForm () {
     return function thunk (event: Event) {
       const {slug} = this.props
       const {onSubmit} = this.props
@@ -28,7 +28,7 @@ export default connect(
     }.bind(this)
   }
 
-  render (): any {
+  render (){
     const {name} = this.props
     const {slug} = this.props
     const {children} = this.props

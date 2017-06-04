@@ -17,7 +17,7 @@ export default connect(
     id: PropTypes.string.isRequired,
   }
 
-  onDrop (): Function {
+  onDrop () {
     return function thunk (accepted: Array<any>, rejected: Array<any>) {
       const {uploadFiles} = this.props
       const {slug} = this.props
@@ -32,7 +32,7 @@ export default connect(
     }.bind(this)
   }
 
-  render (): any {
+  render () {
     const {children} = this.props
 
     return <Dropzone onDrop={this.onDrop()}>

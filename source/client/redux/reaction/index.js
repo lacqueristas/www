@@ -5,10 +5,10 @@ import reactions from "@lacqueristas/reactions"
 
 import persist from "./persist"
 
-const defaultReaction = (state: StateType): Function => (): StateType => state
+const defaultReaction = (state) => () => state
 const signaledReaction = pipe(replace(/Signal$/)("Reaction"), prop)
 
-export default function reaction (state: StateType, signal: SignalType): StateType {
+export default function reaction (state, signal) {
   const {type} = signal
   const {payload = {}} = signal
   const currentReaction = signaledReaction(type)(reactions) || defaultReaction

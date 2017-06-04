@@ -3,8 +3,8 @@ import {merge} from "ramda"
 
 import piped from "./piped"
 
-export default function dispatched (signals: {[name]: Function}): Function {
-  return function dispatchedSignals (dispatch: ReduxDispatchType, props: mixed): {[name]: Function} {
+export default function dispatched (signals) {
+  return function dispatchedSignals (dispatch, props) {
     return merge(
       mapValues(piped(dispatch))(signals),
       props

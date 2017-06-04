@@ -1,7 +1,7 @@
 import {pipe} from "ramda"
 
-export default function piped (dispatch: ReduxDispatchType): Function {
-  return function pipedDispatch (signal: Function): Function {
+export default function piped (dispatch) {
+  return function pipedDispatch (signal) {
     return pipe(signal, dispatch)
   }
 }

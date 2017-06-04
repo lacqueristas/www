@@ -4,7 +4,7 @@ import {connect} from "react-redux"
 import route from "@lacqueristas/route"
 
 // TODO: Turn this into a query
-const connectNavigation = connect((state: StateType, props: mixed): object => {
+const connectNavigation = connect((state, props) => {
   return {
     navigation: state.navigation,
     ephemeral: state.ephemeral,
@@ -21,7 +21,7 @@ export default connectNavigation(class Application extends PureComponent {
     }).isRequired,
   }
 
-  render (): any {
+  render () {
     const {navigation} = this.props
     const {ephemeral} = this.props
     const CurrentComponent = route(navigation, ephemeral)

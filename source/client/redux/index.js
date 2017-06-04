@@ -8,12 +8,7 @@ import thunkMiddleware from "redux-thunk"
 import reaction from "./reaction"
 import initialState from "./initialState"
 
-type ReduxExtraType = {
-  client: HSDKClientType,
-  history: HistoryType,
-}
-
-export default function redux (extra: ReduxExtraType): any {
+export default function redux (extra) {
   const thunk = thunkMiddleware.withExtraArgument(extra)
 
   if (process.env.NODE_ENV === "production") {

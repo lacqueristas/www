@@ -9,7 +9,7 @@ import {PageNotFound} from "@lacqueristas/pages"
 import {LandingPage} from "@lacqueristas/pages"
 import {LoadingScreen} from "@lacqueristas/pages"
 
-export default function route (navigation: NavigationState, ephemeral: EphemeralState): any {
+export default function route (navigation, ephemeral) {
   const {pathname} = navigation
   // TODO: This is not an appropriate way to handle pathing :P
   const component = prop(pascal(pathname), pages)

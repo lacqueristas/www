@@ -1,4 +1,4 @@
-export default function storeCurrentSignal (payload: CurrentStorePayloadType): SignalType {
+export default function storeCurrentSignal (payload){
   return {
     type: "storeCurrentSignal",
     payload,

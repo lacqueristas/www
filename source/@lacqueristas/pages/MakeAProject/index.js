@@ -31,7 +31,7 @@ export default authenticate(clientSide(connect(
     createProject: PropTypes.func.isRequired,
   }
 
-  onClickDraft (): Function {
+  onClickDraft () {
     return function thunk (event: Event) {
       const {draftProject} = this.props
 
@@ -41,7 +41,7 @@ export default authenticate(clientSide(connect(
     }.bind(this)
   }
 
-  onClickReset (): Function {
+  onClickReset () {
     return function thunk () {
       const {clearForm} = this.props
 
@@ -51,7 +51,7 @@ export default authenticate(clientSide(connect(
     }.bind(this)
   }
 
-  render (): any {
+  render (){
     const {createProject} = this.props
 
     return <Layout subtitle="Making a project" data-component="MakeAProject">

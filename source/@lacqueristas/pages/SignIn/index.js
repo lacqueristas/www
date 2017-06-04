@@ -25,7 +25,7 @@ export default connect(
 )(class SignIn extends PureComponent {
   static propTypes = {signIn: PropTypes.func.isRequired}
 
-  render (): any {
+  render (){
     const {signIn} = this.props
 
     return <Layout subtitle="Join our website!" data-component="SignIn" style={style}>

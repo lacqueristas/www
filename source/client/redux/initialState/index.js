@@ -13,7 +13,7 @@ const raw = {
   resources: {},
 }
 
-export default function initialState (): any {
+export default function initialState () {
   const state = store.get("state") || {}
 
   return mergeDeepRight(raw)(merge(objOf("navigation")(urlParse(location, true)), omit(["navigation"])(state)))

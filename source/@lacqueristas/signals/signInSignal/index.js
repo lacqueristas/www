@@ -15,8 +15,8 @@ import exceptionSignal from "../exceptionSignal"
 import pullAccount from "../pullAccount"
 import pushSession from "../pushSession"
 
-export default function signInSignal (slug: string): Function {
-  return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
+export default function signInSignal (slug: string) {
+  return function thunk (dispatch, getState, {client}: {client) {
     const {ephemeral} = getState()
     const {forms} = ephemeral
     const attributes = prop(slug)(forms)
@@ -26,7 +26,7 @@ export default function signInSignal (slug: string): Function {
 
     return resolveP(dispatch(startLoadingSignal(slug)))
       .then((): Promise<SessionResourceType> => sessionRequest(attributes))
-      .then((session: SessionResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType, session: SessionResourceType}> => {
+      .then((session): Promise<{mergedResourceSignal, storeCurrentSignal, session> => {
         return allObjectP({
           mergedResourceSignal: dispatch(mergeResourceSignal(session)),
           storeCurrentSignal: dispatch(storeCurrentSignal({
@@ -36,8 +36,8 @@ export default function signInSignal (slug: string): Function {
           session,
         })
       })
-      .then(({session}: {session: SessionResourceType}): Promise<AccountResourceType> => accountRequest({id: path(["relationships", "account", "data", "id"], session)}))
-      .then((account: AccountResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType}> => {
+      .then(({session}: {session): Promise<AccountResourceType> => accountRequest({id: path(["relationships", "account", "data", "id"], session)}))
+      .then((account): Promise<{mergedResourceSignal, storeCurrentSignal> => {
         return allObjectP({
           mergedResourceSignal: dispatch(mergeResourceSignal(account)),
           storeCurrentSignal: dispatch(storeCurrentSignal({
@@ -46,14 +46,14 @@ export default function signInSignal (slug: string): Function {
           })),
         })
       })
-      .then((): Promise<{finishLoadingSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+      .then((): Promise<{finishLoadingSignal, clearFormSignal, updateLocationSignal: updateLocationSignal}> => {
         return allObjectP({
           finishLoadingSignal: dispatch(finishLoadingSignal(slug)),
           clearFormSignal: dispatch(clearFormSignal(slug)),
           updateLocationSignal: dispatch(updateLocationSignal("/front-page")),
         })
       })
-      .then((): SignalType => dispatch({type: "signInSignal"}))
+      .then(()=> dispatch({type: "signInSignal"}))
       .catch(pipe(exceptionSignal, dispatch))
   }
 }

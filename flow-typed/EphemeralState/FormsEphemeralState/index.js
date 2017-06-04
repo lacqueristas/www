@@ -1,1 +1,0 @@
-type FormsEphemeralState = Object

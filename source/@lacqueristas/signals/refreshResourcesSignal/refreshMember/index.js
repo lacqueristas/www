@@ -14,9 +14,9 @@ const MAPPING = {
   projects: "projectIncomingResource",
 }
 
-export default function refreshMember (dispatch: ReduxDispatchType): Function {
-  return function refreshMemberDispatch (client: HSDKClientType): Function {
-    return function refreshMemberClient (member: ResourceType): Promise<any> {
+export default function refreshMember (dispatch) {
+  return function refreshMemberDispatch (client) {
+    return function refreshMemberClient (member): Promise<any> {
       const {id} = member
       const {type} = member
       const {meta} = member
@@ -29,7 +29,7 @@ export default function refreshMember (dispatch: ReduxDispatchType): Function {
 
         return show({id})
           .then(receiveResources(abstraction))
-          .then((resource: ResourceType): SignalType => dispatch(mergeResourceSignal(resource)))
+          .then((resource)=> dispatch(mergeResourceSignal(resource)))
           .catch(pipe(exceptionSignal, dispatch))
       }
 

@@ -1,8 +1,8 @@
 import mergeDeepRight from "@unction/mergedeepright"
 import nestedObjOf from "@unction/nestedobjof"
 
-export default function updateInputReaction (state: StateType): Function {
-  return function updateInputReactionState (payload: any): StateType {
+export default function updateInputReaction (state) {
+  return function updateInputReactionState (payload) {
     const {slug} = payload
     const {name} = payload
     const {value} = payload

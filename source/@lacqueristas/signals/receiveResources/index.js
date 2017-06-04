@@ -11,8 +11,8 @@ import withoutKeyRecursive from "@unction/withoutkeyrecursive"
 const toRaw = path(["data", "data"])
 const successful = [ok, created, redirect]
 
-export default function receiveResources (abstraction: AbstractionType): Function {
-  return function receiveResourcesAbstraction (response: {data: JSONAPIResponse, status: number}): Promise<any> {
+export default function receiveResources (abstraction) {
+  return function receiveResourcesAbstraction (response) {
     const raw = toRaw(response)
     const {status} = response
     const everyThingIsFine = any(equals(status), successful)

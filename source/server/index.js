@@ -62,5 +62,5 @@ application.get("*", function get (request: any, response: any): string {
 
 application.listen(
   process.env.PORT,
-  (): any => logger.info(`Listening to ${process.env.PORT}`)
+  () => logger.info(`Listening to ${process.env.PORT}`)
 )

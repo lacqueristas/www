@@ -13,8 +13,8 @@ import exceptionSignal from "../exceptionSignal"
 import pushAccount from "../pushAccount"
 import pushSession from "../pushSession"
 
-export default function signUpSignal (slug: string): Function {
-  return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
+export default function signUpSignal (slug: string) {
+  return function thunk (dispatch, getState, {client}: {client) {
     const {ephemeral} = getState()
     const {forms} = ephemeral
     const attributes = forms[slug]
@@ -24,7 +24,7 @@ export default function signUpSignal (slug: string): Function {
 
     return resolveP(dispatch(startLoadingSignal(slug)))
       .then((): Promise<AccountResourceType> => accountRequest(attributes))
-      .then((account: AccountResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType}> => {
+      .then((account): Promise<{mergedResourceSignal, storeCurrentSignal> => {
         return allObjectP({
           mergedResourceSignal: dispatch(mergeResourceSignal(account)),
           storeCurrentSignal: dispatch(storeCurrentSignal({
@@ -34,7 +34,7 @@ export default function signUpSignal (slug: string): Function {
         })
       })
       .then((): Promise<SessionResourceType> => sessionRequest(attributes))
-      .then((session: SessionResourceType): Promise<{mergedResourceSignal: SignalType, storeCurrentSignal: SignalType}> => {
+      .then((session): Promise<{mergedResourceSignal, storeCurrentSignal> => {
         return allObjectP({
           mergedResourceSignal: dispatch(mergeResourceSignal(session)),
           storeCurrentSignal: dispatch(storeCurrentSignal({
@@ -43,14 +43,14 @@ export default function signUpSignal (slug: string): Function {
           })),
         })
       })
-      .then((): Promise<{finishLoadingSignal: SignalType, clearFormSignal: SignalType, updateLocationSignal: updateLocationSignal}> => {
+      .then((): Promise<{finishLoadingSignal, clearFormSignal, updateLocationSignal: updateLocationSignal}> => {
         return allObjectP({
           finishLoadingSignal: dispatch(finishLoadingSignal(slug)),
           clearFormSignal: dispatch(clearFormSignal(slug)),
           updateLocationSignal: dispatch(updateLocationSignal("/front-page")),
         })
       })
-      .then((): SignalType => dispatch({type: "signUpSignal"}))
+      .then(()=> dispatch({type: "signUpSignal"}))
       .catch(pipe(exceptionSignal, dispatch))
   }
 }

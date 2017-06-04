@@ -5,7 +5,7 @@ import {Anchor} from "@lacqueristas/elements"
 import {ButtonGroup} from "@lacqueristas/elements"
 import {Heading} from "@lacqueristas/elements"
 
-export default function AuthenticationRequired (): any {
+export default function AuthenticationRequired () {
   return <Layout subtitle="Sorry, you need access!" data-component="AuthenticationRequired">
     <Heading kind="page">
       Woops, you are not signed in!

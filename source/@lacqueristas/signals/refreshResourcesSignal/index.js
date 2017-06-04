@@ -5,11 +5,11 @@ import mapValues from "@unction/mapvalues"
 
 import refreshMember from "./refreshMember"
 
-export default function refreshResourcesSignal (): Function {
-  return function thunk (dispatch: ReduxDispatchType, getState: GetStateType, {client}: {client: HSDKClientType}): Promise<SignalType> {
+export default function refreshResourcesSignal () {
+  return function thunk (dispatch, getState, {client}: {client) {
     const refresh = pipe(mapValues(mapValues(refreshMember(dispatch)(client))), allObjectP)
 
     return allObjectP(refresh(prop("resources")(getState())))
-      .then((): SignalType => dispatch({type: "refreshResourcesSignal"}))
+      .then(()=> dispatch({type: "refreshResourcesSignal"}))
   }
 }

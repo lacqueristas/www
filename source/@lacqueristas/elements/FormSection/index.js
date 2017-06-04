@@ -36,11 +36,7 @@ export default connect(
 
   state = {}
 
-  state: {
-    value: any
-  }
-
-  onChangeInput (): Function {
+  onChangeInput () {
     return function thunk (event: Event) {
       const {slug} = this.props
       const {updateInput} = this.props
@@ -53,12 +49,12 @@ export default connect(
       updateInput({
         slug,
         name,
-        value,
+        value
       })
     }.bind(this)
   }
 
-  render (): any {
+  render (){
     const {id} = this.props
     const {name} = this.props
     const {type} = this.props

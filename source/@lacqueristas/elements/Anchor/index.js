@@ -40,7 +40,7 @@ export default connect(
 
   static contextTypes = {signals: PropTypes.shape({clickAnchor: PropTypes.func})}
 
-  onClick (): Function {
+  onClick () {
     return function thunk (event: Event) {
       const {clickAnchor} = this.props
       const {target} = event
@@ -53,12 +53,14 @@ export default connect(
       if (!isOpeningNewInstance) {
         event.preventDefault()
 
-        clickAnchor(href)
+        return clickAnchor(href)
       }
+
+      return true
     }.bind(this)
   }
 
-  render (): any {
+  render () {
     const {children} = this.props
     const {href} = this.props
     const {style} = this.props

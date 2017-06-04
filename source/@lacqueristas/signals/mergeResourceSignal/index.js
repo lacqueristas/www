@@ -1,4 +1,4 @@
-export default function mergeResourceSignal (payload: ResourceType): SignalType {
+export default function mergeResourceSignal (payload) {
   return {
     type: "mergeResourceSignal",
     payload,

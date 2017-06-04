@@ -2,9 +2,9 @@ import {projectIncomingResource} from "@lacqueristas/resources"
 
 import receiveResources from "../receiveResources"
 
-export default function pushProject (client: HSDKClientType): Function {
-  return function pushProjectClient (bearer: string): Function {
-    return function pushProjectClientBearer (attributes: FreshProjectAttributesType): Promise<ProjectResourceType> {
+export default function pushProject (client) {
+  return function pushProjectClient (bearer) {
+    return function pushProjectClientBearer (attributes) {
       return client
         .projects
         .v1

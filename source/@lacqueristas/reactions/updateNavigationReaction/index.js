@@ -1,5 +1,5 @@
-export default function updateNavigationReaction (state: StateType): Function {
-  return function updateNavigationReactionState (payload: any): StateType {
+export default function updateNavigationReaction (state) {
+  return function updateNavigationReactionState (payload) {
     const {navigation} = payload
 
     return {

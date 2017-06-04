@@ -31,7 +31,7 @@ const headerStyle = {padding: 5}
 const headingStyle = {fontSize: "3rem"}
 const linkStyle = {color: inverseAnchorColor}
 
-export default function Footer (): any {
+export default function Footer () {
   return <footer data-component="Footer" className={cxs(footerStyle)}>
     <header className={cxs(headerStyle)}>
       <Heading kind="page">

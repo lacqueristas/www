@@ -1,3 +1,0 @@
-type FormQueryPropertiesType = {
-  slug: string
-}

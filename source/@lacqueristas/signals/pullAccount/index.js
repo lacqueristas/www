@@ -2,8 +2,8 @@ import {accountIncomingResource} from "@lacqueristas/resources"
 
 import receiveResources from "../receiveResources"
 
-export default function pullAccount (client: HSDKClientType): Function {
-  return function pullAccountClient (attributes: FreshAccountAttributesType): Promise<AccountResourceType> {
+export default function pullAccount (client) {
+  return function pullAccountClient (attributes) {
     const {id} = attributes
 
     return client

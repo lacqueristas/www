@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function JavascriptWarning (): any {
+export default function JavascriptWarning () {
   return <noscript>
     <h1>Hello!</h1>
 

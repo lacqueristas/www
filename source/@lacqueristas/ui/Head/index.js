@@ -13,7 +13,7 @@ export default class Head extends PureComponent {
     subtitle: "Welcome To Polishworld",
   }
 
-  render (): any {
+  render (){
     const {title} = this.props
     const {subtitle} = this.props
 

@@ -14,7 +14,7 @@ const style = {
 export default class Body extends PureComponent {
   static propTypes = {children: PropTypes.node.isRequired}
 
-  render (): any {
+  render (){
     const {children} = this.props
 
     return <body className={cxs(style)} id="application">

@@ -36,10 +36,10 @@ export default connect()(class Button extends PureComponent {
     style: {},
     kind: "normal",
     type: "button",
-    onClick: (): any => null,
+    onClick: () => null,
   }
 
-  render (): any {
+  render () {
     const {children} = this.props
     const {kind} = this.props
     const {type} = this.props

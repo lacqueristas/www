@@ -23,7 +23,7 @@ export default authenticate(clientSide(connect(
     }).isRequired,
   }
 
-  render (): any {
+  render (){
     const {self: {attributes: {name}}} = this.props
 
     return <Layout subtitle="The Front Page of Polish" data-component="FrontPage">

@@ -8,23 +8,21 @@ import updateInputSignal from "../updateInputSignal"
 import errorInputSignal from "../errorInputSignal"
 import pushFile from "../pushFile"
 
-const asInput = (name: string): Function => (slug: string): Function =>
-
-export default function uploadFilesSignal ({slug, name, accepted, rejected}: UpdateFilesPayloadType): SignalType {
+export default function uploadFilesSignal ({slug, name, accepted, rejected}) {
   const file = pipe(objOf("value"), merge({
     multiple: true,
     slug,
     name,
   }))
 
-  return function thunk (dispatch: ReduxDispatchType): Promise<SignalType> {
-    const dispatches = (signal: Function): Function => mapValues(pipe(file, signal, dispatch))
+  return function thunk (dispatch) {
+    const dispatches = (signal) => mapValues(pipe(file, signal, dispatch))
 
     return allP(mapValues(pushFile)(accepted))
-      .then((delivered: Array<Promise<FileResourceType>>): Array<SignalType> => allP([
+      .then((delivered) => allP([
         ...dispatches(updateInputSignal)(delivered),
         ...dispatches(errorInputSignal)(rejected),
       ]))
-      .then((): SignalType => dispatch({type: "uploadFilesSignal"}))
+      .then(() => dispatch({type: "uploadFilesSignal"}))
   }
 }
