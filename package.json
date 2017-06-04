@@ -2,18 +2,6 @@
   "name": "@lacqueristas/www",
   "version": "1.1.0",
   "description": "The frontend browser client for the lacqueristas API",
-  "scripts": {
-    "start": "node './transpiled/server/index.js'",
-    "build": "gulp build",
-    "build:server": "gulp server",
-    "build:client": "gulp client",
-    "watch": "npm-run-all --parallel watch:build watch:lint watch:test",
-    "watch:lint": "chokidar './source/' --ignore '/node_modules/' --command 'npm run lint --silent'",
-    "watch:test": "chokidar './source/' --ignore '/node_modules/' --command 'npm run test --silent'",
-    "watch:build": "gulp watch",
-    "test": "tap './source/**/test.js'",
-    "lint": "eslint './source/' --ignore-pattern 'node_modules'"
-  },
   "keywords": [
     "lacqueristas",
     "nailpolish",
@@ -28,6 +16,18 @@
   },
   "bugs": {
     "url": "https://github.com/lacqueristas/www/issues"
+  },
+  "scripts": {
+    "start": "node './transpiled/server/index.js'",
+    "build:server": "gulp build:server",
+    "build:client": "gulp build:client",
+    "build": "gulp build:all",
+    "watch:lint": "chokidar './source/' --ignore '/node_modules/' --command 'npm run lint --silent'",
+    "watch:test": "chokidar './source/' --ignore '/node_modules/' --command 'npm run test --silent'",
+    "watch:build": "gulp watch:all",
+    "watch": "npm-run-all --parallel watch:build watch:lint watch:test",
+    "test": "tap './source/**/test.js'",
+    "lint": "eslint './source/' --ignore-pattern 'node_modules'"
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",

@@ -26,7 +26,7 @@ const GZIP = {
 }
 
 
-gulp.task("@lacqueristas", () => {
+gulp.task("build:@lacqueristas", () => {
   const destination = join(DESINATION, "@lacqueristas")
 
   return gulp.src([
@@ -41,7 +41,7 @@ gulp.task("@lacqueristas", () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("server", ["@lacqueristas"], () => {
+gulp.task("build:server", ["build:@lacqueristas"], () => {
   const destination = join(DESINATION, "server")
 
   return gulp.src([
@@ -56,7 +56,7 @@ gulp.task("server", ["@lacqueristas"], () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("client", ["styles", "images", "assets", "fonts"], () => {
+gulp.task("build:client", ["build:styles", "build:images", "build:assets", "build:fonts"], () => {
   const destination = join(DESINATION, "client")
 
   return browserify({
@@ -79,7 +79,7 @@ gulp.task("client", ["styles", "images", "assets", "fonts"], () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("styles", () => {
+gulp.task("build:styles", () => {
   const destination = join(DESINATION, "client")
 
   return gulp.src([
@@ -100,7 +100,7 @@ gulp.task("styles", () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("images", () => {
+gulp.task("build:images", () => {
   const destination = join(DESINATION, "client")
 
   return gulp.src([
@@ -117,7 +117,7 @@ gulp.task("images", () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("assets", () => {
+gulp.task("build:assets", () => {
   const destination = join(DESINATION, "client")
 
   return gulp.src([
@@ -136,7 +136,7 @@ gulp.task("assets", () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("fonts", () => {
+gulp.task("build:fonts", () => {
   const destination = join(DESINATION, "client", "fonts")
 
   return gulp.src([
@@ -152,8 +152,8 @@ gulp.task("fonts", () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("build", ["server", "client"])
-gulp.task("watch", ["server", "client"], () => {
-  gulp.watch("./source/server/**/*", ["server"])
-  gulp.watch("./source/client/**/*", ["client"])
+gulp.task("build:build", ["build:server", "build:client"])
+gulp.task("build:watch", ["build:server", "build:client"], () => {
+  gulp.watch("./source/server/**/*", ["build:server"])
+  gulp.watch("./source/client/**/*", ["build:client"])
 })
