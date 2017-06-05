@@ -1,36 +1,21 @@
 module.exports = {
   parser: "babel-eslint",
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    }
-  },
+  parserOptions: {ecmaFeatures: {jsx: true}},
   plugins: [
     "babel",
     "immutable",
+    "fp",
     "import",
     "react",
     "jsx-a11y",
-    "flowtype",
-    "promise"
+    "promise",
   ],
   env: {
     es6: true,
     node: true,
-    browser: true
+    browser: true,
   },
   rules: {
-    "promise/always-return": "error",
-    "promise/no-return-wrap": "error",
-    "promise/param-names": "error",
-    "promise/catch-or-return": "error",
-    "promise/no-native": "off", // We have babel
-    "promise/no-nesting": "error",
-    "promise/no-promise-in-callback": "error",
-    "promise/no-callback-in-promise": "error",
-    "promise/avoid-new": "error",
-    "promise/prefer-await-to-then": "off", // Not convinced of await/async
-    "promise/prefer-await-to-callbacks": "off", // Not convinced of await/async
     "accessor-pairs": "error",
     "array-bracket-spacing": "error",
     "array-callback-return": "error",
@@ -45,21 +30,7 @@ module.exports = {
     "callback-return": "error",
     "camelcase": "warn",
     "capitalized-comments": "error",
-    "class-methods-use-this": [
-      "error",
-      {
-        exceptMethods: [
-          "componentDidMount",
-          "componentDidUpdate",
-          "componentWillMount",
-          "componentWillReceiveProps",
-          "componentWillUnmount",
-          "componentWillUpdate",
-          "render",
-          "shouldComponentUpdate"
-        ]
-      }
-    ],
+    "class-methods-use-this": ["error", {exceptMethods: ["componentDidMount", "componentDidUpdate", "componentWillMount", "componentWillReceiveProps", "componentWillUnmount", "componentWillUpdate", "render", "shouldComponentUpdate"]}],
     "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": "error",
     "comma-style": "error",
@@ -74,25 +45,23 @@ module.exports = {
     "dot-notation": "error",
     "eol-last": "error",
     "eqeqeq": "error",
-    "flowtype/boolean-style": "error",
-    "flowtype/define-flow-type": "error",
-    "flowtype/delimiter-dangle": ["error", "only-multiline"],
-    "flowtype/generic-spacing": "error",
-    "flowtype/no-dupe-keys": "error",
-    "flowtype/no-primitive-constructor-types": "error",
-    "flowtype/no-weak-types": "off", // Not very useful
-    "flowtype/object-type-delimiter": "error",
-    "flowtype/require-parameter-type": "error",
-    "flowtype/require-return-type": "error",
-    "flowtype/require-variable-type": "off", // Super annoying
-    "flowtype/semi": "off", // Super annoying
-    "flowtype/sort-keys": "off", // Causes more work than anything else
-    "flowtype/space-after-type-colon": "error",
-    "flowtype/space-before-generic-bracket": "error",
-    "flowtype/space-before-type-colon": "error",
-    "flowtype/type-id-match": "error",
-    "flowtype/union-intersection-spacing": "error",
-    "flowtype/use-flow-type": "error",
+    "fp/no-arguments": "error",
+    "fp/no-class": "error",
+    "fp/no-delete": "error",
+    "fp/no-events": "error",
+    "fp/no-get-set": "error",
+    "fp/no-let": "error",
+    "fp/no-loops": "error",
+    "fp/no-mutating-assign": "error",
+    "fp/no-mutating-methods": "error",
+    "fp/no-mutation": "error",
+    "fp/no-nil": "warn",
+    "fp/no-proxy": "error",
+    "fp/no-rest-parameters": "error",
+    "fp/no-this": "error",
+    "fp/no-throw": "error",
+    "fp/no-unused-expression": "warn",
+    "fp/no-valueof-field": "error",
     "func-call-spacing": "error",
     "func-name-matching": "error",
     "func-names": "error",
@@ -106,25 +75,29 @@ module.exports = {
     "id-match": "error",
     "immutable/no-let": "error",
     "immutable/no-mutation": "warn",
-    "immutable/no-this": "off", // Doesn't work with react
+    "immutable/no-this": "off",
     "import/default": "error",
     "import/export": "error",
     "import/extensions": "error",
     "import/first": "error",
+    "import/imports-first": "error",
     "import/max-dependencies": "warn",
     "import/named": "error",
     "import/namespace": "error",
     "import/newline-after-import": "error",
     "import/no-absolute-path": "error",
     "import/no-amd": "error",
+    "import/no-anonymous-default-export": "error",
     "import/no-commonjs": "error",
     "import/no-deprecated": "error",
     "import/no-duplicates": "off", // This rule doesn't understand my style
     "import/no-dynamic-require": "error",
     "import/no-extraneous-dependencies": "error",
+    "import/no-internal-modules": "error",
     "import/no-mutable-exports": "error",
     "import/no-named-as-default-member": "error",
     "import/no-named-as-default": "error",
+    "import/no-named-default": "error",
     "import/no-namespace": "off", // Doesn't work with star imports?
     "import/no-nodejs-modules": "off", // Only for frontend
     "import/no-restricted-paths": "off", // Isn't quite helpful
@@ -134,9 +107,12 @@ module.exports = {
     "import/order": "error",
     "import/prefer-default-export": "error",
     "import/unambiguous": "error",
-    "indent": ["error", 2, {"SwitchCase": 1}],
+    "indent": ["error", 2, {SwitchCase: 1}],
     "init-declarations": "error",
+    "jsx-a11y/accessible-emoji": "error",
+    "jsx-a11y/alt-text": "error",
     "jsx-a11y/anchor-has-content": "error",
+    "jsx-a11y/aria-activedescendant-has-tabindex": "error",
     "jsx-a11y/aria-props": "error",
     "jsx-a11y/aria-proptypes": "error",
     "jsx-a11y/aria-role": "error",
@@ -145,17 +121,23 @@ module.exports = {
     "jsx-a11y/heading-has-content": "error",
     "jsx-a11y/href-no-hash": "error",
     "jsx-a11y/html-has-lang": "error",
-    "jsx-a11y/img-has-alt": "error",
+    "jsx-a11y/iframe-has-title": "error",
     "jsx-a11y/img-redundant-alt": "error",
+    "jsx-a11y/interactive-supports-focus": "error",
     "jsx-a11y/label-has-for": "error",
     "jsx-a11y/lang": "error",
+    "jsx-a11y/media-has-caption": "error",
     "jsx-a11y/mouse-events-have-key-events": "error",
     "jsx-a11y/no-access-key": "error",
+    "jsx-a11y/no-autofocus": "error",
     "jsx-a11y/no-distracting-elements": "error",
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": "error",
+    "jsx-a11y/no-noninteractive-element-interactions": "error",
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "error",
+    "jsx-a11y/no-noninteractive-tabindex": "error",
     "jsx-a11y/no-onchange": "error",
+    "jsx-a11y/no-redundant-roles": "error",
     "jsx-a11y/no-static-element-interactions": "error",
-    "jsx-a11y/onclick-has-focus": "error",
-    "jsx-a11y/onclick-has-role": "error",
     "jsx-a11y/role-has-required-aria-props": "error",
     "jsx-a11y/role-supports-aria-props": "error",
     "jsx-a11y/scope": "error",
@@ -188,6 +170,7 @@ module.exports = {
     "no-case-declarations": "error",
     "no-catch-shadow": "error",
     "no-class-assign": "error",
+    "no-compare-neg-zero": "error",
     "no-cond-assign": "error",
     "no-confusing-arrow": "error",
     "no-console": "warn",
@@ -313,6 +296,7 @@ module.exports = {
     "no-warning-comments": "error",
     "no-whitespace-before-property": "error",
     "no-with": "error",
+    "nonblock-statement-body-position": "error",
     "object-curly-newline": "error",
     "object-curly-spacing": "error",
     "object-property-newline": "error",
@@ -331,6 +315,17 @@ module.exports = {
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",
+    "promise/always-return": "error",
+    "promise/avoid-new": "error",
+    "promise/catch-or-return": "error",
+    "promise/no-callback-in-promise": "error",
+    "promise/no-native": "off", // We have babel
+    "promise/no-nesting": "error",
+    "promise/no-promise-in-callback": "error",
+    "promise/no-return-wrap": "error",
+    "promise/param-names": "error",
+    "promise/prefer-await-to-callbacks": "off", // Not convinced of await/async
+    "promise/prefer-await-to-then": "off", // Not convinced of await/async
     "quote-props": ["error", "consistent-as-needed", {keywords: true}],
     "quotes": "error",
     "radix": "error",
@@ -349,7 +344,6 @@ module.exports = {
     "react/jsx-indent-props": ["error", 2],
     "react/jsx-indent": ["error", 2],
     "react/jsx-key": "error",
-    "react/jsx-max-props-per-line": "error",
     "react/jsx-max-props-per-line": "off", // I don't like making busy work for myself
     "react/jsx-no-bind": "error",
     "react/jsx-no-comment-textnodes": "error",
@@ -368,7 +362,6 @@ module.exports = {
     "react/no-children-prop": "error",
     "react/no-danger-with-children": "error",
     "react/no-danger": "error",
-    "react/no-danger": "error",
     "react/no-deprecated": "error",
     "react/no-did-mount-set-state": "error",
     "react/no-did-update-set-state": "error",
@@ -382,6 +375,7 @@ module.exports = {
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "error",
     "react/no-unused-prop-types": "error",
+    "react/no-will-update-set-state": "error",
     "react/prefer-es6-class": "error",
     "react/prefer-stateless-function": ["warn", {ignorePureComponents: true}],
     "react/prop-types": "error",
@@ -422,7 +416,7 @@ module.exports = {
     "wrap-iife": "error",
     "wrap-regex": "error",
     "yield-star-spacing": "error",
-    "yoda": "error"
+    "yoda": "error",
   },
   settings: {
     "import/core-modules": [
@@ -436,7 +430,7 @@ module.exports = {
       "@lacqueristas/route",
       "@lacqueristas/signals",
       "@lacqueristas/styles",
-      "@lacqueristas/ui"
-    ]
-  }
+      "@lacqueristas/ui",
+    ],
+  },
 }
