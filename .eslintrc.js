@@ -418,19 +418,4 @@ module.exports = {
     "yield-star-spacing": "error",
     "yoda": "error",
   },
-  settings: {
-    "import/core-modules": [
-      "@lacqueristas/colors",
-      "@lacqueristas/decorators",
-      "@lacqueristas/elements",
-      "@lacqueristas/pages",
-      "@lacqueristas/queries",
-      "@lacqueristas/reactions",
-      "@lacqueristas/resources",
-      "@lacqueristas/route",
-      "@lacqueristas/signals",
-      "@lacqueristas/styles",
-      "@lacqueristas/ui",
-    ],
-  },
 }
