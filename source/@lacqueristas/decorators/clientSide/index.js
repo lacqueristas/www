@@ -1,4 +1,5 @@
-import React, {PureComponent} from "react"
+import React from "react"
+import {PureComponent} from "react"
 import hoist from "hoist-non-react-statics"
 
 export default function clientSide (Component) {

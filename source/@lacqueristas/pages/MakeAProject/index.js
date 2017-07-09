@@ -1,4 +1,6 @@
-import React, {PropTypes, PureComponent} from "react"
+import React from "react"
+import {PureComponent} from "react"
+import PropTypes from "prop-types"
 import {connect} from "react-redux"
 
 import {clientSide} from "@lacqueristas/decorators"

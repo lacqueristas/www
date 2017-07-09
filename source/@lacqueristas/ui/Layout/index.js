@@ -1,4 +1,6 @@
-import React, {PureComponent, PropTypes} from "react"
+import React from "react"
+import {PureComponent} from "react"
+import PropTypes from "prop-types"
 import cxs from "cxs"
 
 import Head from "../Head"
