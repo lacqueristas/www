@@ -60,7 +60,7 @@ module.exports = {
     "fp/no-rest-parameters": "error",
     "fp/no-this": "error",
     "fp/no-throw": "error",
-    "fp/no-unused-expression": "warn",
+    "fp/no-unused-expression": "off", // This happens all the time :(
     "fp/no-valueof-field": "error",
     "func-call-spacing": "error",
     "func-name-matching": "error",
@@ -92,7 +92,7 @@ module.exports = {
     "import/no-deprecated": "error",
     "import/no-duplicates": "off", // This rule doesn't understand my style
     "import/no-dynamic-require": "error",
-    "import/no-extraneous-dependencies": "error",
+    "import/no-extraneous-dependencies": "off", // Doesn't work with internal packages
     "import/no-internal-modules": "error",
     "import/no-mutable-exports": "error",
     "import/no-named-as-default-member": "error",
@@ -102,7 +102,7 @@ module.exports = {
     "import/no-nodejs-modules": "off", // Only for frontend
     "import/no-restricted-paths": "off", // Isn't quite helpful
     "import/no-unassigned-import": "error",
-    "import/no-unresolved": "error",
+    "import/no-unresolved": "off", // Doesn't work with internal packages
     "import/no-webpack-loader-syntax": "error",
     "import/order": "error",
     "import/prefer-default-export": "error",
