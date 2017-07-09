@@ -12,16 +12,17 @@ import {ButtonGroup} from "@lacqueristas/elements"
 import {Form} from "@lacqueristas/elements"
 import {FormSection} from "@lacqueristas/elements"
 import {FileInput} from "@lacqueristas/elements"
-import {onlyProps} from "@lacqueristas/queries"
 import {dispatched} from "@lacqueristas/signals"
 import {clearFormSignal} from "@lacqueristas/signals"
 import {createProjectSignal} from "@lacqueristas/signals"
+import {query} from "@lacqueristas/queries"
+import {fieldQuery} from "@lacqueristas/queries"
 
 
 const slug = "makeAProject"
 
 export default authenticate(clientSide(connect(
-  onlyProps,
+  query([fieldQuery([slug, "photographs"])]),
   dispatched({
     clearForm: clearFormSignal,
     createProject: createProjectSignal,
@@ -31,7 +32,10 @@ export default authenticate(clientSide(connect(
     draftProject: PropTypes.func.isRequired,
     clearForm: PropTypes.func.isRequired,
     createProject: PropTypes.func.isRequired,
+    photographs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }
+
+  static defaultProps = {photographs: []}
 
   onClickDraft () {
     return function thunk (event: Event) {
@@ -55,6 +59,7 @@ export default authenticate(clientSide(connect(
 
   render (){
     const {createProject} = this.props
+    const {photographs} = this.props
 
     return <Layout subtitle="Making a project" data-component="MakeAProject">
       <Heading kind="page">
@@ -65,7 +70,9 @@ export default authenticate(clientSide(connect(
         <FormSection id="name" type="text" required label="What do you call this project?" slug={slug} />
         <FormSection id="description" type="textarea" required label="All the details" slug={slug} />
         <FormSection id="painted-at" type="date" required label="When did you do it?" slug={slug} />
-        <FileInput id="photographs" slug={slug} />
+        <FileInput id="photographs" slug={slug}>
+          {JSON.stringify(photographs)}
+        </FileInput>
 
         <ButtonGroup>
           <Button kind="primary" type="submit">
