@@ -1,7 +1,7 @@
 import {prop} from "ramda"
 import {replace} from "ramda"
 import {pipe} from "ramda"
-import reactions from "@lacqueristas/reactions"
+import reactions from "@internal/reactions"
 
 import persist from "./persist"
 

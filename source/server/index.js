@@ -14,7 +14,7 @@ import urlParse from "url-parse"
 import {replace} from "ramda"
 import bugsnag from "bugsnag"
 
-import {Application} from "@lacqueristas/ui"
+import {Application} from "@internal/ui"
 import redux from "./redux"
 import {logger} from "./remote"
 

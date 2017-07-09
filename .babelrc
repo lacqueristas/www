@@ -22,17 +22,17 @@
       "module-resolver",
       {
         "alias": {
-          "@lacqueristas/colors": "./source/@lacqueristas/colors",
-          "@lacqueristas/decorators": "./source/@lacqueristas/decorators",
-          "@lacqueristas/elements": "./source/@lacqueristas/elements",
-          "@lacqueristas/pages": "./source/@lacqueristas/pages",
-          "@lacqueristas/queries": "./source/@lacqueristas/queries",
-          "@lacqueristas/reactions": "./source/@lacqueristas/reactions",
-          "@lacqueristas/resources": "./source/@lacqueristas/resources",
-          "@lacqueristas/route": "./source/@lacqueristas/route",
-          "@lacqueristas/signals": "./source/@lacqueristas/signals",
-          "@lacqueristas/styles": "./source/@lacqueristas/styles",
-          "@lacqueristas/ui": "./source/@lacqueristas/ui"
+          "@internal/colors": "./source/@internal/colors",
+          "@internal/decorators": "./source/@internal/decorators",
+          "@internal/elements": "./source/@internal/elements",
+          "@internal/pages": "./source/@internal/pages",
+          "@internal/queries": "./source/@internal/queries",
+          "@internal/reactions": "./source/@internal/reactions",
+          "@internal/resources": "./source/@internal/resources",
+          "@internal/route": "./source/@internal/route",
+          "@internal/signals": "./source/@internal/signals",
+          "@internal/styles": "./source/@internal/styles",
+          "@internal/ui": "./source/@internal/ui"
         }
       }
     ],
