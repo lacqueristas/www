@@ -15,8 +15,8 @@ import {replace} from "ramda"
 import bugsnag from "bugsnag"
 
 import {Application} from "@internal/ui"
+import logger from "@internal/logger"
 import redux from "./redux"
-import {logger} from "./remote"
 
 requireEnvironmentVariables([
   "PORT",
