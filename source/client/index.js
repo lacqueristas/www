@@ -6,6 +6,9 @@ import {Provider} from "react-redux"
 import {Application} from "@internal/ui"
 import {updateNavigationSignal} from "@internal/signals"
 import {refreshResourcesSignal} from "@internal/signals"
+
+import logger from "@internal/logger"
+
 import environment from "./environment"
 import redux from "./redux"
 import history from "./history"
@@ -46,4 +49,4 @@ sdk()
       document.getElementById("application")
     )
   })
-  .catch(console.error.bind(console))
+  .catch(logger.error)
