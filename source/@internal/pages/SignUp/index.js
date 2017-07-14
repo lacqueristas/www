@@ -9,7 +9,7 @@ import {Button} from "@internal/elements"
 import {Form} from "@internal/elements"
 import {FormSection} from "@internal/elements"
 import {ButtonGroup} from "@internal/elements"
-import {onlyProps} from "@internal/queries"
+import {onlyProps} from "@internal/selectors"
 import {dispatched} from "@internal/signals"
 import {signUpSignal} from "@internal/signals"
 
@@ -30,7 +30,7 @@ export default connect(
 )(class SignUp extends PureComponent {
   static propTypes = {signUp: PropTypes.func.isRequired}
 
-  render (){
+  render () {
     const {signUp} = this.props
 
     return <Layout subtitle="Join our website!" data-component="SignUp" style={style}>

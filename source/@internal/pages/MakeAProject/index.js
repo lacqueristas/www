@@ -2,6 +2,7 @@ import React from "react"
 import {PureComponent} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
+import {createStructuredSelector} from "reselect"
 
 import {clientSide} from "@internal/decorators"
 import {authenticate} from "@internal/decorators"
@@ -12,22 +13,28 @@ import {ButtonGroup} from "@internal/elements"
 import {Form} from "@internal/elements"
 import {FormSection} from "@internal/elements"
 import {FileInput} from "@internal/elements"
-import {dispatched} from "@internal/signals"
 import {clearFormSignal} from "@internal/signals"
 import {createProjectSignal} from "@internal/signals"
-import {query} from "@internal/queries"
-import {fieldQuery} from "@internal/queries"
+import {formFieldSelector} from "@internal/selectors"
 
 
 const slug = "makeAProject"
 
-export default authenticate(clientSide(connect(
-  query([fieldQuery([slug, "photographs"])]),
-  dispatched({
+@clientSide
+@authenticate
+@connect(
+  createStructuredSelector({
+    ...formFieldSelector({
+      slug,
+      name: "photographs",
+    }),
+  }),
+  {
     clearForm: clearFormSignal,
     createProject: createProjectSignal,
-  })
-)(class MakeAProject extends PureComponent {
+  }
+)
+export default class MakeAProject extends PureComponent {
   static propTypes = {
     draftProject: PropTypes.func.isRequired,
     clearForm: PropTypes.func.isRequired,
@@ -37,27 +44,19 @@ export default authenticate(clientSide(connect(
 
   static defaultProps = {photographs: []}
 
-  onClickDraft () {
-    return function thunk (event: Event) {
-      const {draftProject} = this.props
+  onClickDraft = (event) => {
+    event.preventDefault()
 
-      event.preventDefault()
-
-      draftProject()
-    }.bind(this)
+    this.props.draftProject()
   }
 
-  onClickReset () {
-    return function thunk () {
-      const {clearForm} = this.props
+  onClickReset = (event) => {
+    event.preventDefault()
 
-      event.preventDefault()
-
-      clearForm(slug)
-    }.bind(this)
+    this.props.clearForm(slug)
   }
 
-  render (){
+  render () {
     const {createProject} = this.props
     const {photographs} = this.props
 
@@ -78,14 +77,14 @@ export default authenticate(clientSide(connect(
           <Button kind="primary" type="submit">
             Publish!
           </Button>
-          <Button kind="secondary" onClick={this.onClickDraft()}>
+          <Button kind="secondary" onClick={this.onClickDraft}>
             Save as draft
           </Button>
-          <Button kind="secondary" type="reset" onClick={this.onClickReset()}>
+          <Button kind="secondary" type="reset" onClick={this.onClickReset}>
             Let this go
           </Button>
         </ButtonGroup>
       </Form>
     </Layout>
   }
-})))
+}

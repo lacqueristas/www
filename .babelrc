@@ -25,17 +25,21 @@
           "@internal/colors": "./source/@internal/colors",
           "@internal/decorators": "./source/@internal/decorators",
           "@internal/elements": "./source/@internal/elements",
+          "@internal/logger": "./source/@internal/logger",
           "@internal/pages": "./source/@internal/pages",
-          "@internal/queries": "./source/@internal/queries",
           "@internal/reactions": "./source/@internal/reactions",
           "@internal/resources": "./source/@internal/resources",
           "@internal/route": "./source/@internal/route",
+          "@internal/selectors": "./source/@internal/selectors",
           "@internal/signals": "./source/@internal/signals",
           "@internal/styles": "./source/@internal/styles",
-          "@internal/ui": "./source/@internal/ui"
+          "@internal/types": "./source/@internal/types",
+          "@internal/ui": "./source/@internal/ui",
+          "@internal/validations": "./source/@internal/validations"
         }
       }
     ],
+    "transform-decorators-legacy",
     "pipe-operator-curry",
     "transform-class-properties",
     "transform-object-rest-spread",

@@ -3,9 +3,9 @@ import {PureComponent} from "react"
 import PropTypes from "prop-types"
 import cxs from "cxs"
 
-import Head from "../Head"
-import Body from "../Body"
-import Footer from "../Footer"
+import Head from "./Head"
+import Body from "./Body"
+import Footer from "./Footer"
 
 const pageStyle = {
   marginLeft: "auto",

@@ -3,15 +3,14 @@ import {PureComponent} from "react"
 import PropTypes from "prop-types"
 import Dropzone from "react-dropzone"
 import {connect} from "react-redux"
-import {onlyProps} from "@internal/queries"
-import {dispatched} from "@internal/signals"
+import {onlyProps} from "@internal/selectors"
 import {uploadFilesSignal} from "@internal/signals"
 
-
-export default connect(
+@connect(
   onlyProps,
-  dispatched({uploadFiles: uploadFilesSignal})
-)(class FileInput extends PureComponent {
+  {uploadFiles: uploadFilesSignal}
+)
+export default class FileInput extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     uploadFiles: PropTypes.func.isRequired,
@@ -19,26 +18,24 @@ export default connect(
     id: PropTypes.string.isRequired,
   }
 
-  onDrop () {
-    return function thunk (accepted: Array<any>, rejected: Array<any>) {
-      const {uploadFiles} = this.props
-      const {slug} = this.props
-      const {id} = this.props
+  onDrop = (accepted, rejected) => {
+    const {uploadFiles} = this.props
+    const {slug} = this.props
+    const {id} = this.props
 
-      uploadFiles({
-        slug,
-        name: id,
-        accepted,
-        rejected,
-      })
-    }.bind(this)
+    uploadFiles({
+      slug,
+      name: id,
+      accepted,
+      rejected,
+    })
   }
 
   render () {
     const {children} = this.props
 
-    return <Dropzone onDrop={this.onDrop()}>
+    return <Dropzone onDrop={this.onDrop}>
       {children}
     </Dropzone>
   }
-})
+}

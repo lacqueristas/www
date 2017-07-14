@@ -4,9 +4,8 @@ import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import cxs from "cxs"
 import mergeDeepRight from "@unction/mergedeepright"
-import {query} from "@internal/queries"
-import {formSectionQuery} from "@internal/queries"
-import {dispatched} from "@internal/signals"
+import {createStructuredSelector} from "reselect"
+import {formSectionQuery} from "@internal/selectors"
 import {updateInputSignal} from "@internal/signals"
 
 const baseStyle = {
@@ -14,10 +13,11 @@ const baseStyle = {
   flexDirection: "column",
 }
 
-export default connect(
-  query([formSectionQuery]),
-  dispatched({updateInput: updateInputSignal}),
-)(class FormSection extends PureComponent {
+@connect(
+  createStructuredSelector({...formSectionQuery}),
+  {updateInput: updateInputSignal}
+)
+export default class FormSection extends PureComponent {
   static propTypes = {
     updateInput: PropTypes.func.isRequired,
     slug: PropTypes.string.isRequired,
@@ -38,25 +38,23 @@ export default connect(
 
   state = {}
 
-  onChangeInput () {
-    return function thunk (event: Event) {
-      const {slug} = this.props
-      const {updateInput} = this.props
-      const {target} = event
-      const {name} = target
-      const {value} = target
+  onChangeInput = (event) => {
+    const {slug} = this.props
+    const {updateInput} = this.props
+    const {target} = event
+    const {name} = target
+    const {value} = target
 
-      this.setState({value})
+    this.setState({value})
 
-      updateInput({
-        slug,
-        name,
-        value
-      })
-    }.bind(this)
+    updateInput({
+      slug,
+      name,
+      value,
+    })
   }
 
-  render (){
+  render () {
     const {id} = this.props
     const {name} = this.props
     const {type} = this.props
@@ -69,7 +67,7 @@ export default connect(
 
     return <section className={cxs(combineStyle)}>
       <label htmlFor={id}>{label}</label>
-      {type === "textarea" ? <textarea id={id} name={name} required={required} onChange={this.onChangeInput()} defaultValue={localValue} /> : <input id={id} name={name} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />}
+      {type === "textarea" ? <textarea id={id} name={name} required={required} onChange={this.onChangeInput} defaultValue={localValue} /> : <input id={id} name={name} type={type} required={required} onChange={this.onChangeInput} value={localValue} />}
     </section>
   }
-})
+}

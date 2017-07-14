@@ -5,8 +5,7 @@ import cxs from "cxs"
 import {connect} from "react-redux"
 import {prop} from "ramda"
 import mergeDeepRight from "@unction/mergedeepright"
-import {onlyProps} from "@internal/queries"
-import {dispatched} from "@internal/signals"
+import {onlyProps} from "@internal/selectors"
 import {clickAnchorSignal} from "@internal/signals"
 import {primaryInteraction} from "@internal/styles"
 import {secondaryInteraction} from "@internal/styles"
@@ -23,10 +22,11 @@ const kinds = [
   "normal",
 ]
 
-export default connect(
+@connect(
   onlyProps,
-  dispatched({clickAnchor: clickAnchorSignal})
-)(class Anchor extends PureComponent {
+  {clickAnchor: clickAnchorSignal}
+)
+export default class Anchor extends PureComponent {
   static propTypes = {
     clickAnchor: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
@@ -42,24 +42,22 @@ export default connect(
 
   static contextTypes = {signals: PropTypes.shape({clickAnchor: PropTypes.func})}
 
-  onClick () {
-    return function thunk (event: Event) {
-      const {clickAnchor} = this.props
-      const {target} = event
-      const {metaKey} = event
-      const {nativeEvent} = event
-      const {which} = nativeEvent
-      const {href} = target
-      const isOpeningNewInstance = metaKey || which === MIDDLE_CLICK
+  onClick = (event) => {
+    const {clickAnchor} = this.props
+    const {target} = event
+    const {metaKey} = event
+    const {nativeEvent} = event
+    const {which} = nativeEvent
+    const {href} = target
+    const isOpeningNewInstance = metaKey || which === MIDDLE_CLICK
 
-      if (!isOpeningNewInstance) {
-        event.preventDefault()
+    if (!isOpeningNewInstance) {
+      event.preventDefault()
 
-        return clickAnchor(href)
-      }
+      return clickAnchor(href)
+    }
 
-      return true
-    }.bind(this)
+    return true
   }
 
   render () {
@@ -69,8 +67,8 @@ export default connect(
     const {kind} = this.props
     const combineStyle = mergeDeepRight(prop(kind)(styles))(style)
 
-    return <a href={href} className={cxs(combineStyle)} onClick={this.onClick()}>
+    return <a href={href} className={cxs(combineStyle)} onClick={this.onClick}>
       {children}
     </a>
   }
-})
+}

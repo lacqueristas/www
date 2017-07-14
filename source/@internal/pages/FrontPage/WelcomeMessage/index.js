@@ -7,7 +7,7 @@ import {Anchor} from "@internal/elements"
 export default class WelcomeMessage extends PureComponent {
   static propTypes = {name: PropTypes.string.isRequired}
 
-  render (){
+  render () {
     const {name} = this.props
 
     return <p>

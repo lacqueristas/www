@@ -2,32 +2,43 @@ import React from "react"
 import {PureComponent} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
+import {path} from "ramda"
+import {createStructuredSelector} from "reselect"
+import uriTemplates from "uri-templates"
 
-import route from "@internal/route"
+import router from "@internal/router"
 
-// TODO: Turn this into a query
-const connectNavigation = connect((state, props) => {
-  return {
-    navigation: state.navigation,
-    ephemeral: state.ephemeral,
-    ...props,
-  }
-})
+const template = uriTemplates("/{component}{/id}")
 
-export default connectNavigation(class Application extends PureComponent {
+@connect(
+  createStructuredSelector({
+    pathname: path(["navigation", "pathname"]),
+    session: path(["ephemeral", "current", "session"]),
+    query: path(["navigation", "query"]),
+  })
+)
+export default class Application extends PureComponent {
   static propTypes = {
-    ephemeral: PropTypes.shape({current: PropTypes.shape({session: PropTypes.string}).isRequired}).isRequired,
-    navigation: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-      query: PropTypes.object,
-    }).isRequired,
+    pathname: PropTypes.string.isRequired,
+    session: PropTypes.string,
+    query: PropTypes.object,
   }
 
   render () {
-    const {navigation} = this.props
-    const {ephemeral} = this.props
-    const CurrentComponent = route(navigation, ephemeral)
+    const {pathname} = this.props
+    const {query} = this.props
+    const {session} = this.props
+    const CurrentComponent = router({
+      pathname,
+      session,
+    })
 
-    return <CurrentComponent />
+    if (pathname || pathname !== "/") {
+      const {id} = template.fromUri(pathname)
+
+      return <CurrentComponent id={id} {...query} />
+    }
+
+    return <CurrentComponent {...query} />
   }
-})
+}

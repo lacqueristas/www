@@ -38,7 +38,6 @@
     "eslint-find-new-rules": "2.0.2",
     "eslint-import-resolver-babel-module": "3.0.0",
     "eslint-plugin-babel": "4.1.1",
-    "eslint-plugin-fp": "2.3.0",
     "eslint-plugin-immutable": "1.0.0",
     "eslint-plugin-import": "2.3.0",
     "eslint-plugin-jsx-a11y": "5.0.3",
@@ -48,6 +47,7 @@
   "dependencies": {
     "@unction/allobjectp": "1.0.3",
     "@unction/allp": "1.0.0",
+    "@unction/arrayify": "1.0.0",
     "@unction/ispopulated": "2.0.0",
     "@unction/ispresent": "1.0.0",
     "@unction/mapvalues": "1.0.4",

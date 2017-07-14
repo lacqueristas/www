@@ -10,7 +10,6 @@ import cors from "cors"
 import morgan from "morgan"
 import compression from "compression"
 import helmet from "helmet"
-import urlParse from "url-parse"
 import {replace} from "ramda"
 import bugsnag from "bugsnag"
 
@@ -21,7 +20,6 @@ import redux from "./redux"
 requireEnvironmentVariables([
   "PORT",
   "NODE_ENV",
-  "WWW_LOCATION",
   "ORIGIN_LOCATION",
   "BUGSNAG_API_PRIVATE",
 ])
@@ -41,19 +39,11 @@ application.use(helmet())
 application.use(express.static(join(__dirname, "..", "client")))
 
 application.get("*", function get (request: any, response: any): string {
-  const navigation = urlParse(request.url, true)
-  const signals = {}
   const html = renderToStaticMarkup(
     createElement(
       Provider,
-      {store: redux},
-      createElement(
-        Application,
-        {
-          navigation,
-          signals,
-        },
-      )
+      {store: redux(request.url)},
+      createElement(Application)
     )
   )
 

@@ -1,7 +1,7 @@
 import {prop} from "ramda"
-import {path} from "ramda"
 import {isNil} from "ramda"
 import {pascal} from "case"
+import uriTemplates from "uri-templates"
 
 import * as pages from "@internal/pages"
 import {AuthenticationRequired} from "@internal/pages"
@@ -9,10 +9,10 @@ import {PageNotFound} from "@internal/pages"
 import {LandingPage} from "@internal/pages"
 import {LoadingScreen} from "@internal/pages"
 
-export default function route (navigation, ephemeral) {
-  const {pathname} = navigation
-  // TODO: This is not an appropriate way to handle pathing :P
-  const component = prop(pascal(pathname), pages)
+const template = uriTemplates("/{component}{/id}")
+
+export default function route ({pathname, session}) {
+  const component = prop(pascal(template.fromUri(pathname).component), pages)
 
   if (pathname === "/") {
     return LandingPage
@@ -22,16 +22,11 @@ export default function route (navigation, ephemeral) {
     return PageNotFound
   }
 
-  const {clientSide} = component
-
-  if (clientSide && !global.window) {
+  if (component.clientSide && !global.window) {
     return LoadingScreen
   }
 
-  const {authenticate} = component
-  const currentSession = path(["current", "session"], ephemeral)
-
-  if (authenticate && isNil(currentSession)) {
+  if (component.authenticate && isNil(session)) {
     return AuthenticationRequired
   }
 

@@ -25,7 +25,8 @@ const types = [
 ]
 
 // TODO: Hook up to ui loading state
-export default connect()(class Button extends PureComponent {
+@connect()
+export default class Button extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     style: PropTypes.object.isRequired,
@@ -53,4 +54,4 @@ export default connect()(class Button extends PureComponent {
       {children}
     </button>
   }
-})
+}

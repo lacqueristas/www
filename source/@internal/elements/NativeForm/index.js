@@ -17,7 +17,7 @@ export default class NativeForm extends PureComponent {
     target: null,
   }
 
-  render (){
+  render () {
     const {children} = this.props
     const {action} = this.props
     const {target} = this.props

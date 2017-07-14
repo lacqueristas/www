@@ -3,12 +3,13 @@ import {PureComponent} from "react"
 import PropTypes from "prop-types"
 import {connect} from "react-redux"
 import cxs from "cxs"
-import {query} from "@internal/queries"
-import {formQuery} from "@internal/queries"
+import {createStructuredSelector} from "reselect"
+import {formQuery} from "@internal/selectors"
 
-export default connect(
-  query([formQuery]),
-)(class Form extends PureComponent {
+@connect(
+  createStructuredSelector({...formQuery})
+)
+export default class Form extends PureComponent {
   static propTypes = {
     slug: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -19,25 +20,23 @@ export default connect(
 
   static defaultProps = {style: {}}
 
-  onSubmitForm () {
-    return function thunk (event: Event) {
-      const {slug} = this.props
-      const {onSubmit} = this.props
+  onSubmitForm = (event) => {
+    const {slug} = this.props
+    const {onSubmit} = this.props
 
-      event.preventDefault()
+    event.preventDefault()
 
-      onSubmit(slug)
-    }.bind(this)
+    onSubmit(slug)
   }
 
-  render (){
+  render () {
     const {name} = this.props
     const {slug} = this.props
     const {children} = this.props
     const {style} = this.props
 
-    return <form data-component={name} onSubmit={this.onSubmitForm()} data-slug={slug} name={name} className={cxs(style)}>
+    return <form data-component={name} onSubmit={this.onSubmitForm} data-slug={slug} name={name} className={cxs(style)}>
       {children}
     </form>
   }
-})
+}

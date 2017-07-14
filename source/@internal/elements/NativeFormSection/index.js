@@ -29,17 +29,11 @@ export default class NativeFormSection extends PureComponent {
 
   state = {}
 
-  state: {
-    value: string | number
-  }
+  onChangeInput = (event) => {
+    const {target} = event
+    const {value} = target
 
-  onChangeInput () {
-    return function thunk (event: Event) {
-      const {target} = event
-      const {value} = target
-
-      this.setState({value})
-    }.bind(this)
+    this.setState({value})
   }
 
   render () {
@@ -55,7 +49,7 @@ export default class NativeFormSection extends PureComponent {
 
     return <section className={cxs(className)}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput()} value={localValue} />
+      <input id={id} name={name || id} type={type} required={required} onChange={this.onChangeInput} value={localValue} />
     </section>
   }
 }

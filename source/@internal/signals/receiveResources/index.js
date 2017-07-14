@@ -18,7 +18,9 @@ export default function receiveResources (abstraction) {
     const everyThingIsFine = any(equals(status), successful)
 
     if (everyThingIsFine) {
-      return resolveP(withoutKeyRecursive("__abstraction__")(abstraction(raw)))
+      return abstraction(raw)
+        | withoutKeyRecursive("__abstraction__")
+        | resolveP
     }
 
     return rejectP(new Error("Client received an unexpected status code from the server"))

@@ -13,5 +13,7 @@ export default function reaction (state, signal) {
   const {payload = {}} = signal
   const currentReaction = signaledReaction(type)(reactions) || defaultReaction
 
-  return persist(currentReaction(state)(payload))
+  return payload
+    | currentReaction(state)
+    | persist
 }

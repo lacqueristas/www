@@ -7,8 +7,6 @@ ENV PORT 3000
 
 WORKDIR $APPLICATION
 
-COPY source/@lacqueristas/ $APPLICATION/source/@lacqueristas/
-
 COPY package.json $APPLICATION/
 
 RUN npm install --global npm5
