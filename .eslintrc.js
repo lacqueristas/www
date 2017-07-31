@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs, no-inline-comments, immutable/no-mutation, line-comment-position, no-magic-numbers, max-lines */
 module.exports = {
   parser: "babel-eslint",
   parserOptions: {ecmaFeatures: {jsx: true}},
