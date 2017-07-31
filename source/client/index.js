@@ -1,7 +1,10 @@
+/* eslint-disable import/no-unassigned-import, no-unused-expressions, immutable/no-mutation, import/max-dependencies */
 import "babel-polyfill"
 import React from "react"
 import {render} from "react-dom"
 import {Provider} from "react-redux"
+import thenP from "@unction/thenp"
+import catchP from "@unction/catchp"
 
 import {Application} from "@internal/ui"
 import {updateNavigationSignal} from "@internal/signals"
@@ -19,34 +22,26 @@ const REFRESH_WAIT_TIME = 900000
 window.env = environment(
   [...document.querySelectorAll("meta[type='environment']")]
 )
+const application = document.getElementById("application")
 
 sdk()
-  .then((client) => redux({
+  | thenP((client) => redux({
     client,
     history,
   }))
-  .then((store) => {
+  | thenP((store) => {
     history.listen(function locationChange (next, action) {
       if (action !== "PUSH") {
-        return store.dispatch(updateNavigationSignal(next))
+        store.dispatch(updateNavigationSignal(next))
       }
-
-      return null
     })
 
     return store
   })
-  .then((store) => {
+  | thenP((store) => {
     setInterval(() => store.dispatch(refreshResourcesSignal()), REFRESH_WAIT_TIME)
 
     return store
   })
-  .then((store) => {
-    return render(
-      <Provider store={store}>
-        <Application />
-      </Provider>,
-      document.getElementById("application")
-    )
-  })
-  .catch(logger.error)
+  | thenP((store) => render(<Provider store={store}><Application /></Provider>, application))
+  | catchP(logger.error)
