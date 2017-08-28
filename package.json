@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "node './transpiled/server/index.js'",
+    "build": "npm run build",
     "build:server": "gulp build:server",
     "build:client": "gulp build:client",
     "build": "gulp build:all",
