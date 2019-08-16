@@ -26,22 +26,22 @@ const GZIP = {
 }
 
 
-gulp.task("build:@lacqueristas", () => {
-  const destination = join(DESINATION, "@lacqueristas")
+gulp.task("build:@internal", () => {
+  const destination = join(DESINATION, "@internal")
 
   return gulp.src([
-    "./source/@lacqueristas/**/*.js",
+    "./source/@internal/**/*.js",
   ])
     .pipe(gulpChanged(destination))
     .pipe(gulpBabel())
     .pipe(gulpSize({
-      title: "@lacqueristas",
+      title: "@internal",
       showFiles: true,
     }))
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("build:server", ["build:@lacqueristas"], () => {
+gulp.task("build:server", ["build:@internal"], () => {
   const destination = join(DESINATION, "server")
 
   return gulp.src([
@@ -152,8 +152,8 @@ gulp.task("build:fonts", () => {
     .pipe(gulp.dest(destination))
 })
 
-gulp.task("build:build", ["build:server", "build:client"])
-gulp.task("build:watch", ["build:server", "build:client"], () => {
+gulp.task("build:all", ["build:server", "build:client"])
+gulp.task("watch:all", ["build:server", "build:client"], () => {
   gulp.watch("./source/server/**/*", ["build:server"])
   gulp.watch("./source/client/**/*", ["build:client"])
 })
