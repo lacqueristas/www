@@ -7,16 +7,17 @@
     "nailpolish",
     "frontend"
   ],
-  "author": "Kurtis Rainbolt-Greene (@krainboltgreene) <me@kurtisrainboltgreene.name>",
+  "contributors": [
+    {
+      "name": "Kurtis Rainbolt-Greene",
+      "email": "kurtis@rainbolt-greene.online",
+      "url": "https://kurtis.rainbolt-greene.online"
+    }
+  ],
   "license": "MIT",
   "homepage": "https://github.com/lacqueristas/www#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lacqueristas/www.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lacqueristas/www/issues"
-  },
+  "repository": "github:lacqueristas/www",
+  "bugs": "https://github.com/lacqueristas/www/issues",
   "engines": {
     "node": "8.2.1",
     "npm": "5.3.0"
